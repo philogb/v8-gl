@@ -3,7 +3,7 @@ V8-GL
 
 A JavaScript Toolkit for creating Desktop Hardware Accelerated Graphics with JS.
 
-![A V8-GL example code](http://blog.thejit.org/wp-content/v8-gl.png)
+![A V8-GL example code](http://blog.thejit.org/wp-content/v8gl2.png)
 
 Description
 ---------
@@ -13,6 +13,8 @@ Although OpenGL bindings are included in this library, this project main goal is
 for making 2D-3D graphics.
 
 I set a few goals for this project, the first of those is to provide complete OpenGL bindings for V8.
+Other goals will be explained at [my blog](http://blog.thejit.org) in due time.
+
 
 Status
 ---------
@@ -58,7 +60,7 @@ Finally, run some example JS code
 Example
 ---------
 
-Here's a JS example of a rotating Icosahedron with some lighting and colors.
+Here's an example of a rotating Icosahedron with some lighting and colors.
 
     //Add array iteration method
     Array.prototype.each = function(f) {
