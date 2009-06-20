@@ -58,7 +58,7 @@ def make_glut():
 int* pargc_;
 char** argv_;
 map<const char*, void*> font_;
-Persistent<Context> context_;
+Persistent<Context> GlutFactory::glut_persistent_context;
     
     """ + '\n'.join(text_out) + make_main_glut_function(constants, functions, void_stars))
     
@@ -67,10 +67,9 @@ Persistent<Context> context_;
 def make_main_glut_function(constants, functions, void_stars):
     text_out_begin = """
 
-Handle<ObjectTemplate> createGlut(int* pargc, char** argv, Persistent<Context> context) {
+Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
       pargc_ = pargc;
       argv_  = argv;
-      context_ = context;
       
       HandleScope handle_scope;
 
@@ -141,23 +140,24 @@ def make_function_with_callback(prefix, name, params_list, return_val):
     
     text_out = """
 
-Persistent<Function> persistent<name> = NULL;
+Persistent<Function> persistent<name>;
 
 <prototype> {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[<nformalparams>];
+  Handle<Value> valueArr[<nformalparams>];
 <formalparamassignment>
   
-  persistent<name>->Call(context_->Global(), <nformalparams>, valueArr);
+  persistent<name>->Call(GlutFactory::glut_persistent_context->Global(), <nformalparams>, valueArr);
 }
 
 Handle<Value> GLUT<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistent<name> != NULL) persistent<name>.Dispose();
+  //delete previous assigned function
+  persistent<name>.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistent<name> = Persistent<Function>::New(value0);
 

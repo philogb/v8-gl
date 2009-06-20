@@ -5,7 +5,7 @@
 int* pargc_;
 char** argv_;
 map<const char*, void*> font_;
-Persistent<Context> context_;
+Persistent<Context> GlutFactory::glut_persistent_context;
 
 
 
@@ -1411,15 +1411,10 @@ Handle<Value> GetGLUT_GAME_MODE_DISPLAY_CHANGED(Local<String> property,
 
 
 Handle<Value> GLUTInitCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-
   //make call
   glutInit(( int* ) pargc_, ( char** ) argv_);
   return v8::Undefined();
 }
-
-
 
 
 Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
@@ -1932,23 +1927,24 @@ Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentCreateMenu = NULL;
+Persistent<Function> persistentCreateMenu;
 
  void callbackCreateMenu (  int arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[1];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
 
-  persistentCreateMenu->Call(context_->Global(), 1, valueArr);
+  persistentCreateMenu->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
 }
 
 Handle<Value> GLUTCreateMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentCreateMenu != NULL) persistentCreateMenu.Dispose();
+  //delete previous assigned function
+  persistentCreateMenu.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentCreateMenu = Persistent<Function>::New(value0);
 
@@ -2128,6 +2124,28 @@ Handle<Value> GLUTDetachMenuCallback(const Arguments& args) {
 
 
 
+typedef struct {
+    int value;
+    Persistent<Function> timerFunc;
+} gurrito;
+
+gurrito * persistentTimers[50] = { NULL };
+
+void callbackTimerFunc(int value) {
+    gurrito * elem = persistentTimers[value];
+    if(elem != NULL) {
+      //define handle scope
+      HandleScope scope;
+      Handle<Value> args[1];
+      args[0] = Integer::New(elem->value);
+      Persistent<Function> timer = elem->timerFunc;
+      timer->Call(GlutFactory::glut_persistent_context->Global(), 1, args);
+
+      timer.Dispose();
+      delete elem;
+      persistentTimers[value] = NULL;
+    }
+}
 
 Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
@@ -2135,36 +2153,55 @@ Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
   //define handle scope
   HandleScope scope;
   //get arguments
-  unsigned int arg0 = args[0]->Uint32Value();
-  Handle<Function> value1 = Handle<Function>::Cast(args[1]);
-  void* arg1 = *value1;
-  int arg2 = args[2]->IntegerValue();
+  unsigned int millisec = args[0]->Uint32Value();
+  int timerId = args[2]->IntegerValue();
+
+  //find an empty timer spot and place the function there.
+  int i = 0;
+  bool found = false;
+  for(; i < 50; i++) {
+      if(persistentTimers[i] == NULL) {
+          //get the function
+          Handle<Function> value = Handle<Function>::Cast(args[1]);
+          Persistent<Function> persistentValue = Persistent<Function>::New(value);
+          //assign callback and value values.
+          gurrito * structElem = new gurrito;
+          structElem->value = timerId;
+          structElem->timerFunc = persistentValue;
+          persistentTimers[i] = structElem;
+          found = true;
+          break;
+      }
+  }
+
+  //TODO add dynamic resize for persistent Timers
+  if(!found) return v8::Undefined();
 
   //make call
-  glutTimerFunc(( unsigned int ) arg0, (  void (* )( int )) arg1, ( int ) arg2);
+  //Don't pass the actual *value*, but an id to our persistent Function
+  glutTimerFunc(( unsigned int ) millisec, (  void (* )( int )) callbackTimerFunc, ( int ) i);
   return v8::Undefined();
 }
 
 
-
-
-Persistent<Function> persistentIdleFunc = NULL;
+Persistent<Function> persistentIdleFunc;
 
  void callbackIdleFunc ( ) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[0];
+  Handle<Value> valueArr[0];
 
 
-  persistentIdleFunc->Call(context_->Global(), 0, valueArr);
+  persistentIdleFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
 }
 
 Handle<Value> GLUTIdleFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentIdleFunc != NULL) persistentIdleFunc.Dispose();
+  //delete previous assigned function
+  persistentIdleFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentIdleFunc = Persistent<Function>::New(value0);
 
@@ -2176,25 +2213,26 @@ Handle<Value> GLUTIdleFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentKeyboardFunc = NULL;
+Persistent<Function> persistentKeyboardFunc;
 
  void callbackKeyboardFunc (  unsigned char arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentKeyboardFunc->Call(context_->Global(), 3, valueArr);
+  persistentKeyboardFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentKeyboardFunc != NULL) persistentKeyboardFunc.Dispose();
+  //delete previous assigned function
+  persistentKeyboardFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentKeyboardFunc = Persistent<Function>::New(value0);
 
@@ -2206,25 +2244,26 @@ Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentSpecialFunc = NULL;
+Persistent<Function> persistentSpecialFunc;
 
  void callbackSpecialFunc (  int arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentSpecialFunc->Call(context_->Global(), 3, valueArr);
+  persistentSpecialFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTSpecialFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentSpecialFunc != NULL) persistentSpecialFunc.Dispose();
+  //delete previous assigned function
+  persistentSpecialFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentSpecialFunc = Persistent<Function>::New(value0);
 
@@ -2236,24 +2275,25 @@ Handle<Value> GLUTSpecialFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentReshapeFunc = NULL;
+Persistent<Function> persistentReshapeFunc;
 
  void callbackReshapeFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentReshapeFunc->Call(context_->Global(), 2, valueArr);
+  persistentReshapeFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTReshapeFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentReshapeFunc != NULL) persistentReshapeFunc.Dispose();
+  //delete previous assigned function
+  persistentReshapeFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentReshapeFunc = Persistent<Function>::New(value0);
 
@@ -2265,23 +2305,24 @@ Handle<Value> GLUTReshapeFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentVisibilityFunc = NULL;
+Persistent<Function> persistentVisibilityFunc;
 
  void callbackVisibilityFunc (  int   arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[1];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
 
-  persistentVisibilityFunc->Call(context_->Global(), 1, valueArr);
+  persistentVisibilityFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
 }
 
 Handle<Value> GLUTVisibilityFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentVisibilityFunc != NULL) persistentVisibilityFunc.Dispose();
+  //delete previous assigned function
+  persistentVisibilityFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentVisibilityFunc = Persistent<Function>::New(value0);
 
@@ -2293,23 +2334,24 @@ Handle<Value> GLUTVisibilityFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentDisplayFunc = NULL;
+Persistent<Function> persistentDisplayFunc;
 
  void callbackDisplayFunc ( ) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[0];
+  Handle<Value> valueArr[0];
 
 
-  persistentDisplayFunc->Call(context_->Global(), 0, valueArr);
+  persistentDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
 }
 
 Handle<Value> GLUTDisplayFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentDisplayFunc != NULL) persistentDisplayFunc.Dispose();
+  //delete previous assigned function
+  persistentDisplayFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentDisplayFunc = Persistent<Function>::New(value0);
 
@@ -2321,26 +2363,27 @@ Handle<Value> GLUTDisplayFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentMouseFunc = NULL;
+Persistent<Function> persistentMouseFunc;
 
  void callbackMouseFunc (  int arg0, int arg1, int arg2, int   arg3) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[4];
+  Handle<Value> valueArr[4];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
   valueArr[3] = Integer::New(arg3);
 
-  persistentMouseFunc->Call(context_->Global(), 4, valueArr);
+  persistentMouseFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
 }
 
 Handle<Value> GLUTMouseFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentMouseFunc != NULL) persistentMouseFunc.Dispose();
+  //delete previous assigned function
+  persistentMouseFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentMouseFunc = Persistent<Function>::New(value0);
 
@@ -2352,24 +2395,25 @@ Handle<Value> GLUTMouseFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentMotionFunc = NULL;
+Persistent<Function> persistentMotionFunc;
 
  void callbackMotionFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentMotionFunc->Call(context_->Global(), 2, valueArr);
+  persistentMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTMotionFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentMotionFunc != NULL) persistentMotionFunc.Dispose();
+  //delete previous assigned function
+  persistentMotionFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentMotionFunc = Persistent<Function>::New(value0);
 
@@ -2381,24 +2425,25 @@ Handle<Value> GLUTMotionFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentPassiveMotionFunc = NULL;
+Persistent<Function> persistentPassiveMotionFunc;
 
  void callbackPassiveMotionFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentPassiveMotionFunc->Call(context_->Global(), 2, valueArr);
+  persistentPassiveMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTPassiveMotionFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentPassiveMotionFunc != NULL) persistentPassiveMotionFunc.Dispose();
+  //delete previous assigned function
+  persistentPassiveMotionFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentPassiveMotionFunc = Persistent<Function>::New(value0);
 
@@ -2410,23 +2455,24 @@ Handle<Value> GLUTPassiveMotionFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentEntryFunc = NULL;
+Persistent<Function> persistentEntryFunc;
 
  void callbackEntryFunc (  int   arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[1];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
 
-  persistentEntryFunc->Call(context_->Global(), 1, valueArr);
+  persistentEntryFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
 }
 
 Handle<Value> GLUTEntryFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentEntryFunc != NULL) persistentEntryFunc.Dispose();
+  //delete previous assigned function
+  persistentEntryFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentEntryFunc = Persistent<Function>::New(value0);
 
@@ -2438,25 +2484,26 @@ Handle<Value> GLUTEntryFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentKeyboardUpFunc = NULL;
+Persistent<Function> persistentKeyboardUpFunc;
 
  void callbackKeyboardUpFunc (  unsigned char arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentKeyboardUpFunc->Call(context_->Global(), 3, valueArr);
+  persistentKeyboardUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTKeyboardUpFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentKeyboardUpFunc != NULL) persistentKeyboardUpFunc.Dispose();
+  //delete previous assigned function
+  persistentKeyboardUpFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentKeyboardUpFunc = Persistent<Function>::New(value0);
 
@@ -2468,25 +2515,26 @@ Handle<Value> GLUTKeyboardUpFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentSpecialUpFunc = NULL;
+Persistent<Function> persistentSpecialUpFunc;
 
  void callbackSpecialUpFunc (  int arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentSpecialUpFunc->Call(context_->Global(), 3, valueArr);
+  persistentSpecialUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTSpecialUpFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentSpecialUpFunc != NULL) persistentSpecialUpFunc.Dispose();
+  //delete previous assigned function
+  persistentSpecialUpFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentSpecialUpFunc = Persistent<Function>::New(value0);
 
@@ -2516,23 +2564,24 @@ Handle<Value> GLUTJoystickFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentMenuStateFunc = NULL;
+Persistent<Function> persistentMenuStateFunc;
 
  void callbackMenuStateFunc (  int   arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[1];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
 
-  persistentMenuStateFunc->Call(context_->Global(), 1, valueArr);
+  persistentMenuStateFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
 }
 
 Handle<Value> GLUTMenuStateFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentMenuStateFunc != NULL) persistentMenuStateFunc.Dispose();
+  //delete previous assigned function
+  persistentMenuStateFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentMenuStateFunc = Persistent<Function>::New(value0);
 
@@ -2544,25 +2593,26 @@ Handle<Value> GLUTMenuStateFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentMenuStatusFunc = NULL;
+Persistent<Function> persistentMenuStatusFunc;
 
  void callbackMenuStatusFunc (  int arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentMenuStatusFunc->Call(context_->Global(), 3, valueArr);
+  persistentMenuStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTMenuStatusFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentMenuStatusFunc != NULL) persistentMenuStatusFunc.Dispose();
+  //delete previous assigned function
+  persistentMenuStatusFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentMenuStatusFunc = Persistent<Function>::New(value0);
 
@@ -2574,23 +2624,24 @@ Handle<Value> GLUTMenuStatusFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentOverlayDisplayFunc = NULL;
+Persistent<Function> persistentOverlayDisplayFunc;
 
  void callbackOverlayDisplayFunc ( ) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[0];
+  Handle<Value> valueArr[0];
 
 
-  persistentOverlayDisplayFunc->Call(context_->Global(), 0, valueArr);
+  persistentOverlayDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
 }
 
 Handle<Value> GLUTOverlayDisplayFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentOverlayDisplayFunc != NULL) persistentOverlayDisplayFunc.Dispose();
+  //delete previous assigned function
+  persistentOverlayDisplayFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentOverlayDisplayFunc = Persistent<Function>::New(value0);
 
@@ -2602,23 +2653,24 @@ Handle<Value> GLUTOverlayDisplayFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentWindowStatusFunc = NULL;
+Persistent<Function> persistentWindowStatusFunc;
 
  void callbackWindowStatusFunc (  int   arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[1];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
 
-  persistentWindowStatusFunc->Call(context_->Global(), 1, valueArr);
+  persistentWindowStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
 }
 
 Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentWindowStatusFunc != NULL) persistentWindowStatusFunc.Dispose();
+  //delete previous assigned function
+  persistentWindowStatusFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentWindowStatusFunc = Persistent<Function>::New(value0);
 
@@ -2630,25 +2682,26 @@ Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentSpaceballMotionFunc = NULL;
+Persistent<Function> persistentSpaceballMotionFunc;
 
  void callbackSpaceballMotionFunc (  int arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentSpaceballMotionFunc->Call(context_->Global(), 3, valueArr);
+  persistentSpaceballMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTSpaceballMotionFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentSpaceballMotionFunc != NULL) persistentSpaceballMotionFunc.Dispose();
+  //delete previous assigned function
+  persistentSpaceballMotionFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentSpaceballMotionFunc = Persistent<Function>::New(value0);
 
@@ -2660,25 +2713,26 @@ Handle<Value> GLUTSpaceballMotionFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentSpaceballRotateFunc = NULL;
+Persistent<Function> persistentSpaceballRotateFunc;
 
  void callbackSpaceballRotateFunc (  int arg0, int arg1, int   arg2) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[3];
+  Handle<Value> valueArr[3];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
 
-  persistentSpaceballRotateFunc->Call(context_->Global(), 3, valueArr);
+  persistentSpaceballRotateFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
 }
 
 Handle<Value> GLUTSpaceballRotateFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentSpaceballRotateFunc != NULL) persistentSpaceballRotateFunc.Dispose();
+  //delete previous assigned function
+  persistentSpaceballRotateFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentSpaceballRotateFunc = Persistent<Function>::New(value0);
 
@@ -2690,24 +2744,25 @@ Handle<Value> GLUTSpaceballRotateFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentSpaceballButtonFunc = NULL;
+Persistent<Function> persistentSpaceballButtonFunc;
 
  void callbackSpaceballButtonFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentSpaceballButtonFunc->Call(context_->Global(), 2, valueArr);
+  persistentSpaceballButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTSpaceballButtonFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentSpaceballButtonFunc != NULL) persistentSpaceballButtonFunc.Dispose();
+  //delete previous assigned function
+  persistentSpaceballButtonFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentSpaceballButtonFunc = Persistent<Function>::New(value0);
 
@@ -2719,24 +2774,25 @@ Handle<Value> GLUTSpaceballButtonFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentButtonBoxFunc = NULL;
+Persistent<Function> persistentButtonBoxFunc;
 
  void callbackButtonBoxFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentButtonBoxFunc->Call(context_->Global(), 2, valueArr);
+  persistentButtonBoxFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTButtonBoxFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentButtonBoxFunc != NULL) persistentButtonBoxFunc.Dispose();
+  //delete previous assigned function
+  persistentButtonBoxFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentButtonBoxFunc = Persistent<Function>::New(value0);
 
@@ -2748,24 +2804,25 @@ Handle<Value> GLUTButtonBoxFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentDialsFunc = NULL;
+Persistent<Function> persistentDialsFunc;
 
  void callbackDialsFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentDialsFunc->Call(context_->Global(), 2, valueArr);
+  persistentDialsFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTDialsFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentDialsFunc != NULL) persistentDialsFunc.Dispose();
+  //delete previous assigned function
+  persistentDialsFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentDialsFunc = Persistent<Function>::New(value0);
 
@@ -2777,24 +2834,25 @@ Handle<Value> GLUTDialsFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentTabletMotionFunc = NULL;
+Persistent<Function> persistentTabletMotionFunc;
 
  void callbackTabletMotionFunc (  int arg0, int   arg1) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[2];
+  Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
 
-  persistentTabletMotionFunc->Call(context_->Global(), 2, valueArr);
+  persistentTabletMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
 }
 
 Handle<Value> GLUTTabletMotionFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentTabletMotionFunc != NULL) persistentTabletMotionFunc.Dispose();
+  //delete previous assigned function
+  persistentTabletMotionFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentTabletMotionFunc = Persistent<Function>::New(value0);
 
@@ -2806,26 +2864,27 @@ Handle<Value> GLUTTabletMotionFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentTabletButtonFunc = NULL;
+Persistent<Function> persistentTabletButtonFunc;
 
  void callbackTabletButtonFunc (  int arg0, int arg1, int arg2, int   arg3) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[] = new Handle<Value>[4];
+  Handle<Value> valueArr[4];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
   valueArr[3] = Integer::New(arg3);
 
-  persistentTabletButtonFunc->Call(context_->Global(), 4, valueArr);
+  persistentTabletButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
 }
 
 Handle<Value> GLUTTabletButtonFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
-  if(persistentTabletButtonFunc != NULL) persistentTabletButtonFunc.Dispose();
+  //delete previous assigned function
+  persistentTabletButtonFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   persistentTabletButtonFunc = Persistent<Function>::New(value0);
 
@@ -3589,10 +3648,9 @@ Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
 
 
 
-Handle<ObjectTemplate> createGlut(int* pargc, char** argv, Persistent<Context> context) {
+Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
       pargc_ = pargc;
       argv_  = argv;
-      context_ = context;
 
       HandleScope handle_scope;
 

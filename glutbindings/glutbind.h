@@ -17,10 +17,15 @@
 #include <GL/glut.h>
 #endif
 
+#include <stdio.h>
 #include <map>
 using namespace std;
 using namespace v8;
 
-Handle<ObjectTemplate> createGlut(int* pargc, char** argv, Persistent<Context> context);
+class GlutFactory {
+public:
+	static Handle<ObjectTemplate> createGlut(int* pargc, char** argv);
+	static Persistent<Context> glut_persistent_context;
+};
 
 #endif /* GLUTBIND_H_ */

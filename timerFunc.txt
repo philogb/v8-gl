@@ -1,0 +1,58 @@
+typedef struct {
+    int value;
+    Persistent<Function> timerFunc;
+} gurrito;
+
+gurrito * persistentTimers[50] = { NULL };
+
+void callbackTimerFunc(int value) {
+    gurrito * elem = persistentTimers[value];
+    if(elem != NULL) {
+      //define handle scope
+      HandleScope scope;
+      Handle<Value> args[1];
+      args[0] = Integer::New(elem->value);
+      Persistent<Function> timer = elem->timerFunc;
+      timer->Call(GlutFactory::glut_persistent_context->Global(), 1, args);
+
+      timer.Dispose();
+      delete elem;
+      persistentTimers[value] = NULL;
+    }
+}
+
+Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  unsigned int millisec = args[0]->Uint32Value();
+  int timerId = args[2]->IntegerValue();
+
+  //find an empty timer spot and place the function there.
+  int i = 0;
+  bool found = false;
+  for(; i < 50; i++) {
+      if(persistentTimers[i] == NULL) {
+          //get the function
+          Handle<Function> value = Handle<Function>::Cast(args[1]);
+          Persistent<Function> persistentValue = Persistent<Function>::New(value);
+          //assign callback and value values.
+          gurrito * structElem = new gurrito;
+          structElem->value = timerId;
+          structElem->timerFunc = persistentValue;
+          persistentTimers[i] = structElem;
+          found = true;
+          break;
+      }
+  }
+
+  //TODO add dynamic resize for persistent Timers
+  if(!found) return v8::Undefined();
+
+  //make call
+  //Don't pass the actual *value*, but an id to our persistent Function
+  glutTimerFunc(( unsigned int ) millisec, (  void (* )( int )) callbackTimerFunc, ( int ) i);
+  return v8::Undefined();
+}

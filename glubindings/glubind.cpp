@@ -1243,6 +1243,174 @@ Handle<Value> GetGLU_TESS_MAX_COORD(Local<String> property,
 
 
 
+
+Handle<Value> GLUCheckExtensionCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+    GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+        GLubyte   aux = (  GLubyte  )arg->Uint32Value();
+      arg0[j] = aux; 
+  }
+    
+    
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+    GLubyte*   arg1 = new   GLubyte  [arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+        GLubyte   aux = (  GLubyte  )arg->Uint32Value();
+      arg1[j] = aux; 
+  }
+    
+    
+  //make call
+  gluCheckExtension(( const GLubyte* ) arg0, ( const GLubyte* ) arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLULookAtCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 9) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+  double arg4 = args[4]->NumberValue();
+  double arg5 = args[5]->NumberValue();
+  double arg6 = args[6]->NumberValue();
+  double arg7 = args[7]->NumberValue();
+  double arg8 = args[8]->NumberValue();
+
+  //make call
+  gluLookAt(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLdouble ) arg4, ( GLdouble ) arg5, ( GLdouble ) arg6, ( GLdouble ) arg7, ( GLdouble ) arg8);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUNewNurbsRendererCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  gluNewNurbsRenderer();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUNewQuadricCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  gluNewQuadric();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUNewTessCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  gluNewTess();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUOrtho2DCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+
+  //make call
+  gluOrtho2D(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUPerspectiveCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+
+  //make call
+  gluPerspective(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUPickMatrixCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 5) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+
+  Handle<Array> arrHandle4 = Handle<Array>::Cast(args[4]);
+   GLint*   arg4 = new  GLint  [arrHandle4->Length()];
+  for (unsigned j = 0; j < arrHandle4->Length(); j++) {
+      Handle<Value> arg(arrHandle4->Get(Integer::New(j)));
+       GLint   aux = ( GLint  )arg->IntegerValue();
+      arg4[j] = aux; 
+  }
+    
+    
+  //make call
+  gluPickMatrix(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLint* ) arg4);
+  return v8::Undefined();
+}
+
+
+
 Handle<ObjectTemplate> createGlu(void) {
       HandleScope handle_scope;
 
@@ -1558,6 +1726,21 @@ Handle<ObjectTemplate> createGlu(void) {
      Glu->SetAccessor(String::NewSymbol("TESS_WINDING_ABS_GEQ_TWO"), GetGLU_TESS_WINDING_ABS_GEQ_TWO);
 
      Glu->SetAccessor(String::NewSymbol("TESS_MAX_COORD"), GetGLU_TESS_MAX_COORD);
+     Glu->Set(String::NewSymbol("CheckExtension"), FunctionTemplate::New(GLUCheckExtensionCallback));
+
+     Glu->Set(String::NewSymbol("LookAt"), FunctionTemplate::New(GLULookAtCallback));
+
+     Glu->Set(String::NewSymbol("NewNurbsRenderer"), FunctionTemplate::New(GLUNewNurbsRendererCallback));
+
+     Glu->Set(String::NewSymbol("NewQuadric"), FunctionTemplate::New(GLUNewQuadricCallback));
+
+     Glu->Set(String::NewSymbol("NewTess"), FunctionTemplate::New(GLUNewTessCallback));
+
+     Glu->Set(String::NewSymbol("Ortho2D"), FunctionTemplate::New(GLUOrtho2DCallback));
+
+     Glu->Set(String::NewSymbol("Perspective"), FunctionTemplate::New(GLUPerspectiveCallback));
+
+     Glu->Set(String::NewSymbol("PickMatrix"), FunctionTemplate::New(GLUPickMatrixCallback));
 
 
       // Again, return the result through the current handle scope.

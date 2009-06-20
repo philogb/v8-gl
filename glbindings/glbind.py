@@ -1,8 +1,9 @@
 import sys
 import re
 
-PATH_GL = '/usr/include/GL/glu.h'
-FILE_GL = 'glubind.cpp'
+PATH_GL = '/usr/include/GL/gl.h'
+FILE_GL = 'glbind.cpp'
+
 
 def main():
     make_gl()
@@ -12,29 +13,37 @@ def make_gl():
     functions = []
     void_stars = []
     
-    constant = re.compile(".+define[\s]+GLU_([^\s]+).*")
-    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+glu([A-Za-z0-9]+)\((.*)\);")
+    constant = re.compile(".+define[\s]+GL_([^\s]+).*")
+    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+gl([A-Za-z0-9]+)[\s]*\((.*)\);")
     
     text_out = []
     
     fin = open(PATH_GL, 'r')
-    for l in fin:
+    l = ''
+    for cont in fin:
+
+       l += cont.replace('\n', '')
+       if l.count('(') != l.count(')'):
+          continue
+       
        try:
            mat = re.match(constant, l)
            if mat and not mat.group(1) in constants:
                name = mat.group(1)
-               text_out.append(make_constant("GLU", name))
+               text_out.append(make_constant("GL", name))
                constants.append(name)
                
                #print "GL_" + mat.group(1) + "\n"
                
            else:
                mat = re.match(function, l)
-               if mat:
-                   prefix = "glu"
+               if l.find('Viewport') != -1: print l
+               if mat and mat.group(2).find('MESA') == -1 and mat.group(2).find('ATI') == -1:
+                   prefix = "gl"
                    return_val = mat.group(1)
                    name = mat.group(2)
                    params = mat.group(3)
+                   if name.find('Viewport') != -1: print name
                    text_out.append(make_function(prefix, name, params, return_val))
                    functions.append(name)
                     
@@ -42,13 +51,15 @@ def make_gl():
        except Exception, e:
             print e
             pass
+        
+       l = ''
     
     fin.close()
 
     fout = open(FILE_GL, 'w')
     fout.write("""
 
-#include "glubind.h"
+#include "glbind.h"
     
     """ + '\n'.join(text_out) + make_main_gl_function(constants, functions, void_stars))
     
@@ -57,32 +68,32 @@ def make_gl():
 def make_main_gl_function(constants, functions, void_stars):
     text_out_begin = """
 
-Handle<ObjectTemplate> createGlu(void) {
+Handle<ObjectTemplate> createGl(void) {
       HandleScope handle_scope;
 
-      Handle<ObjectTemplate> Glu = ObjectTemplate::New();
-      Glu->SetInternalFieldCount(1);
+      Handle<ObjectTemplate> Gl = ObjectTemplate::New();
+      Gl->SetInternalFieldCount(1);
 
 """
 
     text_out_end = """
 
       // Again, return the result through the current handle scope.
-      return handle_scope.Close(Glu);
+      return handle_scope.Close(Gl);
 }    
 """
     fnt = [bind_font(name) for name in void_stars]    
-    cts = [bind_accessor("Glu", name) for name in constants]
-    fts = [bind_function("Glu", name) for name in functions]
+    cts = [bind_accessor("Gl", name) for name in constants]
+    fts = [bind_function("Gl", name) for name in functions]
     
     return text_out_begin + '\n'.join(fnt) + '\n'.join(cts) + '\n'.join(fts) + text_out_end
     
 
 def make_constant(prefix, name):
-    return_val = "return Uint32::New(GLU_"+ name +");"
+    return_val = "return Uint32::New(GL_"+ name +");"
     text_out = """
 
-Handle<Value> GetGLU_%%(Local<String> property,
+Handle<Value> GetGL_%%(Local<String> property,
                       const AccessorInfo &info) {
     ##
 }
@@ -98,7 +109,7 @@ Handle<Value> GetGLU_%%(Local<String> property,
 def make_function(prefix, name, params, return_val):
     text_out = """
 
-Handle<Value> GLU<name>Callback(const Arguments& args) {
+Handle<Value> GL<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < <len_params>) return v8::Undefined();
   //define handle scope
@@ -148,11 +159,11 @@ def make_args(params_list, count):
         #is function
         if type.find('(*') != -1:
             ans.append("  Handle<Function> value" + str(i) + " = Handle<Function>::Cast(args[" + str(i) + "]);\n  void* arg" + str(i) + " = *value" + str(i) + ";\n")
-            print "function " + type
+            #print "function " + type
         #is string
         elif type.find('char*') != -1:
             ans.append("  String::Utf8Value value"+ str(i) +"(args["+ str(i) +"]);\n  char* arg" + str(i) + " = *value"+ str(i) +";\n")
-            print "string " + type
+            #print "string " + type
         #is void*
         elif type.find('void*') != -1:
             raise Exception("unhandled type " + type)
@@ -162,15 +173,15 @@ def make_args(params_list, count):
         #is unsigned integer
         elif type.find('unsigned') != -1 or type.find('ubyte') != -1 or type.find('ushort') != -1 or type.find('uint') != -1 or type.find('bitfield') != -1 or type.find('boolean') != -1:
             ans.append("  unsigned int arg" + str(i) + " = args["+ str(i) +"]->Uint32Value();\n")
-            print "unsigned " + type
+            #print "unsigned " + type
         #is integer
         elif type.find('int') != -1 or type.find('enum') != -1 or type.find('sizei') != -1 or type.find('short') != -1 or type.find('byte') != -1:
             ans.append("  int arg" + str(i) + " = args["+ str(i) +"]->IntegerValue();\n")
-            print "integer " + type
+            #print "integer " + type
         #is double, float
         elif type.find('double') != -1 or type.find('float') != -1 or type.find('clampf') != -1 or type.find('clampd') != -1:
             ans.append("  double arg" + str(i) + " = args["+ str(i) +"]->NumberValue();\n")
-            print "double " + type
+            #print "double " + type
         else:
             raise Exception("unhandled type " + type)
     
@@ -183,10 +194,10 @@ def make_call(name, params_list, nb):
     return name + "(" + ", ".join([get_type(params_list[i]) + "arg" + str(i) for i in range(nb)]) + ");"
             
 def bind_accessor(prefix, name):
-    return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGLU_" + name + ");\n"
+    return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGL_" + name + ");\n"
 
 def bind_function(prefix, name):
-    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GLU" + name + "Callback));\n"
+    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GL" + name + "Callback));\n"
 
 def bind_font(name):
     return "     font_[\""+ name +"\"] = GLUT_" + name + ";\n"

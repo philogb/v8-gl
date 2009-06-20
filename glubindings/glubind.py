@@ -1,9 +1,8 @@
 import sys
 import re
 
-PATH_GL = '/usr/include/GL/gl.h'
-FILE_GL = 'glbind.cpp'
-
+PATH_GL = '/usr/include/GL/glu.h'
+FILE_GL = 'glubind.cpp'
 
 def main():
     make_gl()
@@ -13,8 +12,8 @@ def make_gl():
     functions = []
     void_stars = []
     
-    constant = re.compile(".+define[\s]+GL_([^\s]+).*")
-    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+gl([A-Za-z0-9]+)\((.*)\);")
+    constant = re.compile(".+define[\s]+GLU_([^\s]+).*")
+    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+glu([A-Za-z0-9]+)[\s]*\((.*)\);")
     
     text_out = []
     
@@ -24,15 +23,18 @@ def make_gl():
            mat = re.match(constant, l)
            if mat and not mat.group(1) in constants:
                name = mat.group(1)
-               text_out.append(make_constant("GL", name))
+               text_out.append(make_constant("GLU", name))
                constants.append(name)
                
                #print "GL_" + mat.group(1) + "\n"
                
            else:
+               
                mat = re.match(function, l)
-               if mat and mat.group(2).find('MESA') == -1 and mat.group(2).find('ATI') == -1:
-                   prefix = "gl"
+          
+               if mat:
+                   print l
+                   prefix = "glu"
                    return_val = mat.group(1)
                    name = mat.group(2)
                    params = mat.group(3)
@@ -49,7 +51,7 @@ def make_gl():
     fout = open(FILE_GL, 'w')
     fout.write("""
 
-#include "glbind.h"
+#include "glubind.h"
     
     """ + '\n'.join(text_out) + make_main_gl_function(constants, functions, void_stars))
     
@@ -58,32 +60,32 @@ def make_gl():
 def make_main_gl_function(constants, functions, void_stars):
     text_out_begin = """
 
-Handle<ObjectTemplate> createGl(void) {
+Handle<ObjectTemplate> createGlu(void) {
       HandleScope handle_scope;
 
-      Handle<ObjectTemplate> Gl = ObjectTemplate::New();
-      Gl->SetInternalFieldCount(1);
+      Handle<ObjectTemplate> Glu = ObjectTemplate::New();
+      Glu->SetInternalFieldCount(1);
 
 """
 
     text_out_end = """
 
       // Again, return the result through the current handle scope.
-      return handle_scope.Close(Gl);
+      return handle_scope.Close(Glu);
 }    
 """
     fnt = [bind_font(name) for name in void_stars]    
-    cts = [bind_accessor("Gl", name) for name in constants]
-    fts = [bind_function("Gl", name) for name in functions]
+    cts = [bind_accessor("Glu", name) for name in constants]
+    fts = [bind_function("Glu", name) for name in functions]
     
     return text_out_begin + '\n'.join(fnt) + '\n'.join(cts) + '\n'.join(fts) + text_out_end
     
 
 def make_constant(prefix, name):
-    return_val = "return Uint32::New(GL_"+ name +");"
+    return_val = "return Uint32::New(GLU_"+ name +");"
     text_out = """
 
-Handle<Value> GetGL_%%(Local<String> property,
+Handle<Value> GetGLU_%%(Local<String> property,
                       const AccessorInfo &info) {
     ##
 }
@@ -99,7 +101,7 @@ Handle<Value> GetGL_%%(Local<String> property,
 def make_function(prefix, name, params, return_val):
     text_out = """
 
-Handle<Value> GL<name>Callback(const Arguments& args) {
+Handle<Value> GLU<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < <len_params>) return v8::Undefined();
   //define handle scope
@@ -155,7 +157,7 @@ def make_args(params_list, count):
             ans.append("  String::Utf8Value value"+ str(i) +"(args["+ str(i) +"]);\n  char* arg" + str(i) + " = *value"+ str(i) +";\n")
             print "string " + type
         #is void*
-        elif type.find('void*') != -1:
+        elif type.find('void*') != -1 or type.find('**') != -1:
             raise Exception("unhandled type " + type)
         #is array
         elif type.find('*') != -1 or el.find('[') != -1:
@@ -184,10 +186,10 @@ def make_call(name, params_list, nb):
     return name + "(" + ", ".join([get_type(params_list[i]) + "arg" + str(i) for i in range(nb)]) + ");"
             
 def bind_accessor(prefix, name):
-    return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGL_" + name + ");\n"
+    return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGLU_" + name + ");\n"
 
 def bind_function(prefix, name):
-    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GL" + name + "Callback));\n"
+    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GLU" + name + "Callback));\n"
 
 def bind_font(name):
     return "     font_[\""+ name +"\"] = GLUT_" + name + ";\n"
@@ -209,18 +211,16 @@ def get_accessor(type):
 def make_array_expression(type, i):
     type = multiple_replace({'(':'', ')':'', 'const':''}, type)
     acc = get_accessor(type)
-    clean_type = type.replace('*', '')
+    clean_type = type.replace('*', '', 1)
     
     text_out = """
-    
-
-Handle<Array> arrHandle##1 = Handle<Array>::Cast(args[##1]);
-##2 arg##1 = new ##3[arrHandle##1->Length()];
-for (unsigned j = 0; j < arrHandle##1->Length(); j++) {
-    Handle<Value> arg(arrHandle##1->Get(Integer::New(j)));
-    ##3 aux = (##3)arg->##4;
-    arg##1[j] = aux; 
-}
+  Handle<Array> arrHandle##1 = Handle<Array>::Cast(args[##1]);
+  ##2 arg##1 = new ##3[arrHandle##1->Length()];
+  for (unsigned j = 0; j < arrHandle##1->Length(); j++) {
+      Handle<Value> arg(arrHandle##1->Get(Integer::New(j)));
+      ##3 aux = (##3)arg->##4;
+      arg##1[j] = aux; 
+  }
     
     """
     return multiple_replace({

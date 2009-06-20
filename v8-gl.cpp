@@ -6,7 +6,7 @@
  */
 
 #include "v8-gl.h"
-
+#include <stdio.h>
 
 V8GL::V8GL(Handle<String> script) : script_(script) {};
 
@@ -30,6 +30,7 @@ bool V8GL::executeScript() {
   if (result.IsEmpty()) {
     // The TryCatch above is still in effect and will have caught the error.
     String::Utf8Value error(try_catch.Exception());
+    printf("%s \n\n", *error);
     // Running the script failed; bail out.
     return false;
   }
@@ -44,18 +45,15 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  // built-in global functions.
 	  Handle<ObjectTemplate> global = ObjectTemplate::New();
 
+	  // Each processor gets its own context so different processors
+	  // don't affect each other.
 	  global->Set(String::New("Gl"), createGl());
 	  global->Set(String::New("Glu"), createGlu());
-	  global->Set(String::New("Glut"), createGlut(pargc, argv));
+	  global->Set(String::New("Glut"), GlutFactory::createGlut(pargc, argv));
 
-	  // Each processor gets its own context so different processors
-	  // don't affect each other (ignore the first three lines).
 	  Handle<Context> context = Context::New(NULL, global);
 
-	  // Store the context in the processor object in a persistent handle,
-	  // since we want the reference to remain after we return from this
-	  // method.
-	  //context_ = Persistent<Context>::New(context);
+	  GlutFactory::glut_persistent_context = Persistent<Context>::New(context);
 
 	  // Enter the new context so all the following operations take place
 	  // within it.
@@ -64,6 +62,7 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  // Compile and run the script
 	  if (!executeScript())
 		return false;
+
 
 	  return true;
 }
