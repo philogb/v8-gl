@@ -1409,12 +1409,11 @@ Handle<Value> GetGLUT_GAME_MODE_DISPLAY_CHANGED(Local<String> property,
 
 
 
-
 Handle<Value> GLUTInitCallback(const Arguments& args) {
-  //make call
   glutInit(( int* ) pargc_, ( char** ) argv_);
   return v8::Undefined();
 }
+
 
 
 Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
@@ -2127,12 +2126,12 @@ Handle<Value> GLUTDetachMenuCallback(const Arguments& args) {
 typedef struct {
     int value;
     Persistent<Function> timerFunc;
-} gurrito;
+} timerData;
 
-gurrito * persistentTimers[50] = { NULL };
+timerData * persistentTimers[50] = { NULL };
 
 void callbackTimerFunc(int value) {
-    gurrito * elem = persistentTimers[value];
+    timerData * elem = persistentTimers[value];
     if(elem != NULL) {
       //define handle scope
       HandleScope scope;
@@ -2165,7 +2164,7 @@ Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
           Handle<Function> value = Handle<Function>::Cast(args[1]);
           Persistent<Function> persistentValue = Persistent<Function>::New(value);
           //assign callback and value values.
-          gurrito * structElem = new gurrito;
+          timerData * structElem = new timerData;
           structElem->value = timerId;
           structElem->timerFunc = persistentValue;
           persistentTimers[i] = structElem;
@@ -2182,6 +2181,7 @@ Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
   glutTimerFunc(( unsigned int ) millisec, (  void (* )( int )) callbackTimerFunc, ( int ) i);
   return v8::Undefined();
 }
+
 
 
 Persistent<Function> persistentIdleFunc;

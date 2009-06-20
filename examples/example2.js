@@ -1,3 +1,4 @@
+//Add array iteration method
 Array.prototype.each = function(f) {
 	var len = this.length;
 	for ( var i = 0; i < len; i++) f(this[i]);
@@ -11,7 +12,7 @@ function initRendering() {
 	});
 }
 
-//global angle variable
+//angle variable
 var angle = 0;
 
 //Draws the 3D scene

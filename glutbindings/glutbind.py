@@ -4,6 +4,7 @@ import re
 PATH_GLUT = '/usr/include/GL/freeglut_std.h'
 FILE_GLUT = 'glutbind.cpp'
 
+TEMPLATES = ['glutInit', 'glutTimerFunc']
 
 def main():
     """ 
@@ -43,12 +44,19 @@ def make_glut():
                name = mat.group(2)
                params = mat.group(3)
                functions.append(name)
-               has_lambda, count, params_list = get_param_list(params)
-               if has_lambda is True and count == 1:
-                   text_out.append(make_function_with_callback(prefix, name, params_list, return_val))
+               #if has template then take the template code
+               if (prefix + name) in TEMPLATES:
+                   t = open(prefix + name + '.template', 'r')
+                   text_out.append(t.read())
+                   t.close()
                else:
-                   text_out.append(make_function(prefix, name, params_list, count, return_val))
-               #print return_val + " " + name + " " + params
+                   has_lambda, count, params_list = get_param_list(params)
+                   if has_lambda is True and count == 1:
+                       text_out.append(make_function_with_callback(prefix, name, params_list, return_val))
+                   else:
+                       text_out.append(make_function(prefix, name, params_list, count, return_val))
+                   #print return_val + " " + name + " " + params
+                   
     fin.close()
     fout = open(FILE_GLUT, 'w')
     fout.write("""

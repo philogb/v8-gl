@@ -1,8 +1,6 @@
-
-
 #include "glbind.h"
-    
-    
+
+
 
 Handle<Value> GetGL_VERSION_1_1(Local<String> property,
                       const AccessorInfo &info) {
@@ -4526,17 +4524,17 @@ Handle<Value> GLPolygonStippleCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glPolygonStipple(( const GLubyte* ) arg0);
   return v8::Undefined();
@@ -4552,17 +4550,17 @@ Handle<Value> GLGetPolygonStippleCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
  GLubyte*   arg0 = new  GLubyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
      GLubyte   aux = ( GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetPolygonStipple(( GLubyte* ) arg0);
   return v8::Undefined();
@@ -4594,17 +4592,17 @@ Handle<Value> GLEdgeFlagvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLboolean*   arg0 = new   GLboolean  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLboolean   aux = (  GLboolean  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glEdgeFlagv(( const GLboolean* ) arg0);
   return v8::Undefined();
@@ -4640,17 +4638,17 @@ Handle<Value> GLClipPlaneCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glClipPlane(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -4667,17 +4665,17 @@ Handle<Value> GLGetClipPlaneCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLdouble*   arg1 = new  GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetClipPlane(( GLenum ) arg0, ( GLdouble* ) arg1);
   return v8::Undefined();
@@ -4806,17 +4804,17 @@ Handle<Value> GLGetBooleanvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLboolean*   arg1 = new  GLboolean  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLboolean   aux = ( GLboolean  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetBooleanv(( GLenum ) arg0, ( GLboolean* ) arg1);
   return v8::Undefined();
@@ -4833,17 +4831,17 @@ Handle<Value> GLGetDoublevCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLdouble*   arg1 = new  GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetDoublev(( GLenum ) arg0, ( GLdouble* ) arg1);
   return v8::Undefined();
@@ -4860,17 +4858,17 @@ Handle<Value> GLGetFloatvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLfloat*   arg1 = new  GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetFloatv(( GLenum ) arg0, ( GLfloat* ) arg1);
   return v8::Undefined();
@@ -4887,17 +4885,17 @@ Handle<Value> GLGetIntegervCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLint*   arg1 = new  GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetIntegerv(( GLenum ) arg0, ( GLint* ) arg1);
   return v8::Undefined();
@@ -5276,17 +5274,17 @@ Handle<Value> GLLoadMatrixdCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glLoadMatrixd(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -5302,17 +5300,17 @@ Handle<Value> GLLoadMatrixfCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glLoadMatrixf(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -5328,17 +5326,17 @@ Handle<Value> GLMultMatrixdCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultMatrixd(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -5354,17 +5352,17 @@ Handle<Value> GLMultMatrixfCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultMatrixf(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -5850,17 +5848,17 @@ Handle<Value> GLVertex2dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex2dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -5876,17 +5874,17 @@ Handle<Value> GLVertex2fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex2fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -5902,17 +5900,17 @@ Handle<Value> GLVertex2ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex2iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -5928,17 +5926,17 @@ Handle<Value> GLVertex2svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex2sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -5954,17 +5952,17 @@ Handle<Value> GLVertex3dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex3dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -5980,17 +5978,17 @@ Handle<Value> GLVertex3fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex3fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -6006,17 +6004,17 @@ Handle<Value> GLVertex3ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex3iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -6032,17 +6030,17 @@ Handle<Value> GLVertex3svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex3sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -6058,17 +6056,17 @@ Handle<Value> GLVertex4dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex4dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -6084,17 +6082,17 @@ Handle<Value> GLVertex4fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex4fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -6110,17 +6108,17 @@ Handle<Value> GLVertex4ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex4iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -6136,17 +6134,17 @@ Handle<Value> GLVertex4svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glVertex4sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -6252,17 +6250,17 @@ Handle<Value> GLNormal3bvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glNormal3bv(( const GLbyte* ) arg0);
   return v8::Undefined();
@@ -6278,17 +6276,17 @@ Handle<Value> GLNormal3dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glNormal3dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -6304,17 +6302,17 @@ Handle<Value> GLNormal3fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glNormal3fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -6330,17 +6328,17 @@ Handle<Value> GLNormal3ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glNormal3iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -6356,17 +6354,17 @@ Handle<Value> GLNormal3svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glNormal3sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -6462,17 +6460,17 @@ Handle<Value> GLIndexdvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glIndexdv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -6488,17 +6486,17 @@ Handle<Value> GLIndexfvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glIndexfv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -6514,17 +6512,17 @@ Handle<Value> GLIndexivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glIndexiv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -6540,17 +6538,17 @@ Handle<Value> GLIndexsvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glIndexsv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -6566,17 +6564,17 @@ Handle<Value> GLIndexubvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glIndexubv(( const GLubyte* ) arg0);
   return v8::Undefined();
@@ -6888,17 +6886,17 @@ Handle<Value> GLColor3bvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3bv(( const GLbyte* ) arg0);
   return v8::Undefined();
@@ -6914,17 +6912,17 @@ Handle<Value> GLColor3dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -6940,17 +6938,17 @@ Handle<Value> GLColor3fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -6966,17 +6964,17 @@ Handle<Value> GLColor3ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -6992,17 +6990,17 @@ Handle<Value> GLColor3svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -7018,17 +7016,17 @@ Handle<Value> GLColor3ubvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3ubv(( const GLubyte* ) arg0);
   return v8::Undefined();
@@ -7044,17 +7042,17 @@ Handle<Value> GLColor3uivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLuint*   arg0 = new   GLuint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3uiv(( const GLuint* ) arg0);
   return v8::Undefined();
@@ -7070,17 +7068,17 @@ Handle<Value> GLColor3usvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLushort*   arg0 = new   GLushort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor3usv(( const GLushort* ) arg0);
   return v8::Undefined();
@@ -7096,17 +7094,17 @@ Handle<Value> GLColor4bvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4bv(( const GLbyte* ) arg0);
   return v8::Undefined();
@@ -7122,17 +7120,17 @@ Handle<Value> GLColor4dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -7148,17 +7146,17 @@ Handle<Value> GLColor4fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -7174,17 +7172,17 @@ Handle<Value> GLColor4ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -7200,17 +7198,17 @@ Handle<Value> GLColor4svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -7226,17 +7224,17 @@ Handle<Value> GLColor4ubvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4ubv(( const GLubyte* ) arg0);
   return v8::Undefined();
@@ -7252,17 +7250,17 @@ Handle<Value> GLColor4uivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLuint*   arg0 = new   GLuint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4uiv(( const GLuint* ) arg0);
   return v8::Undefined();
@@ -7278,17 +7276,17 @@ Handle<Value> GLColor4usvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLushort*   arg0 = new   GLushort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glColor4usv(( const GLushort* ) arg0);
   return v8::Undefined();
@@ -7584,17 +7582,17 @@ Handle<Value> GLTexCoord1dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord1dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -7610,17 +7608,17 @@ Handle<Value> GLTexCoord1fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord1fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -7636,17 +7634,17 @@ Handle<Value> GLTexCoord1ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord1iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -7662,17 +7660,17 @@ Handle<Value> GLTexCoord1svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord1sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -7688,17 +7686,17 @@ Handle<Value> GLTexCoord2dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord2dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -7714,17 +7712,17 @@ Handle<Value> GLTexCoord2fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord2fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -7740,17 +7738,17 @@ Handle<Value> GLTexCoord2ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord2iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -7766,17 +7764,17 @@ Handle<Value> GLTexCoord2svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord2sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -7792,17 +7790,17 @@ Handle<Value> GLTexCoord3dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord3dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -7818,17 +7816,17 @@ Handle<Value> GLTexCoord3fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord3fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -7844,17 +7842,17 @@ Handle<Value> GLTexCoord3ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord3iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -7870,17 +7868,17 @@ Handle<Value> GLTexCoord3svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord3sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -7896,17 +7894,17 @@ Handle<Value> GLTexCoord4dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord4dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -7922,17 +7920,17 @@ Handle<Value> GLTexCoord4fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord4fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -7948,17 +7946,17 @@ Handle<Value> GLTexCoord4ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord4iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -7974,17 +7972,17 @@ Handle<Value> GLTexCoord4svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexCoord4sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -8216,17 +8214,17 @@ Handle<Value> GLRasterPos2dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos2dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -8242,17 +8240,17 @@ Handle<Value> GLRasterPos2fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos2fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -8268,17 +8266,17 @@ Handle<Value> GLRasterPos2ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos2iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -8294,17 +8292,17 @@ Handle<Value> GLRasterPos2svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos2sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -8320,17 +8318,17 @@ Handle<Value> GLRasterPos3dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos3dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -8346,17 +8344,17 @@ Handle<Value> GLRasterPos3fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos3fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -8372,17 +8370,17 @@ Handle<Value> GLRasterPos3ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos3iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -8398,17 +8396,17 @@ Handle<Value> GLRasterPos3svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos3sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -8424,17 +8422,17 @@ Handle<Value> GLRasterPos4dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos4dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -8450,17 +8448,17 @@ Handle<Value> GLRasterPos4fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos4fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -8476,17 +8474,17 @@ Handle<Value> GLRasterPos4ivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos4iv(( const GLint* ) arg0);
   return v8::Undefined();
@@ -8502,17 +8500,17 @@ Handle<Value> GLRasterPos4svCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glRasterPos4sv(( const GLshort* ) arg0);
   return v8::Undefined();
@@ -8604,28 +8602,28 @@ Handle<Value> GLRectdvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glRectdv(( const GLdouble* ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -8641,28 +8639,28 @@ Handle<Value> GLRectfvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glRectfv(( const GLfloat* ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -8678,28 +8676,28 @@ Handle<Value> GLRectivCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLint*   arg0 = new   GLint  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glRectiv(( const GLint* ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -8715,28 +8713,28 @@ Handle<Value> GLRectsvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glRectsv(( const GLshort* ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -8840,17 +8838,17 @@ Handle<Value> GLLightfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glLightfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -8868,17 +8866,17 @@ Handle<Value> GLLightivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glLightiv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -8896,17 +8894,17 @@ Handle<Value> GLGetLightfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetLightfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -8924,17 +8922,17 @@ Handle<Value> GLGetLightivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetLightiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -8985,17 +8983,17 @@ Handle<Value> GLLightModelfvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glLightModelfv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -9012,17 +9010,17 @@ Handle<Value> GLLightModelivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glLightModeliv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -9076,17 +9074,17 @@ Handle<Value> GLMaterialfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glMaterialfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -9104,17 +9102,17 @@ Handle<Value> GLMaterialivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glMaterialiv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -9132,17 +9130,17 @@ Handle<Value> GLGetMaterialfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMaterialfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -9160,17 +9158,17 @@ Handle<Value> GLGetMaterialivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMaterialiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -9290,17 +9288,17 @@ Handle<Value> GLPixelMapfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glPixelMapfv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -9318,17 +9316,17 @@ Handle<Value> GLPixelMapuivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLuint*   arg2 = new   GLuint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glPixelMapuiv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLuint* ) arg2);
   return v8::Undefined();
@@ -9346,17 +9344,17 @@ Handle<Value> GLPixelMapusvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLushort*   arg2 = new   GLushort  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glPixelMapusv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLushort* ) arg2);
   return v8::Undefined();
@@ -9373,17 +9371,17 @@ Handle<Value> GLGetPixelMapfvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLfloat*   arg1 = new  GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetPixelMapfv(( GLenum ) arg0, ( GLfloat* ) arg1);
   return v8::Undefined();
@@ -9400,17 +9398,17 @@ Handle<Value> GLGetPixelMapuivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetPixelMapuiv(( GLenum ) arg0, ( GLuint* ) arg1);
   return v8::Undefined();
@@ -9427,17 +9425,17 @@ Handle<Value> GLGetPixelMapusvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLushort*   arg1 = new  GLushort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLushort   aux = ( GLushort  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetPixelMapusv(( GLenum ) arg0, ( GLushort* ) arg1);
   return v8::Undefined();
@@ -9459,17 +9457,17 @@ Handle<Value> GLBitmapCallback(const Arguments& args) {
   double arg4 = args[4]->NumberValue();
   double arg5 = args[5]->NumberValue();
 
-    
+
 
 Handle<Array> arrHandle6 = Handle<Array>::Cast(args[6]);
   GLubyte*   arg6 = new   GLubyte  [arrHandle6->Length()];
 for (unsigned j = 0; j < arrHandle6->Length(); j++) {
     Handle<Value> arg(arrHandle6->Get(Integer::New(j)));
       GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg6[j] = aux; 
+    arg6[j] = aux;
 }
-    
-    
+
+
   //make call
   glBitmap(( GLsizei ) arg0, ( GLsizei ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3, ( GLfloat ) arg4, ( GLfloat ) arg5, ( const GLubyte* ) arg6);
   return v8::Undefined();
@@ -9629,17 +9627,17 @@ Handle<Value> GLTexGendvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLdouble*   arg2 = new   GLdouble  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexGendv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLdouble* ) arg2);
   return v8::Undefined();
@@ -9657,17 +9655,17 @@ Handle<Value> GLTexGenfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexGenfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -9685,17 +9683,17 @@ Handle<Value> GLTexGenivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexGeniv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -9713,17 +9711,17 @@ Handle<Value> GLGetTexGendvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLdouble*   arg2 = new  GLdouble  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexGendv(( GLenum ) arg0, ( GLenum ) arg1, ( GLdouble* ) arg2);
   return v8::Undefined();
@@ -9741,17 +9739,17 @@ Handle<Value> GLGetTexGenfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexGenfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -9769,17 +9767,17 @@ Handle<Value> GLGetTexGenivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexGeniv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -9833,17 +9831,17 @@ Handle<Value> GLTexEnvfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexEnvfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -9861,17 +9859,17 @@ Handle<Value> GLTexEnvivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexEnviv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -9889,17 +9887,17 @@ Handle<Value> GLGetTexEnvfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexEnvfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -9917,17 +9915,17 @@ Handle<Value> GLGetTexEnvivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexEnviv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -9981,17 +9979,17 @@ Handle<Value> GLTexParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -10009,17 +10007,17 @@ Handle<Value> GLTexParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glTexParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -10037,17 +10035,17 @@ Handle<Value> GLGetTexParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -10065,17 +10063,17 @@ Handle<Value> GLGetTexParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -10094,17 +10092,17 @@ Handle<Value> GLGetTexLevelParameterfvCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
  GLfloat*   arg3 = new  GLfloat  [arrHandle3->Length()];
 for (unsigned j = 0; j < arrHandle3->Length(); j++) {
     Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg3[j] = aux; 
+    arg3[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexLevelParameterfv(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLfloat* ) arg3);
   return v8::Undefined();
@@ -10123,17 +10121,17 @@ Handle<Value> GLGetTexLevelParameterivCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
  GLint*   arg3 = new  GLint  [arrHandle3->Length()];
 for (unsigned j = 0; j < arrHandle3->Length(); j++) {
     Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg3[j] = aux; 
+    arg3[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetTexLevelParameteriv(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLint* ) arg3);
   return v8::Undefined();
@@ -10150,17 +10148,17 @@ Handle<Value> GLGenTexturesCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glGenTextures(( GLsizei ) arg0, ( GLuint* ) arg1);
   return v8::Undefined();
@@ -10177,17 +10175,17 @@ Handle<Value> GLDeleteTexturesCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glDeleteTextures(( GLsizei ) arg0, ( const GLuint* ) arg1);
   return v8::Undefined();
@@ -10221,28 +10219,28 @@ Handle<Value> GLPrioritizeTexturesCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLclampf*   arg2 = new   GLclampf  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLclampf   aux = (  GLclampf  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glPrioritizeTextures(( GLsizei ) arg0, ( const GLuint* ) arg1, ( const GLclampf* ) arg2);
   return v8::Undefined();
@@ -10259,28 +10257,28 @@ Handle<Value> GLAreTexturesResidentCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
-    
+
+
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLboolean*   arg2 = new  GLboolean  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLboolean   aux = ( GLboolean  )arg->Uint32Value();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glAreTexturesResident(( GLsizei ) arg0, ( const GLuint* ) arg1, ( GLboolean* ) arg2);
   return v8::Undefined();
@@ -10406,17 +10404,17 @@ Handle<Value> GLMap1dCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
   int arg4 = args[4]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
   GLdouble*   arg5 = new   GLdouble  [arrHandle5->Length()];
 for (unsigned j = 0; j < arrHandle5->Length(); j++) {
     Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg5[j] = aux; 
+    arg5[j] = aux;
 }
-    
-    
+
+
   //make call
   glMap1d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( const GLdouble* ) arg5);
   return v8::Undefined();
@@ -10437,17 +10435,17 @@ Handle<Value> GLMap1fCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
   int arg4 = args[4]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
   GLfloat*   arg5 = new   GLfloat  [arrHandle5->Length()];
 for (unsigned j = 0; j < arrHandle5->Length(); j++) {
     Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg5[j] = aux; 
+    arg5[j] = aux;
 }
-    
-    
+
+
   //make call
   glMap1f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( const GLfloat* ) arg5);
   return v8::Undefined();
@@ -10472,17 +10470,17 @@ Handle<Value> GLMap2dCallback(const Arguments& args) {
   int arg7 = args[7]->IntegerValue();
   int arg8 = args[8]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
   GLdouble*   arg9 = new   GLdouble  [arrHandle9->Length()];
 for (unsigned j = 0; j < arrHandle9->Length(); j++) {
     Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg9[j] = aux; 
+    arg9[j] = aux;
 }
-    
-    
+
+
   //make call
   glMap2d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLdouble ) arg5, ( GLdouble ) arg6, ( GLint ) arg7, ( GLint ) arg8, ( const GLdouble* ) arg9);
   return v8::Undefined();
@@ -10507,17 +10505,17 @@ Handle<Value> GLMap2fCallback(const Arguments& args) {
   int arg7 = args[7]->IntegerValue();
   int arg8 = args[8]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
   GLfloat*   arg9 = new   GLfloat  [arrHandle9->Length()];
 for (unsigned j = 0; j < arrHandle9->Length(); j++) {
     Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg9[j] = aux; 
+    arg9[j] = aux;
 }
-    
-    
+
+
   //make call
   glMap2f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLfloat ) arg5, ( GLfloat ) arg6, ( GLint ) arg7, ( GLint ) arg8, ( const GLfloat* ) arg9);
   return v8::Undefined();
@@ -10535,17 +10533,17 @@ Handle<Value> GLGetMapdvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLdouble*   arg2 = new  GLdouble  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMapdv(( GLenum ) arg0, ( GLenum ) arg1, ( GLdouble* ) arg2);
   return v8::Undefined();
@@ -10563,17 +10561,17 @@ Handle<Value> GLGetMapfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMapfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -10591,17 +10589,17 @@ Handle<Value> GLGetMapivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMapiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -10649,17 +10647,17 @@ Handle<Value> GLEvalCoord1dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glEvalCoord1dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -10675,17 +10673,17 @@ Handle<Value> GLEvalCoord1fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glEvalCoord1fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -10735,17 +10733,17 @@ Handle<Value> GLEvalCoord2dvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glEvalCoord2dv(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -10761,17 +10759,17 @@ Handle<Value> GLEvalCoord2fvCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glEvalCoord2fv(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -10971,17 +10969,17 @@ Handle<Value> GLFogfvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glFogfv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -10998,17 +10996,17 @@ Handle<Value> GLFogivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glFogiv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -11026,17 +11024,17 @@ Handle<Value> GLFeedbackBufferCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glFeedbackBuffer(( GLsizei ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -11069,17 +11067,17 @@ Handle<Value> GLSelectBufferCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
  GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
      GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glSelectBuffer(( GLsizei ) arg0, ( GLuint* ) arg1);
   return v8::Undefined();
@@ -12111,17 +12109,17 @@ Handle<Value> GLColorTableParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glColorTableParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -12139,17 +12137,17 @@ Handle<Value> GLColorTableParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glColorTableParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -12207,17 +12205,17 @@ Handle<Value> GLGetColorTableParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetColorTableParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -12235,17 +12233,17 @@ Handle<Value> GLGetColorTableParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetColorTableParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -12333,17 +12331,17 @@ Handle<Value> GLGetHistogramParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetHistogramParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -12361,17 +12359,17 @@ Handle<Value> GLGetHistogramParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetHistogramParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -12423,17 +12421,17 @@ Handle<Value> GLGetMinmaxParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMinmaxParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -12451,17 +12449,17 @@ Handle<Value> GLGetMinmaxParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetMinmaxParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -12497,17 +12495,17 @@ Handle<Value> GLConvolutionParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glConvolutionParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
   return v8::Undefined();
@@ -12543,17 +12541,17 @@ Handle<Value> GLConvolutionParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint*   arg2 = new   GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glConvolutionParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
   return v8::Undefined();
@@ -12612,17 +12610,17 @@ Handle<Value> GLGetConvolutionParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetConvolutionParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
   return v8::Undefined();
@@ -12640,17 +12638,17 @@ Handle<Value> GLGetConvolutionParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
  GLint*   arg2 = new  GLint  [arrHandle2->Length()];
 for (unsigned j = 0; j < arrHandle2->Length(); j++) {
     Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
      GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
+    arg2[j] = aux;
 }
-    
-    
+
+
   //make call
   glGetConvolutionParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
   return v8::Undefined();
@@ -13484,17 +13482,17 @@ Handle<Value> GLMultiTexCoord1dvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -13528,17 +13526,17 @@ Handle<Value> GLMultiTexCoord1fvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -13572,17 +13570,17 @@ Handle<Value> GLMultiTexCoord1ivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1iv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -13616,17 +13614,17 @@ Handle<Value> GLMultiTexCoord1svCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1sv(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -13661,17 +13659,17 @@ Handle<Value> GLMultiTexCoord2dvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -13706,17 +13704,17 @@ Handle<Value> GLMultiTexCoord2fvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -13751,17 +13749,17 @@ Handle<Value> GLMultiTexCoord2ivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2iv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -13796,17 +13794,17 @@ Handle<Value> GLMultiTexCoord2svCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2sv(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -13842,17 +13840,17 @@ Handle<Value> GLMultiTexCoord3dvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -13888,17 +13886,17 @@ Handle<Value> GLMultiTexCoord3fvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -13934,17 +13932,17 @@ Handle<Value> GLMultiTexCoord3ivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3iv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -13980,17 +13978,17 @@ Handle<Value> GLMultiTexCoord3svCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3sv(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -14027,17 +14025,17 @@ Handle<Value> GLMultiTexCoord4dvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -14074,17 +14072,17 @@ Handle<Value> GLMultiTexCoord4fvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -14121,17 +14119,17 @@ Handle<Value> GLMultiTexCoord4ivCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4iv(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -14168,17 +14166,17 @@ Handle<Value> GLMultiTexCoord4svCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4sv(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -14194,17 +14192,17 @@ Handle<Value> GLLoadTransposeMatrixdCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glLoadTransposeMatrixd(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -14220,17 +14218,17 @@ Handle<Value> GLLoadTransposeMatrixfCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glLoadTransposeMatrixf(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -14246,17 +14244,17 @@ Handle<Value> GLMultTransposeMatrixdCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultTransposeMatrixd(( const GLdouble* ) arg0);
   return v8::Undefined();
@@ -14272,17 +14270,17 @@ Handle<Value> GLMultTransposeMatrixfCallback(const Arguments& args) {
   HandleScope scope;
   //get arguments
 
-    
+
 
 Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
   GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
 for (unsigned j = 0; j < arrHandle0->Length(); j++) {
     Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
+    arg0[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultTransposeMatrixf(( const GLfloat* ) arg0);
   return v8::Undefined();
@@ -14653,17 +14651,17 @@ Handle<Value> GLMultiTexCoord1dvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -14697,17 +14695,17 @@ Handle<Value> GLMultiTexCoord1fvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -14741,17 +14739,17 @@ Handle<Value> GLMultiTexCoord1ivARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -14785,17 +14783,17 @@ Handle<Value> GLMultiTexCoord1svARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord1svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -14830,17 +14828,17 @@ Handle<Value> GLMultiTexCoord2dvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -14875,17 +14873,17 @@ Handle<Value> GLMultiTexCoord2fvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -14920,17 +14918,17 @@ Handle<Value> GLMultiTexCoord2ivARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -14965,17 +14963,17 @@ Handle<Value> GLMultiTexCoord2svARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord2svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -15011,17 +15009,17 @@ Handle<Value> GLMultiTexCoord3dvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -15057,17 +15055,17 @@ Handle<Value> GLMultiTexCoord3fvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -15103,17 +15101,17 @@ Handle<Value> GLMultiTexCoord3ivARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -15149,17 +15147,17 @@ Handle<Value> GLMultiTexCoord3svARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord3svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -15196,17 +15194,17 @@ Handle<Value> GLMultiTexCoord4dvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
   return v8::Undefined();
@@ -15243,17 +15241,17 @@ Handle<Value> GLMultiTexCoord4fvARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
   return v8::Undefined();
@@ -15290,17 +15288,17 @@ Handle<Value> GLMultiTexCoord4ivARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint*   arg1 = new   GLint  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
   return v8::Undefined();
@@ -15337,17 +15335,17 @@ Handle<Value> GLMultiTexCoord4svARBCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
 
 Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
 for (unsigned j = 0; j < arrHandle1->Length(); j++) {
     Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
+    arg1[j] = aux;
 }
-    
-    
+
+
   //make call
   glMultiTexCoord4svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
   return v8::Undefined();
@@ -18057,4 +18055,4 @@ Handle<ObjectTemplate> createGl(void) {
 
       // Again, return the result through the current handle scope.
       return handle_scope.Close(Gl);
-}    
+}

@@ -1,8 +1,6 @@
 /*
  * v8-gl.cpp
  *
- *  Created on: Jun 15, 2009
- *      Author: nicolas
  */
 
 #include "v8-gl.h"

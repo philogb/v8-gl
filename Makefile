@@ -1,10 +1,10 @@
 CC = g++
-CFLAGS = -Wall -Iv8/include
-PROG = v8-gl v8/libv8.a
+CFLAGS = -Wall -Iv8/include 
+PROG = v8-gl 
 
-SRCS = main.cpp v8-gl.cpp glbind.cpp glubind.cpp glutbind.cpp
+SRCS = main.cpp v8-gl.cpp glbindings/glbind.cpp glubindings/glubind.cpp glutbindings/glutbind.cpp
 
-LIBS = -lpthread -lglut
+LIBS =  v8/libv8.a -lpthread -lglut
 
 all: $(PROG)
 

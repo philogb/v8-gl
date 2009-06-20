@@ -1,0 +1,153 @@
+V8-GL
+=========
+
+A JavaScript Toolkit for creating Desktop Hardware Accelerated Graphics with JS.
+
+![A V8-GL example code](http://blog.thejit.org/wp-content/v8-gl.png)
+
+Description
+---------
+
+V8-GL intends to provide bindings for creating 2D-3D hardware accelerated graphics on the Desktop with JavaScript.
+Although OpenGL bindings are included in this library, this project main goal is to provide a more rich and easy-to-use toolkit 
+for making 2D-3D graphics.
+
+I set a few goals for this project, the first of those is to provide complete OpenGL bindings for V8.
+
+Status
+---------
+
+No releases yet. OpenGL bindings are 75% complete. The repo already has some functional examples. See the *example* readme section for a complete working example.
+
+Requirements
+---------
+
+- I use Ubuntu/Linux, but you can try to build your examples with Mac or Windows if you want
+- OpenGL
+- [V8](http://code.google.com/p/v8/) and its requirements
+
+Download
+---------
+
+Since there are no releases yet, you can clone the repo from github
+ 
+    $ git clone git://github.com/philogb/v8-gl.git
+
+Then [checkout](http://code.google.com/p/v8/source/checkout) V8 source
+
+    $ cd v8-gl
+    $ svn co http://v8.googlecode.com/svn/trunk/ v8
+
+Build V8
+
+    $ cd v8
+    $ scons mode=debug
+
+Make the project
+
+    $ cd ..
+    $ make
+    
+You'll probably get some warnings (but no errors), so everything should be ok.
+Finally, run some example JS code
+
+    $ ./v8-gl examples/example2.js
+    
+
+
+Example
+---------
+
+Here's a JS example of a rotating Icosahedron with some lighting and colors.
+
+    //Add array iteration method
+    Array.prototype.each = function(f) {
+        var len = this.length;
+        for ( var i = 0; i < len; i++) f(this[i]);
+    };
+    
+    //Initializes 3D rendering
+    function initRendering() {
+        "DEPTH_TEST COLOR_MATERIAL LIGHTING LIGHT0 NORMALIZE COLOR_MATERIAL"
+            .split(" ").each(function(elem) {
+            Gl.Enable(Gl[elem]);
+        });
+    }
+    
+    //global angle variable
+    var angle = 0;
+    
+    //Draws the 3D scene
+    function drawScene() {
+        //Set global color and drawing properties
+        Gl.Clear(Gl.COLOR_BUFFER_BIT | Gl.DEPTH_BUFFER_BIT);
+        Gl.MatrixMode(Gl.MODELVIEW); 
+        Gl.LoadIdentity();
+        Gl.Translatef(0.0, 0.0, -5.0);
+        //Set diffuse and positioned lights
+        Gl.LightModelfv(Gl.LIGHT_MODEL_AMBIENT, [0.3, 0.3, 0.3, 1.0]);
+        Gl.Lightfv(Gl.LIGHT0, Gl.DIFFUSE, [0.4, 0.4, 0.4, 1.0]);
+        Gl.Lightfv(Gl.LIGHT0, Gl.POSITION, [5.0, 5.0, 5.0, 1.0]);
+        //Rotate and plot Icosahedron
+        Gl.Rotatef(angle, 1.0, 1.0, 1.0);
+        Gl.Color3f(0.5, 0.0, 0.8);
+        Glut.SolidIcosahedron(2.5);
+        //Render
+        Glut.SwapBuffers(); 
+    }
+    
+    (function() {
+        //Initialize Glut
+        Glut.Init();
+        Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
+        Glut.InitWindowSize(400, 400); //Set the window size
+        //Create the window
+        Glut.CreateWindow("OpenGL on V8 baby!");
+        initRendering();
+        //Set drawing callback
+        Glut.DisplayFunc(drawScene);
+        //Set resize window callback
+        Glut.ReshapeFunc(function(w, h) {
+            var gl = { 'Viewport': [0, 0, w, h], 'MatrixMode': [Gl.PROJECTION], 'LoadIdentity': [] };
+            for (var i in gl) Gl[i].apply(this, gl[i]);
+            Glu.Perspective(45.0, w / h, 1.0, 200.0);
+        });
+        //Set timeout callback
+        Glut.TimerFunc(25, function() {
+            angle += 2.0;
+            if (angle > 360) angle -= 360;
+            Glut.PostRedisplay();
+            Glut.TimerFunc(25, arguments.callee, 0);
+        }, 0);
+        //Start the main loop.
+        Glut.MainLoop();
+    })();
+    
+
+
+License
+---------
+
+BSD License.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+         * Redistributions of source code must retain the above copyright
+           notice, this list of conditions and the following disclaimer.
+         * Redistributions in binary form must reproduce the above copyright
+           notice, this list of conditions and the following disclaimer in the
+           documentation and/or other materials provided with the distribution.
+         * Neither the name of the organization nor the
+           names of its contributors may be used to endorse or promote products
+           derived from this software without specific prior written permission.
+    
+     THIS SOFTWARE IS PROVIDED BY Nicolas Garcia Belmonte ``AS IS'' AND ANY
+     EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+     DISCLAIMED. IN NO EVENT SHALL Nicolas Garcia Belmonte BE LIABLE FOR ANY
+     DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+     ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
