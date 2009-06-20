@@ -9,6 +9,7 @@ Description
 ---------
 
 V8-GL intends to provide bindings for creating 2D-3D hardware accelerated graphics on the Desktop with JavaScript.
+
 Although OpenGL bindings are included in this library, this project main goal is to provide a more rich and easy-to-use toolkit 
 for making 2D-3D graphics.
 
