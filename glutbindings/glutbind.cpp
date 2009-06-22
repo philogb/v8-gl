@@ -1928,7 +1928,7 @@ Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
 
 Persistent<Function> persistentCreateMenu;
 
- void callbackCreateMenu (  int menu   arg0) {
+ void callbackCreateMenu (  int arg0) {
   //define handle scope
   HandleScope scope;
 
