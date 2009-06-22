@@ -46,8 +46,9 @@ function drawScene() {
 	Glut.DisplayFunc(drawScene);
 	//Set resize window callback
 	Glut.ReshapeFunc(function(w, h) {
-		var gl = { 'Viewport': [0, 0, w, h], 'MatrixMode': [Gl.PROJECTION], 'LoadIdentity': [] };
-		for (var i in gl) Gl[i].apply(this, gl[i]);
+    Gl.Viewport(0, 0, w, h);
+    Gl.MatrixMode(Gl.PROJECTION);
+    Gl.LoadIdentity();
 		Glu.Perspective(45.0, w / h, 1.0, 200.0);
 	});
 	//Set timeout callback
