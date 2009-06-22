@@ -44,7 +44,7 @@ Then [checkout](http://code.google.com/p/v8/source/checkout) V8 source
 Build V8
 
     $ cd v8
-    $ scons mode=debug
+    $ scons mode=release
 
 Make the project
 
