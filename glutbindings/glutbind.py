@@ -157,7 +157,12 @@ Persistent<Function> persistent<name>;
   Handle<Value> valueArr[<nformalparams>];
 <formalparamassignment>
   
-  persistent<name>->Call(GlutFactory::glut_persistent_context->Global(), <nformalparams>, valueArr);
+  TryCatch try_catch;
+  Handle<Value> result = persistent<name>->Call(GlutFactory::glut_persistent_context->Global(), <nformalparams>, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in <name>: %s\\n", *error);
+  }
 }
 
 Handle<Value> GLUT<name>Callback(const Arguments& args) {
