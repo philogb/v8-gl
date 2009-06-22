@@ -6,8 +6,8 @@ int* pargc_;
 char** argv_;
 map<const char*, void*> font_;
 Persistent<Context> GlutFactory::glut_persistent_context;
-
-
+    
+    
 
 Handle<Value> GetGLUT_API_VERSION(Local<String> property,
                       const AccessorInfo &info) {
@@ -1928,14 +1928,19 @@ Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
 
 Persistent<Function> persistentCreateMenu;
 
- void callbackCreateMenu (  int arg0) {
+ void callbackCreateMenu (  int menu   arg0) {
   //define handle scope
   HandleScope scope;
 
   Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-
-  persistentCreateMenu->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentCreateMenu->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in CreateMenu: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTCreateMenuCallback(const Arguments& args) {
@@ -2192,8 +2197,13 @@ Persistent<Function> persistentIdleFunc;
 
   Handle<Value> valueArr[0];
 
-
-  persistentIdleFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentIdleFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in IdleFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTIdleFuncCallback(const Arguments& args) {
@@ -2223,8 +2233,13 @@ Persistent<Function> persistentKeyboardFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentKeyboardFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentKeyboardFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in KeyboardFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
@@ -2254,8 +2269,13 @@ Persistent<Function> persistentSpecialFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentSpecialFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpecialFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpecialFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTSpecialFuncCallback(const Arguments& args) {
@@ -2284,8 +2304,13 @@ Persistent<Function> persistentReshapeFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentReshapeFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentReshapeFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in ReshapeFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTReshapeFuncCallback(const Arguments& args) {
@@ -2313,8 +2338,13 @@ Persistent<Function> persistentVisibilityFunc;
 
   Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-
-  persistentVisibilityFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentVisibilityFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in VisibilityFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTVisibilityFuncCallback(const Arguments& args) {
@@ -2342,8 +2372,13 @@ Persistent<Function> persistentDisplayFunc;
 
   Handle<Value> valueArr[0];
 
-
-  persistentDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in DisplayFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTDisplayFuncCallback(const Arguments& args) {
@@ -2374,8 +2409,13 @@ Persistent<Function> persistentMouseFunc;
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
   valueArr[3] = Integer::New(arg3);
-
-  persistentMouseFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMouseFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MouseFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTMouseFuncCallback(const Arguments& args) {
@@ -2404,8 +2444,13 @@ Persistent<Function> persistentMotionFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MotionFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTMotionFuncCallback(const Arguments& args) {
@@ -2434,8 +2479,13 @@ Persistent<Function> persistentPassiveMotionFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentPassiveMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentPassiveMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in PassiveMotionFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTPassiveMotionFuncCallback(const Arguments& args) {
@@ -2463,8 +2513,13 @@ Persistent<Function> persistentEntryFunc;
 
   Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-
-  persistentEntryFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentEntryFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in EntryFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTEntryFuncCallback(const Arguments& args) {
@@ -2494,8 +2549,13 @@ Persistent<Function> persistentKeyboardUpFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentKeyboardUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentKeyboardUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in KeyboardUpFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTKeyboardUpFuncCallback(const Arguments& args) {
@@ -2525,8 +2585,13 @@ Persistent<Function> persistentSpecialUpFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentSpecialUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpecialUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpecialUpFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTSpecialUpFuncCallback(const Arguments& args) {
@@ -2572,8 +2637,13 @@ Persistent<Function> persistentMenuStateFunc;
 
   Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-
-  persistentMenuStateFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMenuStateFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MenuStateFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTMenuStateFuncCallback(const Arguments& args) {
@@ -2603,8 +2673,13 @@ Persistent<Function> persistentMenuStatusFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentMenuStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMenuStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MenuStatusFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTMenuStatusFuncCallback(const Arguments& args) {
@@ -2632,8 +2707,13 @@ Persistent<Function> persistentOverlayDisplayFunc;
 
   Handle<Value> valueArr[0];
 
-
-  persistentOverlayDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentOverlayDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in OverlayDisplayFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTOverlayDisplayFuncCallback(const Arguments& args) {
@@ -2661,8 +2741,13 @@ Persistent<Function> persistentWindowStatusFunc;
 
   Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-
-  persistentWindowStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentWindowStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in WindowStatusFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
@@ -2692,8 +2777,13 @@ Persistent<Function> persistentSpaceballMotionFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentSpaceballMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpaceballMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpaceballMotionFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTSpaceballMotionFuncCallback(const Arguments& args) {
@@ -2723,8 +2813,13 @@ Persistent<Function> persistentSpaceballRotateFunc;
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
-
-  persistentSpaceballRotateFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpaceballRotateFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpaceballRotateFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTSpaceballRotateFuncCallback(const Arguments& args) {
@@ -2753,8 +2848,13 @@ Persistent<Function> persistentSpaceballButtonFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentSpaceballButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpaceballButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpaceballButtonFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTSpaceballButtonFuncCallback(const Arguments& args) {
@@ -2783,8 +2883,13 @@ Persistent<Function> persistentButtonBoxFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentButtonBoxFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentButtonBoxFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in ButtonBoxFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTButtonBoxFuncCallback(const Arguments& args) {
@@ -2813,8 +2918,13 @@ Persistent<Function> persistentDialsFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentDialsFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentDialsFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in DialsFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTDialsFuncCallback(const Arguments& args) {
@@ -2843,8 +2953,13 @@ Persistent<Function> persistentTabletMotionFunc;
   Handle<Value> valueArr[2];
   valueArr[0] = Integer::New(arg0);
   valueArr[1] = Integer::New(arg1);
-
-  persistentTabletMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentTabletMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in TabletMotionFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTTabletMotionFuncCallback(const Arguments& args) {
@@ -2875,8 +2990,13 @@ Persistent<Function> persistentTabletButtonFunc;
   valueArr[1] = Integer::New(arg1);
   valueArr[2] = Integer::New(arg2);
   valueArr[3] = Integer::New(arg3);
-
-  persistentTabletButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentTabletButtonFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in TabletButtonFunc: %s\n", *error);
+  }
 }
 
 Handle<Value> GLUTTabletButtonFuncCallback(const Arguments& args) {
@@ -3651,7 +3771,7 @@ Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
 Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
       pargc_ = pargc;
       argv_  = argv;
-
+      
       HandleScope handle_scope;
 
       Handle<ObjectTemplate> Glut = ObjectTemplate::New();
@@ -4252,4 +4372,4 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
       // Again, return the result through the current handle scope.
       return handle_scope.Close(Glut);
-}
+}    
