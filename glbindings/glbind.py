@@ -30,7 +30,8 @@ def main():
                     pass
 
     with open(OUT_FILE, 'w') as fout:
-        fout.write('#include "glbind.h"\n\n' + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
+        fout.write('#include "glbind.h"\n\nPersistent<Object> GlFactory::self_;\n\n' \
+                   + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
 def generate_main_function(constants, functions):
@@ -38,10 +39,11 @@ def generate_main_function(constants, functions):
     
     text_out_begin = """
 
-Handle<ObjectTemplate> createGl(void) {
+Handle<ObjectTemplate> GlFactory::createGl(void) {
       HandleScope handle_scope;
 
       Handle<ObjectTemplate> Gl = ObjectTemplate::New();
+      
       Gl->SetInternalFieldCount(1);
 
 """
@@ -80,16 +82,15 @@ def generate_function(obj):
 
     text_out = """
 
-Handle<Value> GL<name>Callback(const Arguments& args) {
+Handle<<ret>> GL<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < <len_params>) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 <args>
   //make call
   <call>
-  return v8::Undefined();
 }
 
 """
@@ -97,14 +98,15 @@ Handle<Value> GL<name>Callback(const Arguments& args) {
         '<name>': obj['name'],
         '<len_params>': str(len(obj['parameters'])),
         '<args>': generate_arguments(obj['parameters']),
-        '<call>': generate_call(obj)      
+        '<call>': generate_call(obj),
+        '<ret>': 'Value'      
     }, text_out)
 
 
 #map some OpenGL types to V8 types
-unsigned = re.compile('(unsigned|ubyte|ushort|uint|bitfield|boolean)')
-integer = re.compile('(int|enum|sizei|short|byte)')
-double = re.compile('(double|float|clampf|clampd)')
+unsigned = re.compile('unsigned|ubyte|ushort|uint|bitfield|boolean')
+integer = re.compile('int|enum|sizei|short|byte')
+double = re.compile('double|float|clampf|clampd')
 
 def generate_arguments(params):
     """generates the formal parameter definition"""
@@ -157,21 +159,31 @@ def generate_array_expression(type, i):
         '##1': str(i),
         '##2': type,
         '##3': clean_type,
-        '##4': acc + '()'
+        '##4': acc + 'Value()'
     }, text_out)
 
 def get_accessor(type):
     """Returns the V8 type accesor method to be called"""
     
-    if re.search(unsigned, type): return 'Uint32Value'
-    if re.search(integer, type): return 'IntegerValue'
-    if re.search(double, type): return 'NumberValue'
+    if re.search(unsigned, type): return 'Uint32'
+    if re.search(integer, type): return 'Integer'
+    if re.search(double, type): return 'Number'
+    
+    return None
 
 def generate_call(obj):
     """generates the native function call syntax"""
 
-    return obj['name'] + "(" + ", ".join(['(' + param + ') ' + "arg" + str(i) \
-                        for i, param in enumerate(obj['parameters'])]) + ");"
+    acc = get_accessor(obj['return_type'])
+    function_call = obj['name'] + "(" + ", ".join(['(' + param + ') ' + "arg" + str(i) \
+                        for i, param in enumerate(obj['parameters'])]) + ")"
+    
+    #dot-this-dot-that feature
+    if acc is None: 
+        return function_call + ';\n  Handle<Object> res(GlFactory::self_);\n  return res;'
+    else:
+        return 'return ' + acc + '::New(' + function_call + ');'
+    
 
 def multiple_replace(dict, text): 
   """ Replace in 'text' all occurences of any key in the given
