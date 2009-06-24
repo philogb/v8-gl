@@ -1,71 +1,41 @@
-import sys
+import json
 import re
 
-PATH_GL = '/usr/include/GL/gl.h'
-FILE_GL = 'glbind.cpp'
+#input output files
+IN_FILE = 'glbind.json'
+OUT_FILE = 'glbind.cpp'
 
+#exclude functions by name
+EXCLUDE = re.compile('ATI|MESA')
 
 def main():
-    make_gl()
-
-def make_gl():
-    constants = []
-    functions = []
-    void_stars = []
+    """Generates Gl bindings"""
     
-    constant = re.compile(".+define[\s]+GL_([^\s]+).*")
-    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+gl([A-Za-z0-9]+)[\s]*\((.*)\);")
-    
-    text_out = []
-    
-    fin = open(PATH_GL, 'r')
-    l = ''
-    for cont in fin:
-
-       l += cont.replace('\n', '')
-       if l.count('(') != l.count(')'):
-          continue
-       
-       try:
-           mat = re.match(constant, l)
-           if mat and not mat.group(1) in constants:
-               name = mat.group(1)
-               text_out.append(make_constant("GL", name))
-               constants.append(name)
-               
-               #print "GL_" + mat.group(1) + "\n"
-               
-           else:
-               mat = re.match(function, l)
-               if l.find('Viewport') != -1: print l
-               if mat and mat.group(2).find('MESA') == -1 and mat.group(2).find('ATI') == -1:
-                   prefix = "gl"
-                   return_val = mat.group(1)
-                   name = mat.group(2)
-                   params = mat.group(3)
-                   if name.find('Viewport') != -1: print name
-                   text_out.append(make_function(prefix, name, params, return_val))
-                   functions.append(name)
-                    
-                   #print return_val + " " + name + " " + params
-       except Exception, e:
-            print e
-            pass
+    with open(IN_FILE, 'r') as f:
+        text_out = []
+        json_in = json.loads(f.read())
+        constants, functions = [], []
         
-       l = ''
-    
-    fin.close()
+        for obj in json_in:
+            if not re.search(EXCLUDE, obj['name']):
+                try:
+                    if obj['type'] == 'c':
+                        text_out.append(generate_constant(obj))
+                        constants.append(obj['name'])
+                    else:
+                        text_out.append(generate_function(obj))
+                        functions.append(obj['name'])
+                except Exception, e: #probably an unhandled type
+                    print e
+                    pass
 
-    fout = open(FILE_GL, 'w')
-    fout.write("""
+    with open(OUT_FILE, 'w') as fout:
+        fout.write('#include "glbind.h"\n\n' + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
-#include "glbind.h"
-    
-    """ + '\n'.join(text_out) + make_main_gl_function(constants, functions, void_stars))
-    
-    fout.close()
 
-def make_main_gl_function(constants, functions, void_stars):
+def generate_main_function(constants, functions):
+    """Generates the main createGl function definition"""
+    
     text_out_begin = """
 
 Handle<ObjectTemplate> createGl(void) {
@@ -82,31 +52,32 @@ Handle<ObjectTemplate> createGl(void) {
       return handle_scope.Close(Gl);
 }    
 """
-    fnt = [bind_font(name) for name in void_stars]    
-    cts = [bind_accessor("Gl", name) for name in constants]
-    fts = [bind_function("Gl", name) for name in functions]
+    bind_accessor = lambda n: "     Gl->SetAccessor(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
+        + "\"), Get" + n + ");\n"
+    bind_function = lambda n: "     Gl->Set(String::NewSymbol(\"" + n[2:] + \
+        "\"), FunctionTemplate::New(GL" + n + "Callback));\n"
     
-    return text_out_begin + '\n'.join(fnt) + '\n'.join(cts) + '\n'.join(fts) + text_out_end
+    cts = [bind_accessor(name) for name in constants]
+    fts = [bind_function(name) for name in functions]
     
+    return text_out_begin + '\n'.join(cts) + '\n' + '\n'.join(fts) + text_out_end
 
-def make_constant(prefix, name):
-    return_val = "return Uint32::New(GL_"+ name +");"
+def generate_constant(obj):
+    """Generates code for defining a Constant"""
+    
     text_out = """
 
-Handle<Value> GetGL_%%(Local<String> property,
+Handle<Value> Get%%(Local<String> property,
                       const AccessorInfo &info) {
-    ##
+    return Uint32::New(%%);
 }
 
 """
-    return multiple_replace({
-        '%%': name,
-        '##': return_val
-    }, text_out)
+    return text_out.replace('%%', obj['name'])
 
+def generate_function(obj):
+    """Generates code for declaring a Function"""
 
-
-def make_function(prefix, name, params, return_val):
     text_out = """
 
 Handle<Value> GL<name>Callback(const Arguments& args) {
@@ -122,132 +93,89 @@ Handle<Value> GL<name>Callback(const Arguments& args) {
 }
 
 """
-    count, params_list = get_param_list(params)
     return multiple_replace({
-        '<name>': name,
-        '<len_params>': str(count),
-        '<args>': make_args(params_list, count),
-        '<call>': make_call(prefix + name, params_list, count)      
+        '<name>': obj['name'],
+        '<len_params>': str(len(obj['parameters'])),
+        '<args>': generate_arguments(obj['parameters']),
+        '<call>': generate_call(obj)      
     }, text_out)
 
 
-def get_param_list(params):
-    params_list = []
-    params_aux = params.split(',')
-    passed = False
-    for par in params_aux:
-        if passed and params_list[-1].count('(') != params_list[-1].count(')'):
-            params_list[-1] += ',' + par
-        else:
-            params_list.append(par)
-        passed = True
-    
-    aux = len(params_list)
-    if aux == 1 and params_list[0].find('callback') == -1 and len(params_list[0].strip().split(' ')) == 1: 
-        nb = 0
-    else:
-        nb = aux
-    return nb, params_list
-    
+#map some OpenGL types to V8 types
+unsigned = re.compile('(unsigned|ubyte|ushort|uint|bitfield|boolean)')
+integer = re.compile('(int|enum|sizei|short|byte)')
+double = re.compile('(double|float|clampf|clampd)')
 
-def make_args(params_list, count):
-    ans = []
-    for i in range(count):
-        el = params_list[i]
-        type = get_type(el)
-        
-        #is function
-        if type.find('(*') != -1:
-            ans.append("  Handle<Function> value" + str(i) + " = Handle<Function>::Cast(args[" + str(i) + "]);\n  void* arg" + str(i) + " = *value" + str(i) + ";\n")
-            #print "function " + type
-        #is string
-        elif type.find('char*') != -1:
-            ans.append("  String::Utf8Value value"+ str(i) +"(args["+ str(i) +"]);\n  char* arg" + str(i) + " = *value"+ str(i) +";\n")
-            #print "string " + type
-        #is void*
-        elif type.find('void*') != -1:
+def generate_arguments(params):
+    """generates the formal parameter definition"""
+    
+    text_out = []
+    #assignment template
+    assign = lambda type, method, i: '  ' + type + ' arg' + i + \
+        ' = args[' + i + ']->' + method + '();\n'
+    
+    for i, type in enumerate(params):
+        si = str(i)
+        #TODO Find a way to map void* to a V8 type
+        if type.find('void*') != -1:
             raise Exception("unhandled type " + type)
         #is array
-        elif type.find('*') != -1 or el.find('[') != -1:
-            ans.append(make_array_expression(type, i))
+        elif type.find('*') != -1 or type.find('[') != -1:
+            text_out.append(generate_array_expression(type, i))
         #is unsigned integer
-        elif type.find('unsigned') != -1 or type.find('ubyte') != -1 or type.find('ushort') != -1 or type.find('uint') != -1 or type.find('bitfield') != -1 or type.find('boolean') != -1:
-            ans.append("  unsigned int arg" + str(i) + " = args["+ str(i) +"]->Uint32Value();\n")
-            #print "unsigned " + type
+        elif re.search(unsigned, type):
+            text_out.append(assign('unsigned int', 'Uint32Value', si))
         #is integer
-        elif type.find('int') != -1 or type.find('enum') != -1 or type.find('sizei') != -1 or type.find('short') != -1 or type.find('byte') != -1:
-            ans.append("  int arg" + str(i) + " = args["+ str(i) +"]->IntegerValue();\n")
-            #print "integer " + type
+        elif re.search(integer, type):
+            text_out.append(assign('int', 'IntegerValue', si))
         #is double, float
-        elif type.find('double') != -1 or type.find('float') != -1 or type.find('clampf') != -1 or type.find('clampd') != -1:
-            ans.append("  double arg" + str(i) + " = args["+ str(i) +"]->NumberValue();\n")
-            #print "double " + type
+        elif re.search(double, type):
+            text_out.append(assign('double', 'NumberValue', si))
         else:
             raise Exception("unhandled type " + type)
-    
-    return ''.join(ans)
 
+    return ''.join(text_out)
 
-
-
-def make_call(name, params_list, nb):
-    return name + "(" + ", ".join([get_type(params_list[i]) + "arg" + str(i) for i in range(nb)]) + ");"
-            
-def bind_accessor(prefix, name):
-    return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGL_" + name + ");\n"
-
-def bind_function(prefix, name):
-    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GL" + name + "Callback));\n"
-
-def bind_font(name):
-    return "     font_[\""+ name +"\"] = GLUT_" + name + ";\n"
-
-def get_accessor(type):
-    #is unsigned integer
-    if type.find('unsigned') != -1 or type.find('ubyte') != -1 or type.find('ushort') != -1 or type.find('uint') != -1 or type.find('bitfield') != -1 or type.find('boolean') != -1:
-        return "Uint32Value()"
-    #is integer
-    elif type.find('int') != -1 or type.find('enum') != -1 or type.find('sizei') != -1 or type.find('short') != -1 or type.find('byte') != -1:
-        return "IntegerValue()"
-    #is double, float
-    elif type.find('double') != -1 or type.find('float') != -1 or type.find('clampf') != -1 or type.find('clampd') != -1:
-        return "NumberValue()"
-    else:
-        raise Exception("unhandled type " + type)
-    
-
-def make_array_expression(type, i):
-    type = multiple_replace({'(':'', ')':'', 'const':''}, type)
+def generate_array_expression(type, i):
+    """generates an Array assignment expression"""
+    type = multiple_replace({ '(':'', ')':'', 'const':'' }, type)
     acc = get_accessor(type)
     clean_type = type.replace('*', '')
     
     text_out = """
     
-
-Handle<Array> arrHandle##1 = Handle<Array>::Cast(args[##1]);
-##2 arg##1 = new ##3[arrHandle##1->Length()];
-for (unsigned j = 0; j < arrHandle##1->Length(); j++) {
-    Handle<Value> arg(arrHandle##1->Get(Integer::New(j)));
-    ##3 aux = (##3)arg->##4;
-    arg##1[j] = aux; 
-}
+  Handle<Array> arrHandle##1 = Handle<Array>::Cast(args[##1]);
+  ##2 arg##1 = new ##3[arrHandle##1->Length()];
+  for (unsigned j = 0; j < arrHandle##1->Length(); j++) {
+      Handle<Value> arg(arrHandle##1->Get(Integer::New(j)));
+      ##3 aux = (##3)arg->##4;
+      arg##1[j] = aux; 
+  }
     
     """
     return multiple_replace({
         '##1': str(i),
         '##2': type,
         '##3': clean_type,
-        '##4': acc
+        '##4': acc + '()'
     }, text_out)
 
-def get_type(t):
-    if t.find('callback') != -1: 
-        return '( ' + t.replace('callback', '') + ') '
-    return '( ' + ' '.join(t.strip().split(' ')[:-1]) + ('*' * (t.count('*') + t.count('['))) + ' ) '
+def get_accessor(type):
+    """Returns the V8 type accesor method to be called"""
+    
+    if re.search(unsigned, type): return 'Uint32Value'
+    if re.search(integer, type): return 'IntegerValue'
+    if re.search(double, type): return 'NumberValue'
+
+def generate_call(obj):
+    """generates the native function call syntax"""
+
+    return obj['name'] + "(" + ", ".join(['(' + param + ') ' + "arg" + str(i) \
+                        for i, param in enumerate(obj['parameters'])]) + ");"
 
 def multiple_replace(dict, text): 
   """ Replace in 'text' all occurences of any key in the given
-  dictionary by its corresponding value.  Returns the new tring.""" 
+  dictionary by its corresponding value.  Returns the new string.""" 
 
   # Create a regular expression  from the dictionary keys
   regex = re.compile("(%s)" % "|".join(map(re.escape, dict.keys())))
@@ -255,4 +183,4 @@ def multiple_replace(dict, text):
   # For each match, look-up corresponding value in dictionary
   return regex.sub(lambda mo: dict[mo.string[mo.start():mo.end()]], text) 
 
-main()  
+if __name__ == '__main__': main()
