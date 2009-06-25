@@ -4,4238 +4,6 @@ Persistent<Object> GlFactory::self_;
 
 
 
-Handle<Value> GetGL_VERSION_1_1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERSION_1_1);
-}
-
-
-
-
-Handle<Value> GetGL_VERSION_1_2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERSION_1_2);
-}
-
-
-
-
-Handle<Value> GetGL_VERSION_1_3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERSION_1_3);
-}
-
-
-
-
-Handle<Value> GetGL_ARB_imaging(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ARB_imaging);
-}
-
-
-
-
-Handle<Value> GetGL_FALSE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FALSE);
-}
-
-
-
-
-Handle<Value> GetGL_TRUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRUE);
-}
-
-
-
-
-Handle<Value> GetGL_BYTE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BYTE);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_BYTE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_BYTE);
-}
-
-
-
-
-Handle<Value> GetGL_SHORT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SHORT);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT);
-}
-
-
-
-
-Handle<Value> GetGL_INT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INT);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_INT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT);
-}
-
-
-
-
-Handle<Value> GetGL_FLOAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FLOAT);
-}
-
-
-
-
-Handle<Value> GetGL_2_BYTES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_2_BYTES);
-}
-
-
-
-
-Handle<Value> GetGL_3_BYTES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_3_BYTES);
-}
-
-
-
-
-Handle<Value> GetGL_4_BYTES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_4_BYTES);
-}
-
-
-
-
-Handle<Value> GetGL_DOUBLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DOUBLE);
-}
-
-
-
-
-Handle<Value> GetGL_POINTS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINTS);
-}
-
-
-
-
-Handle<Value> GetGL_LINES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINES);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_LOOP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_LOOP);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_STRIP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_STRIP);
-}
-
-
-
-
-Handle<Value> GetGL_TRIANGLES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRIANGLES);
-}
-
-
-
-
-Handle<Value> GetGL_TRIANGLE_STRIP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRIANGLE_STRIP);
-}
-
-
-
-
-Handle<Value> GetGL_TRIANGLE_FAN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRIANGLE_FAN);
-}
-
-
-
-
-Handle<Value> GetGL_QUADS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_QUADS);
-}
-
-
-
-
-Handle<Value> GetGL_QUAD_STRIP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_QUAD_STRIP);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_NORMAL_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMAL_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COORD_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COORD_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_EDGE_FLAG_ARRAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EDGE_FLAG_ARRAY);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_ARRAY_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_ARRAY_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_ARRAY_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_ARRAY_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_NORMAL_ARRAY_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMAL_ARRAY_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_NORMAL_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMAL_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_ARRAY_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_ARRAY_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_ARRAY_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_ARRAY_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_ARRAY_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_ARRAY_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COORD_ARRAY_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COORD_ARRAY_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COORD_ARRAY_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COORD_ARRAY_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COORD_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COORD_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_EDGE_FLAG_ARRAY_STRIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EDGE_FLAG_ARRAY_STRIDE);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_NORMAL_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMAL_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COORD_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COORD_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_EDGE_FLAG_ARRAY_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EDGE_FLAG_ARRAY_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_V2F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_V2F);
-}
-
-
-
-
-Handle<Value> GetGL_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_C4UB_V2F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_C4UB_V2F);
-}
-
-
-
-
-Handle<Value> GetGL_C4UB_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_C4UB_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_C3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_C3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_N3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_N3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_C4F_N3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_C4F_N3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T2F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T2F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T4F_V4F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T4F_V4F);
-}
-
-
-
-
-Handle<Value> GetGL_T2F_C4UB_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T2F_C4UB_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T2F_C3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T2F_C3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T2F_N3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T2F_N3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T2F_C4F_N3F_V3F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T2F_C4F_N3F_V3F);
-}
-
-
-
-
-Handle<Value> GetGL_T4F_C4F_N3F_V4F(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T4F_C4F_N3F_V4F);
-}
-
-
-
-
-Handle<Value> GetGL_MATRIX_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MATRIX_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_MODELVIEW(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MODELVIEW);
-}
-
-
-
-
-Handle<Value> GetGL_PROJECTION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROJECTION);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_SMOOTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_SMOOTH);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_SIZE_GRANULARITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_SIZE_GRANULARITY);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_SIZE_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_SIZE_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_SMOOTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_SMOOTH);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_STIPPLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_STIPPLE);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_STIPPLE_PATTERN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_STIPPLE_PATTERN);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_STIPPLE_REPEAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_STIPPLE_REPEAT);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_WIDTH_GRANULARITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_WIDTH_GRANULARITY);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_WIDTH_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_WIDTH_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_POINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT);
-}
-
-
-
-
-Handle<Value> GetGL_LINE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE);
-}
-
-
-
-
-Handle<Value> GetGL_FILL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FILL);
-}
-
-
-
-
-Handle<Value> GetGL_CW(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CW);
-}
-
-
-
-
-Handle<Value> GetGL_CCW(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CCW);
-}
-
-
-
-
-Handle<Value> GetGL_FRONT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRONT);
-}
-
-
-
-
-Handle<Value> GetGL_BACK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BACK);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_SMOOTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_SMOOTH);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_STIPPLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_STIPPLE);
-}
-
-
-
-
-Handle<Value> GetGL_EDGE_FLAG(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EDGE_FLAG);
-}
-
-
-
-
-Handle<Value> GetGL_CULL_FACE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CULL_FACE);
-}
-
-
-
-
-Handle<Value> GetGL_CULL_FACE_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CULL_FACE_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_FRONT_FACE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRONT_FACE);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_OFFSET_FACTOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_OFFSET_FACTOR);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_OFFSET_UNITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_OFFSET_UNITS);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_OFFSET_POINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_OFFSET_POINT);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_OFFSET_LINE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_OFFSET_LINE);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_OFFSET_FILL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_OFFSET_FILL);
-}
-
-
-
-
-Handle<Value> GetGL_COMPILE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPILE);
-}
-
-
-
-
-Handle<Value> GetGL_COMPILE_AND_EXECUTE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPILE_AND_EXECUTE);
-}
-
-
-
-
-Handle<Value> GetGL_LIST_BASE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIST_BASE);
-}
-
-
-
-
-Handle<Value> GetGL_LIST_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIST_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_LIST_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIST_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_NEVER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NEVER);
-}
-
-
-
-
-Handle<Value> GetGL_LESS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LESS);
-}
-
-
-
-
-Handle<Value> GetGL_EQUAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EQUAL);
-}
-
-
-
-
-Handle<Value> GetGL_LEQUAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LEQUAL);
-}
-
-
-
-
-Handle<Value> GetGL_GREATER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GREATER);
-}
-
-
-
-
-Handle<Value> GetGL_NOTEQUAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NOTEQUAL);
-}
-
-
-
-
-Handle<Value> GetGL_GEQUAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GEQUAL);
-}
-
-
-
-
-Handle<Value> GetGL_ALWAYS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALWAYS);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_TEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_TEST);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_CLEAR_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_CLEAR_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_FUNC(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_FUNC);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_WRITEMASK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_WRITEMASK);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_COMPONENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_COMPONENT);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHTING(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHTING);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT0(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT0);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT1);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT2);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT3);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT4);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT5(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT5);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT6(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT6);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT7(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT7);
-}
-
-
-
-
-Handle<Value> GetGL_SPOT_EXPONENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SPOT_EXPONENT);
-}
-
-
-
-
-Handle<Value> GetGL_SPOT_CUTOFF(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SPOT_CUTOFF);
-}
-
-
-
-
-Handle<Value> GetGL_AMBIENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AMBIENT);
-}
-
-
-
-
-Handle<Value> GetGL_DIFFUSE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DIFFUSE);
-}
-
-
-
-
-Handle<Value> GetGL_SPECULAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SPECULAR);
-}
-
-
-
-
-Handle<Value> GetGL_SHININESS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SHININESS);
-}
-
-
-
-
-Handle<Value> GetGL_EMISSION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EMISSION);
-}
-
-
-
-
-Handle<Value> GetGL_POSITION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POSITION);
-}
-
-
-
-
-Handle<Value> GetGL_SPOT_DIRECTION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SPOT_DIRECTION);
-}
-
-
-
-
-Handle<Value> GetGL_AMBIENT_AND_DIFFUSE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AMBIENT_AND_DIFFUSE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_INDEXES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_INDEXES);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT_MODEL_TWO_SIDE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT_MODEL_TWO_SIDE);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT_MODEL_LOCAL_VIEWER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT_MODEL_LOCAL_VIEWER);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT_MODEL_AMBIENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT_MODEL_AMBIENT);
-}
-
-
-
-
-Handle<Value> GetGL_FRONT_AND_BACK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRONT_AND_BACK);
-}
-
-
-
-
-Handle<Value> GetGL_SHADE_MODEL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SHADE_MODEL);
-}
-
-
-
-
-Handle<Value> GetGL_FLAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FLAT);
-}
-
-
-
-
-Handle<Value> GetGL_SMOOTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SMOOTH);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_MATERIAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_MATERIAL);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_MATERIAL_FACE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_MATERIAL_FACE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_MATERIAL_PARAMETER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_MATERIAL_PARAMETER);
-}
-
-
-
-
-Handle<Value> GetGL_NORMALIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMALIZE);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE0(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE0);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE1);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE2);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE3);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE4);
-}
-
-
-
-
-Handle<Value> GetGL_CLIP_PLANE5(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIP_PLANE5);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_RED_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_RED_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_GREEN_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_GREEN_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_BLUE_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_BLUE_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_ALPHA_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_ALPHA_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_CLEAR_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_CLEAR_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM);
-}
-
-
-
-
-Handle<Value> GetGL_ADD(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ADD);
-}
-
-
-
-
-Handle<Value> GetGL_LOAD(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LOAD);
-}
-
-
-
-
-Handle<Value> GetGL_MULT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MULT);
-}
-
-
-
-
-Handle<Value> GetGL_RETURN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RETURN);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_TEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_TEST);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_TEST_REF(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_TEST_REF);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_TEST_FUNC(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_TEST_FUNC);
-}
-
-
-
-
-Handle<Value> GetGL_BLEND(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLEND);
-}
-
-
-
-
-Handle<Value> GetGL_BLEND_SRC(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLEND_SRC);
-}
-
-
-
-
-Handle<Value> GetGL_BLEND_DST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLEND_DST);
-}
-
-
-
-
-Handle<Value> GetGL_ZERO(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ZERO);
-}
-
-
-
-
-Handle<Value> GetGL_ONE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE);
-}
-
-
-
-
-Handle<Value> GetGL_SRC_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SRC_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_SRC_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_SRC_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_SRC_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SRC_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_SRC_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_SRC_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_DST_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DST_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_DST_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_DST_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_DST_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DST_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_DST_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_DST_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_SRC_ALPHA_SATURATE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SRC_ALPHA_SATURATE);
-}
-
-
-
-
-Handle<Value> GetGL_FEEDBACK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FEEDBACK);
-}
-
-
-
-
-Handle<Value> GetGL_RENDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RENDER);
-}
-
-
-
-
-Handle<Value> GetGL_SELECT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SELECT);
-}
-
-
-
-
-Handle<Value> GetGL_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_2D);
-}
-
-
-
-
-Handle<Value> GetGL_3D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_3D);
-}
-
-
-
-
-Handle<Value> GetGL_3D_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_3D_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_3D_COLOR_TEXTURE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_3D_COLOR_TEXTURE);
-}
-
-
-
-
-Handle<Value> GetGL_4D_COLOR_TEXTURE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_4D_COLOR_TEXTURE);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_RESET_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_RESET_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_BITMAP_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BITMAP_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_DRAW_PIXEL_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DRAW_PIXEL_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_COPY_PIXEL_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COPY_PIXEL_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_PASS_THROUGH_TOKEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PASS_THROUGH_TOKEN);
-}
-
-
-
-
-Handle<Value> GetGL_FEEDBACK_BUFFER_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FEEDBACK_BUFFER_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_FEEDBACK_BUFFER_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FEEDBACK_BUFFER_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_FEEDBACK_BUFFER_TYPE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FEEDBACK_BUFFER_TYPE);
-}
-
-
-
-
-Handle<Value> GetGL_SELECTION_BUFFER_POINTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SELECTION_BUFFER_POINTER);
-}
-
-
-
-
-Handle<Value> GetGL_SELECTION_BUFFER_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SELECTION_BUFFER_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_FOG(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_DENSITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_DENSITY);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_START(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_START);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_END(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_END);
-}
-
-
-
-
-Handle<Value> GetGL_LINEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINEAR);
-}
-
-
-
-
-Handle<Value> GetGL_EXP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EXP);
-}
-
-
-
-
-Handle<Value> GetGL_EXP2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EXP2);
-}
-
-
-
-
-Handle<Value> GetGL_LOGIC_OP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LOGIC_OP);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_LOGIC_OP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_LOGIC_OP);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_LOGIC_OP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_LOGIC_OP);
-}
-
-
-
-
-Handle<Value> GetGL_LOGIC_OP_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LOGIC_OP_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_CLEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLEAR);
-}
-
-
-
-
-Handle<Value> GetGL_SET(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SET);
-}
-
-
-
-
-Handle<Value> GetGL_COPY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COPY);
-}
-
-
-
-
-Handle<Value> GetGL_COPY_INVERTED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COPY_INVERTED);
-}
-
-
-
-
-Handle<Value> GetGL_NOOP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NOOP);
-}
-
-
-
-
-Handle<Value> GetGL_INVERT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INVERT);
-}
-
-
-
-
-Handle<Value> GetGL_AND(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AND);
-}
-
-
-
-
-Handle<Value> GetGL_NAND(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NAND);
-}
-
-
-
-
-Handle<Value> GetGL_OR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OR);
-}
-
-
-
-
-Handle<Value> GetGL_NOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NOR);
-}
-
-
-
-
-Handle<Value> GetGL_XOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_XOR);
-}
-
-
-
-
-Handle<Value> GetGL_EQUIV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EQUIV);
-}
-
-
-
-
-Handle<Value> GetGL_AND_REVERSE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AND_REVERSE);
-}
-
-
-
-
-Handle<Value> GetGL_AND_INVERTED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AND_INVERTED);
-}
-
-
-
-
-Handle<Value> GetGL_OR_REVERSE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OR_REVERSE);
-}
-
-
-
-
-Handle<Value> GetGL_OR_INVERTED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OR_INVERTED);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_TEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_TEST);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_CLEAR_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_CLEAR_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_FUNC(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_FUNC);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_VALUE_MASK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_VALUE_MASK);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_FAIL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_FAIL);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_PASS_DEPTH_FAIL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_PASS_DEPTH_FAIL);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_PASS_DEPTH_PASS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_PASS_DEPTH_PASS);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_REF(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_REF);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_WRITEMASK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_WRITEMASK);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_KEEP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_KEEP);
-}
-
-
-
-
-Handle<Value> GetGL_REPLACE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_REPLACE);
-}
-
-
-
-
-Handle<Value> GetGL_INCR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INCR);
-}
-
-
-
-
-Handle<Value> GetGL_DECR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DECR);
-}
-
-
-
-
-Handle<Value> GetGL_NONE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NONE);
-}
-
-
-
-
-Handle<Value> GetGL_LEFT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LEFT);
-}
-
-
-
-
-Handle<Value> GetGL_RIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_FRONT_LEFT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRONT_LEFT);
-}
-
-
-
-
-Handle<Value> GetGL_FRONT_RIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRONT_RIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_BACK_LEFT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BACK_LEFT);
-}
-
-
-
-
-Handle<Value> GetGL_BACK_RIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BACK_RIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_AUX0(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUX0);
-}
-
-
-
-
-Handle<Value> GetGL_AUX1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUX1);
-}
-
-
-
-
-Handle<Value> GetGL_AUX2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUX2);
-}
-
-
-
-
-Handle<Value> GetGL_AUX3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUX3);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_RED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RED);
-}
-
-
-
-
-Handle<Value> GetGL_GREEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GREEN);
-}
-
-
-
-
-Handle<Value> GetGL_BLUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLUE);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_RED_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RED_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_GREEN_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GREEN_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_BLUE_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLUE_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_SUBPIXEL_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SUBPIXEL_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_AUX_BUFFERS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUX_BUFFERS);
-}
-
-
-
-
-Handle<Value> GetGL_READ_BUFFER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_READ_BUFFER);
-}
-
-
-
-
-Handle<Value> GetGL_DRAW_BUFFER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DRAW_BUFFER);
-}
-
-
-
-
-Handle<Value> GetGL_DOUBLEBUFFER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DOUBLEBUFFER);
-}
-
-
-
-
-Handle<Value> GetGL_STEREO(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STEREO);
-}
-
-
-
-
-Handle<Value> GetGL_BITMAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BITMAP);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL);
-}
-
-
-
-
-Handle<Value> GetGL_DITHER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DITHER);
-}
-
-
-
-
-Handle<Value> GetGL_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_LIST_NESTING(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_LIST_NESTING);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_EVAL_ORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_EVAL_ORDER);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_LIGHTS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_LIGHTS);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_CLIP_PLANES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_CLIP_PLANES);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_TEXTURE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_TEXTURE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_PIXEL_MAP_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_PIXEL_MAP_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_ATTRIB_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_ATTRIB_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_MODELVIEW_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_MODELVIEW_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_NAME_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_NAME_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_PROJECTION_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_PROJECTION_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_TEXTURE_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_TEXTURE_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_VIEWPORT_DIMS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_VIEWPORT_DIMS);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_CLIENT_ATTRIB_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_CLIENT_ATTRIB_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_ATTRIB_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ATTRIB_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_ATTRIB_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_ATTRIB_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_CLEAR_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_CLEAR_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_WRITEMASK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_WRITEMASK);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_DISTANCE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_DISTANCE);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_POSITION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_POSITION);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_TEXTURE_COORDS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_TEXTURE_COORDS);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_RASTER_POSITION_VALID(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_RASTER_POSITION_VALID);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_TEXTURE_COORDS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_TEXTURE_COORDS);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_CLEAR_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_CLEAR_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_WRITEMASK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_WRITEMASK);
-}
-
-
-
-
-Handle<Value> GetGL_MODELVIEW_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MODELVIEW_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_MODELVIEW_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MODELVIEW_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_NAME_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NAME_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_PROJECTION_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROJECTION_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_PROJECTION_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROJECTION_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_RENDER_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RENDER_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_VIEWPORT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VIEWPORT);
-}
-
-
-
-
-Handle<Value> GetGL_AUTO_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_AUTO_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_COLOR_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_COLOR_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_TEXTURE_COORD_1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_TEXTURE_COORD_1);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_TEXTURE_COORD_2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_TEXTURE_COORD_2);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_TEXTURE_COORD_3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_TEXTURE_COORD_3);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_TEXTURE_COORD_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_TEXTURE_COORD_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_VERTEX_3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_VERTEX_3);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_VERTEX_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_VERTEX_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_COLOR_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_COLOR_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_INDEX);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_TEXTURE_COORD_1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_TEXTURE_COORD_1);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_TEXTURE_COORD_2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_TEXTURE_COORD_2);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_TEXTURE_COORD_3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_TEXTURE_COORD_3);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_TEXTURE_COORD_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_TEXTURE_COORD_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_VERTEX_3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_VERTEX_3);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_VERTEX_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_VERTEX_4);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_GRID_DOMAIN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_GRID_DOMAIN);
-}
-
-
-
-
-Handle<Value> GetGL_MAP1_GRID_SEGMENTS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP1_GRID_SEGMENTS);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_GRID_DOMAIN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_GRID_DOMAIN);
-}
-
-
-
-
-Handle<Value> GetGL_MAP2_GRID_SEGMENTS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP2_GRID_SEGMENTS);
-}
-
-
-
-
-Handle<Value> GetGL_COEFF(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COEFF);
-}
-
-
-
-
-Handle<Value> GetGL_ORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ORDER);
-}
-
-
-
-
-Handle<Value> GetGL_DOMAIN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DOMAIN);
-}
-
-
-
-
-Handle<Value> GetGL_PERSPECTIVE_CORRECTION_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PERSPECTIVE_CORRECTION_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_SMOOTH_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_SMOOTH_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_SMOOTH_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_SMOOTH_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_SMOOTH_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_SMOOTH_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_DONT_CARE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DONT_CARE);
-}
-
-
-
-
-Handle<Value> GetGL_FASTEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FASTEST);
-}
-
-
-
-
-Handle<Value> GetGL_NICEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NICEST);
-}
-
-
-
-
-Handle<Value> GetGL_SCISSOR_BOX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SCISSOR_BOX);
-}
-
-
-
-
-Handle<Value> GetGL_SCISSOR_TEST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SCISSOR_TEST);
-}
-
-
-
-
-Handle<Value> GetGL_MAP_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_MAP_STENCIL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAP_STENCIL);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_SHIFT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_SHIFT);
-}
-
-
-
-
-Handle<Value> GetGL_INDEX_OFFSET(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INDEX_OFFSET);
-}
-
-
-
-
-Handle<Value> GetGL_RED_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RED_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_RED_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RED_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_GREEN_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GREEN_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_GREEN_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_GREEN_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_BLUE_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLUE_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_BLUE_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLUE_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_S_TO_S_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_S_TO_S_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_I_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_I_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_R_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_R_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_G_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_G_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_B_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_B_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_A_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_A_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_R_TO_R_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_R_TO_R_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_G_TO_G_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_G_TO_G_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_B_TO_B_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_B_TO_B_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_A_TO_A_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_A_TO_A_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_S_TO_S(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_S_TO_S);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_I(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_I);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_R(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_R);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_G(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_G);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_B(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_B);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_I_TO_A(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_I_TO_A);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_R_TO_R(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_R_TO_R);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_G_TO_G(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_G_TO_G);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_B_TO_B(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_B_TO_B);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MAP_A_TO_A(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MAP_A_TO_A);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_ALIGNMENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_ALIGNMENT);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_LSB_FIRST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_LSB_FIRST);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_ROW_LENGTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_ROW_LENGTH);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_SKIP_PIXELS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_SKIP_PIXELS);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_SKIP_ROWS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_SKIP_ROWS);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_SWAP_BYTES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_SWAP_BYTES);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_ALIGNMENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_ALIGNMENT);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_LSB_FIRST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_LSB_FIRST);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_ROW_LENGTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_ROW_LENGTH);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_SKIP_PIXELS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_SKIP_PIXELS);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_SKIP_ROWS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_SKIP_ROWS);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_SWAP_BYTES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_SWAP_BYTES);
-}
-
-
-
-
-Handle<Value> GetGL_ZOOM_X(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ZOOM_X);
-}
-
-
-
-
-Handle<Value> GetGL_ZOOM_Y(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ZOOM_Y);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_ENV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_ENV);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_ENV_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_ENV_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_1D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_1D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_2D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_WRAP_S(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_WRAP_S);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_WRAP_T(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_WRAP_T);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MAG_FILTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MAG_FILTER);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MIN_FILTER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MIN_FILTER);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_ENV_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_ENV_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GEN_S(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GEN_S);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GEN_T(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GEN_T);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GEN_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GEN_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BORDER_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BORDER_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BORDER);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COMPONENTS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COMPONENTS);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_RED_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_RED_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GREEN_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GREEN_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BLUE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BLUE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_ALPHA_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_ALPHA_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_LUMINANCE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_LUMINANCE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_INTENSITY_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_INTENSITY_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_NEAREST_MIPMAP_NEAREST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NEAREST_MIPMAP_NEAREST);
-}
-
-
-
-
-Handle<Value> GetGL_NEAREST_MIPMAP_LINEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NEAREST_MIPMAP_LINEAR);
-}
-
-
-
-
-Handle<Value> GetGL_LINEAR_MIPMAP_NEAREST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINEAR_MIPMAP_NEAREST);
-}
-
-
-
-
-Handle<Value> GetGL_LINEAR_MIPMAP_LINEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINEAR_MIPMAP_LINEAR);
-}
-
-
-
-
-Handle<Value> GetGL_OBJECT_LINEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OBJECT_LINEAR);
-}
-
-
-
-
-Handle<Value> GetGL_OBJECT_PLANE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OBJECT_PLANE);
-}
-
-
-
-
-Handle<Value> GetGL_EYE_LINEAR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EYE_LINEAR);
-}
-
-
-
-
-Handle<Value> GetGL_EYE_PLANE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EYE_PLANE);
-}
-
-
-
-
-Handle<Value> GetGL_SPHERE_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SPHERE_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_DECAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DECAL);
-}
-
-
-
-
-Handle<Value> GetGL_MODULATE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MODULATE);
-}
-
-
-
-
-Handle<Value> GetGL_NEAREST(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NEAREST);
-}
-
-
-
-
-Handle<Value> GetGL_REPEAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_REPEAT);
-}
-
-
-
-
-Handle<Value> GetGL_CLAMP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLAMP);
-}
-
-
-
-
-Handle<Value> GetGL_S(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_S);
-}
-
-
-
-
-Handle<Value> GetGL_T(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_T);
-}
-
-
-
-
-Handle<Value> GetGL_R(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_R);
-}
-
-
-
-
-Handle<Value> GetGL_Q(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_Q);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GEN_R(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GEN_R);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_GEN_Q(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_GEN_Q);
-}
-
-
-
-
-Handle<Value> GetGL_VENDOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VENDOR);
-}
-
-
-
-
-Handle<Value> GetGL_RENDERER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RENDERER);
-}
-
-
-
-
-Handle<Value> GetGL_VERSION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERSION);
-}
-
-
-
-
-Handle<Value> GetGL_EXTENSIONS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EXTENSIONS);
-}
-
-
-
-
-Handle<Value> GetGL_NO_ERROR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NO_ERROR);
-}
-
-
-
-
-Handle<Value> GetGL_INVALID_ENUM(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INVALID_ENUM);
-}
-
-
-
-
-Handle<Value> GetGL_INVALID_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INVALID_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_STACK_OVERFLOW(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STACK_OVERFLOW);
-}
-
-
-
-
-Handle<Value> GetGL_STACK_UNDERFLOW(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STACK_UNDERFLOW);
-}
-
-
-
-
-Handle<Value> GetGL_OUT_OF_MEMORY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OUT_OF_MEMORY);
-}
-
-
-
-
-Handle<Value> GetGL_CURRENT_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CURRENT_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_POINT_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POINT_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_LINE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_POLYGON_STIPPLE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POLYGON_STIPPLE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_PIXEL_MODE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PIXEL_MODE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHTING_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHTING_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_FOG_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FOG_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_DEPTH_BUFFER_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_BUFFER_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_ACCUM_BUFFER_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACCUM_BUFFER_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_STENCIL_BUFFER_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_STENCIL_BUFFER_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_VIEWPORT_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VIEWPORT_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_TRANSFORM_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRANSFORM_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_ENABLE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ENABLE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_BUFFER_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_BUFFER_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_HINT_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HINT_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_EVAL_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_EVAL_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_LIST_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIST_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_SCISSOR_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SCISSOR_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_ALL_ATTRIB_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALL_ATTRIB_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_1D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_1D);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_2D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_PRIORITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_PRIORITY);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_RESIDENT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_RESIDENT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_1D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_1D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_2D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_INTERNAL_FORMAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_INTERNAL_FORMAT);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA4);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA8);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA12);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA16);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE4);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE8);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE12);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE16);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE4_ALPHA4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE4_ALPHA4);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE6_ALPHA2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE6_ALPHA2);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE8_ALPHA8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE8_ALPHA8);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE12_ALPHA4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE12_ALPHA4);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE12_ALPHA12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE12_ALPHA12);
-}
-
-
-
-
-Handle<Value> GetGL_LUMINANCE16_ALPHA16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LUMINANCE16_ALPHA16);
-}
-
-
-
-
-Handle<Value> GetGL_INTENSITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTENSITY);
-}
-
-
-
-
-Handle<Value> GetGL_INTENSITY4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTENSITY4);
-}
-
-
-
-
-Handle<Value> GetGL_INTENSITY8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTENSITY8);
-}
-
-
-
-
-Handle<Value> GetGL_INTENSITY12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTENSITY12);
-}
-
-
-
-
-Handle<Value> GetGL_INTENSITY16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTENSITY16);
-}
-
-
-
-
-Handle<Value> GetGL_R3_G3_B2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_R3_G3_B2);
-}
-
-
-
-
-Handle<Value> GetGL_RGB4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB4);
-}
-
-
-
-
-Handle<Value> GetGL_RGB5(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB5);
-}
-
-
-
-
-Handle<Value> GetGL_RGB8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB8);
-}
-
-
-
-
-Handle<Value> GetGL_RGB10(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB10);
-}
-
-
-
-
-Handle<Value> GetGL_RGB12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB12);
-}
-
-
-
-
-Handle<Value> GetGL_RGB16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB16);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA2);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA4);
-}
-
-
-
-
-Handle<Value> GetGL_RGB5_A1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB5_A1);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA8);
-}
-
-
-
-
-Handle<Value> GetGL_RGB10_A2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB10_A2);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA12);
-}
-
-
-
-
-Handle<Value> GetGL_RGBA16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGBA16);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_PIXEL_STORE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_PIXEL_STORE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_VERTEX_ARRAY_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_VERTEX_ARRAY_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_ALL_CLIENT_ATTRIB_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALL_CLIENT_ATTRIB_BITS);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_ALL_ATTRIB_BITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_ALL_ATTRIB_BITS);
-}
-
-
-
-
 Handle<Value> GLglClearIndexCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -11281,334 +7049,6 @@ Handle<Value> GLglPopNameCallback(const Arguments& args) {
 
 
 
-Handle<Value> GetGL_RESCALE_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RESCALE_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGL_CLAMP_TO_EDGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLAMP_TO_EDGE);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_ELEMENTS_VERTICES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_ELEMENTS_VERTICES);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_ELEMENTS_INDICES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_ELEMENTS_INDICES);
-}
-
-
-
-
-Handle<Value> GetGL_BGR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BGR);
-}
-
-
-
-
-Handle<Value> GetGL_BGRA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BGRA);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_BYTE_3_3_2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_BYTE_3_3_2);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_BYTE_2_3_3_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_BYTE_2_3_3_REV);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_5_6_5(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_5_6_5);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_5_6_5_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_5_6_5_REV);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_4_4_4_4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_4_4_4_4);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_4_4_4_4_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_4_4_4_4_REV);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_5_5_5_1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_5_5_5_1);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_1_5_5_5_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_1_5_5_5_REV);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_INT_8_8_8_8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_8_8_8_8);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_INT_8_8_8_8_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_8_8_8_8_REV);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_INT_10_10_10_2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_10_10_10_2);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_INT_2_10_10_10_REV(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_2_10_10_10_REV);
-}
-
-
-
-
-Handle<Value> GetGL_LIGHT_MODEL_COLOR_CONTROL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LIGHT_MODEL_COLOR_CONTROL);
-}
-
-
-
-
-Handle<Value> GetGL_SINGLE_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SINGLE_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_SEPARATE_SPECULAR_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SEPARATE_SPECULAR_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MIN_LOD(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MIN_LOD);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MAX_LOD(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MAX_LOD);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BASE_LEVEL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BASE_LEVEL);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_MAX_LEVEL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_MAX_LEVEL);
-}
-
-
-
-
-Handle<Value> GetGL_SMOOTH_POINT_SIZE_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SMOOTH_POINT_SIZE_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_SMOOTH_POINT_SIZE_GRANULARITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SMOOTH_POINT_SIZE_GRANULARITY);
-}
-
-
-
-
-Handle<Value> GetGL_SMOOTH_LINE_WIDTH_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SMOOTH_LINE_WIDTH_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_SMOOTH_LINE_WIDTH_GRANULARITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SMOOTH_LINE_WIDTH_GRANULARITY);
-}
-
-
-
-
-Handle<Value> GetGL_ALIASED_POINT_SIZE_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALIASED_POINT_SIZE_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_ALIASED_LINE_WIDTH_RANGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALIASED_LINE_WIDTH_RANGE);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_SKIP_IMAGES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_SKIP_IMAGES);
-}
-
-
-
-
-Handle<Value> GetGL_PACK_IMAGE_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PACK_IMAGE_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_SKIP_IMAGES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_SKIP_IMAGES);
-}
-
-
-
-
-Handle<Value> GetGL_UNPACK_IMAGE_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNPACK_IMAGE_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_3D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_3D);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_3D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_3D);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_WRAP_R(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_WRAP_R);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_3D_TEXTURE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_3D_TEXTURE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_3D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_3D);
-}
-
-
-
-
 Handle<Value> GLglCopyTexSubImage3DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 9) return v8::Undefined();
@@ -11629,598 +7069,6 @@ Handle<Value> GLglCopyTexSubImage3DCallback(const Arguments& args) {
   glCopyTexSubImage3D((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4, (GLint) arg5, (GLint) arg6, (GLsizei) arg7, (GLsizei) arg8);
   Handle<Object> res(GlFactory::self_);
   return res;
-}
-
-
-
-
-Handle<Value> GetGL_CONSTANT_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONSTANT_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_CONSTANT_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_CONSTANT_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_CONSTANT_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONSTANT_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_ONE_MINUS_CONSTANT_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ONE_MINUS_CONSTANT_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_POST_CONVOLUTION_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_POST_CONVOLUTION_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_FORMAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_FORMAT);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_RED_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_RED_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_GREEN_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_GREEN_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_BLUE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_BLUE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_ALPHA_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_ALPHA_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_LUMINANCE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_LUMINANCE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_TABLE_INTENSITY_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_TABLE_INTENSITY_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_1D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_1D);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_2D);
-}
-
-
-
-
-Handle<Value> GetGL_SEPARABLE_2D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SEPARABLE_2D);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_BORDER_MODE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_BORDER_MODE);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_FILTER_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_FILTER_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_FILTER_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_FILTER_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_REDUCE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_REDUCE);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_FORMAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_FORMAT);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_CONVOLUTION_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_CONVOLUTION_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_CONVOLUTION_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_CONVOLUTION_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_RED_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_RED_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_GREEN_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_GREEN_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_BLUE_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_BLUE_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_ALPHA_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_ALPHA_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_RED_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_RED_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_GREEN_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_GREEN_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_BLUE_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_BLUE_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_CONVOLUTION_ALPHA_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_CONVOLUTION_ALPHA_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_CONSTANT_BORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONSTANT_BORDER);
-}
-
-
-
-
-Handle<Value> GetGL_REPLICATE_BORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_REPLICATE_BORDER);
-}
-
-
-
-
-Handle<Value> GetGL_CONVOLUTION_BORDER_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONVOLUTION_BORDER_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_COLOR_MATRIX_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COLOR_MATRIX_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_COLOR_MATRIX_STACK_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_COLOR_MATRIX_STACK_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_RED_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_RED_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_GREEN_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_GREEN_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_BLUE_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_BLUE_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_ALPHA_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_ALPHA_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_RED_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_RED_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_GREEN_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_GREEN_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_BLUE_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_BLUE_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_POST_COLOR_MATRIX_ALPHA_BIAS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_POST_COLOR_MATRIX_ALPHA_BIAS);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_HISTOGRAM(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_HISTOGRAM);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_FORMAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_FORMAT);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_RED_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_RED_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_GREEN_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_GREEN_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_BLUE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_BLUE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_ALPHA_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_ALPHA_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_LUMINANCE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_LUMINANCE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_HISTOGRAM_SINK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_HISTOGRAM_SINK);
-}
-
-
-
-
-Handle<Value> GetGL_MINMAX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MINMAX);
-}
-
-
-
-
-Handle<Value> GetGL_MINMAX_FORMAT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MINMAX_FORMAT);
-}
-
-
-
-
-Handle<Value> GetGL_MINMAX_SINK(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MINMAX_SINK);
-}
-
-
-
-
-Handle<Value> GetGL_TABLE_TOO_LARGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TABLE_TOO_LARGE);
-}
-
-
-
-
-Handle<Value> GetGL_MIN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MIN);
-}
-
-
-
-
-Handle<Value> GetGL_MAX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX);
-}
-
-
-
-
-Handle<Value> GetGL_FUNC_ADD(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FUNC_ADD);
-}
-
-
-
-
-Handle<Value> GetGL_FUNC_SUBTRACT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FUNC_SUBTRACT);
-}
-
-
-
-
-Handle<Value> GetGL_FUNC_REVERSE_SUBTRACT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FUNC_REVERSE_SUBTRACT);
-}
-
-
-
-
-Handle<Value> GetGL_BLEND_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLEND_COLOR);
 }
 
 
@@ -12790,750 +7638,6 @@ Handle<Value> GLglGetConvolutionParameterivCallback(const Arguments& args) {
   glGetConvolutionParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlFactory::self_);
   return res;
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE0(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE0);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE1(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE1);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE2(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE2);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE3(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE3);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE4(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE4);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE5(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE5);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE6(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE6);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE7(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE7);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE8(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE8);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE9(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE9);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE10(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE10);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE11(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE11);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE12(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE12);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE13(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE13);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE14(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE14);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE15(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE15);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE16(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE16);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE17(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE17);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE18(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE18);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE19(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE19);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE20(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE20);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE21(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE21);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE22(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE22);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE23(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE23);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE24(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE24);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE25(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE25);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE26(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE26);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE27(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE27);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE28(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE28);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE29(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE29);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE30(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE30);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE31(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE31);
-}
-
-
-
-
-Handle<Value> GetGL_ACTIVE_TEXTURE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACTIVE_TEXTURE);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_ACTIVE_TEXTURE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_ACTIVE_TEXTURE);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_TEXTURE_UNITS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_TEXTURE_UNITS);
-}
-
-
-
-
-Handle<Value> GetGL_NORMAL_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NORMAL_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_REFLECTION_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_REFLECTION_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_CUBE_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_CUBE_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_CUBE_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_X(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_X);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_Y(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Y);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_Z(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Z);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_CUBE_MAP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_CUBE_MAP);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_CUBE_MAP_TEXTURE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_CUBE_MAP_TEXTURE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_LUMINANCE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_LUMINANCE);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_LUMINANCE_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_LUMINANCE_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_INTENSITY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_INTENSITY);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_RGBA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_RGBA);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COMPRESSION_HINT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COMPRESSION_HINT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COMPRESSED_IMAGE_SIZE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COMPRESSED_IMAGE_SIZE);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_COMPRESSED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_COMPRESSED);
-}
-
-
-
-
-Handle<Value> GetGL_NUM_COMPRESSED_TEXTURE_FORMATS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_NUM_COMPRESSED_TEXTURE_FORMATS);
-}
-
-
-
-
-Handle<Value> GetGL_COMPRESSED_TEXTURE_FORMATS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMPRESSED_TEXTURE_FORMATS);
-}
-
-
-
-
-Handle<Value> GetGL_MULTISAMPLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MULTISAMPLE);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_ALPHA_TO_COVERAGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_ALPHA_TO_COVERAGE);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_ALPHA_TO_ONE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_ALPHA_TO_ONE);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_COVERAGE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_COVERAGE);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_BUFFERS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_BUFFERS);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLES(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLES);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_COVERAGE_VALUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_COVERAGE_VALUE);
-}
-
-
-
-
-Handle<Value> GetGL_SAMPLE_COVERAGE_INVERT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SAMPLE_COVERAGE_INVERT);
-}
-
-
-
-
-Handle<Value> GetGL_MULTISAMPLE_BIT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MULTISAMPLE_BIT);
-}
-
-
-
-
-Handle<Value> GetGL_TRANSPOSE_MODELVIEW_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRANSPOSE_MODELVIEW_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_TRANSPOSE_PROJECTION_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRANSPOSE_PROJECTION_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_TRANSPOSE_TEXTURE_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRANSPOSE_TEXTURE_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_TRANSPOSE_COLOR_MATRIX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TRANSPOSE_COLOR_MATRIX);
-}
-
-
-
-
-Handle<Value> GetGL_COMBINE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMBINE);
-}
-
-
-
-
-Handle<Value> GetGL_COMBINE_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMBINE_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_COMBINE_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_COMBINE_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE0_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE0_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE1_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE1_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE2_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE2_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE0_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE0_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE1_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE1_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_SOURCE2_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SOURCE2_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND0_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND0_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND1_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND1_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND2_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND2_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND0_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND0_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND1_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND1_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_OPERAND2_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_OPERAND2_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGL_RGB_SCALE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_RGB_SCALE);
-}
-
-
-
-
-Handle<Value> GetGL_ADD_SIGNED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ADD_SIGNED);
-}
-
-
-
-
-Handle<Value> GetGL_INTERPOLATE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INTERPOLATE);
-}
-
-
-
-
-Handle<Value> GetGL_SUBTRACT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_SUBTRACT);
-}
-
-
-
-
-Handle<Value> GetGL_CONSTANT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONSTANT);
-}
-
-
-
-
-Handle<Value> GetGL_PRIMARY_COLOR(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PRIMARY_COLOR);
-}
-
-
-
-
-Handle<Value> GetGL_PREVIOUS(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PREVIOUS);
-}
-
-
-
-
-Handle<Value> GetGL_DOT3_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DOT3_RGB);
-}
-
-
-
-
-Handle<Value> GetGL_DOT3_RGBA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_DOT3_RGBA);
-}
-
-
-
-
-Handle<Value> GetGL_CLAMP_TO_BORDER(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLAMP_TO_BORDER);
 }
 
 
@@ -14439,294 +8543,6 @@ Handle<Value> GLglSampleCoverageCallback(const Arguments& args) {
 
 
 
-Handle<Value> GetGL_ARB_multitexture(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ARB_multitexture);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE0_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE0_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE1_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE1_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE2_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE2_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE3_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE3_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE4_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE4_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE5_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE5_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE6_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE6_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE7_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE7_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE8_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE8_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE9_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE9_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE10_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE10_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE11_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE11_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE12_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE12_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE13_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE13_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE14_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE14_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE15_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE15_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE16_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE16_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE17_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE17_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE18_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE18_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE19_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE19_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE20_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE20_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE21_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE21_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE22_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE22_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE23_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE23_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE24_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE24_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE25_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE25_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE26_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE26_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE27_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE27_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE28_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE28_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE29_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE29_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE30_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE30_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE31_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE31_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_ACTIVE_TEXTURE_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ACTIVE_TEXTURE_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_CLIENT_ACTIVE_TEXTURE_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CLIENT_ACTIVE_TEXTURE_ARB);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_TEXTURE_UNITS_ARB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_TEXTURE_UNITS_ARB);
-}
-
-
-
-
 Handle<Value> GLglActiveTextureARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -15505,70 +9321,6 @@ Handle<Value> GLglMultiTexCoord4svARBCallback(const Arguments& args) {
 
 
 
-Handle<Value> GetGL_TEXTURE_1D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_1D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_1D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_1D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_2D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_2D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_PROXY_TEXTURE_2D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_PROXY_TEXTURE_2D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_1D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_1D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_BINDING_2D_ARRAY_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_BINDING_2D_ARRAY_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_MAX_ARRAY_TEXTURE_LAYERS_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MAX_ARRAY_TEXTURE_LAYERS_EXT);
-}
-
-
-
-
-Handle<Value> GetGL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT);
-}
-
-
-
-
 Handle<ObjectTemplate> GlFactory::createGl(void) {
       HandleScope handle_scope;
 
@@ -15576,1567 +9328,1567 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
       
       Gl->SetInternalFieldCount(1);
 
-     Gl->SetAccessor(String::NewSymbol("VERSION_1_1"), GetGL_VERSION_1_1);
+     Gl->Set(String::NewSymbol("VERSION_1_1"), Uint32::New(GL_VERSION_1_1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERSION_1_2"), GetGL_VERSION_1_2);
+     Gl->Set(String::NewSymbol("VERSION_1_2"), Uint32::New(GL_VERSION_1_2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERSION_1_3"), GetGL_VERSION_1_3);
+     Gl->Set(String::NewSymbol("VERSION_1_3"), Uint32::New(GL_VERSION_1_3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ARB_imaging"), GetGL_ARB_imaging);
+     Gl->Set(String::NewSymbol("ARB_imaging"), Uint32::New(GL_ARB_imaging), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FALSE"), GetGL_FALSE);
+     Gl->Set(String::NewSymbol("FALSE"), Uint32::New(GL_FALSE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRUE"), GetGL_TRUE);
+     Gl->Set(String::NewSymbol("TRUE"), Uint32::New(GL_TRUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BYTE"), GetGL_BYTE);
+     Gl->Set(String::NewSymbol("BYTE"), Uint32::New(GL_BYTE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_BYTE"), GetGL_UNSIGNED_BYTE);
+     Gl->Set(String::NewSymbol("UNSIGNED_BYTE"), Uint32::New(GL_UNSIGNED_BYTE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SHORT"), GetGL_SHORT);
+     Gl->Set(String::NewSymbol("SHORT"), Uint32::New(GL_SHORT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT"), GetGL_UNSIGNED_SHORT);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT"), Uint32::New(GL_UNSIGNED_SHORT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INT"), GetGL_INT);
+     Gl->Set(String::NewSymbol("INT"), Uint32::New(GL_INT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT"), GetGL_UNSIGNED_INT);
+     Gl->Set(String::NewSymbol("UNSIGNED_INT"), Uint32::New(GL_UNSIGNED_INT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FLOAT"), GetGL_FLOAT);
+     Gl->Set(String::NewSymbol("FLOAT"), Uint32::New(GL_FLOAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("2_BYTES"), GetGL_2_BYTES);
+     Gl->Set(String::NewSymbol("2_BYTES"), Uint32::New(GL_2_BYTES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("3_BYTES"), GetGL_3_BYTES);
+     Gl->Set(String::NewSymbol("3_BYTES"), Uint32::New(GL_3_BYTES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("4_BYTES"), GetGL_4_BYTES);
+     Gl->Set(String::NewSymbol("4_BYTES"), Uint32::New(GL_4_BYTES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DOUBLE"), GetGL_DOUBLE);
+     Gl->Set(String::NewSymbol("DOUBLE"), Uint32::New(GL_DOUBLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINTS"), GetGL_POINTS);
+     Gl->Set(String::NewSymbol("POINTS"), Uint32::New(GL_POINTS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINES"), GetGL_LINES);
+     Gl->Set(String::NewSymbol("LINES"), Uint32::New(GL_LINES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_LOOP"), GetGL_LINE_LOOP);
+     Gl->Set(String::NewSymbol("LINE_LOOP"), Uint32::New(GL_LINE_LOOP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_STRIP"), GetGL_LINE_STRIP);
+     Gl->Set(String::NewSymbol("LINE_STRIP"), Uint32::New(GL_LINE_STRIP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRIANGLES"), GetGL_TRIANGLES);
+     Gl->Set(String::NewSymbol("TRIANGLES"), Uint32::New(GL_TRIANGLES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRIANGLE_STRIP"), GetGL_TRIANGLE_STRIP);
+     Gl->Set(String::NewSymbol("TRIANGLE_STRIP"), Uint32::New(GL_TRIANGLE_STRIP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRIANGLE_FAN"), GetGL_TRIANGLE_FAN);
+     Gl->Set(String::NewSymbol("TRIANGLE_FAN"), Uint32::New(GL_TRIANGLE_FAN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("QUADS"), GetGL_QUADS);
+     Gl->Set(String::NewSymbol("QUADS"), Uint32::New(GL_QUADS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("QUAD_STRIP"), GetGL_QUAD_STRIP);
+     Gl->Set(String::NewSymbol("QUAD_STRIP"), Uint32::New(GL_QUAD_STRIP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON"), GetGL_POLYGON);
+     Gl->Set(String::NewSymbol("POLYGON"), Uint32::New(GL_POLYGON), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_ARRAY"), GetGL_VERTEX_ARRAY);
+     Gl->Set(String::NewSymbol("VERTEX_ARRAY"), Uint32::New(GL_VERTEX_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMAL_ARRAY"), GetGL_NORMAL_ARRAY);
+     Gl->Set(String::NewSymbol("NORMAL_ARRAY"), Uint32::New(GL_NORMAL_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_ARRAY"), GetGL_COLOR_ARRAY);
+     Gl->Set(String::NewSymbol("COLOR_ARRAY"), Uint32::New(GL_COLOR_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_ARRAY"), GetGL_INDEX_ARRAY);
+     Gl->Set(String::NewSymbol("INDEX_ARRAY"), Uint32::New(GL_INDEX_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COORD_ARRAY"), GetGL_TEXTURE_COORD_ARRAY);
+     Gl->Set(String::NewSymbol("TEXTURE_COORD_ARRAY"), Uint32::New(GL_TEXTURE_COORD_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EDGE_FLAG_ARRAY"), GetGL_EDGE_FLAG_ARRAY);
+     Gl->Set(String::NewSymbol("EDGE_FLAG_ARRAY"), Uint32::New(GL_EDGE_FLAG_ARRAY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_ARRAY_SIZE"), GetGL_VERTEX_ARRAY_SIZE);
+     Gl->Set(String::NewSymbol("VERTEX_ARRAY_SIZE"), Uint32::New(GL_VERTEX_ARRAY_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_ARRAY_TYPE"), GetGL_VERTEX_ARRAY_TYPE);
+     Gl->Set(String::NewSymbol("VERTEX_ARRAY_TYPE"), Uint32::New(GL_VERTEX_ARRAY_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_ARRAY_STRIDE"), GetGL_VERTEX_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("VERTEX_ARRAY_STRIDE"), Uint32::New(GL_VERTEX_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMAL_ARRAY_TYPE"), GetGL_NORMAL_ARRAY_TYPE);
+     Gl->Set(String::NewSymbol("NORMAL_ARRAY_TYPE"), Uint32::New(GL_NORMAL_ARRAY_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMAL_ARRAY_STRIDE"), GetGL_NORMAL_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("NORMAL_ARRAY_STRIDE"), Uint32::New(GL_NORMAL_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_ARRAY_SIZE"), GetGL_COLOR_ARRAY_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_ARRAY_SIZE"), Uint32::New(GL_COLOR_ARRAY_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_ARRAY_TYPE"), GetGL_COLOR_ARRAY_TYPE);
+     Gl->Set(String::NewSymbol("COLOR_ARRAY_TYPE"), Uint32::New(GL_COLOR_ARRAY_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_ARRAY_STRIDE"), GetGL_COLOR_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("COLOR_ARRAY_STRIDE"), Uint32::New(GL_COLOR_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_ARRAY_TYPE"), GetGL_INDEX_ARRAY_TYPE);
+     Gl->Set(String::NewSymbol("INDEX_ARRAY_TYPE"), Uint32::New(GL_INDEX_ARRAY_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_ARRAY_STRIDE"), GetGL_INDEX_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("INDEX_ARRAY_STRIDE"), Uint32::New(GL_INDEX_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COORD_ARRAY_SIZE"), GetGL_TEXTURE_COORD_ARRAY_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_COORD_ARRAY_SIZE"), Uint32::New(GL_TEXTURE_COORD_ARRAY_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COORD_ARRAY_TYPE"), GetGL_TEXTURE_COORD_ARRAY_TYPE);
+     Gl->Set(String::NewSymbol("TEXTURE_COORD_ARRAY_TYPE"), Uint32::New(GL_TEXTURE_COORD_ARRAY_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COORD_ARRAY_STRIDE"), GetGL_TEXTURE_COORD_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("TEXTURE_COORD_ARRAY_STRIDE"), Uint32::New(GL_TEXTURE_COORD_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EDGE_FLAG_ARRAY_STRIDE"), GetGL_EDGE_FLAG_ARRAY_STRIDE);
+     Gl->Set(String::NewSymbol("EDGE_FLAG_ARRAY_STRIDE"), Uint32::New(GL_EDGE_FLAG_ARRAY_STRIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_ARRAY_POINTER"), GetGL_VERTEX_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("VERTEX_ARRAY_POINTER"), Uint32::New(GL_VERTEX_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMAL_ARRAY_POINTER"), GetGL_NORMAL_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("NORMAL_ARRAY_POINTER"), Uint32::New(GL_NORMAL_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_ARRAY_POINTER"), GetGL_COLOR_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("COLOR_ARRAY_POINTER"), Uint32::New(GL_COLOR_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_ARRAY_POINTER"), GetGL_INDEX_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("INDEX_ARRAY_POINTER"), Uint32::New(GL_INDEX_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COORD_ARRAY_POINTER"), GetGL_TEXTURE_COORD_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("TEXTURE_COORD_ARRAY_POINTER"), Uint32::New(GL_TEXTURE_COORD_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EDGE_FLAG_ARRAY_POINTER"), GetGL_EDGE_FLAG_ARRAY_POINTER);
+     Gl->Set(String::NewSymbol("EDGE_FLAG_ARRAY_POINTER"), Uint32::New(GL_EDGE_FLAG_ARRAY_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("V2F"), GetGL_V2F);
+     Gl->Set(String::NewSymbol("V2F"), Uint32::New(GL_V2F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("V3F"), GetGL_V3F);
+     Gl->Set(String::NewSymbol("V3F"), Uint32::New(GL_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("C4UB_V2F"), GetGL_C4UB_V2F);
+     Gl->Set(String::NewSymbol("C4UB_V2F"), Uint32::New(GL_C4UB_V2F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("C4UB_V3F"), GetGL_C4UB_V3F);
+     Gl->Set(String::NewSymbol("C4UB_V3F"), Uint32::New(GL_C4UB_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("C3F_V3F"), GetGL_C3F_V3F);
+     Gl->Set(String::NewSymbol("C3F_V3F"), Uint32::New(GL_C3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("N3F_V3F"), GetGL_N3F_V3F);
+     Gl->Set(String::NewSymbol("N3F_V3F"), Uint32::New(GL_N3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("C4F_N3F_V3F"), GetGL_C4F_N3F_V3F);
+     Gl->Set(String::NewSymbol("C4F_N3F_V3F"), Uint32::New(GL_C4F_N3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T2F_V3F"), GetGL_T2F_V3F);
+     Gl->Set(String::NewSymbol("T2F_V3F"), Uint32::New(GL_T2F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T4F_V4F"), GetGL_T4F_V4F);
+     Gl->Set(String::NewSymbol("T4F_V4F"), Uint32::New(GL_T4F_V4F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T2F_C4UB_V3F"), GetGL_T2F_C4UB_V3F);
+     Gl->Set(String::NewSymbol("T2F_C4UB_V3F"), Uint32::New(GL_T2F_C4UB_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T2F_C3F_V3F"), GetGL_T2F_C3F_V3F);
+     Gl->Set(String::NewSymbol("T2F_C3F_V3F"), Uint32::New(GL_T2F_C3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T2F_N3F_V3F"), GetGL_T2F_N3F_V3F);
+     Gl->Set(String::NewSymbol("T2F_N3F_V3F"), Uint32::New(GL_T2F_N3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T2F_C4F_N3F_V3F"), GetGL_T2F_C4F_N3F_V3F);
+     Gl->Set(String::NewSymbol("T2F_C4F_N3F_V3F"), Uint32::New(GL_T2F_C4F_N3F_V3F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T4F_C4F_N3F_V4F"), GetGL_T4F_C4F_N3F_V4F);
+     Gl->Set(String::NewSymbol("T4F_C4F_N3F_V4F"), Uint32::New(GL_T4F_C4F_N3F_V4F), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MATRIX_MODE"), GetGL_MATRIX_MODE);
+     Gl->Set(String::NewSymbol("MATRIX_MODE"), Uint32::New(GL_MATRIX_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MODELVIEW"), GetGL_MODELVIEW);
+     Gl->Set(String::NewSymbol("MODELVIEW"), Uint32::New(GL_MODELVIEW), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROJECTION"), GetGL_PROJECTION);
+     Gl->Set(String::NewSymbol("PROJECTION"), Uint32::New(GL_PROJECTION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE"), GetGL_TEXTURE);
+     Gl->Set(String::NewSymbol("TEXTURE"), Uint32::New(GL_TEXTURE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_SMOOTH"), GetGL_POINT_SMOOTH);
+     Gl->Set(String::NewSymbol("POINT_SMOOTH"), Uint32::New(GL_POINT_SMOOTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_SIZE"), GetGL_POINT_SIZE);
+     Gl->Set(String::NewSymbol("POINT_SIZE"), Uint32::New(GL_POINT_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_SIZE_GRANULARITY"), GetGL_POINT_SIZE_GRANULARITY);
+     Gl->Set(String::NewSymbol("POINT_SIZE_GRANULARITY"), Uint32::New(GL_POINT_SIZE_GRANULARITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_SIZE_RANGE"), GetGL_POINT_SIZE_RANGE);
+     Gl->Set(String::NewSymbol("POINT_SIZE_RANGE"), Uint32::New(GL_POINT_SIZE_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_SMOOTH"), GetGL_LINE_SMOOTH);
+     Gl->Set(String::NewSymbol("LINE_SMOOTH"), Uint32::New(GL_LINE_SMOOTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_STIPPLE"), GetGL_LINE_STIPPLE);
+     Gl->Set(String::NewSymbol("LINE_STIPPLE"), Uint32::New(GL_LINE_STIPPLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_STIPPLE_PATTERN"), GetGL_LINE_STIPPLE_PATTERN);
+     Gl->Set(String::NewSymbol("LINE_STIPPLE_PATTERN"), Uint32::New(GL_LINE_STIPPLE_PATTERN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_STIPPLE_REPEAT"), GetGL_LINE_STIPPLE_REPEAT);
+     Gl->Set(String::NewSymbol("LINE_STIPPLE_REPEAT"), Uint32::New(GL_LINE_STIPPLE_REPEAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_WIDTH"), GetGL_LINE_WIDTH);
+     Gl->Set(String::NewSymbol("LINE_WIDTH"), Uint32::New(GL_LINE_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_WIDTH_GRANULARITY"), GetGL_LINE_WIDTH_GRANULARITY);
+     Gl->Set(String::NewSymbol("LINE_WIDTH_GRANULARITY"), Uint32::New(GL_LINE_WIDTH_GRANULARITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_WIDTH_RANGE"), GetGL_LINE_WIDTH_RANGE);
+     Gl->Set(String::NewSymbol("LINE_WIDTH_RANGE"), Uint32::New(GL_LINE_WIDTH_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT"), GetGL_POINT);
+     Gl->Set(String::NewSymbol("POINT"), Uint32::New(GL_POINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE"), GetGL_LINE);
+     Gl->Set(String::NewSymbol("LINE"), Uint32::New(GL_LINE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FILL"), GetGL_FILL);
+     Gl->Set(String::NewSymbol("FILL"), Uint32::New(GL_FILL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CW"), GetGL_CW);
+     Gl->Set(String::NewSymbol("CW"), Uint32::New(GL_CW), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CCW"), GetGL_CCW);
+     Gl->Set(String::NewSymbol("CCW"), Uint32::New(GL_CCW), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRONT"), GetGL_FRONT);
+     Gl->Set(String::NewSymbol("FRONT"), Uint32::New(GL_FRONT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BACK"), GetGL_BACK);
+     Gl->Set(String::NewSymbol("BACK"), Uint32::New(GL_BACK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_MODE"), GetGL_POLYGON_MODE);
+     Gl->Set(String::NewSymbol("POLYGON_MODE"), Uint32::New(GL_POLYGON_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_SMOOTH"), GetGL_POLYGON_SMOOTH);
+     Gl->Set(String::NewSymbol("POLYGON_SMOOTH"), Uint32::New(GL_POLYGON_SMOOTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_STIPPLE"), GetGL_POLYGON_STIPPLE);
+     Gl->Set(String::NewSymbol("POLYGON_STIPPLE"), Uint32::New(GL_POLYGON_STIPPLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EDGE_FLAG"), GetGL_EDGE_FLAG);
+     Gl->Set(String::NewSymbol("EDGE_FLAG"), Uint32::New(GL_EDGE_FLAG), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CULL_FACE"), GetGL_CULL_FACE);
+     Gl->Set(String::NewSymbol("CULL_FACE"), Uint32::New(GL_CULL_FACE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CULL_FACE_MODE"), GetGL_CULL_FACE_MODE);
+     Gl->Set(String::NewSymbol("CULL_FACE_MODE"), Uint32::New(GL_CULL_FACE_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRONT_FACE"), GetGL_FRONT_FACE);
+     Gl->Set(String::NewSymbol("FRONT_FACE"), Uint32::New(GL_FRONT_FACE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_OFFSET_FACTOR"), GetGL_POLYGON_OFFSET_FACTOR);
+     Gl->Set(String::NewSymbol("POLYGON_OFFSET_FACTOR"), Uint32::New(GL_POLYGON_OFFSET_FACTOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_OFFSET_UNITS"), GetGL_POLYGON_OFFSET_UNITS);
+     Gl->Set(String::NewSymbol("POLYGON_OFFSET_UNITS"), Uint32::New(GL_POLYGON_OFFSET_UNITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_OFFSET_POINT"), GetGL_POLYGON_OFFSET_POINT);
+     Gl->Set(String::NewSymbol("POLYGON_OFFSET_POINT"), Uint32::New(GL_POLYGON_OFFSET_POINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_OFFSET_LINE"), GetGL_POLYGON_OFFSET_LINE);
+     Gl->Set(String::NewSymbol("POLYGON_OFFSET_LINE"), Uint32::New(GL_POLYGON_OFFSET_LINE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_OFFSET_FILL"), GetGL_POLYGON_OFFSET_FILL);
+     Gl->Set(String::NewSymbol("POLYGON_OFFSET_FILL"), Uint32::New(GL_POLYGON_OFFSET_FILL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPILE"), GetGL_COMPILE);
+     Gl->Set(String::NewSymbol("COMPILE"), Uint32::New(GL_COMPILE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPILE_AND_EXECUTE"), GetGL_COMPILE_AND_EXECUTE);
+     Gl->Set(String::NewSymbol("COMPILE_AND_EXECUTE"), Uint32::New(GL_COMPILE_AND_EXECUTE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIST_BASE"), GetGL_LIST_BASE);
+     Gl->Set(String::NewSymbol("LIST_BASE"), Uint32::New(GL_LIST_BASE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIST_INDEX"), GetGL_LIST_INDEX);
+     Gl->Set(String::NewSymbol("LIST_INDEX"), Uint32::New(GL_LIST_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIST_MODE"), GetGL_LIST_MODE);
+     Gl->Set(String::NewSymbol("LIST_MODE"), Uint32::New(GL_LIST_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NEVER"), GetGL_NEVER);
+     Gl->Set(String::NewSymbol("NEVER"), Uint32::New(GL_NEVER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LESS"), GetGL_LESS);
+     Gl->Set(String::NewSymbol("LESS"), Uint32::New(GL_LESS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EQUAL"), GetGL_EQUAL);
+     Gl->Set(String::NewSymbol("EQUAL"), Uint32::New(GL_EQUAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LEQUAL"), GetGL_LEQUAL);
+     Gl->Set(String::NewSymbol("LEQUAL"), Uint32::New(GL_LEQUAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GREATER"), GetGL_GREATER);
+     Gl->Set(String::NewSymbol("GREATER"), Uint32::New(GL_GREATER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NOTEQUAL"), GetGL_NOTEQUAL);
+     Gl->Set(String::NewSymbol("NOTEQUAL"), Uint32::New(GL_NOTEQUAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GEQUAL"), GetGL_GEQUAL);
+     Gl->Set(String::NewSymbol("GEQUAL"), Uint32::New(GL_GEQUAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALWAYS"), GetGL_ALWAYS);
+     Gl->Set(String::NewSymbol("ALWAYS"), Uint32::New(GL_ALWAYS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_TEST"), GetGL_DEPTH_TEST);
+     Gl->Set(String::NewSymbol("DEPTH_TEST"), Uint32::New(GL_DEPTH_TEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_BITS"), GetGL_DEPTH_BITS);
+     Gl->Set(String::NewSymbol("DEPTH_BITS"), Uint32::New(GL_DEPTH_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_CLEAR_VALUE"), GetGL_DEPTH_CLEAR_VALUE);
+     Gl->Set(String::NewSymbol("DEPTH_CLEAR_VALUE"), Uint32::New(GL_DEPTH_CLEAR_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_FUNC"), GetGL_DEPTH_FUNC);
+     Gl->Set(String::NewSymbol("DEPTH_FUNC"), Uint32::New(GL_DEPTH_FUNC), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_RANGE"), GetGL_DEPTH_RANGE);
+     Gl->Set(String::NewSymbol("DEPTH_RANGE"), Uint32::New(GL_DEPTH_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_WRITEMASK"), GetGL_DEPTH_WRITEMASK);
+     Gl->Set(String::NewSymbol("DEPTH_WRITEMASK"), Uint32::New(GL_DEPTH_WRITEMASK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_COMPONENT"), GetGL_DEPTH_COMPONENT);
+     Gl->Set(String::NewSymbol("DEPTH_COMPONENT"), Uint32::New(GL_DEPTH_COMPONENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHTING"), GetGL_LIGHTING);
+     Gl->Set(String::NewSymbol("LIGHTING"), Uint32::New(GL_LIGHTING), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT0"), GetGL_LIGHT0);
+     Gl->Set(String::NewSymbol("LIGHT0"), Uint32::New(GL_LIGHT0), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT1"), GetGL_LIGHT1);
+     Gl->Set(String::NewSymbol("LIGHT1"), Uint32::New(GL_LIGHT1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT2"), GetGL_LIGHT2);
+     Gl->Set(String::NewSymbol("LIGHT2"), Uint32::New(GL_LIGHT2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT3"), GetGL_LIGHT3);
+     Gl->Set(String::NewSymbol("LIGHT3"), Uint32::New(GL_LIGHT3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT4"), GetGL_LIGHT4);
+     Gl->Set(String::NewSymbol("LIGHT4"), Uint32::New(GL_LIGHT4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT5"), GetGL_LIGHT5);
+     Gl->Set(String::NewSymbol("LIGHT5"), Uint32::New(GL_LIGHT5), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT6"), GetGL_LIGHT6);
+     Gl->Set(String::NewSymbol("LIGHT6"), Uint32::New(GL_LIGHT6), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT7"), GetGL_LIGHT7);
+     Gl->Set(String::NewSymbol("LIGHT7"), Uint32::New(GL_LIGHT7), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SPOT_EXPONENT"), GetGL_SPOT_EXPONENT);
+     Gl->Set(String::NewSymbol("SPOT_EXPONENT"), Uint32::New(GL_SPOT_EXPONENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SPOT_CUTOFF"), GetGL_SPOT_CUTOFF);
+     Gl->Set(String::NewSymbol("SPOT_CUTOFF"), Uint32::New(GL_SPOT_CUTOFF), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AMBIENT"), GetGL_AMBIENT);
+     Gl->Set(String::NewSymbol("AMBIENT"), Uint32::New(GL_AMBIENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DIFFUSE"), GetGL_DIFFUSE);
+     Gl->Set(String::NewSymbol("DIFFUSE"), Uint32::New(GL_DIFFUSE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SPECULAR"), GetGL_SPECULAR);
+     Gl->Set(String::NewSymbol("SPECULAR"), Uint32::New(GL_SPECULAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SHININESS"), GetGL_SHININESS);
+     Gl->Set(String::NewSymbol("SHININESS"), Uint32::New(GL_SHININESS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EMISSION"), GetGL_EMISSION);
+     Gl->Set(String::NewSymbol("EMISSION"), Uint32::New(GL_EMISSION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POSITION"), GetGL_POSITION);
+     Gl->Set(String::NewSymbol("POSITION"), Uint32::New(GL_POSITION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SPOT_DIRECTION"), GetGL_SPOT_DIRECTION);
+     Gl->Set(String::NewSymbol("SPOT_DIRECTION"), Uint32::New(GL_SPOT_DIRECTION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AMBIENT_AND_DIFFUSE"), GetGL_AMBIENT_AND_DIFFUSE);
+     Gl->Set(String::NewSymbol("AMBIENT_AND_DIFFUSE"), Uint32::New(GL_AMBIENT_AND_DIFFUSE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_INDEXES"), GetGL_COLOR_INDEXES);
+     Gl->Set(String::NewSymbol("COLOR_INDEXES"), Uint32::New(GL_COLOR_INDEXES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT_MODEL_TWO_SIDE"), GetGL_LIGHT_MODEL_TWO_SIDE);
+     Gl->Set(String::NewSymbol("LIGHT_MODEL_TWO_SIDE"), Uint32::New(GL_LIGHT_MODEL_TWO_SIDE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT_MODEL_LOCAL_VIEWER"), GetGL_LIGHT_MODEL_LOCAL_VIEWER);
+     Gl->Set(String::NewSymbol("LIGHT_MODEL_LOCAL_VIEWER"), Uint32::New(GL_LIGHT_MODEL_LOCAL_VIEWER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT_MODEL_AMBIENT"), GetGL_LIGHT_MODEL_AMBIENT);
+     Gl->Set(String::NewSymbol("LIGHT_MODEL_AMBIENT"), Uint32::New(GL_LIGHT_MODEL_AMBIENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRONT_AND_BACK"), GetGL_FRONT_AND_BACK);
+     Gl->Set(String::NewSymbol("FRONT_AND_BACK"), Uint32::New(GL_FRONT_AND_BACK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SHADE_MODEL"), GetGL_SHADE_MODEL);
+     Gl->Set(String::NewSymbol("SHADE_MODEL"), Uint32::New(GL_SHADE_MODEL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FLAT"), GetGL_FLAT);
+     Gl->Set(String::NewSymbol("FLAT"), Uint32::New(GL_FLAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SMOOTH"), GetGL_SMOOTH);
+     Gl->Set(String::NewSymbol("SMOOTH"), Uint32::New(GL_SMOOTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_MATERIAL"), GetGL_COLOR_MATERIAL);
+     Gl->Set(String::NewSymbol("COLOR_MATERIAL"), Uint32::New(GL_COLOR_MATERIAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_MATERIAL_FACE"), GetGL_COLOR_MATERIAL_FACE);
+     Gl->Set(String::NewSymbol("COLOR_MATERIAL_FACE"), Uint32::New(GL_COLOR_MATERIAL_FACE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_MATERIAL_PARAMETER"), GetGL_COLOR_MATERIAL_PARAMETER);
+     Gl->Set(String::NewSymbol("COLOR_MATERIAL_PARAMETER"), Uint32::New(GL_COLOR_MATERIAL_PARAMETER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMALIZE"), GetGL_NORMALIZE);
+     Gl->Set(String::NewSymbol("NORMALIZE"), Uint32::New(GL_NORMALIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE0"), GetGL_CLIP_PLANE0);
+     Gl->Set(String::NewSymbol("CLIP_PLANE0"), Uint32::New(GL_CLIP_PLANE0), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE1"), GetGL_CLIP_PLANE1);
+     Gl->Set(String::NewSymbol("CLIP_PLANE1"), Uint32::New(GL_CLIP_PLANE1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE2"), GetGL_CLIP_PLANE2);
+     Gl->Set(String::NewSymbol("CLIP_PLANE2"), Uint32::New(GL_CLIP_PLANE2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE3"), GetGL_CLIP_PLANE3);
+     Gl->Set(String::NewSymbol("CLIP_PLANE3"), Uint32::New(GL_CLIP_PLANE3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE4"), GetGL_CLIP_PLANE4);
+     Gl->Set(String::NewSymbol("CLIP_PLANE4"), Uint32::New(GL_CLIP_PLANE4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIP_PLANE5"), GetGL_CLIP_PLANE5);
+     Gl->Set(String::NewSymbol("CLIP_PLANE5"), Uint32::New(GL_CLIP_PLANE5), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_RED_BITS"), GetGL_ACCUM_RED_BITS);
+     Gl->Set(String::NewSymbol("ACCUM_RED_BITS"), Uint32::New(GL_ACCUM_RED_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_GREEN_BITS"), GetGL_ACCUM_GREEN_BITS);
+     Gl->Set(String::NewSymbol("ACCUM_GREEN_BITS"), Uint32::New(GL_ACCUM_GREEN_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_BLUE_BITS"), GetGL_ACCUM_BLUE_BITS);
+     Gl->Set(String::NewSymbol("ACCUM_BLUE_BITS"), Uint32::New(GL_ACCUM_BLUE_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_ALPHA_BITS"), GetGL_ACCUM_ALPHA_BITS);
+     Gl->Set(String::NewSymbol("ACCUM_ALPHA_BITS"), Uint32::New(GL_ACCUM_ALPHA_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_CLEAR_VALUE"), GetGL_ACCUM_CLEAR_VALUE);
+     Gl->Set(String::NewSymbol("ACCUM_CLEAR_VALUE"), Uint32::New(GL_ACCUM_CLEAR_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM"), GetGL_ACCUM);
+     Gl->Set(String::NewSymbol("ACCUM"), Uint32::New(GL_ACCUM), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ADD"), GetGL_ADD);
+     Gl->Set(String::NewSymbol("ADD"), Uint32::New(GL_ADD), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LOAD"), GetGL_LOAD);
+     Gl->Set(String::NewSymbol("LOAD"), Uint32::New(GL_LOAD), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MULT"), GetGL_MULT);
+     Gl->Set(String::NewSymbol("MULT"), Uint32::New(GL_MULT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RETURN"), GetGL_RETURN);
+     Gl->Set(String::NewSymbol("RETURN"), Uint32::New(GL_RETURN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_TEST"), GetGL_ALPHA_TEST);
+     Gl->Set(String::NewSymbol("ALPHA_TEST"), Uint32::New(GL_ALPHA_TEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_TEST_REF"), GetGL_ALPHA_TEST_REF);
+     Gl->Set(String::NewSymbol("ALPHA_TEST_REF"), Uint32::New(GL_ALPHA_TEST_REF), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_TEST_FUNC"), GetGL_ALPHA_TEST_FUNC);
+     Gl->Set(String::NewSymbol("ALPHA_TEST_FUNC"), Uint32::New(GL_ALPHA_TEST_FUNC), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLEND"), GetGL_BLEND);
+     Gl->Set(String::NewSymbol("BLEND"), Uint32::New(GL_BLEND), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLEND_SRC"), GetGL_BLEND_SRC);
+     Gl->Set(String::NewSymbol("BLEND_SRC"), Uint32::New(GL_BLEND_SRC), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLEND_DST"), GetGL_BLEND_DST);
+     Gl->Set(String::NewSymbol("BLEND_DST"), Uint32::New(GL_BLEND_DST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ZERO"), GetGL_ZERO);
+     Gl->Set(String::NewSymbol("ZERO"), Uint32::New(GL_ZERO), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE"), GetGL_ONE);
+     Gl->Set(String::NewSymbol("ONE"), Uint32::New(GL_ONE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SRC_COLOR"), GetGL_SRC_COLOR);
+     Gl->Set(String::NewSymbol("SRC_COLOR"), Uint32::New(GL_SRC_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_SRC_COLOR"), GetGL_ONE_MINUS_SRC_COLOR);
+     Gl->Set(String::NewSymbol("ONE_MINUS_SRC_COLOR"), Uint32::New(GL_ONE_MINUS_SRC_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SRC_ALPHA"), GetGL_SRC_ALPHA);
+     Gl->Set(String::NewSymbol("SRC_ALPHA"), Uint32::New(GL_SRC_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_SRC_ALPHA"), GetGL_ONE_MINUS_SRC_ALPHA);
+     Gl->Set(String::NewSymbol("ONE_MINUS_SRC_ALPHA"), Uint32::New(GL_ONE_MINUS_SRC_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DST_ALPHA"), GetGL_DST_ALPHA);
+     Gl->Set(String::NewSymbol("DST_ALPHA"), Uint32::New(GL_DST_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_DST_ALPHA"), GetGL_ONE_MINUS_DST_ALPHA);
+     Gl->Set(String::NewSymbol("ONE_MINUS_DST_ALPHA"), Uint32::New(GL_ONE_MINUS_DST_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DST_COLOR"), GetGL_DST_COLOR);
+     Gl->Set(String::NewSymbol("DST_COLOR"), Uint32::New(GL_DST_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_DST_COLOR"), GetGL_ONE_MINUS_DST_COLOR);
+     Gl->Set(String::NewSymbol("ONE_MINUS_DST_COLOR"), Uint32::New(GL_ONE_MINUS_DST_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SRC_ALPHA_SATURATE"), GetGL_SRC_ALPHA_SATURATE);
+     Gl->Set(String::NewSymbol("SRC_ALPHA_SATURATE"), Uint32::New(GL_SRC_ALPHA_SATURATE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FEEDBACK"), GetGL_FEEDBACK);
+     Gl->Set(String::NewSymbol("FEEDBACK"), Uint32::New(GL_FEEDBACK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RENDER"), GetGL_RENDER);
+     Gl->Set(String::NewSymbol("RENDER"), Uint32::New(GL_RENDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SELECT"), GetGL_SELECT);
+     Gl->Set(String::NewSymbol("SELECT"), Uint32::New(GL_SELECT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("2D"), GetGL_2D);
+     Gl->Set(String::NewSymbol("2D"), Uint32::New(GL_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("3D"), GetGL_3D);
+     Gl->Set(String::NewSymbol("3D"), Uint32::New(GL_3D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("3D_COLOR"), GetGL_3D_COLOR);
+     Gl->Set(String::NewSymbol("3D_COLOR"), Uint32::New(GL_3D_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("3D_COLOR_TEXTURE"), GetGL_3D_COLOR_TEXTURE);
+     Gl->Set(String::NewSymbol("3D_COLOR_TEXTURE"), Uint32::New(GL_3D_COLOR_TEXTURE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("4D_COLOR_TEXTURE"), GetGL_4D_COLOR_TEXTURE);
+     Gl->Set(String::NewSymbol("4D_COLOR_TEXTURE"), Uint32::New(GL_4D_COLOR_TEXTURE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_TOKEN"), GetGL_POINT_TOKEN);
+     Gl->Set(String::NewSymbol("POINT_TOKEN"), Uint32::New(GL_POINT_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_TOKEN"), GetGL_LINE_TOKEN);
+     Gl->Set(String::NewSymbol("LINE_TOKEN"), Uint32::New(GL_LINE_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_RESET_TOKEN"), GetGL_LINE_RESET_TOKEN);
+     Gl->Set(String::NewSymbol("LINE_RESET_TOKEN"), Uint32::New(GL_LINE_RESET_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_TOKEN"), GetGL_POLYGON_TOKEN);
+     Gl->Set(String::NewSymbol("POLYGON_TOKEN"), Uint32::New(GL_POLYGON_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BITMAP_TOKEN"), GetGL_BITMAP_TOKEN);
+     Gl->Set(String::NewSymbol("BITMAP_TOKEN"), Uint32::New(GL_BITMAP_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DRAW_PIXEL_TOKEN"), GetGL_DRAW_PIXEL_TOKEN);
+     Gl->Set(String::NewSymbol("DRAW_PIXEL_TOKEN"), Uint32::New(GL_DRAW_PIXEL_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COPY_PIXEL_TOKEN"), GetGL_COPY_PIXEL_TOKEN);
+     Gl->Set(String::NewSymbol("COPY_PIXEL_TOKEN"), Uint32::New(GL_COPY_PIXEL_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PASS_THROUGH_TOKEN"), GetGL_PASS_THROUGH_TOKEN);
+     Gl->Set(String::NewSymbol("PASS_THROUGH_TOKEN"), Uint32::New(GL_PASS_THROUGH_TOKEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FEEDBACK_BUFFER_POINTER"), GetGL_FEEDBACK_BUFFER_POINTER);
+     Gl->Set(String::NewSymbol("FEEDBACK_BUFFER_POINTER"), Uint32::New(GL_FEEDBACK_BUFFER_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FEEDBACK_BUFFER_SIZE"), GetGL_FEEDBACK_BUFFER_SIZE);
+     Gl->Set(String::NewSymbol("FEEDBACK_BUFFER_SIZE"), Uint32::New(GL_FEEDBACK_BUFFER_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FEEDBACK_BUFFER_TYPE"), GetGL_FEEDBACK_BUFFER_TYPE);
+     Gl->Set(String::NewSymbol("FEEDBACK_BUFFER_TYPE"), Uint32::New(GL_FEEDBACK_BUFFER_TYPE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SELECTION_BUFFER_POINTER"), GetGL_SELECTION_BUFFER_POINTER);
+     Gl->Set(String::NewSymbol("SELECTION_BUFFER_POINTER"), Uint32::New(GL_SELECTION_BUFFER_POINTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SELECTION_BUFFER_SIZE"), GetGL_SELECTION_BUFFER_SIZE);
+     Gl->Set(String::NewSymbol("SELECTION_BUFFER_SIZE"), Uint32::New(GL_SELECTION_BUFFER_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG"), GetGL_FOG);
+     Gl->Set(String::NewSymbol("FOG"), Uint32::New(GL_FOG), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_MODE"), GetGL_FOG_MODE);
+     Gl->Set(String::NewSymbol("FOG_MODE"), Uint32::New(GL_FOG_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_DENSITY"), GetGL_FOG_DENSITY);
+     Gl->Set(String::NewSymbol("FOG_DENSITY"), Uint32::New(GL_FOG_DENSITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_COLOR"), GetGL_FOG_COLOR);
+     Gl->Set(String::NewSymbol("FOG_COLOR"), Uint32::New(GL_FOG_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_INDEX"), GetGL_FOG_INDEX);
+     Gl->Set(String::NewSymbol("FOG_INDEX"), Uint32::New(GL_FOG_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_START"), GetGL_FOG_START);
+     Gl->Set(String::NewSymbol("FOG_START"), Uint32::New(GL_FOG_START), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_END"), GetGL_FOG_END);
+     Gl->Set(String::NewSymbol("FOG_END"), Uint32::New(GL_FOG_END), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINEAR"), GetGL_LINEAR);
+     Gl->Set(String::NewSymbol("LINEAR"), Uint32::New(GL_LINEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EXP"), GetGL_EXP);
+     Gl->Set(String::NewSymbol("EXP"), Uint32::New(GL_EXP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EXP2"), GetGL_EXP2);
+     Gl->Set(String::NewSymbol("EXP2"), Uint32::New(GL_EXP2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LOGIC_OP"), GetGL_LOGIC_OP);
+     Gl->Set(String::NewSymbol("LOGIC_OP"), Uint32::New(GL_LOGIC_OP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_LOGIC_OP"), GetGL_INDEX_LOGIC_OP);
+     Gl->Set(String::NewSymbol("INDEX_LOGIC_OP"), Uint32::New(GL_INDEX_LOGIC_OP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_LOGIC_OP"), GetGL_COLOR_LOGIC_OP);
+     Gl->Set(String::NewSymbol("COLOR_LOGIC_OP"), Uint32::New(GL_COLOR_LOGIC_OP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LOGIC_OP_MODE"), GetGL_LOGIC_OP_MODE);
+     Gl->Set(String::NewSymbol("LOGIC_OP_MODE"), Uint32::New(GL_LOGIC_OP_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLEAR"), GetGL_CLEAR);
+     Gl->Set(String::NewSymbol("CLEAR"), Uint32::New(GL_CLEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SET"), GetGL_SET);
+     Gl->Set(String::NewSymbol("SET"), Uint32::New(GL_SET), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COPY"), GetGL_COPY);
+     Gl->Set(String::NewSymbol("COPY"), Uint32::New(GL_COPY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COPY_INVERTED"), GetGL_COPY_INVERTED);
+     Gl->Set(String::NewSymbol("COPY_INVERTED"), Uint32::New(GL_COPY_INVERTED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NOOP"), GetGL_NOOP);
+     Gl->Set(String::NewSymbol("NOOP"), Uint32::New(GL_NOOP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INVERT"), GetGL_INVERT);
+     Gl->Set(String::NewSymbol("INVERT"), Uint32::New(GL_INVERT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AND"), GetGL_AND);
+     Gl->Set(String::NewSymbol("AND"), Uint32::New(GL_AND), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NAND"), GetGL_NAND);
+     Gl->Set(String::NewSymbol("NAND"), Uint32::New(GL_NAND), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OR"), GetGL_OR);
+     Gl->Set(String::NewSymbol("OR"), Uint32::New(GL_OR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NOR"), GetGL_NOR);
+     Gl->Set(String::NewSymbol("NOR"), Uint32::New(GL_NOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("XOR"), GetGL_XOR);
+     Gl->Set(String::NewSymbol("XOR"), Uint32::New(GL_XOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EQUIV"), GetGL_EQUIV);
+     Gl->Set(String::NewSymbol("EQUIV"), Uint32::New(GL_EQUIV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AND_REVERSE"), GetGL_AND_REVERSE);
+     Gl->Set(String::NewSymbol("AND_REVERSE"), Uint32::New(GL_AND_REVERSE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AND_INVERTED"), GetGL_AND_INVERTED);
+     Gl->Set(String::NewSymbol("AND_INVERTED"), Uint32::New(GL_AND_INVERTED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OR_REVERSE"), GetGL_OR_REVERSE);
+     Gl->Set(String::NewSymbol("OR_REVERSE"), Uint32::New(GL_OR_REVERSE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OR_INVERTED"), GetGL_OR_INVERTED);
+     Gl->Set(String::NewSymbol("OR_INVERTED"), Uint32::New(GL_OR_INVERTED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_BITS"), GetGL_STENCIL_BITS);
+     Gl->Set(String::NewSymbol("STENCIL_BITS"), Uint32::New(GL_STENCIL_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_TEST"), GetGL_STENCIL_TEST);
+     Gl->Set(String::NewSymbol("STENCIL_TEST"), Uint32::New(GL_STENCIL_TEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_CLEAR_VALUE"), GetGL_STENCIL_CLEAR_VALUE);
+     Gl->Set(String::NewSymbol("STENCIL_CLEAR_VALUE"), Uint32::New(GL_STENCIL_CLEAR_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_FUNC"), GetGL_STENCIL_FUNC);
+     Gl->Set(String::NewSymbol("STENCIL_FUNC"), Uint32::New(GL_STENCIL_FUNC), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_VALUE_MASK"), GetGL_STENCIL_VALUE_MASK);
+     Gl->Set(String::NewSymbol("STENCIL_VALUE_MASK"), Uint32::New(GL_STENCIL_VALUE_MASK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_FAIL"), GetGL_STENCIL_FAIL);
+     Gl->Set(String::NewSymbol("STENCIL_FAIL"), Uint32::New(GL_STENCIL_FAIL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_PASS_DEPTH_FAIL"), GetGL_STENCIL_PASS_DEPTH_FAIL);
+     Gl->Set(String::NewSymbol("STENCIL_PASS_DEPTH_FAIL"), Uint32::New(GL_STENCIL_PASS_DEPTH_FAIL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_PASS_DEPTH_PASS"), GetGL_STENCIL_PASS_DEPTH_PASS);
+     Gl->Set(String::NewSymbol("STENCIL_PASS_DEPTH_PASS"), Uint32::New(GL_STENCIL_PASS_DEPTH_PASS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_REF"), GetGL_STENCIL_REF);
+     Gl->Set(String::NewSymbol("STENCIL_REF"), Uint32::New(GL_STENCIL_REF), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_WRITEMASK"), GetGL_STENCIL_WRITEMASK);
+     Gl->Set(String::NewSymbol("STENCIL_WRITEMASK"), Uint32::New(GL_STENCIL_WRITEMASK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_INDEX"), GetGL_STENCIL_INDEX);
+     Gl->Set(String::NewSymbol("STENCIL_INDEX"), Uint32::New(GL_STENCIL_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("KEEP"), GetGL_KEEP);
+     Gl->Set(String::NewSymbol("KEEP"), Uint32::New(GL_KEEP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("REPLACE"), GetGL_REPLACE);
+     Gl->Set(String::NewSymbol("REPLACE"), Uint32::New(GL_REPLACE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INCR"), GetGL_INCR);
+     Gl->Set(String::NewSymbol("INCR"), Uint32::New(GL_INCR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DECR"), GetGL_DECR);
+     Gl->Set(String::NewSymbol("DECR"), Uint32::New(GL_DECR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NONE"), GetGL_NONE);
+     Gl->Set(String::NewSymbol("NONE"), Uint32::New(GL_NONE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LEFT"), GetGL_LEFT);
+     Gl->Set(String::NewSymbol("LEFT"), Uint32::New(GL_LEFT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RIGHT"), GetGL_RIGHT);
+     Gl->Set(String::NewSymbol("RIGHT"), Uint32::New(GL_RIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRONT_LEFT"), GetGL_FRONT_LEFT);
+     Gl->Set(String::NewSymbol("FRONT_LEFT"), Uint32::New(GL_FRONT_LEFT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRONT_RIGHT"), GetGL_FRONT_RIGHT);
+     Gl->Set(String::NewSymbol("FRONT_RIGHT"), Uint32::New(GL_FRONT_RIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BACK_LEFT"), GetGL_BACK_LEFT);
+     Gl->Set(String::NewSymbol("BACK_LEFT"), Uint32::New(GL_BACK_LEFT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BACK_RIGHT"), GetGL_BACK_RIGHT);
+     Gl->Set(String::NewSymbol("BACK_RIGHT"), Uint32::New(GL_BACK_RIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUX0"), GetGL_AUX0);
+     Gl->Set(String::NewSymbol("AUX0"), Uint32::New(GL_AUX0), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUX1"), GetGL_AUX1);
+     Gl->Set(String::NewSymbol("AUX1"), Uint32::New(GL_AUX1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUX2"), GetGL_AUX2);
+     Gl->Set(String::NewSymbol("AUX2"), Uint32::New(GL_AUX2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUX3"), GetGL_AUX3);
+     Gl->Set(String::NewSymbol("AUX3"), Uint32::New(GL_AUX3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_INDEX"), GetGL_COLOR_INDEX);
+     Gl->Set(String::NewSymbol("COLOR_INDEX"), Uint32::New(GL_COLOR_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RED"), GetGL_RED);
+     Gl->Set(String::NewSymbol("RED"), Uint32::New(GL_RED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GREEN"), GetGL_GREEN);
+     Gl->Set(String::NewSymbol("GREEN"), Uint32::New(GL_GREEN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLUE"), GetGL_BLUE);
+     Gl->Set(String::NewSymbol("BLUE"), Uint32::New(GL_BLUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA"), GetGL_ALPHA);
+     Gl->Set(String::NewSymbol("ALPHA"), Uint32::New(GL_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE"), GetGL_LUMINANCE);
+     Gl->Set(String::NewSymbol("LUMINANCE"), Uint32::New(GL_LUMINANCE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE_ALPHA"), GetGL_LUMINANCE_ALPHA);
+     Gl->Set(String::NewSymbol("LUMINANCE_ALPHA"), Uint32::New(GL_LUMINANCE_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_BITS"), GetGL_ALPHA_BITS);
+     Gl->Set(String::NewSymbol("ALPHA_BITS"), Uint32::New(GL_ALPHA_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RED_BITS"), GetGL_RED_BITS);
+     Gl->Set(String::NewSymbol("RED_BITS"), Uint32::New(GL_RED_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GREEN_BITS"), GetGL_GREEN_BITS);
+     Gl->Set(String::NewSymbol("GREEN_BITS"), Uint32::New(GL_GREEN_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLUE_BITS"), GetGL_BLUE_BITS);
+     Gl->Set(String::NewSymbol("BLUE_BITS"), Uint32::New(GL_BLUE_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_BITS"), GetGL_INDEX_BITS);
+     Gl->Set(String::NewSymbol("INDEX_BITS"), Uint32::New(GL_INDEX_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SUBPIXEL_BITS"), GetGL_SUBPIXEL_BITS);
+     Gl->Set(String::NewSymbol("SUBPIXEL_BITS"), Uint32::New(GL_SUBPIXEL_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUX_BUFFERS"), GetGL_AUX_BUFFERS);
+     Gl->Set(String::NewSymbol("AUX_BUFFERS"), Uint32::New(GL_AUX_BUFFERS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("READ_BUFFER"), GetGL_READ_BUFFER);
+     Gl->Set(String::NewSymbol("READ_BUFFER"), Uint32::New(GL_READ_BUFFER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DRAW_BUFFER"), GetGL_DRAW_BUFFER);
+     Gl->Set(String::NewSymbol("DRAW_BUFFER"), Uint32::New(GL_DRAW_BUFFER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DOUBLEBUFFER"), GetGL_DOUBLEBUFFER);
+     Gl->Set(String::NewSymbol("DOUBLEBUFFER"), Uint32::New(GL_DOUBLEBUFFER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STEREO"), GetGL_STEREO);
+     Gl->Set(String::NewSymbol("STEREO"), Uint32::New(GL_STEREO), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BITMAP"), GetGL_BITMAP);
+     Gl->Set(String::NewSymbol("BITMAP"), Uint32::New(GL_BITMAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR"), GetGL_COLOR);
+     Gl->Set(String::NewSymbol("COLOR"), Uint32::New(GL_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH"), GetGL_DEPTH);
+     Gl->Set(String::NewSymbol("DEPTH"), Uint32::New(GL_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL"), GetGL_STENCIL);
+     Gl->Set(String::NewSymbol("STENCIL"), Uint32::New(GL_STENCIL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DITHER"), GetGL_DITHER);
+     Gl->Set(String::NewSymbol("DITHER"), Uint32::New(GL_DITHER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB"), GetGL_RGB);
+     Gl->Set(String::NewSymbol("RGB"), Uint32::New(GL_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA"), GetGL_RGBA);
+     Gl->Set(String::NewSymbol("RGBA"), Uint32::New(GL_RGBA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_LIST_NESTING"), GetGL_MAX_LIST_NESTING);
+     Gl->Set(String::NewSymbol("MAX_LIST_NESTING"), Uint32::New(GL_MAX_LIST_NESTING), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_EVAL_ORDER"), GetGL_MAX_EVAL_ORDER);
+     Gl->Set(String::NewSymbol("MAX_EVAL_ORDER"), Uint32::New(GL_MAX_EVAL_ORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_LIGHTS"), GetGL_MAX_LIGHTS);
+     Gl->Set(String::NewSymbol("MAX_LIGHTS"), Uint32::New(GL_MAX_LIGHTS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_CLIP_PLANES"), GetGL_MAX_CLIP_PLANES);
+     Gl->Set(String::NewSymbol("MAX_CLIP_PLANES"), Uint32::New(GL_MAX_CLIP_PLANES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_TEXTURE_SIZE"), GetGL_MAX_TEXTURE_SIZE);
+     Gl->Set(String::NewSymbol("MAX_TEXTURE_SIZE"), Uint32::New(GL_MAX_TEXTURE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_PIXEL_MAP_TABLE"), GetGL_MAX_PIXEL_MAP_TABLE);
+     Gl->Set(String::NewSymbol("MAX_PIXEL_MAP_TABLE"), Uint32::New(GL_MAX_PIXEL_MAP_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_ATTRIB_STACK_DEPTH"), GetGL_MAX_ATTRIB_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_ATTRIB_STACK_DEPTH"), Uint32::New(GL_MAX_ATTRIB_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_MODELVIEW_STACK_DEPTH"), GetGL_MAX_MODELVIEW_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_MODELVIEW_STACK_DEPTH"), Uint32::New(GL_MAX_MODELVIEW_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_NAME_STACK_DEPTH"), GetGL_MAX_NAME_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_NAME_STACK_DEPTH"), Uint32::New(GL_MAX_NAME_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_PROJECTION_STACK_DEPTH"), GetGL_MAX_PROJECTION_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_PROJECTION_STACK_DEPTH"), Uint32::New(GL_MAX_PROJECTION_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_TEXTURE_STACK_DEPTH"), GetGL_MAX_TEXTURE_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_TEXTURE_STACK_DEPTH"), Uint32::New(GL_MAX_TEXTURE_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_VIEWPORT_DIMS"), GetGL_MAX_VIEWPORT_DIMS);
+     Gl->Set(String::NewSymbol("MAX_VIEWPORT_DIMS"), Uint32::New(GL_MAX_VIEWPORT_DIMS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_CLIENT_ATTRIB_STACK_DEPTH"), GetGL_MAX_CLIENT_ATTRIB_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_CLIENT_ATTRIB_STACK_DEPTH"), Uint32::New(GL_MAX_CLIENT_ATTRIB_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ATTRIB_STACK_DEPTH"), GetGL_ATTRIB_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("ATTRIB_STACK_DEPTH"), Uint32::New(GL_ATTRIB_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_ATTRIB_STACK_DEPTH"), GetGL_CLIENT_ATTRIB_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("CLIENT_ATTRIB_STACK_DEPTH"), Uint32::New(GL_CLIENT_ATTRIB_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_CLEAR_VALUE"), GetGL_COLOR_CLEAR_VALUE);
+     Gl->Set(String::NewSymbol("COLOR_CLEAR_VALUE"), Uint32::New(GL_COLOR_CLEAR_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_WRITEMASK"), GetGL_COLOR_WRITEMASK);
+     Gl->Set(String::NewSymbol("COLOR_WRITEMASK"), Uint32::New(GL_COLOR_WRITEMASK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_INDEX"), GetGL_CURRENT_INDEX);
+     Gl->Set(String::NewSymbol("CURRENT_INDEX"), Uint32::New(GL_CURRENT_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_COLOR"), GetGL_CURRENT_COLOR);
+     Gl->Set(String::NewSymbol("CURRENT_COLOR"), Uint32::New(GL_CURRENT_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_NORMAL"), GetGL_CURRENT_NORMAL);
+     Gl->Set(String::NewSymbol("CURRENT_NORMAL"), Uint32::New(GL_CURRENT_NORMAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_COLOR"), GetGL_CURRENT_RASTER_COLOR);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_COLOR"), Uint32::New(GL_CURRENT_RASTER_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_DISTANCE"), GetGL_CURRENT_RASTER_DISTANCE);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_DISTANCE"), Uint32::New(GL_CURRENT_RASTER_DISTANCE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_INDEX"), GetGL_CURRENT_RASTER_INDEX);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_INDEX"), Uint32::New(GL_CURRENT_RASTER_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_POSITION"), GetGL_CURRENT_RASTER_POSITION);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_POSITION"), Uint32::New(GL_CURRENT_RASTER_POSITION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_TEXTURE_COORDS"), GetGL_CURRENT_RASTER_TEXTURE_COORDS);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_TEXTURE_COORDS"), Uint32::New(GL_CURRENT_RASTER_TEXTURE_COORDS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_RASTER_POSITION_VALID"), GetGL_CURRENT_RASTER_POSITION_VALID);
+     Gl->Set(String::NewSymbol("CURRENT_RASTER_POSITION_VALID"), Uint32::New(GL_CURRENT_RASTER_POSITION_VALID), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_TEXTURE_COORDS"), GetGL_CURRENT_TEXTURE_COORDS);
+     Gl->Set(String::NewSymbol("CURRENT_TEXTURE_COORDS"), Uint32::New(GL_CURRENT_TEXTURE_COORDS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_CLEAR_VALUE"), GetGL_INDEX_CLEAR_VALUE);
+     Gl->Set(String::NewSymbol("INDEX_CLEAR_VALUE"), Uint32::New(GL_INDEX_CLEAR_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_MODE"), GetGL_INDEX_MODE);
+     Gl->Set(String::NewSymbol("INDEX_MODE"), Uint32::New(GL_INDEX_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_WRITEMASK"), GetGL_INDEX_WRITEMASK);
+     Gl->Set(String::NewSymbol("INDEX_WRITEMASK"), Uint32::New(GL_INDEX_WRITEMASK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MODELVIEW_MATRIX"), GetGL_MODELVIEW_MATRIX);
+     Gl->Set(String::NewSymbol("MODELVIEW_MATRIX"), Uint32::New(GL_MODELVIEW_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MODELVIEW_STACK_DEPTH"), GetGL_MODELVIEW_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MODELVIEW_STACK_DEPTH"), Uint32::New(GL_MODELVIEW_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NAME_STACK_DEPTH"), GetGL_NAME_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("NAME_STACK_DEPTH"), Uint32::New(GL_NAME_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROJECTION_MATRIX"), GetGL_PROJECTION_MATRIX);
+     Gl->Set(String::NewSymbol("PROJECTION_MATRIX"), Uint32::New(GL_PROJECTION_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROJECTION_STACK_DEPTH"), GetGL_PROJECTION_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("PROJECTION_STACK_DEPTH"), Uint32::New(GL_PROJECTION_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RENDER_MODE"), GetGL_RENDER_MODE);
+     Gl->Set(String::NewSymbol("RENDER_MODE"), Uint32::New(GL_RENDER_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA_MODE"), GetGL_RGBA_MODE);
+     Gl->Set(String::NewSymbol("RGBA_MODE"), Uint32::New(GL_RGBA_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MATRIX"), GetGL_TEXTURE_MATRIX);
+     Gl->Set(String::NewSymbol("TEXTURE_MATRIX"), Uint32::New(GL_TEXTURE_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_STACK_DEPTH"), GetGL_TEXTURE_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("TEXTURE_STACK_DEPTH"), Uint32::New(GL_TEXTURE_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VIEWPORT"), GetGL_VIEWPORT);
+     Gl->Set(String::NewSymbol("VIEWPORT"), Uint32::New(GL_VIEWPORT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("AUTO_NORMAL"), GetGL_AUTO_NORMAL);
+     Gl->Set(String::NewSymbol("AUTO_NORMAL"), Uint32::New(GL_AUTO_NORMAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_COLOR_4"), GetGL_MAP1_COLOR_4);
+     Gl->Set(String::NewSymbol("MAP1_COLOR_4"), Uint32::New(GL_MAP1_COLOR_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_INDEX"), GetGL_MAP1_INDEX);
+     Gl->Set(String::NewSymbol("MAP1_INDEX"), Uint32::New(GL_MAP1_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_NORMAL"), GetGL_MAP1_NORMAL);
+     Gl->Set(String::NewSymbol("MAP1_NORMAL"), Uint32::New(GL_MAP1_NORMAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_TEXTURE_COORD_1"), GetGL_MAP1_TEXTURE_COORD_1);
+     Gl->Set(String::NewSymbol("MAP1_TEXTURE_COORD_1"), Uint32::New(GL_MAP1_TEXTURE_COORD_1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_TEXTURE_COORD_2"), GetGL_MAP1_TEXTURE_COORD_2);
+     Gl->Set(String::NewSymbol("MAP1_TEXTURE_COORD_2"), Uint32::New(GL_MAP1_TEXTURE_COORD_2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_TEXTURE_COORD_3"), GetGL_MAP1_TEXTURE_COORD_3);
+     Gl->Set(String::NewSymbol("MAP1_TEXTURE_COORD_3"), Uint32::New(GL_MAP1_TEXTURE_COORD_3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_TEXTURE_COORD_4"), GetGL_MAP1_TEXTURE_COORD_4);
+     Gl->Set(String::NewSymbol("MAP1_TEXTURE_COORD_4"), Uint32::New(GL_MAP1_TEXTURE_COORD_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_VERTEX_3"), GetGL_MAP1_VERTEX_3);
+     Gl->Set(String::NewSymbol("MAP1_VERTEX_3"), Uint32::New(GL_MAP1_VERTEX_3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_VERTEX_4"), GetGL_MAP1_VERTEX_4);
+     Gl->Set(String::NewSymbol("MAP1_VERTEX_4"), Uint32::New(GL_MAP1_VERTEX_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_COLOR_4"), GetGL_MAP2_COLOR_4);
+     Gl->Set(String::NewSymbol("MAP2_COLOR_4"), Uint32::New(GL_MAP2_COLOR_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_INDEX"), GetGL_MAP2_INDEX);
+     Gl->Set(String::NewSymbol("MAP2_INDEX"), Uint32::New(GL_MAP2_INDEX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_NORMAL"), GetGL_MAP2_NORMAL);
+     Gl->Set(String::NewSymbol("MAP2_NORMAL"), Uint32::New(GL_MAP2_NORMAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_TEXTURE_COORD_1"), GetGL_MAP2_TEXTURE_COORD_1);
+     Gl->Set(String::NewSymbol("MAP2_TEXTURE_COORD_1"), Uint32::New(GL_MAP2_TEXTURE_COORD_1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_TEXTURE_COORD_2"), GetGL_MAP2_TEXTURE_COORD_2);
+     Gl->Set(String::NewSymbol("MAP2_TEXTURE_COORD_2"), Uint32::New(GL_MAP2_TEXTURE_COORD_2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_TEXTURE_COORD_3"), GetGL_MAP2_TEXTURE_COORD_3);
+     Gl->Set(String::NewSymbol("MAP2_TEXTURE_COORD_3"), Uint32::New(GL_MAP2_TEXTURE_COORD_3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_TEXTURE_COORD_4"), GetGL_MAP2_TEXTURE_COORD_4);
+     Gl->Set(String::NewSymbol("MAP2_TEXTURE_COORD_4"), Uint32::New(GL_MAP2_TEXTURE_COORD_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_VERTEX_3"), GetGL_MAP2_VERTEX_3);
+     Gl->Set(String::NewSymbol("MAP2_VERTEX_3"), Uint32::New(GL_MAP2_VERTEX_3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_VERTEX_4"), GetGL_MAP2_VERTEX_4);
+     Gl->Set(String::NewSymbol("MAP2_VERTEX_4"), Uint32::New(GL_MAP2_VERTEX_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_GRID_DOMAIN"), GetGL_MAP1_GRID_DOMAIN);
+     Gl->Set(String::NewSymbol("MAP1_GRID_DOMAIN"), Uint32::New(GL_MAP1_GRID_DOMAIN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP1_GRID_SEGMENTS"), GetGL_MAP1_GRID_SEGMENTS);
+     Gl->Set(String::NewSymbol("MAP1_GRID_SEGMENTS"), Uint32::New(GL_MAP1_GRID_SEGMENTS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_GRID_DOMAIN"), GetGL_MAP2_GRID_DOMAIN);
+     Gl->Set(String::NewSymbol("MAP2_GRID_DOMAIN"), Uint32::New(GL_MAP2_GRID_DOMAIN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP2_GRID_SEGMENTS"), GetGL_MAP2_GRID_SEGMENTS);
+     Gl->Set(String::NewSymbol("MAP2_GRID_SEGMENTS"), Uint32::New(GL_MAP2_GRID_SEGMENTS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COEFF"), GetGL_COEFF);
+     Gl->Set(String::NewSymbol("COEFF"), Uint32::New(GL_COEFF), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ORDER"), GetGL_ORDER);
+     Gl->Set(String::NewSymbol("ORDER"), Uint32::New(GL_ORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DOMAIN"), GetGL_DOMAIN);
+     Gl->Set(String::NewSymbol("DOMAIN"), Uint32::New(GL_DOMAIN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PERSPECTIVE_CORRECTION_HINT"), GetGL_PERSPECTIVE_CORRECTION_HINT);
+     Gl->Set(String::NewSymbol("PERSPECTIVE_CORRECTION_HINT"), Uint32::New(GL_PERSPECTIVE_CORRECTION_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_SMOOTH_HINT"), GetGL_POINT_SMOOTH_HINT);
+     Gl->Set(String::NewSymbol("POINT_SMOOTH_HINT"), Uint32::New(GL_POINT_SMOOTH_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_SMOOTH_HINT"), GetGL_LINE_SMOOTH_HINT);
+     Gl->Set(String::NewSymbol("LINE_SMOOTH_HINT"), Uint32::New(GL_LINE_SMOOTH_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_SMOOTH_HINT"), GetGL_POLYGON_SMOOTH_HINT);
+     Gl->Set(String::NewSymbol("POLYGON_SMOOTH_HINT"), Uint32::New(GL_POLYGON_SMOOTH_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_HINT"), GetGL_FOG_HINT);
+     Gl->Set(String::NewSymbol("FOG_HINT"), Uint32::New(GL_FOG_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DONT_CARE"), GetGL_DONT_CARE);
+     Gl->Set(String::NewSymbol("DONT_CARE"), Uint32::New(GL_DONT_CARE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FASTEST"), GetGL_FASTEST);
+     Gl->Set(String::NewSymbol("FASTEST"), Uint32::New(GL_FASTEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NICEST"), GetGL_NICEST);
+     Gl->Set(String::NewSymbol("NICEST"), Uint32::New(GL_NICEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SCISSOR_BOX"), GetGL_SCISSOR_BOX);
+     Gl->Set(String::NewSymbol("SCISSOR_BOX"), Uint32::New(GL_SCISSOR_BOX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SCISSOR_TEST"), GetGL_SCISSOR_TEST);
+     Gl->Set(String::NewSymbol("SCISSOR_TEST"), Uint32::New(GL_SCISSOR_TEST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP_COLOR"), GetGL_MAP_COLOR);
+     Gl->Set(String::NewSymbol("MAP_COLOR"), Uint32::New(GL_MAP_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAP_STENCIL"), GetGL_MAP_STENCIL);
+     Gl->Set(String::NewSymbol("MAP_STENCIL"), Uint32::New(GL_MAP_STENCIL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_SHIFT"), GetGL_INDEX_SHIFT);
+     Gl->Set(String::NewSymbol("INDEX_SHIFT"), Uint32::New(GL_INDEX_SHIFT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INDEX_OFFSET"), GetGL_INDEX_OFFSET);
+     Gl->Set(String::NewSymbol("INDEX_OFFSET"), Uint32::New(GL_INDEX_OFFSET), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RED_SCALE"), GetGL_RED_SCALE);
+     Gl->Set(String::NewSymbol("RED_SCALE"), Uint32::New(GL_RED_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RED_BIAS"), GetGL_RED_BIAS);
+     Gl->Set(String::NewSymbol("RED_BIAS"), Uint32::New(GL_RED_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GREEN_SCALE"), GetGL_GREEN_SCALE);
+     Gl->Set(String::NewSymbol("GREEN_SCALE"), Uint32::New(GL_GREEN_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("GREEN_BIAS"), GetGL_GREEN_BIAS);
+     Gl->Set(String::NewSymbol("GREEN_BIAS"), Uint32::New(GL_GREEN_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLUE_SCALE"), GetGL_BLUE_SCALE);
+     Gl->Set(String::NewSymbol("BLUE_SCALE"), Uint32::New(GL_BLUE_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLUE_BIAS"), GetGL_BLUE_BIAS);
+     Gl->Set(String::NewSymbol("BLUE_BIAS"), Uint32::New(GL_BLUE_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_SCALE"), GetGL_ALPHA_SCALE);
+     Gl->Set(String::NewSymbol("ALPHA_SCALE"), Uint32::New(GL_ALPHA_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_BIAS"), GetGL_ALPHA_BIAS);
+     Gl->Set(String::NewSymbol("ALPHA_BIAS"), Uint32::New(GL_ALPHA_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_SCALE"), GetGL_DEPTH_SCALE);
+     Gl->Set(String::NewSymbol("DEPTH_SCALE"), Uint32::New(GL_DEPTH_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_BIAS"), GetGL_DEPTH_BIAS);
+     Gl->Set(String::NewSymbol("DEPTH_BIAS"), Uint32::New(GL_DEPTH_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_S_TO_S_SIZE"), GetGL_PIXEL_MAP_S_TO_S_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_S_TO_S_SIZE"), Uint32::New(GL_PIXEL_MAP_S_TO_S_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_I_SIZE"), GetGL_PIXEL_MAP_I_TO_I_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_I_SIZE"), Uint32::New(GL_PIXEL_MAP_I_TO_I_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_R_SIZE"), GetGL_PIXEL_MAP_I_TO_R_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_R_SIZE"), Uint32::New(GL_PIXEL_MAP_I_TO_R_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_G_SIZE"), GetGL_PIXEL_MAP_I_TO_G_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_G_SIZE"), Uint32::New(GL_PIXEL_MAP_I_TO_G_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_B_SIZE"), GetGL_PIXEL_MAP_I_TO_B_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_B_SIZE"), Uint32::New(GL_PIXEL_MAP_I_TO_B_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_A_SIZE"), GetGL_PIXEL_MAP_I_TO_A_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_A_SIZE"), Uint32::New(GL_PIXEL_MAP_I_TO_A_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_R_TO_R_SIZE"), GetGL_PIXEL_MAP_R_TO_R_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_R_TO_R_SIZE"), Uint32::New(GL_PIXEL_MAP_R_TO_R_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_G_TO_G_SIZE"), GetGL_PIXEL_MAP_G_TO_G_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_G_TO_G_SIZE"), Uint32::New(GL_PIXEL_MAP_G_TO_G_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_B_TO_B_SIZE"), GetGL_PIXEL_MAP_B_TO_B_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_B_TO_B_SIZE"), Uint32::New(GL_PIXEL_MAP_B_TO_B_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_A_TO_A_SIZE"), GetGL_PIXEL_MAP_A_TO_A_SIZE);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_A_TO_A_SIZE"), Uint32::New(GL_PIXEL_MAP_A_TO_A_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_S_TO_S"), GetGL_PIXEL_MAP_S_TO_S);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_S_TO_S"), Uint32::New(GL_PIXEL_MAP_S_TO_S), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_I"), GetGL_PIXEL_MAP_I_TO_I);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_I"), Uint32::New(GL_PIXEL_MAP_I_TO_I), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_R"), GetGL_PIXEL_MAP_I_TO_R);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_R"), Uint32::New(GL_PIXEL_MAP_I_TO_R), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_G"), GetGL_PIXEL_MAP_I_TO_G);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_G"), Uint32::New(GL_PIXEL_MAP_I_TO_G), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_B"), GetGL_PIXEL_MAP_I_TO_B);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_B"), Uint32::New(GL_PIXEL_MAP_I_TO_B), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_I_TO_A"), GetGL_PIXEL_MAP_I_TO_A);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_I_TO_A"), Uint32::New(GL_PIXEL_MAP_I_TO_A), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_R_TO_R"), GetGL_PIXEL_MAP_R_TO_R);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_R_TO_R"), Uint32::New(GL_PIXEL_MAP_R_TO_R), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_G_TO_G"), GetGL_PIXEL_MAP_G_TO_G);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_G_TO_G"), Uint32::New(GL_PIXEL_MAP_G_TO_G), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_B_TO_B"), GetGL_PIXEL_MAP_B_TO_B);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_B_TO_B"), Uint32::New(GL_PIXEL_MAP_B_TO_B), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MAP_A_TO_A"), GetGL_PIXEL_MAP_A_TO_A);
+     Gl->Set(String::NewSymbol("PIXEL_MAP_A_TO_A"), Uint32::New(GL_PIXEL_MAP_A_TO_A), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_ALIGNMENT"), GetGL_PACK_ALIGNMENT);
+     Gl->Set(String::NewSymbol("PACK_ALIGNMENT"), Uint32::New(GL_PACK_ALIGNMENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_LSB_FIRST"), GetGL_PACK_LSB_FIRST);
+     Gl->Set(String::NewSymbol("PACK_LSB_FIRST"), Uint32::New(GL_PACK_LSB_FIRST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_ROW_LENGTH"), GetGL_PACK_ROW_LENGTH);
+     Gl->Set(String::NewSymbol("PACK_ROW_LENGTH"), Uint32::New(GL_PACK_ROW_LENGTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_SKIP_PIXELS"), GetGL_PACK_SKIP_PIXELS);
+     Gl->Set(String::NewSymbol("PACK_SKIP_PIXELS"), Uint32::New(GL_PACK_SKIP_PIXELS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_SKIP_ROWS"), GetGL_PACK_SKIP_ROWS);
+     Gl->Set(String::NewSymbol("PACK_SKIP_ROWS"), Uint32::New(GL_PACK_SKIP_ROWS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_SWAP_BYTES"), GetGL_PACK_SWAP_BYTES);
+     Gl->Set(String::NewSymbol("PACK_SWAP_BYTES"), Uint32::New(GL_PACK_SWAP_BYTES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_ALIGNMENT"), GetGL_UNPACK_ALIGNMENT);
+     Gl->Set(String::NewSymbol("UNPACK_ALIGNMENT"), Uint32::New(GL_UNPACK_ALIGNMENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_LSB_FIRST"), GetGL_UNPACK_LSB_FIRST);
+     Gl->Set(String::NewSymbol("UNPACK_LSB_FIRST"), Uint32::New(GL_UNPACK_LSB_FIRST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_ROW_LENGTH"), GetGL_UNPACK_ROW_LENGTH);
+     Gl->Set(String::NewSymbol("UNPACK_ROW_LENGTH"), Uint32::New(GL_UNPACK_ROW_LENGTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_SKIP_PIXELS"), GetGL_UNPACK_SKIP_PIXELS);
+     Gl->Set(String::NewSymbol("UNPACK_SKIP_PIXELS"), Uint32::New(GL_UNPACK_SKIP_PIXELS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_SKIP_ROWS"), GetGL_UNPACK_SKIP_ROWS);
+     Gl->Set(String::NewSymbol("UNPACK_SKIP_ROWS"), Uint32::New(GL_UNPACK_SKIP_ROWS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_SWAP_BYTES"), GetGL_UNPACK_SWAP_BYTES);
+     Gl->Set(String::NewSymbol("UNPACK_SWAP_BYTES"), Uint32::New(GL_UNPACK_SWAP_BYTES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ZOOM_X"), GetGL_ZOOM_X);
+     Gl->Set(String::NewSymbol("ZOOM_X"), Uint32::New(GL_ZOOM_X), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ZOOM_Y"), GetGL_ZOOM_Y);
+     Gl->Set(String::NewSymbol("ZOOM_Y"), Uint32::New(GL_ZOOM_Y), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_ENV"), GetGL_TEXTURE_ENV);
+     Gl->Set(String::NewSymbol("TEXTURE_ENV"), Uint32::New(GL_TEXTURE_ENV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_ENV_MODE"), GetGL_TEXTURE_ENV_MODE);
+     Gl->Set(String::NewSymbol("TEXTURE_ENV_MODE"), Uint32::New(GL_TEXTURE_ENV_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_1D"), GetGL_TEXTURE_1D);
+     Gl->Set(String::NewSymbol("TEXTURE_1D"), Uint32::New(GL_TEXTURE_1D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_2D"), GetGL_TEXTURE_2D);
+     Gl->Set(String::NewSymbol("TEXTURE_2D"), Uint32::New(GL_TEXTURE_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_WRAP_S"), GetGL_TEXTURE_WRAP_S);
+     Gl->Set(String::NewSymbol("TEXTURE_WRAP_S"), Uint32::New(GL_TEXTURE_WRAP_S), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_WRAP_T"), GetGL_TEXTURE_WRAP_T);
+     Gl->Set(String::NewSymbol("TEXTURE_WRAP_T"), Uint32::New(GL_TEXTURE_WRAP_T), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MAG_FILTER"), GetGL_TEXTURE_MAG_FILTER);
+     Gl->Set(String::NewSymbol("TEXTURE_MAG_FILTER"), Uint32::New(GL_TEXTURE_MAG_FILTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MIN_FILTER"), GetGL_TEXTURE_MIN_FILTER);
+     Gl->Set(String::NewSymbol("TEXTURE_MIN_FILTER"), Uint32::New(GL_TEXTURE_MIN_FILTER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_ENV_COLOR"), GetGL_TEXTURE_ENV_COLOR);
+     Gl->Set(String::NewSymbol("TEXTURE_ENV_COLOR"), Uint32::New(GL_TEXTURE_ENV_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GEN_S"), GetGL_TEXTURE_GEN_S);
+     Gl->Set(String::NewSymbol("TEXTURE_GEN_S"), Uint32::New(GL_TEXTURE_GEN_S), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GEN_T"), GetGL_TEXTURE_GEN_T);
+     Gl->Set(String::NewSymbol("TEXTURE_GEN_T"), Uint32::New(GL_TEXTURE_GEN_T), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GEN_MODE"), GetGL_TEXTURE_GEN_MODE);
+     Gl->Set(String::NewSymbol("TEXTURE_GEN_MODE"), Uint32::New(GL_TEXTURE_GEN_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BORDER_COLOR"), GetGL_TEXTURE_BORDER_COLOR);
+     Gl->Set(String::NewSymbol("TEXTURE_BORDER_COLOR"), Uint32::New(GL_TEXTURE_BORDER_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_WIDTH"), GetGL_TEXTURE_WIDTH);
+     Gl->Set(String::NewSymbol("TEXTURE_WIDTH"), Uint32::New(GL_TEXTURE_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_HEIGHT"), GetGL_TEXTURE_HEIGHT);
+     Gl->Set(String::NewSymbol("TEXTURE_HEIGHT"), Uint32::New(GL_TEXTURE_HEIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BORDER"), GetGL_TEXTURE_BORDER);
+     Gl->Set(String::NewSymbol("TEXTURE_BORDER"), Uint32::New(GL_TEXTURE_BORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COMPONENTS"), GetGL_TEXTURE_COMPONENTS);
+     Gl->Set(String::NewSymbol("TEXTURE_COMPONENTS"), Uint32::New(GL_TEXTURE_COMPONENTS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_RED_SIZE"), GetGL_TEXTURE_RED_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_RED_SIZE"), Uint32::New(GL_TEXTURE_RED_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GREEN_SIZE"), GetGL_TEXTURE_GREEN_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_GREEN_SIZE"), Uint32::New(GL_TEXTURE_GREEN_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BLUE_SIZE"), GetGL_TEXTURE_BLUE_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_BLUE_SIZE"), Uint32::New(GL_TEXTURE_BLUE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_ALPHA_SIZE"), GetGL_TEXTURE_ALPHA_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_ALPHA_SIZE"), Uint32::New(GL_TEXTURE_ALPHA_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_LUMINANCE_SIZE"), GetGL_TEXTURE_LUMINANCE_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_LUMINANCE_SIZE"), Uint32::New(GL_TEXTURE_LUMINANCE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_INTENSITY_SIZE"), GetGL_TEXTURE_INTENSITY_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_INTENSITY_SIZE"), Uint32::New(GL_TEXTURE_INTENSITY_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NEAREST_MIPMAP_NEAREST"), GetGL_NEAREST_MIPMAP_NEAREST);
+     Gl->Set(String::NewSymbol("NEAREST_MIPMAP_NEAREST"), Uint32::New(GL_NEAREST_MIPMAP_NEAREST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NEAREST_MIPMAP_LINEAR"), GetGL_NEAREST_MIPMAP_LINEAR);
+     Gl->Set(String::NewSymbol("NEAREST_MIPMAP_LINEAR"), Uint32::New(GL_NEAREST_MIPMAP_LINEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINEAR_MIPMAP_NEAREST"), GetGL_LINEAR_MIPMAP_NEAREST);
+     Gl->Set(String::NewSymbol("LINEAR_MIPMAP_NEAREST"), Uint32::New(GL_LINEAR_MIPMAP_NEAREST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINEAR_MIPMAP_LINEAR"), GetGL_LINEAR_MIPMAP_LINEAR);
+     Gl->Set(String::NewSymbol("LINEAR_MIPMAP_LINEAR"), Uint32::New(GL_LINEAR_MIPMAP_LINEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OBJECT_LINEAR"), GetGL_OBJECT_LINEAR);
+     Gl->Set(String::NewSymbol("OBJECT_LINEAR"), Uint32::New(GL_OBJECT_LINEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OBJECT_PLANE"), GetGL_OBJECT_PLANE);
+     Gl->Set(String::NewSymbol("OBJECT_PLANE"), Uint32::New(GL_OBJECT_PLANE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EYE_LINEAR"), GetGL_EYE_LINEAR);
+     Gl->Set(String::NewSymbol("EYE_LINEAR"), Uint32::New(GL_EYE_LINEAR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EYE_PLANE"), GetGL_EYE_PLANE);
+     Gl->Set(String::NewSymbol("EYE_PLANE"), Uint32::New(GL_EYE_PLANE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SPHERE_MAP"), GetGL_SPHERE_MAP);
+     Gl->Set(String::NewSymbol("SPHERE_MAP"), Uint32::New(GL_SPHERE_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DECAL"), GetGL_DECAL);
+     Gl->Set(String::NewSymbol("DECAL"), Uint32::New(GL_DECAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MODULATE"), GetGL_MODULATE);
+     Gl->Set(String::NewSymbol("MODULATE"), Uint32::New(GL_MODULATE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NEAREST"), GetGL_NEAREST);
+     Gl->Set(String::NewSymbol("NEAREST"), Uint32::New(GL_NEAREST), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("REPEAT"), GetGL_REPEAT);
+     Gl->Set(String::NewSymbol("REPEAT"), Uint32::New(GL_REPEAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLAMP"), GetGL_CLAMP);
+     Gl->Set(String::NewSymbol("CLAMP"), Uint32::New(GL_CLAMP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("S"), GetGL_S);
+     Gl->Set(String::NewSymbol("S"), Uint32::New(GL_S), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("T"), GetGL_T);
+     Gl->Set(String::NewSymbol("T"), Uint32::New(GL_T), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("R"), GetGL_R);
+     Gl->Set(String::NewSymbol("R"), Uint32::New(GL_R), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("Q"), GetGL_Q);
+     Gl->Set(String::NewSymbol("Q"), Uint32::New(GL_Q), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GEN_R"), GetGL_TEXTURE_GEN_R);
+     Gl->Set(String::NewSymbol("TEXTURE_GEN_R"), Uint32::New(GL_TEXTURE_GEN_R), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_GEN_Q"), GetGL_TEXTURE_GEN_Q);
+     Gl->Set(String::NewSymbol("TEXTURE_GEN_Q"), Uint32::New(GL_TEXTURE_GEN_Q), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VENDOR"), GetGL_VENDOR);
+     Gl->Set(String::NewSymbol("VENDOR"), Uint32::New(GL_VENDOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RENDERER"), GetGL_RENDERER);
+     Gl->Set(String::NewSymbol("RENDERER"), Uint32::New(GL_RENDERER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VERSION"), GetGL_VERSION);
+     Gl->Set(String::NewSymbol("VERSION"), Uint32::New(GL_VERSION), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EXTENSIONS"), GetGL_EXTENSIONS);
+     Gl->Set(String::NewSymbol("EXTENSIONS"), Uint32::New(GL_EXTENSIONS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NO_ERROR"), GetGL_NO_ERROR);
+     Gl->Set(String::NewSymbol("NO_ERROR"), Uint32::New(GL_NO_ERROR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INVALID_ENUM"), GetGL_INVALID_ENUM);
+     Gl->Set(String::NewSymbol("INVALID_ENUM"), Uint32::New(GL_INVALID_ENUM), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INVALID_VALUE"), GetGL_INVALID_VALUE);
+     Gl->Set(String::NewSymbol("INVALID_VALUE"), Uint32::New(GL_INVALID_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STACK_OVERFLOW"), GetGL_STACK_OVERFLOW);
+     Gl->Set(String::NewSymbol("STACK_OVERFLOW"), Uint32::New(GL_STACK_OVERFLOW), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STACK_UNDERFLOW"), GetGL_STACK_UNDERFLOW);
+     Gl->Set(String::NewSymbol("STACK_UNDERFLOW"), Uint32::New(GL_STACK_UNDERFLOW), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OUT_OF_MEMORY"), GetGL_OUT_OF_MEMORY);
+     Gl->Set(String::NewSymbol("OUT_OF_MEMORY"), Uint32::New(GL_OUT_OF_MEMORY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CURRENT_BIT"), GetGL_CURRENT_BIT);
+     Gl->Set(String::NewSymbol("CURRENT_BIT"), Uint32::New(GL_CURRENT_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POINT_BIT"), GetGL_POINT_BIT);
+     Gl->Set(String::NewSymbol("POINT_BIT"), Uint32::New(GL_POINT_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LINE_BIT"), GetGL_LINE_BIT);
+     Gl->Set(String::NewSymbol("LINE_BIT"), Uint32::New(GL_LINE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_BIT"), GetGL_POLYGON_BIT);
+     Gl->Set(String::NewSymbol("POLYGON_BIT"), Uint32::New(GL_POLYGON_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POLYGON_STIPPLE_BIT"), GetGL_POLYGON_STIPPLE_BIT);
+     Gl->Set(String::NewSymbol("POLYGON_STIPPLE_BIT"), Uint32::New(GL_POLYGON_STIPPLE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PIXEL_MODE_BIT"), GetGL_PIXEL_MODE_BIT);
+     Gl->Set(String::NewSymbol("PIXEL_MODE_BIT"), Uint32::New(GL_PIXEL_MODE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHTING_BIT"), GetGL_LIGHTING_BIT);
+     Gl->Set(String::NewSymbol("LIGHTING_BIT"), Uint32::New(GL_LIGHTING_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FOG_BIT"), GetGL_FOG_BIT);
+     Gl->Set(String::NewSymbol("FOG_BIT"), Uint32::New(GL_FOG_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_BUFFER_BIT"), GetGL_DEPTH_BUFFER_BIT);
+     Gl->Set(String::NewSymbol("DEPTH_BUFFER_BIT"), Uint32::New(GL_DEPTH_BUFFER_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACCUM_BUFFER_BIT"), GetGL_ACCUM_BUFFER_BIT);
+     Gl->Set(String::NewSymbol("ACCUM_BUFFER_BIT"), Uint32::New(GL_ACCUM_BUFFER_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("STENCIL_BUFFER_BIT"), GetGL_STENCIL_BUFFER_BIT);
+     Gl->Set(String::NewSymbol("STENCIL_BUFFER_BIT"), Uint32::New(GL_STENCIL_BUFFER_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("VIEWPORT_BIT"), GetGL_VIEWPORT_BIT);
+     Gl->Set(String::NewSymbol("VIEWPORT_BIT"), Uint32::New(GL_VIEWPORT_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRANSFORM_BIT"), GetGL_TRANSFORM_BIT);
+     Gl->Set(String::NewSymbol("TRANSFORM_BIT"), Uint32::New(GL_TRANSFORM_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ENABLE_BIT"), GetGL_ENABLE_BIT);
+     Gl->Set(String::NewSymbol("ENABLE_BIT"), Uint32::New(GL_ENABLE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_BUFFER_BIT"), GetGL_COLOR_BUFFER_BIT);
+     Gl->Set(String::NewSymbol("COLOR_BUFFER_BIT"), Uint32::New(GL_COLOR_BUFFER_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HINT_BIT"), GetGL_HINT_BIT);
+     Gl->Set(String::NewSymbol("HINT_BIT"), Uint32::New(GL_HINT_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("EVAL_BIT"), GetGL_EVAL_BIT);
+     Gl->Set(String::NewSymbol("EVAL_BIT"), Uint32::New(GL_EVAL_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIST_BIT"), GetGL_LIST_BIT);
+     Gl->Set(String::NewSymbol("LIST_BIT"), Uint32::New(GL_LIST_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BIT"), GetGL_TEXTURE_BIT);
+     Gl->Set(String::NewSymbol("TEXTURE_BIT"), Uint32::New(GL_TEXTURE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SCISSOR_BIT"), GetGL_SCISSOR_BIT);
+     Gl->Set(String::NewSymbol("SCISSOR_BIT"), Uint32::New(GL_SCISSOR_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALL_ATTRIB_BITS"), GetGL_ALL_ATTRIB_BITS);
+     Gl->Set(String::NewSymbol("ALL_ATTRIB_BITS"), Uint32::New(GL_ALL_ATTRIB_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_1D"), GetGL_PROXY_TEXTURE_1D);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_1D"), Uint32::New(GL_PROXY_TEXTURE_1D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_2D"), GetGL_PROXY_TEXTURE_2D);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_2D"), Uint32::New(GL_PROXY_TEXTURE_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_PRIORITY"), GetGL_TEXTURE_PRIORITY);
+     Gl->Set(String::NewSymbol("TEXTURE_PRIORITY"), Uint32::New(GL_TEXTURE_PRIORITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_RESIDENT"), GetGL_TEXTURE_RESIDENT);
+     Gl->Set(String::NewSymbol("TEXTURE_RESIDENT"), Uint32::New(GL_TEXTURE_RESIDENT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_1D"), GetGL_TEXTURE_BINDING_1D);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_1D"), Uint32::New(GL_TEXTURE_BINDING_1D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_2D"), GetGL_TEXTURE_BINDING_2D);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_2D"), Uint32::New(GL_TEXTURE_BINDING_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_INTERNAL_FORMAT"), GetGL_TEXTURE_INTERNAL_FORMAT);
+     Gl->Set(String::NewSymbol("TEXTURE_INTERNAL_FORMAT"), Uint32::New(GL_TEXTURE_INTERNAL_FORMAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA4"), GetGL_ALPHA4);
+     Gl->Set(String::NewSymbol("ALPHA4"), Uint32::New(GL_ALPHA4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA8"), GetGL_ALPHA8);
+     Gl->Set(String::NewSymbol("ALPHA8"), Uint32::New(GL_ALPHA8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA12"), GetGL_ALPHA12);
+     Gl->Set(String::NewSymbol("ALPHA12"), Uint32::New(GL_ALPHA12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA16"), GetGL_ALPHA16);
+     Gl->Set(String::NewSymbol("ALPHA16"), Uint32::New(GL_ALPHA16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE4"), GetGL_LUMINANCE4);
+     Gl->Set(String::NewSymbol("LUMINANCE4"), Uint32::New(GL_LUMINANCE4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE8"), GetGL_LUMINANCE8);
+     Gl->Set(String::NewSymbol("LUMINANCE8"), Uint32::New(GL_LUMINANCE8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE12"), GetGL_LUMINANCE12);
+     Gl->Set(String::NewSymbol("LUMINANCE12"), Uint32::New(GL_LUMINANCE12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE16"), GetGL_LUMINANCE16);
+     Gl->Set(String::NewSymbol("LUMINANCE16"), Uint32::New(GL_LUMINANCE16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE4_ALPHA4"), GetGL_LUMINANCE4_ALPHA4);
+     Gl->Set(String::NewSymbol("LUMINANCE4_ALPHA4"), Uint32::New(GL_LUMINANCE4_ALPHA4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE6_ALPHA2"), GetGL_LUMINANCE6_ALPHA2);
+     Gl->Set(String::NewSymbol("LUMINANCE6_ALPHA2"), Uint32::New(GL_LUMINANCE6_ALPHA2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE8_ALPHA8"), GetGL_LUMINANCE8_ALPHA8);
+     Gl->Set(String::NewSymbol("LUMINANCE8_ALPHA8"), Uint32::New(GL_LUMINANCE8_ALPHA8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE12_ALPHA4"), GetGL_LUMINANCE12_ALPHA4);
+     Gl->Set(String::NewSymbol("LUMINANCE12_ALPHA4"), Uint32::New(GL_LUMINANCE12_ALPHA4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE12_ALPHA12"), GetGL_LUMINANCE12_ALPHA12);
+     Gl->Set(String::NewSymbol("LUMINANCE12_ALPHA12"), Uint32::New(GL_LUMINANCE12_ALPHA12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LUMINANCE16_ALPHA16"), GetGL_LUMINANCE16_ALPHA16);
+     Gl->Set(String::NewSymbol("LUMINANCE16_ALPHA16"), Uint32::New(GL_LUMINANCE16_ALPHA16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTENSITY"), GetGL_INTENSITY);
+     Gl->Set(String::NewSymbol("INTENSITY"), Uint32::New(GL_INTENSITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTENSITY4"), GetGL_INTENSITY4);
+     Gl->Set(String::NewSymbol("INTENSITY4"), Uint32::New(GL_INTENSITY4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTENSITY8"), GetGL_INTENSITY8);
+     Gl->Set(String::NewSymbol("INTENSITY8"), Uint32::New(GL_INTENSITY8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTENSITY12"), GetGL_INTENSITY12);
+     Gl->Set(String::NewSymbol("INTENSITY12"), Uint32::New(GL_INTENSITY12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTENSITY16"), GetGL_INTENSITY16);
+     Gl->Set(String::NewSymbol("INTENSITY16"), Uint32::New(GL_INTENSITY16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("R3_G3_B2"), GetGL_R3_G3_B2);
+     Gl->Set(String::NewSymbol("R3_G3_B2"), Uint32::New(GL_R3_G3_B2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB4"), GetGL_RGB4);
+     Gl->Set(String::NewSymbol("RGB4"), Uint32::New(GL_RGB4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB5"), GetGL_RGB5);
+     Gl->Set(String::NewSymbol("RGB5"), Uint32::New(GL_RGB5), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB8"), GetGL_RGB8);
+     Gl->Set(String::NewSymbol("RGB8"), Uint32::New(GL_RGB8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB10"), GetGL_RGB10);
+     Gl->Set(String::NewSymbol("RGB10"), Uint32::New(GL_RGB10), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB12"), GetGL_RGB12);
+     Gl->Set(String::NewSymbol("RGB12"), Uint32::New(GL_RGB12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB16"), GetGL_RGB16);
+     Gl->Set(String::NewSymbol("RGB16"), Uint32::New(GL_RGB16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA2"), GetGL_RGBA2);
+     Gl->Set(String::NewSymbol("RGBA2"), Uint32::New(GL_RGBA2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA4"), GetGL_RGBA4);
+     Gl->Set(String::NewSymbol("RGBA4"), Uint32::New(GL_RGBA4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB5_A1"), GetGL_RGB5_A1);
+     Gl->Set(String::NewSymbol("RGB5_A1"), Uint32::New(GL_RGB5_A1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA8"), GetGL_RGBA8);
+     Gl->Set(String::NewSymbol("RGBA8"), Uint32::New(GL_RGBA8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB10_A2"), GetGL_RGB10_A2);
+     Gl->Set(String::NewSymbol("RGB10_A2"), Uint32::New(GL_RGB10_A2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA12"), GetGL_RGBA12);
+     Gl->Set(String::NewSymbol("RGBA12"), Uint32::New(GL_RGBA12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGBA16"), GetGL_RGBA16);
+     Gl->Set(String::NewSymbol("RGBA16"), Uint32::New(GL_RGBA16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_PIXEL_STORE_BIT"), GetGL_CLIENT_PIXEL_STORE_BIT);
+     Gl->Set(String::NewSymbol("CLIENT_PIXEL_STORE_BIT"), Uint32::New(GL_CLIENT_PIXEL_STORE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_VERTEX_ARRAY_BIT"), GetGL_CLIENT_VERTEX_ARRAY_BIT);
+     Gl->Set(String::NewSymbol("CLIENT_VERTEX_ARRAY_BIT"), Uint32::New(GL_CLIENT_VERTEX_ARRAY_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALL_CLIENT_ATTRIB_BITS"), GetGL_ALL_CLIENT_ATTRIB_BITS);
+     Gl->Set(String::NewSymbol("ALL_CLIENT_ATTRIB_BITS"), Uint32::New(GL_ALL_CLIENT_ATTRIB_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_ALL_ATTRIB_BITS"), GetGL_CLIENT_ALL_ATTRIB_BITS);
+     Gl->Set(String::NewSymbol("CLIENT_ALL_ATTRIB_BITS"), Uint32::New(GL_CLIENT_ALL_ATTRIB_BITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RESCALE_NORMAL"), GetGL_RESCALE_NORMAL);
+     Gl->Set(String::NewSymbol("RESCALE_NORMAL"), Uint32::New(GL_RESCALE_NORMAL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLAMP_TO_EDGE"), GetGL_CLAMP_TO_EDGE);
+     Gl->Set(String::NewSymbol("CLAMP_TO_EDGE"), Uint32::New(GL_CLAMP_TO_EDGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_ELEMENTS_VERTICES"), GetGL_MAX_ELEMENTS_VERTICES);
+     Gl->Set(String::NewSymbol("MAX_ELEMENTS_VERTICES"), Uint32::New(GL_MAX_ELEMENTS_VERTICES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_ELEMENTS_INDICES"), GetGL_MAX_ELEMENTS_INDICES);
+     Gl->Set(String::NewSymbol("MAX_ELEMENTS_INDICES"), Uint32::New(GL_MAX_ELEMENTS_INDICES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BGR"), GetGL_BGR);
+     Gl->Set(String::NewSymbol("BGR"), Uint32::New(GL_BGR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BGRA"), GetGL_BGRA);
+     Gl->Set(String::NewSymbol("BGRA"), Uint32::New(GL_BGRA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_BYTE_3_3_2"), GetGL_UNSIGNED_BYTE_3_3_2);
+     Gl->Set(String::NewSymbol("UNSIGNED_BYTE_3_3_2"), Uint32::New(GL_UNSIGNED_BYTE_3_3_2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_BYTE_2_3_3_REV"), GetGL_UNSIGNED_BYTE_2_3_3_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_BYTE_2_3_3_REV"), Uint32::New(GL_UNSIGNED_BYTE_2_3_3_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_5_6_5"), GetGL_UNSIGNED_SHORT_5_6_5);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_5_6_5"), Uint32::New(GL_UNSIGNED_SHORT_5_6_5), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_5_6_5_REV"), GetGL_UNSIGNED_SHORT_5_6_5_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_5_6_5_REV"), Uint32::New(GL_UNSIGNED_SHORT_5_6_5_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_4_4_4_4"), GetGL_UNSIGNED_SHORT_4_4_4_4);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_4_4_4_4"), Uint32::New(GL_UNSIGNED_SHORT_4_4_4_4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_4_4_4_4_REV"), GetGL_UNSIGNED_SHORT_4_4_4_4_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_4_4_4_4_REV"), Uint32::New(GL_UNSIGNED_SHORT_4_4_4_4_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_5_5_5_1"), GetGL_UNSIGNED_SHORT_5_5_5_1);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_5_5_5_1"), Uint32::New(GL_UNSIGNED_SHORT_5_5_5_1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_1_5_5_5_REV"), GetGL_UNSIGNED_SHORT_1_5_5_5_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_SHORT_1_5_5_5_REV"), Uint32::New(GL_UNSIGNED_SHORT_1_5_5_5_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_8_8_8_8"), GetGL_UNSIGNED_INT_8_8_8_8);
+     Gl->Set(String::NewSymbol("UNSIGNED_INT_8_8_8_8"), Uint32::New(GL_UNSIGNED_INT_8_8_8_8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_8_8_8_8_REV"), GetGL_UNSIGNED_INT_8_8_8_8_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_INT_8_8_8_8_REV"), Uint32::New(GL_UNSIGNED_INT_8_8_8_8_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_10_10_10_2"), GetGL_UNSIGNED_INT_10_10_10_2);
+     Gl->Set(String::NewSymbol("UNSIGNED_INT_10_10_10_2"), Uint32::New(GL_UNSIGNED_INT_10_10_10_2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_2_10_10_10_REV"), GetGL_UNSIGNED_INT_2_10_10_10_REV);
+     Gl->Set(String::NewSymbol("UNSIGNED_INT_2_10_10_10_REV"), Uint32::New(GL_UNSIGNED_INT_2_10_10_10_REV), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("LIGHT_MODEL_COLOR_CONTROL"), GetGL_LIGHT_MODEL_COLOR_CONTROL);
+     Gl->Set(String::NewSymbol("LIGHT_MODEL_COLOR_CONTROL"), Uint32::New(GL_LIGHT_MODEL_COLOR_CONTROL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SINGLE_COLOR"), GetGL_SINGLE_COLOR);
+     Gl->Set(String::NewSymbol("SINGLE_COLOR"), Uint32::New(GL_SINGLE_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SEPARATE_SPECULAR_COLOR"), GetGL_SEPARATE_SPECULAR_COLOR);
+     Gl->Set(String::NewSymbol("SEPARATE_SPECULAR_COLOR"), Uint32::New(GL_SEPARATE_SPECULAR_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MIN_LOD"), GetGL_TEXTURE_MIN_LOD);
+     Gl->Set(String::NewSymbol("TEXTURE_MIN_LOD"), Uint32::New(GL_TEXTURE_MIN_LOD), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MAX_LOD"), GetGL_TEXTURE_MAX_LOD);
+     Gl->Set(String::NewSymbol("TEXTURE_MAX_LOD"), Uint32::New(GL_TEXTURE_MAX_LOD), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BASE_LEVEL"), GetGL_TEXTURE_BASE_LEVEL);
+     Gl->Set(String::NewSymbol("TEXTURE_BASE_LEVEL"), Uint32::New(GL_TEXTURE_BASE_LEVEL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_MAX_LEVEL"), GetGL_TEXTURE_MAX_LEVEL);
+     Gl->Set(String::NewSymbol("TEXTURE_MAX_LEVEL"), Uint32::New(GL_TEXTURE_MAX_LEVEL), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SMOOTH_POINT_SIZE_RANGE"), GetGL_SMOOTH_POINT_SIZE_RANGE);
+     Gl->Set(String::NewSymbol("SMOOTH_POINT_SIZE_RANGE"), Uint32::New(GL_SMOOTH_POINT_SIZE_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SMOOTH_POINT_SIZE_GRANULARITY"), GetGL_SMOOTH_POINT_SIZE_GRANULARITY);
+     Gl->Set(String::NewSymbol("SMOOTH_POINT_SIZE_GRANULARITY"), Uint32::New(GL_SMOOTH_POINT_SIZE_GRANULARITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SMOOTH_LINE_WIDTH_RANGE"), GetGL_SMOOTH_LINE_WIDTH_RANGE);
+     Gl->Set(String::NewSymbol("SMOOTH_LINE_WIDTH_RANGE"), Uint32::New(GL_SMOOTH_LINE_WIDTH_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SMOOTH_LINE_WIDTH_GRANULARITY"), GetGL_SMOOTH_LINE_WIDTH_GRANULARITY);
+     Gl->Set(String::NewSymbol("SMOOTH_LINE_WIDTH_GRANULARITY"), Uint32::New(GL_SMOOTH_LINE_WIDTH_GRANULARITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALIASED_POINT_SIZE_RANGE"), GetGL_ALIASED_POINT_SIZE_RANGE);
+     Gl->Set(String::NewSymbol("ALIASED_POINT_SIZE_RANGE"), Uint32::New(GL_ALIASED_POINT_SIZE_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ALIASED_LINE_WIDTH_RANGE"), GetGL_ALIASED_LINE_WIDTH_RANGE);
+     Gl->Set(String::NewSymbol("ALIASED_LINE_WIDTH_RANGE"), Uint32::New(GL_ALIASED_LINE_WIDTH_RANGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_SKIP_IMAGES"), GetGL_PACK_SKIP_IMAGES);
+     Gl->Set(String::NewSymbol("PACK_SKIP_IMAGES"), Uint32::New(GL_PACK_SKIP_IMAGES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PACK_IMAGE_HEIGHT"), GetGL_PACK_IMAGE_HEIGHT);
+     Gl->Set(String::NewSymbol("PACK_IMAGE_HEIGHT"), Uint32::New(GL_PACK_IMAGE_HEIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_SKIP_IMAGES"), GetGL_UNPACK_SKIP_IMAGES);
+     Gl->Set(String::NewSymbol("UNPACK_SKIP_IMAGES"), Uint32::New(GL_UNPACK_SKIP_IMAGES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("UNPACK_IMAGE_HEIGHT"), GetGL_UNPACK_IMAGE_HEIGHT);
+     Gl->Set(String::NewSymbol("UNPACK_IMAGE_HEIGHT"), Uint32::New(GL_UNPACK_IMAGE_HEIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_3D"), GetGL_TEXTURE_3D);
+     Gl->Set(String::NewSymbol("TEXTURE_3D"), Uint32::New(GL_TEXTURE_3D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_3D"), GetGL_PROXY_TEXTURE_3D);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_3D"), Uint32::New(GL_PROXY_TEXTURE_3D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_DEPTH"), GetGL_TEXTURE_DEPTH);
+     Gl->Set(String::NewSymbol("TEXTURE_DEPTH"), Uint32::New(GL_TEXTURE_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_WRAP_R"), GetGL_TEXTURE_WRAP_R);
+     Gl->Set(String::NewSymbol("TEXTURE_WRAP_R"), Uint32::New(GL_TEXTURE_WRAP_R), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_3D_TEXTURE_SIZE"), GetGL_MAX_3D_TEXTURE_SIZE);
+     Gl->Set(String::NewSymbol("MAX_3D_TEXTURE_SIZE"), Uint32::New(GL_MAX_3D_TEXTURE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_3D"), GetGL_TEXTURE_BINDING_3D);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_3D"), Uint32::New(GL_TEXTURE_BINDING_3D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONSTANT_COLOR"), GetGL_CONSTANT_COLOR);
+     Gl->Set(String::NewSymbol("CONSTANT_COLOR"), Uint32::New(GL_CONSTANT_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_CONSTANT_COLOR"), GetGL_ONE_MINUS_CONSTANT_COLOR);
+     Gl->Set(String::NewSymbol("ONE_MINUS_CONSTANT_COLOR"), Uint32::New(GL_ONE_MINUS_CONSTANT_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONSTANT_ALPHA"), GetGL_CONSTANT_ALPHA);
+     Gl->Set(String::NewSymbol("CONSTANT_ALPHA"), Uint32::New(GL_CONSTANT_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ONE_MINUS_CONSTANT_ALPHA"), GetGL_ONE_MINUS_CONSTANT_ALPHA);
+     Gl->Set(String::NewSymbol("ONE_MINUS_CONSTANT_ALPHA"), Uint32::New(GL_ONE_MINUS_CONSTANT_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE"), GetGL_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE"), Uint32::New(GL_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_COLOR_TABLE"), GetGL_POST_CONVOLUTION_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_COLOR_TABLE"), Uint32::New(GL_POST_CONVOLUTION_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_COLOR_TABLE"), GetGL_POST_COLOR_MATRIX_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_COLOR_TABLE"), Uint32::New(GL_POST_COLOR_MATRIX_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_COLOR_TABLE"), GetGL_PROXY_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("PROXY_COLOR_TABLE"), Uint32::New(GL_PROXY_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_POST_CONVOLUTION_COLOR_TABLE"), GetGL_PROXY_POST_CONVOLUTION_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("PROXY_POST_CONVOLUTION_COLOR_TABLE"), Uint32::New(GL_PROXY_POST_CONVOLUTION_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_POST_COLOR_MATRIX_COLOR_TABLE"), GetGL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE);
+     Gl->Set(String::NewSymbol("PROXY_POST_COLOR_MATRIX_COLOR_TABLE"), Uint32::New(GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_SCALE"), GetGL_COLOR_TABLE_SCALE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_SCALE"), Uint32::New(GL_COLOR_TABLE_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_BIAS"), GetGL_COLOR_TABLE_BIAS);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_BIAS"), Uint32::New(GL_COLOR_TABLE_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_FORMAT"), GetGL_COLOR_TABLE_FORMAT);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_FORMAT"), Uint32::New(GL_COLOR_TABLE_FORMAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_WIDTH"), GetGL_COLOR_TABLE_WIDTH);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_WIDTH"), Uint32::New(GL_COLOR_TABLE_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_RED_SIZE"), GetGL_COLOR_TABLE_RED_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_RED_SIZE"), Uint32::New(GL_COLOR_TABLE_RED_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_GREEN_SIZE"), GetGL_COLOR_TABLE_GREEN_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_GREEN_SIZE"), Uint32::New(GL_COLOR_TABLE_GREEN_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_BLUE_SIZE"), GetGL_COLOR_TABLE_BLUE_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_BLUE_SIZE"), Uint32::New(GL_COLOR_TABLE_BLUE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_ALPHA_SIZE"), GetGL_COLOR_TABLE_ALPHA_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_ALPHA_SIZE"), Uint32::New(GL_COLOR_TABLE_ALPHA_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_LUMINANCE_SIZE"), GetGL_COLOR_TABLE_LUMINANCE_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_LUMINANCE_SIZE"), Uint32::New(GL_COLOR_TABLE_LUMINANCE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_TABLE_INTENSITY_SIZE"), GetGL_COLOR_TABLE_INTENSITY_SIZE);
+     Gl->Set(String::NewSymbol("COLOR_TABLE_INTENSITY_SIZE"), Uint32::New(GL_COLOR_TABLE_INTENSITY_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_1D"), GetGL_CONVOLUTION_1D);
+     Gl->Set(String::NewSymbol("CONVOLUTION_1D"), Uint32::New(GL_CONVOLUTION_1D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_2D"), GetGL_CONVOLUTION_2D);
+     Gl->Set(String::NewSymbol("CONVOLUTION_2D"), Uint32::New(GL_CONVOLUTION_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SEPARABLE_2D"), GetGL_SEPARABLE_2D);
+     Gl->Set(String::NewSymbol("SEPARABLE_2D"), Uint32::New(GL_SEPARABLE_2D), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_BORDER_MODE"), GetGL_CONVOLUTION_BORDER_MODE);
+     Gl->Set(String::NewSymbol("CONVOLUTION_BORDER_MODE"), Uint32::New(GL_CONVOLUTION_BORDER_MODE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_FILTER_SCALE"), GetGL_CONVOLUTION_FILTER_SCALE);
+     Gl->Set(String::NewSymbol("CONVOLUTION_FILTER_SCALE"), Uint32::New(GL_CONVOLUTION_FILTER_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_FILTER_BIAS"), GetGL_CONVOLUTION_FILTER_BIAS);
+     Gl->Set(String::NewSymbol("CONVOLUTION_FILTER_BIAS"), Uint32::New(GL_CONVOLUTION_FILTER_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("REDUCE"), GetGL_REDUCE);
+     Gl->Set(String::NewSymbol("REDUCE"), Uint32::New(GL_REDUCE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_FORMAT"), GetGL_CONVOLUTION_FORMAT);
+     Gl->Set(String::NewSymbol("CONVOLUTION_FORMAT"), Uint32::New(GL_CONVOLUTION_FORMAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_WIDTH"), GetGL_CONVOLUTION_WIDTH);
+     Gl->Set(String::NewSymbol("CONVOLUTION_WIDTH"), Uint32::New(GL_CONVOLUTION_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_HEIGHT"), GetGL_CONVOLUTION_HEIGHT);
+     Gl->Set(String::NewSymbol("CONVOLUTION_HEIGHT"), Uint32::New(GL_CONVOLUTION_HEIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_CONVOLUTION_WIDTH"), GetGL_MAX_CONVOLUTION_WIDTH);
+     Gl->Set(String::NewSymbol("MAX_CONVOLUTION_WIDTH"), Uint32::New(GL_MAX_CONVOLUTION_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_CONVOLUTION_HEIGHT"), GetGL_MAX_CONVOLUTION_HEIGHT);
+     Gl->Set(String::NewSymbol("MAX_CONVOLUTION_HEIGHT"), Uint32::New(GL_MAX_CONVOLUTION_HEIGHT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_RED_SCALE"), GetGL_POST_CONVOLUTION_RED_SCALE);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_RED_SCALE"), Uint32::New(GL_POST_CONVOLUTION_RED_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_GREEN_SCALE"), GetGL_POST_CONVOLUTION_GREEN_SCALE);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_GREEN_SCALE"), Uint32::New(GL_POST_CONVOLUTION_GREEN_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_BLUE_SCALE"), GetGL_POST_CONVOLUTION_BLUE_SCALE);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_BLUE_SCALE"), Uint32::New(GL_POST_CONVOLUTION_BLUE_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_ALPHA_SCALE"), GetGL_POST_CONVOLUTION_ALPHA_SCALE);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_ALPHA_SCALE"), Uint32::New(GL_POST_CONVOLUTION_ALPHA_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_RED_BIAS"), GetGL_POST_CONVOLUTION_RED_BIAS);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_RED_BIAS"), Uint32::New(GL_POST_CONVOLUTION_RED_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_GREEN_BIAS"), GetGL_POST_CONVOLUTION_GREEN_BIAS);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_GREEN_BIAS"), Uint32::New(GL_POST_CONVOLUTION_GREEN_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_BLUE_BIAS"), GetGL_POST_CONVOLUTION_BLUE_BIAS);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_BLUE_BIAS"), Uint32::New(GL_POST_CONVOLUTION_BLUE_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_CONVOLUTION_ALPHA_BIAS"), GetGL_POST_CONVOLUTION_ALPHA_BIAS);
+     Gl->Set(String::NewSymbol("POST_CONVOLUTION_ALPHA_BIAS"), Uint32::New(GL_POST_CONVOLUTION_ALPHA_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONSTANT_BORDER"), GetGL_CONSTANT_BORDER);
+     Gl->Set(String::NewSymbol("CONSTANT_BORDER"), Uint32::New(GL_CONSTANT_BORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("REPLICATE_BORDER"), GetGL_REPLICATE_BORDER);
+     Gl->Set(String::NewSymbol("REPLICATE_BORDER"), Uint32::New(GL_REPLICATE_BORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONVOLUTION_BORDER_COLOR"), GetGL_CONVOLUTION_BORDER_COLOR);
+     Gl->Set(String::NewSymbol("CONVOLUTION_BORDER_COLOR"), Uint32::New(GL_CONVOLUTION_BORDER_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_MATRIX"), GetGL_COLOR_MATRIX);
+     Gl->Set(String::NewSymbol("COLOR_MATRIX"), Uint32::New(GL_COLOR_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COLOR_MATRIX_STACK_DEPTH"), GetGL_COLOR_MATRIX_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("COLOR_MATRIX_STACK_DEPTH"), Uint32::New(GL_COLOR_MATRIX_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_COLOR_MATRIX_STACK_DEPTH"), GetGL_MAX_COLOR_MATRIX_STACK_DEPTH);
+     Gl->Set(String::NewSymbol("MAX_COLOR_MATRIX_STACK_DEPTH"), Uint32::New(GL_MAX_COLOR_MATRIX_STACK_DEPTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_RED_SCALE"), GetGL_POST_COLOR_MATRIX_RED_SCALE);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_RED_SCALE"), Uint32::New(GL_POST_COLOR_MATRIX_RED_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_GREEN_SCALE"), GetGL_POST_COLOR_MATRIX_GREEN_SCALE);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_GREEN_SCALE"), Uint32::New(GL_POST_COLOR_MATRIX_GREEN_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_BLUE_SCALE"), GetGL_POST_COLOR_MATRIX_BLUE_SCALE);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_BLUE_SCALE"), Uint32::New(GL_POST_COLOR_MATRIX_BLUE_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_ALPHA_SCALE"), GetGL_POST_COLOR_MATRIX_ALPHA_SCALE);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_ALPHA_SCALE"), Uint32::New(GL_POST_COLOR_MATRIX_ALPHA_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_RED_BIAS"), GetGL_POST_COLOR_MATRIX_RED_BIAS);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_RED_BIAS"), Uint32::New(GL_POST_COLOR_MATRIX_RED_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_GREEN_BIAS"), GetGL_POST_COLOR_MATRIX_GREEN_BIAS);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_GREEN_BIAS"), Uint32::New(GL_POST_COLOR_MATRIX_GREEN_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_BLUE_BIAS"), GetGL_POST_COLOR_MATRIX_BLUE_BIAS);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_BLUE_BIAS"), Uint32::New(GL_POST_COLOR_MATRIX_BLUE_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("POST_COLOR_MATRIX_ALPHA_BIAS"), GetGL_POST_COLOR_MATRIX_ALPHA_BIAS);
+     Gl->Set(String::NewSymbol("POST_COLOR_MATRIX_ALPHA_BIAS"), Uint32::New(GL_POST_COLOR_MATRIX_ALPHA_BIAS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM"), GetGL_HISTOGRAM);
+     Gl->Set(String::NewSymbol("HISTOGRAM"), Uint32::New(GL_HISTOGRAM), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_HISTOGRAM"), GetGL_PROXY_HISTOGRAM);
+     Gl->Set(String::NewSymbol("PROXY_HISTOGRAM"), Uint32::New(GL_PROXY_HISTOGRAM), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_WIDTH"), GetGL_HISTOGRAM_WIDTH);
+     Gl->Set(String::NewSymbol("HISTOGRAM_WIDTH"), Uint32::New(GL_HISTOGRAM_WIDTH), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_FORMAT"), GetGL_HISTOGRAM_FORMAT);
+     Gl->Set(String::NewSymbol("HISTOGRAM_FORMAT"), Uint32::New(GL_HISTOGRAM_FORMAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_RED_SIZE"), GetGL_HISTOGRAM_RED_SIZE);
+     Gl->Set(String::NewSymbol("HISTOGRAM_RED_SIZE"), Uint32::New(GL_HISTOGRAM_RED_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_GREEN_SIZE"), GetGL_HISTOGRAM_GREEN_SIZE);
+     Gl->Set(String::NewSymbol("HISTOGRAM_GREEN_SIZE"), Uint32::New(GL_HISTOGRAM_GREEN_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_BLUE_SIZE"), GetGL_HISTOGRAM_BLUE_SIZE);
+     Gl->Set(String::NewSymbol("HISTOGRAM_BLUE_SIZE"), Uint32::New(GL_HISTOGRAM_BLUE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_ALPHA_SIZE"), GetGL_HISTOGRAM_ALPHA_SIZE);
+     Gl->Set(String::NewSymbol("HISTOGRAM_ALPHA_SIZE"), Uint32::New(GL_HISTOGRAM_ALPHA_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_LUMINANCE_SIZE"), GetGL_HISTOGRAM_LUMINANCE_SIZE);
+     Gl->Set(String::NewSymbol("HISTOGRAM_LUMINANCE_SIZE"), Uint32::New(GL_HISTOGRAM_LUMINANCE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("HISTOGRAM_SINK"), GetGL_HISTOGRAM_SINK);
+     Gl->Set(String::NewSymbol("HISTOGRAM_SINK"), Uint32::New(GL_HISTOGRAM_SINK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MINMAX"), GetGL_MINMAX);
+     Gl->Set(String::NewSymbol("MINMAX"), Uint32::New(GL_MINMAX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MINMAX_FORMAT"), GetGL_MINMAX_FORMAT);
+     Gl->Set(String::NewSymbol("MINMAX_FORMAT"), Uint32::New(GL_MINMAX_FORMAT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MINMAX_SINK"), GetGL_MINMAX_SINK);
+     Gl->Set(String::NewSymbol("MINMAX_SINK"), Uint32::New(GL_MINMAX_SINK), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TABLE_TOO_LARGE"), GetGL_TABLE_TOO_LARGE);
+     Gl->Set(String::NewSymbol("TABLE_TOO_LARGE"), Uint32::New(GL_TABLE_TOO_LARGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MIN"), GetGL_MIN);
+     Gl->Set(String::NewSymbol("MIN"), Uint32::New(GL_MIN), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX"), GetGL_MAX);
+     Gl->Set(String::NewSymbol("MAX"), Uint32::New(GL_MAX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FUNC_ADD"), GetGL_FUNC_ADD);
+     Gl->Set(String::NewSymbol("FUNC_ADD"), Uint32::New(GL_FUNC_ADD), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FUNC_SUBTRACT"), GetGL_FUNC_SUBTRACT);
+     Gl->Set(String::NewSymbol("FUNC_SUBTRACT"), Uint32::New(GL_FUNC_SUBTRACT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FUNC_REVERSE_SUBTRACT"), GetGL_FUNC_REVERSE_SUBTRACT);
+     Gl->Set(String::NewSymbol("FUNC_REVERSE_SUBTRACT"), Uint32::New(GL_FUNC_REVERSE_SUBTRACT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("BLEND_COLOR"), GetGL_BLEND_COLOR);
+     Gl->Set(String::NewSymbol("BLEND_COLOR"), Uint32::New(GL_BLEND_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE0"), GetGL_TEXTURE0);
+     Gl->Set(String::NewSymbol("TEXTURE0"), Uint32::New(GL_TEXTURE0), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE1"), GetGL_TEXTURE1);
+     Gl->Set(String::NewSymbol("TEXTURE1"), Uint32::New(GL_TEXTURE1), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE2"), GetGL_TEXTURE2);
+     Gl->Set(String::NewSymbol("TEXTURE2"), Uint32::New(GL_TEXTURE2), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE3"), GetGL_TEXTURE3);
+     Gl->Set(String::NewSymbol("TEXTURE3"), Uint32::New(GL_TEXTURE3), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE4"), GetGL_TEXTURE4);
+     Gl->Set(String::NewSymbol("TEXTURE4"), Uint32::New(GL_TEXTURE4), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE5"), GetGL_TEXTURE5);
+     Gl->Set(String::NewSymbol("TEXTURE5"), Uint32::New(GL_TEXTURE5), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE6"), GetGL_TEXTURE6);
+     Gl->Set(String::NewSymbol("TEXTURE6"), Uint32::New(GL_TEXTURE6), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE7"), GetGL_TEXTURE7);
+     Gl->Set(String::NewSymbol("TEXTURE7"), Uint32::New(GL_TEXTURE7), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE8"), GetGL_TEXTURE8);
+     Gl->Set(String::NewSymbol("TEXTURE8"), Uint32::New(GL_TEXTURE8), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE9"), GetGL_TEXTURE9);
+     Gl->Set(String::NewSymbol("TEXTURE9"), Uint32::New(GL_TEXTURE9), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE10"), GetGL_TEXTURE10);
+     Gl->Set(String::NewSymbol("TEXTURE10"), Uint32::New(GL_TEXTURE10), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE11"), GetGL_TEXTURE11);
+     Gl->Set(String::NewSymbol("TEXTURE11"), Uint32::New(GL_TEXTURE11), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE12"), GetGL_TEXTURE12);
+     Gl->Set(String::NewSymbol("TEXTURE12"), Uint32::New(GL_TEXTURE12), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE13"), GetGL_TEXTURE13);
+     Gl->Set(String::NewSymbol("TEXTURE13"), Uint32::New(GL_TEXTURE13), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE14"), GetGL_TEXTURE14);
+     Gl->Set(String::NewSymbol("TEXTURE14"), Uint32::New(GL_TEXTURE14), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE15"), GetGL_TEXTURE15);
+     Gl->Set(String::NewSymbol("TEXTURE15"), Uint32::New(GL_TEXTURE15), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE16"), GetGL_TEXTURE16);
+     Gl->Set(String::NewSymbol("TEXTURE16"), Uint32::New(GL_TEXTURE16), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE17"), GetGL_TEXTURE17);
+     Gl->Set(String::NewSymbol("TEXTURE17"), Uint32::New(GL_TEXTURE17), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE18"), GetGL_TEXTURE18);
+     Gl->Set(String::NewSymbol("TEXTURE18"), Uint32::New(GL_TEXTURE18), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE19"), GetGL_TEXTURE19);
+     Gl->Set(String::NewSymbol("TEXTURE19"), Uint32::New(GL_TEXTURE19), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE20"), GetGL_TEXTURE20);
+     Gl->Set(String::NewSymbol("TEXTURE20"), Uint32::New(GL_TEXTURE20), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE21"), GetGL_TEXTURE21);
+     Gl->Set(String::NewSymbol("TEXTURE21"), Uint32::New(GL_TEXTURE21), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE22"), GetGL_TEXTURE22);
+     Gl->Set(String::NewSymbol("TEXTURE22"), Uint32::New(GL_TEXTURE22), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE23"), GetGL_TEXTURE23);
+     Gl->Set(String::NewSymbol("TEXTURE23"), Uint32::New(GL_TEXTURE23), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE24"), GetGL_TEXTURE24);
+     Gl->Set(String::NewSymbol("TEXTURE24"), Uint32::New(GL_TEXTURE24), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE25"), GetGL_TEXTURE25);
+     Gl->Set(String::NewSymbol("TEXTURE25"), Uint32::New(GL_TEXTURE25), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE26"), GetGL_TEXTURE26);
+     Gl->Set(String::NewSymbol("TEXTURE26"), Uint32::New(GL_TEXTURE26), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE27"), GetGL_TEXTURE27);
+     Gl->Set(String::NewSymbol("TEXTURE27"), Uint32::New(GL_TEXTURE27), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE28"), GetGL_TEXTURE28);
+     Gl->Set(String::NewSymbol("TEXTURE28"), Uint32::New(GL_TEXTURE28), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE29"), GetGL_TEXTURE29);
+     Gl->Set(String::NewSymbol("TEXTURE29"), Uint32::New(GL_TEXTURE29), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE30"), GetGL_TEXTURE30);
+     Gl->Set(String::NewSymbol("TEXTURE30"), Uint32::New(GL_TEXTURE30), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE31"), GetGL_TEXTURE31);
+     Gl->Set(String::NewSymbol("TEXTURE31"), Uint32::New(GL_TEXTURE31), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACTIVE_TEXTURE"), GetGL_ACTIVE_TEXTURE);
+     Gl->Set(String::NewSymbol("ACTIVE_TEXTURE"), Uint32::New(GL_ACTIVE_TEXTURE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_ACTIVE_TEXTURE"), GetGL_CLIENT_ACTIVE_TEXTURE);
+     Gl->Set(String::NewSymbol("CLIENT_ACTIVE_TEXTURE"), Uint32::New(GL_CLIENT_ACTIVE_TEXTURE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_TEXTURE_UNITS"), GetGL_MAX_TEXTURE_UNITS);
+     Gl->Set(String::NewSymbol("MAX_TEXTURE_UNITS"), Uint32::New(GL_MAX_TEXTURE_UNITS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NORMAL_MAP"), GetGL_NORMAL_MAP);
+     Gl->Set(String::NewSymbol("NORMAL_MAP"), Uint32::New(GL_NORMAL_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("REFLECTION_MAP"), GetGL_REFLECTION_MAP);
+     Gl->Set(String::NewSymbol("REFLECTION_MAP"), Uint32::New(GL_REFLECTION_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP"), GetGL_TEXTURE_CUBE_MAP);
+     Gl->Set(String::NewSymbol("TEXTURE_CUBE_MAP"), Uint32::New(GL_TEXTURE_CUBE_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_CUBE_MAP"), GetGL_TEXTURE_BINDING_CUBE_MAP);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_CUBE_MAP"), Uint32::New(GL_TEXTURE_BINDING_CUBE_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_X"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_X);
+     Gl->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_X"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_X), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Y"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_Y);
+     Gl->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Y"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Y), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Z"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_Z);
+     Gl->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Z"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Z), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_CUBE_MAP"), GetGL_PROXY_TEXTURE_CUBE_MAP);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_CUBE_MAP"), Uint32::New(GL_PROXY_TEXTURE_CUBE_MAP), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_CUBE_MAP_TEXTURE_SIZE"), GetGL_MAX_CUBE_MAP_TEXTURE_SIZE);
+     Gl->Set(String::NewSymbol("MAX_CUBE_MAP_TEXTURE_SIZE"), Uint32::New(GL_MAX_CUBE_MAP_TEXTURE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_ALPHA"), GetGL_COMPRESSED_ALPHA);
+     Gl->Set(String::NewSymbol("COMPRESSED_ALPHA"), Uint32::New(GL_COMPRESSED_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_LUMINANCE"), GetGL_COMPRESSED_LUMINANCE);
+     Gl->Set(String::NewSymbol("COMPRESSED_LUMINANCE"), Uint32::New(GL_COMPRESSED_LUMINANCE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_LUMINANCE_ALPHA"), GetGL_COMPRESSED_LUMINANCE_ALPHA);
+     Gl->Set(String::NewSymbol("COMPRESSED_LUMINANCE_ALPHA"), Uint32::New(GL_COMPRESSED_LUMINANCE_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_INTENSITY"), GetGL_COMPRESSED_INTENSITY);
+     Gl->Set(String::NewSymbol("COMPRESSED_INTENSITY"), Uint32::New(GL_COMPRESSED_INTENSITY), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_RGB"), GetGL_COMPRESSED_RGB);
+     Gl->Set(String::NewSymbol("COMPRESSED_RGB"), Uint32::New(GL_COMPRESSED_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_RGBA"), GetGL_COMPRESSED_RGBA);
+     Gl->Set(String::NewSymbol("COMPRESSED_RGBA"), Uint32::New(GL_COMPRESSED_RGBA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COMPRESSION_HINT"), GetGL_TEXTURE_COMPRESSION_HINT);
+     Gl->Set(String::NewSymbol("TEXTURE_COMPRESSION_HINT"), Uint32::New(GL_TEXTURE_COMPRESSION_HINT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COMPRESSED_IMAGE_SIZE"), GetGL_TEXTURE_COMPRESSED_IMAGE_SIZE);
+     Gl->Set(String::NewSymbol("TEXTURE_COMPRESSED_IMAGE_SIZE"), Uint32::New(GL_TEXTURE_COMPRESSED_IMAGE_SIZE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_COMPRESSED"), GetGL_TEXTURE_COMPRESSED);
+     Gl->Set(String::NewSymbol("TEXTURE_COMPRESSED"), Uint32::New(GL_TEXTURE_COMPRESSED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("NUM_COMPRESSED_TEXTURE_FORMATS"), GetGL_NUM_COMPRESSED_TEXTURE_FORMATS);
+     Gl->Set(String::NewSymbol("NUM_COMPRESSED_TEXTURE_FORMATS"), Uint32::New(GL_NUM_COMPRESSED_TEXTURE_FORMATS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMPRESSED_TEXTURE_FORMATS"), GetGL_COMPRESSED_TEXTURE_FORMATS);
+     Gl->Set(String::NewSymbol("COMPRESSED_TEXTURE_FORMATS"), Uint32::New(GL_COMPRESSED_TEXTURE_FORMATS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MULTISAMPLE"), GetGL_MULTISAMPLE);
+     Gl->Set(String::NewSymbol("MULTISAMPLE"), Uint32::New(GL_MULTISAMPLE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_ALPHA_TO_COVERAGE"), GetGL_SAMPLE_ALPHA_TO_COVERAGE);
+     Gl->Set(String::NewSymbol("SAMPLE_ALPHA_TO_COVERAGE"), Uint32::New(GL_SAMPLE_ALPHA_TO_COVERAGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_ALPHA_TO_ONE"), GetGL_SAMPLE_ALPHA_TO_ONE);
+     Gl->Set(String::NewSymbol("SAMPLE_ALPHA_TO_ONE"), Uint32::New(GL_SAMPLE_ALPHA_TO_ONE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_COVERAGE"), GetGL_SAMPLE_COVERAGE);
+     Gl->Set(String::NewSymbol("SAMPLE_COVERAGE"), Uint32::New(GL_SAMPLE_COVERAGE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_BUFFERS"), GetGL_SAMPLE_BUFFERS);
+     Gl->Set(String::NewSymbol("SAMPLE_BUFFERS"), Uint32::New(GL_SAMPLE_BUFFERS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLES"), GetGL_SAMPLES);
+     Gl->Set(String::NewSymbol("SAMPLES"), Uint32::New(GL_SAMPLES), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_COVERAGE_VALUE"), GetGL_SAMPLE_COVERAGE_VALUE);
+     Gl->Set(String::NewSymbol("SAMPLE_COVERAGE_VALUE"), Uint32::New(GL_SAMPLE_COVERAGE_VALUE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SAMPLE_COVERAGE_INVERT"), GetGL_SAMPLE_COVERAGE_INVERT);
+     Gl->Set(String::NewSymbol("SAMPLE_COVERAGE_INVERT"), Uint32::New(GL_SAMPLE_COVERAGE_INVERT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MULTISAMPLE_BIT"), GetGL_MULTISAMPLE_BIT);
+     Gl->Set(String::NewSymbol("MULTISAMPLE_BIT"), Uint32::New(GL_MULTISAMPLE_BIT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRANSPOSE_MODELVIEW_MATRIX"), GetGL_TRANSPOSE_MODELVIEW_MATRIX);
+     Gl->Set(String::NewSymbol("TRANSPOSE_MODELVIEW_MATRIX"), Uint32::New(GL_TRANSPOSE_MODELVIEW_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRANSPOSE_PROJECTION_MATRIX"), GetGL_TRANSPOSE_PROJECTION_MATRIX);
+     Gl->Set(String::NewSymbol("TRANSPOSE_PROJECTION_MATRIX"), Uint32::New(GL_TRANSPOSE_PROJECTION_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRANSPOSE_TEXTURE_MATRIX"), GetGL_TRANSPOSE_TEXTURE_MATRIX);
+     Gl->Set(String::NewSymbol("TRANSPOSE_TEXTURE_MATRIX"), Uint32::New(GL_TRANSPOSE_TEXTURE_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TRANSPOSE_COLOR_MATRIX"), GetGL_TRANSPOSE_COLOR_MATRIX);
+     Gl->Set(String::NewSymbol("TRANSPOSE_COLOR_MATRIX"), Uint32::New(GL_TRANSPOSE_COLOR_MATRIX), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMBINE"), GetGL_COMBINE);
+     Gl->Set(String::NewSymbol("COMBINE"), Uint32::New(GL_COMBINE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMBINE_RGB"), GetGL_COMBINE_RGB);
+     Gl->Set(String::NewSymbol("COMBINE_RGB"), Uint32::New(GL_COMBINE_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("COMBINE_ALPHA"), GetGL_COMBINE_ALPHA);
+     Gl->Set(String::NewSymbol("COMBINE_ALPHA"), Uint32::New(GL_COMBINE_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE0_RGB"), GetGL_SOURCE0_RGB);
+     Gl->Set(String::NewSymbol("SOURCE0_RGB"), Uint32::New(GL_SOURCE0_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE1_RGB"), GetGL_SOURCE1_RGB);
+     Gl->Set(String::NewSymbol("SOURCE1_RGB"), Uint32::New(GL_SOURCE1_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE2_RGB"), GetGL_SOURCE2_RGB);
+     Gl->Set(String::NewSymbol("SOURCE2_RGB"), Uint32::New(GL_SOURCE2_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE0_ALPHA"), GetGL_SOURCE0_ALPHA);
+     Gl->Set(String::NewSymbol("SOURCE0_ALPHA"), Uint32::New(GL_SOURCE0_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE1_ALPHA"), GetGL_SOURCE1_ALPHA);
+     Gl->Set(String::NewSymbol("SOURCE1_ALPHA"), Uint32::New(GL_SOURCE1_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SOURCE2_ALPHA"), GetGL_SOURCE2_ALPHA);
+     Gl->Set(String::NewSymbol("SOURCE2_ALPHA"), Uint32::New(GL_SOURCE2_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND0_RGB"), GetGL_OPERAND0_RGB);
+     Gl->Set(String::NewSymbol("OPERAND0_RGB"), Uint32::New(GL_OPERAND0_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND1_RGB"), GetGL_OPERAND1_RGB);
+     Gl->Set(String::NewSymbol("OPERAND1_RGB"), Uint32::New(GL_OPERAND1_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND2_RGB"), GetGL_OPERAND2_RGB);
+     Gl->Set(String::NewSymbol("OPERAND2_RGB"), Uint32::New(GL_OPERAND2_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND0_ALPHA"), GetGL_OPERAND0_ALPHA);
+     Gl->Set(String::NewSymbol("OPERAND0_ALPHA"), Uint32::New(GL_OPERAND0_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND1_ALPHA"), GetGL_OPERAND1_ALPHA);
+     Gl->Set(String::NewSymbol("OPERAND1_ALPHA"), Uint32::New(GL_OPERAND1_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("OPERAND2_ALPHA"), GetGL_OPERAND2_ALPHA);
+     Gl->Set(String::NewSymbol("OPERAND2_ALPHA"), Uint32::New(GL_OPERAND2_ALPHA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("RGB_SCALE"), GetGL_RGB_SCALE);
+     Gl->Set(String::NewSymbol("RGB_SCALE"), Uint32::New(GL_RGB_SCALE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ADD_SIGNED"), GetGL_ADD_SIGNED);
+     Gl->Set(String::NewSymbol("ADD_SIGNED"), Uint32::New(GL_ADD_SIGNED), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("INTERPOLATE"), GetGL_INTERPOLATE);
+     Gl->Set(String::NewSymbol("INTERPOLATE"), Uint32::New(GL_INTERPOLATE), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("SUBTRACT"), GetGL_SUBTRACT);
+     Gl->Set(String::NewSymbol("SUBTRACT"), Uint32::New(GL_SUBTRACT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CONSTANT"), GetGL_CONSTANT);
+     Gl->Set(String::NewSymbol("CONSTANT"), Uint32::New(GL_CONSTANT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PRIMARY_COLOR"), GetGL_PRIMARY_COLOR);
+     Gl->Set(String::NewSymbol("PRIMARY_COLOR"), Uint32::New(GL_PRIMARY_COLOR), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PREVIOUS"), GetGL_PREVIOUS);
+     Gl->Set(String::NewSymbol("PREVIOUS"), Uint32::New(GL_PREVIOUS), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DOT3_RGB"), GetGL_DOT3_RGB);
+     Gl->Set(String::NewSymbol("DOT3_RGB"), Uint32::New(GL_DOT3_RGB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("DOT3_RGBA"), GetGL_DOT3_RGBA);
+     Gl->Set(String::NewSymbol("DOT3_RGBA"), Uint32::New(GL_DOT3_RGBA), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLAMP_TO_BORDER"), GetGL_CLAMP_TO_BORDER);
+     Gl->Set(String::NewSymbol("CLAMP_TO_BORDER"), Uint32::New(GL_CLAMP_TO_BORDER), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ARB_multitexture"), GetGL_ARB_multitexture);
+     Gl->Set(String::NewSymbol("ARB_multitexture"), Uint32::New(GL_ARB_multitexture), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE0_ARB"), GetGL_TEXTURE0_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE0_ARB"), Uint32::New(GL_TEXTURE0_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE1_ARB"), GetGL_TEXTURE1_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE1_ARB"), Uint32::New(GL_TEXTURE1_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE2_ARB"), GetGL_TEXTURE2_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE2_ARB"), Uint32::New(GL_TEXTURE2_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE3_ARB"), GetGL_TEXTURE3_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE3_ARB"), Uint32::New(GL_TEXTURE3_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE4_ARB"), GetGL_TEXTURE4_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE4_ARB"), Uint32::New(GL_TEXTURE4_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE5_ARB"), GetGL_TEXTURE5_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE5_ARB"), Uint32::New(GL_TEXTURE5_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE6_ARB"), GetGL_TEXTURE6_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE6_ARB"), Uint32::New(GL_TEXTURE6_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE7_ARB"), GetGL_TEXTURE7_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE7_ARB"), Uint32::New(GL_TEXTURE7_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE8_ARB"), GetGL_TEXTURE8_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE8_ARB"), Uint32::New(GL_TEXTURE8_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE9_ARB"), GetGL_TEXTURE9_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE9_ARB"), Uint32::New(GL_TEXTURE9_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE10_ARB"), GetGL_TEXTURE10_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE10_ARB"), Uint32::New(GL_TEXTURE10_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE11_ARB"), GetGL_TEXTURE11_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE11_ARB"), Uint32::New(GL_TEXTURE11_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE12_ARB"), GetGL_TEXTURE12_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE12_ARB"), Uint32::New(GL_TEXTURE12_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE13_ARB"), GetGL_TEXTURE13_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE13_ARB"), Uint32::New(GL_TEXTURE13_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE14_ARB"), GetGL_TEXTURE14_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE14_ARB"), Uint32::New(GL_TEXTURE14_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE15_ARB"), GetGL_TEXTURE15_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE15_ARB"), Uint32::New(GL_TEXTURE15_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE16_ARB"), GetGL_TEXTURE16_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE16_ARB"), Uint32::New(GL_TEXTURE16_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE17_ARB"), GetGL_TEXTURE17_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE17_ARB"), Uint32::New(GL_TEXTURE17_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE18_ARB"), GetGL_TEXTURE18_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE18_ARB"), Uint32::New(GL_TEXTURE18_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE19_ARB"), GetGL_TEXTURE19_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE19_ARB"), Uint32::New(GL_TEXTURE19_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE20_ARB"), GetGL_TEXTURE20_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE20_ARB"), Uint32::New(GL_TEXTURE20_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE21_ARB"), GetGL_TEXTURE21_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE21_ARB"), Uint32::New(GL_TEXTURE21_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE22_ARB"), GetGL_TEXTURE22_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE22_ARB"), Uint32::New(GL_TEXTURE22_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE23_ARB"), GetGL_TEXTURE23_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE23_ARB"), Uint32::New(GL_TEXTURE23_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE24_ARB"), GetGL_TEXTURE24_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE24_ARB"), Uint32::New(GL_TEXTURE24_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE25_ARB"), GetGL_TEXTURE25_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE25_ARB"), Uint32::New(GL_TEXTURE25_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE26_ARB"), GetGL_TEXTURE26_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE26_ARB"), Uint32::New(GL_TEXTURE26_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE27_ARB"), GetGL_TEXTURE27_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE27_ARB"), Uint32::New(GL_TEXTURE27_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE28_ARB"), GetGL_TEXTURE28_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE28_ARB"), Uint32::New(GL_TEXTURE28_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE29_ARB"), GetGL_TEXTURE29_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE29_ARB"), Uint32::New(GL_TEXTURE29_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE30_ARB"), GetGL_TEXTURE30_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE30_ARB"), Uint32::New(GL_TEXTURE30_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE31_ARB"), GetGL_TEXTURE31_ARB);
+     Gl->Set(String::NewSymbol("TEXTURE31_ARB"), Uint32::New(GL_TEXTURE31_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("ACTIVE_TEXTURE_ARB"), GetGL_ACTIVE_TEXTURE_ARB);
+     Gl->Set(String::NewSymbol("ACTIVE_TEXTURE_ARB"), Uint32::New(GL_ACTIVE_TEXTURE_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("CLIENT_ACTIVE_TEXTURE_ARB"), GetGL_CLIENT_ACTIVE_TEXTURE_ARB);
+     Gl->Set(String::NewSymbol("CLIENT_ACTIVE_TEXTURE_ARB"), Uint32::New(GL_CLIENT_ACTIVE_TEXTURE_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_TEXTURE_UNITS_ARB"), GetGL_MAX_TEXTURE_UNITS_ARB);
+     Gl->Set(String::NewSymbol("MAX_TEXTURE_UNITS_ARB"), Uint32::New(GL_MAX_TEXTURE_UNITS_ARB), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_1D_ARRAY_EXT"), GetGL_TEXTURE_1D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("TEXTURE_1D_ARRAY_EXT"), Uint32::New(GL_TEXTURE_1D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_1D_ARRAY_EXT"), GetGL_PROXY_TEXTURE_1D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_1D_ARRAY_EXT"), Uint32::New(GL_PROXY_TEXTURE_1D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_2D_ARRAY_EXT"), GetGL_TEXTURE_2D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("TEXTURE_2D_ARRAY_EXT"), Uint32::New(GL_TEXTURE_2D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_2D_ARRAY_EXT"), GetGL_PROXY_TEXTURE_2D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("PROXY_TEXTURE_2D_ARRAY_EXT"), Uint32::New(GL_PROXY_TEXTURE_2D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_1D_ARRAY_EXT"), GetGL_TEXTURE_BINDING_1D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_1D_ARRAY_EXT"), Uint32::New(GL_TEXTURE_BINDING_1D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_2D_ARRAY_EXT"), GetGL_TEXTURE_BINDING_2D_ARRAY_EXT);
+     Gl->Set(String::NewSymbol("TEXTURE_BINDING_2D_ARRAY_EXT"), Uint32::New(GL_TEXTURE_BINDING_2D_ARRAY_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("MAX_ARRAY_TEXTURE_LAYERS_EXT"), GetGL_MAX_ARRAY_TEXTURE_LAYERS_EXT);
+     Gl->Set(String::NewSymbol("MAX_ARRAY_TEXTURE_LAYERS_EXT"), Uint32::New(GL_MAX_ARRAY_TEXTURE_LAYERS_EXT), ReadOnly);
 
-     Gl->SetAccessor(String::NewSymbol("FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT"), GetGL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT);
+     Gl->Set(String::NewSymbol("FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT"), Uint32::New(GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT), ReadOnly);
 
      Gl->Set(String::NewSymbol("ClearIndex"), FunctionTemplate::New(GLglClearIndexCallback));
 
