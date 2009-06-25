@@ -1,8 +1,8 @@
-
-
 #include "glbind.h"
-    
-    
+
+Persistent<Object> GlFactory::self_;
+
+
 
 Handle<Value> GetGL_VERSION_1_1(Local<String> property,
                       const AccessorInfo &info) {
@@ -1055,30 +1055,6 @@ Handle<Value> GetGL_SPOT_EXPONENT(Local<String> property,
 Handle<Value> GetGL_SPOT_CUTOFF(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GL_SPOT_CUTOFF);
-}
-
-
-
-
-Handle<Value> GetGL_CONSTANT_ATTENUATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_CONSTANT_ATTENUATION);
-}
-
-
-
-
-Handle<Value> GetGL_LINEAR_ATTENUATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_LINEAR_ATTENUATION);
-}
-
-
-
-
-Handle<Value> GetGL_QUADRATIC_ATTENUATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_QUADRATIC_ATTENUATION);
 }
 
 
@@ -3716,14 +3692,6 @@ Handle<Value> GetGL_INVALID_VALUE(Local<String> property,
 
 
 
-Handle<Value> GetGL_INVALID_OPERATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_INVALID_OPERATION);
-}
-
-
-
-
 Handle<Value> GetGL_STACK_OVERFLOW(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GL_STACK_OVERFLOW);
@@ -4268,27 +4236,28 @@ Handle<Value> GetGL_CLIENT_ALL_ATTRIB_BITS(Local<String> property,
 
 
 
-Handle<Value> GLClearIndexCallback(const Arguments& args) {
+Handle<Value> GLglClearIndexCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glClearIndex(( GLfloat ) arg0);
-  return v8::Undefined();
+  glClearIndex((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClearColorCallback(const Arguments& args) {
+Handle<Value> GLglClearColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4296,50 +4265,53 @@ Handle<Value> GLClearColorCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glClearColor(( GLclampf ) arg0, ( GLclampf ) arg1, ( GLclampf ) arg2, ( GLclampf ) arg3);
-  return v8::Undefined();
+  glClearColor((GLclampf) arg0, (GLclampf) arg1, (GLclampf) arg2, (GLclampf) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClearCallback(const Arguments& args) {
+Handle<Value> GLglClearCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glClear(( GLbitfield ) arg0);
-  return v8::Undefined();
+  glClear((GLbitfield) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexMaskCallback(const Arguments& args) {
+Handle<Value> GLglIndexMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glIndexMask(( GLuint ) arg0);
-  return v8::Undefined();
+  glIndexMask((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColorMaskCallback(const Arguments& args) {
+Handle<Value> GLglColorMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -4347,277 +4319,289 @@ Handle<Value> GLColorMaskCallback(const Arguments& args) {
   unsigned int arg3 = args[3]->Uint32Value();
 
   //make call
-  glColorMask(( GLboolean ) arg0, ( GLboolean ) arg1, ( GLboolean ) arg2, ( GLboolean ) arg3);
-  return v8::Undefined();
+  glColorMask((GLboolean) arg0, (GLboolean) arg1, (GLboolean) arg2, (GLboolean) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLAlphaFuncCallback(const Arguments& args) {
+Handle<Value> GLglAlphaFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glAlphaFunc(( GLenum ) arg0, ( GLclampf ) arg1);
-  return v8::Undefined();
+  glAlphaFunc((GLenum) arg0, (GLclampf) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBlendFuncCallback(const Arguments& args) {
+Handle<Value> GLglBlendFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glBlendFunc(( GLenum ) arg0, ( GLenum ) arg1);
-  return v8::Undefined();
+  glBlendFunc((GLenum) arg0, (GLenum) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLogicOpCallback(const Arguments& args) {
+Handle<Value> GLglLogicOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glLogicOp(( GLenum ) arg0);
-  return v8::Undefined();
+  glLogicOp((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCullFaceCallback(const Arguments& args) {
+Handle<Value> GLglCullFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glCullFace(( GLenum ) arg0);
-  return v8::Undefined();
+  glCullFace((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFrontFaceCallback(const Arguments& args) {
+Handle<Value> GLglFrontFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glFrontFace(( GLenum ) arg0);
-  return v8::Undefined();
+  glFrontFace((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPointSizeCallback(const Arguments& args) {
+Handle<Value> GLglPointSizeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glPointSize(( GLfloat ) arg0);
-  return v8::Undefined();
+  glPointSize((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLineWidthCallback(const Arguments& args) {
+Handle<Value> GLglLineWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glLineWidth(( GLfloat ) arg0);
-  return v8::Undefined();
+  glLineWidth((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLineStippleCallback(const Arguments& args) {
+Handle<Value> GLglLineStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
 
   //make call
-  glLineStipple(( GLint ) arg0, ( GLushort ) arg1);
-  return v8::Undefined();
+  glLineStipple((GLint) arg0, (GLushort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPolygonModeCallback(const Arguments& args) {
+Handle<Value> GLglPolygonModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glPolygonMode(( GLenum ) arg0, ( GLenum ) arg1);
-  return v8::Undefined();
+  glPolygonMode((GLenum) arg0, (GLenum) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPolygonOffsetCallback(const Arguments& args) {
+Handle<Value> GLglPolygonOffsetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glPolygonOffset(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glPolygonOffset((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPolygonStippleCallback(const Arguments& args) {
+Handle<Value> GLglPolygonStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLubyte* arg0 = new  GLubyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLubyte aux = ( GLubyte)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glPolygonStipple(( const GLubyte* ) arg0);
-  return v8::Undefined();
+  glPolygonStipple((const GLubyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetPolygonStippleCallback(const Arguments& args) {
+Handle<Value> GLglGetPolygonStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
- GLubyte*   arg0 = new  GLubyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-     GLubyte   aux = ( GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+  GLubyte* arg0 = new GLubyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+      GLubyte aux = (GLubyte)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glGetPolygonStipple(( GLubyte* ) arg0);
-  return v8::Undefined();
+  glGetPolygonStipple((GLubyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEdgeFlagCallback(const Arguments& args) {
+Handle<Value> GLglEdgeFlagCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glEdgeFlag(( GLboolean ) arg0);
-  return v8::Undefined();
+  glEdgeFlag((GLboolean) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEdgeFlagvCallback(const Arguments& args) {
+Handle<Value> GLglEdgeFlagvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLboolean*   arg0 = new   GLboolean  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLboolean   aux = (  GLboolean  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLboolean* arg0 = new  GLboolean[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLboolean aux = ( GLboolean)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glEdgeFlagv(( const GLboolean* ) arg0);
-  return v8::Undefined();
+  glEdgeFlagv((const GLboolean*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLScissorCallback(const Arguments& args) {
+Handle<Value> GLglScissorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4625,497 +4609,512 @@ Handle<Value> GLScissorCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glScissor(( GLint ) arg0, ( GLint ) arg1, ( GLsizei ) arg2, ( GLsizei ) arg3);
-  return v8::Undefined();
+  glScissor((GLint) arg0, (GLint) arg1, (GLsizei) arg2, (GLsizei) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClipPlaneCallback(const Arguments& args) {
+Handle<Value> GLglClipPlaneCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glClipPlane(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glClipPlane((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetClipPlaneCallback(const Arguments& args) {
+Handle<Value> GLglGetClipPlaneCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLdouble*   arg1 = new  GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLdouble* arg1 = new GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLdouble aux = (GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetClipPlane(( GLenum ) arg0, ( GLdouble* ) arg1);
-  return v8::Undefined();
+  glGetClipPlane((GLenum) arg0, (GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDrawBufferCallback(const Arguments& args) {
+Handle<Value> GLglDrawBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glDrawBuffer(( GLenum ) arg0);
-  return v8::Undefined();
+  glDrawBuffer((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLReadBufferCallback(const Arguments& args) {
+Handle<Value> GLglReadBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glReadBuffer(( GLenum ) arg0);
-  return v8::Undefined();
+  glReadBuffer((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEnableCallback(const Arguments& args) {
+Handle<Value> GLglEnableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glEnable(( GLenum ) arg0);
-  return v8::Undefined();
+  glEnable((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDisableCallback(const Arguments& args) {
+Handle<Value> GLglDisableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glDisable(( GLenum ) arg0);
-  return v8::Undefined();
+  glDisable((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIsEnabledCallback(const Arguments& args) {
+Handle<Value> GLglIsEnabledCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glIsEnabled(( GLenum ) arg0);
-  return v8::Undefined();
+  return Uint32::New(glIsEnabled((GLenum) arg0));
 }
 
 
 
 
-Handle<Value> GLEnableClientStateCallback(const Arguments& args) {
+Handle<Value> GLglEnableClientStateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glEnableClientState(( GLenum ) arg0);
-  return v8::Undefined();
+  glEnableClientState((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDisableClientStateCallback(const Arguments& args) {
+Handle<Value> GLglDisableClientStateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glDisableClientState(( GLenum ) arg0);
-  return v8::Undefined();
+  glDisableClientState((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetBooleanvCallback(const Arguments& args) {
+Handle<Value> GLglGetBooleanvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLboolean*   arg1 = new  GLboolean  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLboolean   aux = ( GLboolean  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLboolean* arg1 = new GLboolean[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLboolean aux = (GLboolean)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetBooleanv(( GLenum ) arg0, ( GLboolean* ) arg1);
-  return v8::Undefined();
+  glGetBooleanv((GLenum) arg0, (GLboolean*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetDoublevCallback(const Arguments& args) {
+Handle<Value> GLglGetDoublevCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLdouble*   arg1 = new  GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLdouble* arg1 = new GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLdouble aux = (GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetDoublev(( GLenum ) arg0, ( GLdouble* ) arg1);
-  return v8::Undefined();
+  glGetDoublev((GLenum) arg0, (GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetFloatvCallback(const Arguments& args) {
+Handle<Value> GLglGetFloatvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLfloat*   arg1 = new  GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLfloat* arg1 = new GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetFloatv(( GLenum ) arg0, ( GLfloat* ) arg1);
-  return v8::Undefined();
+  glGetFloatv((GLenum) arg0, (GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetIntegervCallback(const Arguments& args) {
+Handle<Value> GLglGetIntegervCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLint*   arg1 = new  GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLint* arg1 = new GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetIntegerv(( GLenum ) arg0, ( GLint* ) arg1);
-  return v8::Undefined();
+  glGetIntegerv((GLenum) arg0, (GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPushAttribCallback(const Arguments& args) {
+Handle<Value> GLglPushAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glPushAttrib(( GLbitfield ) arg0);
-  return v8::Undefined();
+  glPushAttrib((GLbitfield) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPopAttribCallback(const Arguments& args) {
+Handle<Value> GLglPopAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glPopAttrib();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPushClientAttribCallback(const Arguments& args) {
+Handle<Value> GLglPushClientAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glPushClientAttrib(( GLbitfield ) arg0);
-  return v8::Undefined();
+  glPushClientAttrib((GLbitfield) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPopClientAttribCallback(const Arguments& args) {
+Handle<Value> GLglPopClientAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glPopClientAttrib();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRenderModeCallback(const Arguments& args) {
+Handle<Value> GLglRenderModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glRenderMode(( GLenum ) arg0);
-  return v8::Undefined();
+  return Integer::New(glRenderMode((GLenum) arg0));
 }
 
 
 
 
-Handle<Value> GLGetErrorCallback(const Arguments& args) {
+Handle<Value> GLglGetErrorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
-  glGetError();
-  return v8::Undefined();
+  return Integer::New(glGetError());
 }
 
 
 
 
-Handle<Value> GLFinishCallback(const Arguments& args) {
+Handle<Value> GLglFinishCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glFinish();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFlushCallback(const Arguments& args) {
+Handle<Value> GLglFlushCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glFlush();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLHintCallback(const Arguments& args) {
+Handle<Value> GLglHintCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glHint(( GLenum ) arg0, ( GLenum ) arg1);
-  return v8::Undefined();
+  glHint((GLenum) arg0, (GLenum) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClearDepthCallback(const Arguments& args) {
+Handle<Value> GLglClearDepthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glClearDepth(( GLclampd ) arg0);
-  return v8::Undefined();
+  glClearDepth((GLclampd) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDepthFuncCallback(const Arguments& args) {
+Handle<Value> GLglDepthFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glDepthFunc(( GLenum ) arg0);
-  return v8::Undefined();
+  glDepthFunc((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDepthMaskCallback(const Arguments& args) {
+Handle<Value> GLglDepthMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glDepthMask(( GLboolean ) arg0);
-  return v8::Undefined();
+  glDepthMask((GLboolean) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDepthRangeCallback(const Arguments& args) {
+Handle<Value> GLglDepthRangeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glDepthRange(( GLclampd ) arg0, ( GLclampd ) arg1);
-  return v8::Undefined();
+  glDepthRange((GLclampd) arg0, (GLclampd) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClearAccumCallback(const Arguments& args) {
+Handle<Value> GLglClearAccumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5123,51 +5122,54 @@ Handle<Value> GLClearAccumCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glClearAccum(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glClearAccum((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLAccumCallback(const Arguments& args) {
+Handle<Value> GLglAccumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glAccum(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glAccum((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMatrixModeCallback(const Arguments& args) {
+Handle<Value> GLglMatrixModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glMatrixMode(( GLenum ) arg0);
-  return v8::Undefined();
+  glMatrixMode((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLOrthoCallback(const Arguments& args) {
+Handle<Value> GLglOrthoCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5177,18 +5179,19 @@ Handle<Value> GLOrthoCallback(const Arguments& args) {
   double arg5 = args[5]->NumberValue();
 
   //make call
-  glOrtho(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLdouble ) arg4, ( GLdouble ) arg5);
-  return v8::Undefined();
+  glOrtho((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3, (GLdouble) arg4, (GLdouble) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFrustumCallback(const Arguments& args) {
+Handle<Value> GLglFrustumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5198,18 +5201,19 @@ Handle<Value> GLFrustumCallback(const Arguments& args) {
   double arg5 = args[5]->NumberValue();
 
   //make call
-  glFrustum(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLdouble ) arg4, ( GLdouble ) arg5);
-  return v8::Undefined();
+  glFrustum((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3, (GLdouble) arg4, (GLdouble) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLViewportCallback(const Arguments& args) {
+Handle<Value> GLglViewportCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5217,167 +5221,171 @@ Handle<Value> GLViewportCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glViewport(( GLint ) arg0, ( GLint ) arg1, ( GLsizei ) arg2, ( GLsizei ) arg3);
-  return v8::Undefined();
+  glViewport((GLint) arg0, (GLint) arg1, (GLsizei) arg2, (GLsizei) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPushMatrixCallback(const Arguments& args) {
+Handle<Value> GLglPushMatrixCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glPushMatrix();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPopMatrixCallback(const Arguments& args) {
+Handle<Value> GLglPopMatrixCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glPopMatrix();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadIdentityCallback(const Arguments& args) {
+Handle<Value> GLglLoadIdentityCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glLoadIdentity();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadMatrixdCallback(const Arguments& args) {
+Handle<Value> GLglLoadMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glLoadMatrixd(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glLoadMatrixd((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadMatrixfCallback(const Arguments& args) {
+Handle<Value> GLglLoadMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glLoadMatrixf(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glLoadMatrixf((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultMatrixdCallback(const Arguments& args) {
+Handle<Value> GLglMultMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glMultMatrixd(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glMultMatrixd((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultMatrixfCallback(const Arguments& args) {
+Handle<Value> GLglMultMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glMultMatrixf(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glMultMatrixf((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRotatedCallback(const Arguments& args) {
+Handle<Value> GLglRotatedCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5385,18 +5393,19 @@ Handle<Value> GLRotatedCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRotated(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glRotated((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRotatefCallback(const Arguments& args) {
+Handle<Value> GLglRotatefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5404,374 +5413,392 @@ Handle<Value> GLRotatefCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRotatef(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glRotatef((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLScaledCallback(const Arguments& args) {
+Handle<Value> GLglScaledCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glScaled(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glScaled((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLScalefCallback(const Arguments& args) {
+Handle<Value> GLglScalefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glScalef(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glScalef((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTranslatedCallback(const Arguments& args) {
+Handle<Value> GLglTranslatedCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTranslated(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glTranslated((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTranslatefCallback(const Arguments& args) {
+Handle<Value> GLglTranslatefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTranslatef(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glTranslatef((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIsListCallback(const Arguments& args) {
+Handle<Value> GLglIsListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glIsList(( GLuint ) arg0);
-  return v8::Undefined();
+  return Uint32::New(glIsList((GLuint) arg0));
 }
 
 
 
 
-Handle<Value> GLDeleteListsCallback(const Arguments& args) {
+Handle<Value> GLglDeleteListsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glDeleteLists(( GLuint ) arg0, ( GLsizei ) arg1);
-  return v8::Undefined();
+  glDeleteLists((GLuint) arg0, (GLsizei) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGenListsCallback(const Arguments& args) {
+Handle<Value> GLglGenListsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glGenLists(( GLsizei ) arg0);
-  return v8::Undefined();
+  return Uint32::New(glGenLists((GLsizei) arg0));
 }
 
 
 
 
-Handle<Value> GLNewListCallback(const Arguments& args) {
+Handle<Value> GLglNewListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glNewList(( GLuint ) arg0, ( GLenum ) arg1);
-  return v8::Undefined();
+  glNewList((GLuint) arg0, (GLenum) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEndListCallback(const Arguments& args) {
+Handle<Value> GLglEndListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glEndList();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCallListCallback(const Arguments& args) {
+Handle<Value> GLglCallListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glCallList(( GLuint ) arg0);
-  return v8::Undefined();
+  glCallList((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLListBaseCallback(const Arguments& args) {
+Handle<Value> GLglListBaseCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glListBase(( GLuint ) arg0);
-  return v8::Undefined();
+  glListBase((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBeginCallback(const Arguments& args) {
+Handle<Value> GLglBeginCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glBegin(( GLenum ) arg0);
-  return v8::Undefined();
+  glBegin((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEndCallback(const Arguments& args) {
+Handle<Value> GLglEndCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glEnd();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2dCallback(const Arguments& args) {
+Handle<Value> GLglVertex2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glVertex2d(( GLdouble ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
+  glVertex2d((GLdouble) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2fCallback(const Arguments& args) {
+Handle<Value> GLglVertex2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glVertex2f(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glVertex2f((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2iCallback(const Arguments& args) {
+Handle<Value> GLglVertex2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glVertex2i(( GLint ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glVertex2i((GLint) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2sCallback(const Arguments& args) {
+Handle<Value> GLglVertex2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glVertex2s(( GLshort ) arg0, ( GLshort ) arg1);
-  return v8::Undefined();
+  glVertex2s((GLshort) arg0, (GLshort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3dCallback(const Arguments& args) {
+Handle<Value> GLglVertex3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-
-  //make call
-  glVertex3d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLVertex3fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glVertex3f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glVertex3d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3iCallback(const Arguments& args) {
+Handle<Value> GLglVertex3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+
+  //make call
+  glVertex3f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglVertex3iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glVertex3i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glVertex3i((GLint) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3sCallback(const Arguments& args) {
+Handle<Value> GLglVertex3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glVertex3s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glVertex3s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4dCallback(const Arguments& args) {
+Handle<Value> GLglVertex4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5779,18 +5806,19 @@ Handle<Value> GLVertex4dCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glVertex4d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glVertex4d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4fCallback(const Arguments& args) {
+Handle<Value> GLglVertex4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5798,18 +5826,19 @@ Handle<Value> GLVertex4fCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glVertex4f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glVertex4f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4iCallback(const Arguments& args) {
+Handle<Value> GLglVertex4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5817,18 +5846,19 @@ Handle<Value> GLVertex4iCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glVertex4i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
+  glVertex4i((GLint) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4sCallback(const Arguments& args) {
+Handle<Value> GLglVertex4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5836,904 +5866,923 @@ Handle<Value> GLVertex4sCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glVertex4s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
+  glVertex4s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2dvCallback(const Arguments& args) {
+Handle<Value> GLglVertex2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex2dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glVertex2dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2fvCallback(const Arguments& args) {
+Handle<Value> GLglVertex2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex2fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glVertex2fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2ivCallback(const Arguments& args) {
+Handle<Value> GLglVertex2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex2iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glVertex2iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex2svCallback(const Arguments& args) {
+Handle<Value> GLglVertex2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex2sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glVertex2sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3dvCallback(const Arguments& args) {
+Handle<Value> GLglVertex3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex3dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glVertex3dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3fvCallback(const Arguments& args) {
+Handle<Value> GLglVertex3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex3fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glVertex3fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3ivCallback(const Arguments& args) {
+Handle<Value> GLglVertex3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex3iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glVertex3iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex3svCallback(const Arguments& args) {
+Handle<Value> GLglVertex3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex3sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glVertex3sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4dvCallback(const Arguments& args) {
+Handle<Value> GLglVertex4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex4dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glVertex4dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4fvCallback(const Arguments& args) {
+Handle<Value> GLglVertex4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex4fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glVertex4fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4ivCallback(const Arguments& args) {
+Handle<Value> GLglVertex4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex4iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glVertex4iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLVertex4svCallback(const Arguments& args) {
+Handle<Value> GLglVertex4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glVertex4sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glVertex4sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3bCallback(const Arguments& args) {
+Handle<Value> GLglNormal3bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glNormal3b(( GLbyte ) arg0, ( GLbyte ) arg1, ( GLbyte ) arg2);
-  return v8::Undefined();
+  glNormal3b((GLbyte) arg0, (GLbyte) arg1, (GLbyte) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3dCallback(const Arguments& args) {
+Handle<Value> GLglNormal3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glNormal3d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glNormal3d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3fCallback(const Arguments& args) {
+Handle<Value> GLglNormal3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glNormal3f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glNormal3f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3iCallback(const Arguments& args) {
+Handle<Value> GLglNormal3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glNormal3i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glNormal3i((GLint) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3sCallback(const Arguments& args) {
+Handle<Value> GLglNormal3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glNormal3s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glNormal3s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3bvCallback(const Arguments& args) {
+Handle<Value> GLglNormal3bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLbyte* arg0 = new  GLbyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLbyte aux = ( GLbyte)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glNormal3bv(( const GLbyte* ) arg0);
-  return v8::Undefined();
+  glNormal3bv((const GLbyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3dvCallback(const Arguments& args) {
+Handle<Value> GLglNormal3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glNormal3dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glNormal3dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3fvCallback(const Arguments& args) {
+Handle<Value> GLglNormal3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glNormal3fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glNormal3fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3ivCallback(const Arguments& args) {
+Handle<Value> GLglNormal3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glNormal3iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glNormal3iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLNormal3svCallback(const Arguments& args) {
+Handle<Value> GLglNormal3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glNormal3sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glNormal3sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexdCallback(const Arguments& args) {
+Handle<Value> GLglIndexdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glIndexd(( GLdouble ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLIndexfCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glIndexf(( GLfloat ) arg0);
-  return v8::Undefined();
+  glIndexd((GLdouble) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexiCallback(const Arguments& args) {
+Handle<Value> GLglIndexfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glIndexf((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglIndexiCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glIndexi(( GLint ) arg0);
-  return v8::Undefined();
+  glIndexi((GLint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexsCallback(const Arguments& args) {
+Handle<Value> GLglIndexsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glIndexs(( GLshort ) arg0);
-  return v8::Undefined();
+  glIndexs((GLshort) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexubCallback(const Arguments& args) {
+Handle<Value> GLglIndexubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glIndexub(( GLubyte ) arg0);
-  return v8::Undefined();
+  glIndexub((GLubyte) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexdvCallback(const Arguments& args) {
+Handle<Value> GLglIndexdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glIndexdv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glIndexdv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexfvCallback(const Arguments& args) {
+Handle<Value> GLglIndexfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glIndexfv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glIndexfv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexivCallback(const Arguments& args) {
+Handle<Value> GLglIndexivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glIndexiv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glIndexiv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexsvCallback(const Arguments& args) {
+Handle<Value> GLglIndexsvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glIndexsv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glIndexsv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLIndexubvCallback(const Arguments& args) {
+Handle<Value> GLglIndexubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLubyte* arg0 = new  GLubyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLubyte aux = ( GLubyte)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glIndexubv(( const GLubyte* ) arg0);
-  return v8::Undefined();
+  glIndexubv((const GLubyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3bCallback(const Arguments& args) {
+Handle<Value> GLglColor3bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glColor3b(( GLbyte ) arg0, ( GLbyte ) arg1, ( GLbyte ) arg2);
-  return v8::Undefined();
+  glColor3b((GLbyte) arg0, (GLbyte) arg1, (GLbyte) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3dCallback(const Arguments& args) {
+Handle<Value> GLglColor3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glColor3d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glColor3d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3fCallback(const Arguments& args) {
+Handle<Value> GLglColor3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glColor3f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glColor3f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3iCallback(const Arguments& args) {
+Handle<Value> GLglColor3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glColor3i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glColor3i((GLint) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3sCallback(const Arguments& args) {
+Handle<Value> GLglColor3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glColor3s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glColor3s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3ubCallback(const Arguments& args) {
+Handle<Value> GLglColor3ubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  unsigned int arg0 = args[0]->Uint32Value();
-  unsigned int arg1 = args[1]->Uint32Value();
-  unsigned int arg2 = args[2]->Uint32Value();
-
-  //make call
-  glColor3ub(( GLubyte ) arg0, ( GLubyte ) arg1, ( GLubyte ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLColor3uiCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  unsigned int arg0 = args[0]->Uint32Value();
-  unsigned int arg1 = args[1]->Uint32Value();
-  unsigned int arg2 = args[2]->Uint32Value();
-
-  //make call
-  glColor3ui(( GLuint ) arg0, ( GLuint ) arg1, ( GLuint ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLColor3usCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
   unsigned int arg2 = args[2]->Uint32Value();
 
   //make call
-  glColor3us(( GLushort ) arg0, ( GLushort ) arg1, ( GLushort ) arg2);
-  return v8::Undefined();
+  glColor3ub((GLubyte) arg0, (GLubyte) arg1, (GLubyte) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4bCallback(const Arguments& args) {
+Handle<Value> GLglColor3uiCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned int arg0 = args[0]->Uint32Value();
+  unsigned int arg1 = args[1]->Uint32Value();
+  unsigned int arg2 = args[2]->Uint32Value();
+
+  //make call
+  glColor3ui((GLuint) arg0, (GLuint) arg1, (GLuint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglColor3usCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned int arg0 = args[0]->Uint32Value();
+  unsigned int arg1 = args[1]->Uint32Value();
+  unsigned int arg2 = args[2]->Uint32Value();
+
+  //make call
+  glColor3us((GLushort) arg0, (GLushort) arg1, (GLushort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglColor4bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6741,18 +6790,19 @@ Handle<Value> GLColor4bCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glColor4b(( GLbyte ) arg0, ( GLbyte ) arg1, ( GLbyte ) arg2, ( GLbyte ) arg3);
-  return v8::Undefined();
+  glColor4b((GLbyte) arg0, (GLbyte) arg1, (GLbyte) arg2, (GLbyte) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4dCallback(const Arguments& args) {
+Handle<Value> GLglColor4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6760,18 +6810,19 @@ Handle<Value> GLColor4dCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glColor4d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glColor4d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4fCallback(const Arguments& args) {
+Handle<Value> GLglColor4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6779,18 +6830,19 @@ Handle<Value> GLColor4fCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glColor4f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glColor4f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4iCallback(const Arguments& args) {
+Handle<Value> GLglColor4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6798,18 +6850,19 @@ Handle<Value> GLColor4iCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glColor4i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
+  glColor4i((GLint) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4sCallback(const Arguments& args) {
+Handle<Value> GLglColor4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6817,18 +6870,19 @@ Handle<Value> GLColor4sCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glColor4s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
+  glColor4s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4ubCallback(const Arguments& args) {
+Handle<Value> GLglColor4ubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -6836,18 +6890,19 @@ Handle<Value> GLColor4ubCallback(const Arguments& args) {
   unsigned int arg3 = args[3]->Uint32Value();
 
   //make call
-  glColor4ub(( GLubyte ) arg0, ( GLubyte ) arg1, ( GLubyte ) arg2, ( GLubyte ) arg3);
-  return v8::Undefined();
+  glColor4ub((GLubyte) arg0, (GLubyte) arg1, (GLubyte) arg2, (GLubyte) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4uiCallback(const Arguments& args) {
+Handle<Value> GLglColor4uiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -6855,18 +6910,19 @@ Handle<Value> GLColor4uiCallback(const Arguments& args) {
   unsigned int arg3 = args[3]->Uint32Value();
 
   //make call
-  glColor4ui(( GLuint ) arg0, ( GLuint ) arg1, ( GLuint ) arg2, ( GLuint ) arg3);
-  return v8::Undefined();
+  glColor4ui((GLuint) arg0, (GLuint) arg1, (GLuint) arg2, (GLuint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4usCallback(const Arguments& args) {
+Handle<Value> GLglColor4usCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -6874,657 +6930,651 @@ Handle<Value> GLColor4usCallback(const Arguments& args) {
   unsigned int arg3 = args[3]->Uint32Value();
 
   //make call
-  glColor4us(( GLushort ) arg0, ( GLushort ) arg1, ( GLushort ) arg2, ( GLushort ) arg3);
-  return v8::Undefined();
+  glColor4us((GLushort) arg0, (GLushort) arg1, (GLushort) arg2, (GLushort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3bvCallback(const Arguments& args) {
+Handle<Value> GLglColor3bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLbyte* arg0 = new  GLbyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLbyte aux = ( GLbyte)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3bv(( const GLbyte* ) arg0);
-  return v8::Undefined();
+  glColor3bv((const GLbyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3dvCallback(const Arguments& args) {
+Handle<Value> GLglColor3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glColor3dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3fvCallback(const Arguments& args) {
+Handle<Value> GLglColor3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glColor3fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3ivCallback(const Arguments& args) {
+Handle<Value> GLglColor3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glColor3iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3svCallback(const Arguments& args) {
+Handle<Value> GLglColor3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glColor3sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3ubvCallback(const Arguments& args) {
+Handle<Value> GLglColor3ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLubyte* arg0 = new  GLubyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLubyte aux = ( GLubyte)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3ubv(( const GLubyte* ) arg0);
-  return v8::Undefined();
+  glColor3ubv((const GLubyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3uivCallback(const Arguments& args) {
+Handle<Value> GLglColor3uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLuint*   arg0 = new   GLuint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLuint* arg0 = new  GLuint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3uiv(( const GLuint* ) arg0);
-  return v8::Undefined();
+  glColor3uiv((const GLuint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor3usvCallback(const Arguments& args) {
+Handle<Value> GLglColor3usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLushort*   arg0 = new   GLushort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLushort* arg0 = new  GLushort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLushort aux = ( GLushort)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor3usv(( const GLushort* ) arg0);
-  return v8::Undefined();
+  glColor3usv((const GLushort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4bvCallback(const Arguments& args) {
+Handle<Value> GLglColor4bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLbyte*   arg0 = new   GLbyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLbyte   aux = (  GLbyte  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLbyte* arg0 = new  GLbyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLbyte aux = ( GLbyte)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4bv(( const GLbyte* ) arg0);
-  return v8::Undefined();
+  glColor4bv((const GLbyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4dvCallback(const Arguments& args) {
+Handle<Value> GLglColor4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glColor4dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4fvCallback(const Arguments& args) {
+Handle<Value> GLglColor4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glColor4fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4ivCallback(const Arguments& args) {
+Handle<Value> GLglColor4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4iv(( const GLint* ) arg0);
-  return v8::Undefined();
+  glColor4iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4svCallback(const Arguments& args) {
+Handle<Value> GLglColor4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4sv(( const GLshort* ) arg0);
-  return v8::Undefined();
+  glColor4sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4ubvCallback(const Arguments& args) {
+Handle<Value> GLglColor4ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLubyte*   arg0 = new   GLubyte  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLubyte* arg0 = new  GLubyte[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLubyte aux = ( GLubyte)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4ubv(( const GLubyte* ) arg0);
-  return v8::Undefined();
+  glColor4ubv((const GLubyte*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4uivCallback(const Arguments& args) {
+Handle<Value> GLglColor4uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLuint*   arg0 = new   GLuint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLuint* arg0 = new  GLuint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4uiv(( const GLuint* ) arg0);
-  return v8::Undefined();
+  glColor4uiv((const GLuint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColor4usvCallback(const Arguments& args) {
+Handle<Value> GLglColor4usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLushort*   arg0 = new   GLushort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLushort* arg0 = new  GLushort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLushort aux = ( GLushort)arg->Uint32Value();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glColor4usv(( const GLushort* ) arg0);
-  return v8::Undefined();
+  glColor4usv((const GLushort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord1dCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glTexCoord1d(( GLdouble ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord1fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glTexCoord1f(( GLfloat ) arg0);
-  return v8::Undefined();
+  glTexCoord1d((GLdouble) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord1iCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glTexCoord1f((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord1iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glTexCoord1i(( GLint ) arg0);
-  return v8::Undefined();
+  glTexCoord1i((GLint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord1sCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord1sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glTexCoord1s(( GLshort ) arg0);
-  return v8::Undefined();
+  glTexCoord1s((GLshort) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord2dCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-
-  //make call
-  glTexCoord2d(( GLdouble ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord2fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glTexCoord2f(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glTexCoord2d((GLdouble) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord2iCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+
+  //make call
+  glTexCoord2f((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord2iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glTexCoord2i(( GLint ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glTexCoord2i((GLint) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord2sCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glTexCoord2s(( GLshort ) arg0, ( GLshort ) arg1);
-  return v8::Undefined();
+  glTexCoord2s((GLshort) arg0, (GLshort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord3dCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTexCoord3d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glTexCoord3d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord3fCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTexCoord3f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glTexCoord3f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord3iCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glTexCoord3i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glTexCoord3i((GLint) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord3sCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glTexCoord3s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glTexCoord3s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord4dCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-  double arg3 = args[3]->NumberValue();
-
-  //make call
-  glTexCoord4d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7532,612 +7582,19 @@ Handle<Value> GLTexCoord4fCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glTexCoord4f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glTexCoord4d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexCoord4iCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-  int arg3 = args[3]->IntegerValue();
-
-  //make call
-  glTexCoord4i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4sCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-  int arg3 = args[3]->IntegerValue();
-
-  //make call
-  glTexCoord4s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord1dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord1dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord1fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord1fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord1ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord1iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord1svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord1sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord2dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord2dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord2fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord2fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord2ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord2iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord2svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord2sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord3dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord3dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord3fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord3fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord3ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord3iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord3svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord3sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord4dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord4fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord4iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexCoord4svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glTexCoord4sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2dCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-
-  //make call
-  glRasterPos2d(( GLdouble ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-
-  //make call
-  glRasterPos2f(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2iCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glRasterPos2i(( GLint ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2sCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glRasterPos2s(( GLshort ) arg0, ( GLshort ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3dCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-
-  //make call
-  glRasterPos3d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-
-  //make call
-  glRasterPos3f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3iCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-
-  //make call
-  glRasterPos3i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3sCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-
-  //make call
-  glRasterPos3s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4dCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8145,18 +7602,623 @@ Handle<Value> GLRasterPos4dCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRasterPos4d(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glTexCoord4f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRasterPos4fCallback(const Arguments& args) {
+Handle<Value> GLglTexCoord4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+  int arg3 = args[3]->IntegerValue();
+
+  //make call
+  glTexCoord4i((GLint) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord4sCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+  int arg3 = args[3]->IntegerValue();
+
+  //make call
+  glTexCoord4s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord1dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord1dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord1fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord1fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord1ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord1iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord1svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord1sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord2dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord2dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord2fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord2fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord2ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord2iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord2svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord2sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord3dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord3dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord3fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord3fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord3ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord3iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord3svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord3sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord4dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord4dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord4fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord4fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord4ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord4iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexCoord4svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexCoord4sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2dCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+
+  //make call
+  glRasterPos2d((GLdouble) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2fCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+
+  //make call
+  glRasterPos2f((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glRasterPos2i((GLint) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2sCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glRasterPos2s((GLshort) arg0, (GLshort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3dCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+
+  //make call
+  glRasterPos3d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3fCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+
+  //make call
+  glRasterPos3f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+
+  //make call
+  glRasterPos3i((GLint) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3sCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+
+  //make call
+  glRasterPos3s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4dCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8164,368 +8226,19 @@ Handle<Value> GLRasterPos4fCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRasterPos4f(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glRasterPos4d((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRasterPos4iCallback(const Arguments& args) {
+Handle<Value> GLglRasterPos4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-  int arg3 = args[3]->IntegerValue();
-
-  //make call
-  glRasterPos4i(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4sCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-  int arg3 = args[3]->IntegerValue();
-
-  //make call
-  glRasterPos4s(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos2dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos2fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos2iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos2svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos2sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos3dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos3fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos3iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos3svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos3sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos4dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4fvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos4fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos4iv(( const GLint* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRasterPos4svCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-    
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
-    
-    
-  //make call
-  glRasterPos4sv(( const GLshort* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLRectdCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8533,18 +8246,371 @@ Handle<Value> GLRectdCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRectd(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glRasterPos4f((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectfCallback(const Arguments& args) {
+Handle<Value> GLglRasterPos4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+  int arg3 = args[3]->IntegerValue();
+
+  //make call
+  glRasterPos4i((GLint) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4sCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+  int arg3 = args[3]->IntegerValue();
+
+  //make call
+  glRasterPos4s((GLshort) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos2dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos2fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos2iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos2svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos2sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos3dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos3fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos3iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos3svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos3sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4dvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos4dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos4fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4ivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos4iv((const GLint*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRasterPos4svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+
+    
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
+    
+    
+  //make call
+  glRasterPos4sv((const GLshort*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRectdCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8552,18 +8618,39 @@ Handle<Value> GLRectfCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glRectf(( GLfloat ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glRectd((GLdouble) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectiCallback(const Arguments& args) {
+Handle<Value> GLglRectfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+
+  //make call
+  glRectf((GLfloat) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglRectiCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8571,18 +8658,19 @@ Handle<Value> GLRectiCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glRecti(( GLint ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
+  glRecti((GLint) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectsCallback(const Arguments& args) {
+Handle<Value> GLglRectsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8590,867 +8678,879 @@ Handle<Value> GLRectsCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glRects(( GLshort ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
+  glRects((GLshort) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectdvCallback(const Arguments& args) {
+Handle<Value> GLglRectdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glRectdv(( const GLdouble* ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glRectdv((const GLdouble*) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectfvCallback(const Arguments& args) {
+Handle<Value> GLglRectfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glRectfv(( const GLfloat* ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glRectfv((const GLfloat*) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectivCallback(const Arguments& args) {
+Handle<Value> GLglRectivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLint*   arg0 = new   GLint  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLint* arg0 = new  GLint[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glRectiv(( const GLint* ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glRectiv((const GLint*) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLRectsvCallback(const Arguments& args) {
+Handle<Value> GLglRectsvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLshort*   arg0 = new   GLshort  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLshort* arg0 = new  GLshort[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg0[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glRectsv(( const GLshort* ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glRectsv((const GLshort*) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLArrayElementCallback(const Arguments& args) {
+Handle<Value> GLglArrayElementCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glArrayElement(( GLint ) arg0);
-  return v8::Undefined();
+  glArrayElement((GLint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDrawArraysCallback(const Arguments& args) {
+Handle<Value> GLglDrawArraysCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glDrawArrays(( GLenum ) arg0, ( GLint ) arg1, ( GLsizei ) arg2);
-  return v8::Undefined();
+  glDrawArrays((GLenum) arg0, (GLint) arg1, (GLsizei) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLShadeModelCallback(const Arguments& args) {
+Handle<Value> GLglShadeModelCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glShadeModel(( GLenum ) arg0);
-  return v8::Undefined();
+  glShadeModel((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightfCallback(const Arguments& args) {
+Handle<Value> GLglLightfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glLightf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glLightf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightiCallback(const Arguments& args) {
+Handle<Value> GLglLightiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glLighti(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glLighti((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightfvCallback(const Arguments& args) {
+Handle<Value> GLglLightfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glLightfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glLightfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightivCallback(const Arguments& args) {
+Handle<Value> GLglLightivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glLightiv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glLightiv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetLightfvCallback(const Arguments& args) {
+Handle<Value> GLglGetLightfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetLightfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetLightfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetLightivCallback(const Arguments& args) {
+Handle<Value> GLglGetLightivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetLightiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetLightiv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightModelfCallback(const Arguments& args) {
+Handle<Value> GLglLightModelfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glLightModelf(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glLightModelf((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightModeliCallback(const Arguments& args) {
+Handle<Value> GLglLightModeliCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glLightModeli(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glLightModeli((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightModelfvCallback(const Arguments& args) {
+Handle<Value> GLglLightModelfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glLightModelfv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glLightModelfv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLightModelivCallback(const Arguments& args) {
+Handle<Value> GLglLightModelivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glLightModeliv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glLightModeliv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMaterialfCallback(const Arguments& args) {
+Handle<Value> GLglMaterialfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMaterialf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glMaterialf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMaterialiCallback(const Arguments& args) {
+Handle<Value> GLglMaterialiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glMateriali(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glMateriali((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMaterialfvCallback(const Arguments& args) {
+Handle<Value> GLglMaterialfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glMaterialfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glMaterialfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMaterialivCallback(const Arguments& args) {
+Handle<Value> GLglMaterialivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glMaterialiv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glMaterialiv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMaterialfvCallback(const Arguments& args) {
+Handle<Value> GLglGetMaterialfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMaterialfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetMaterialfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMaterialivCallback(const Arguments& args) {
+Handle<Value> GLglGetMaterialivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMaterialiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetMaterialiv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColorMaterialCallback(const Arguments& args) {
+Handle<Value> GLglColorMaterialCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glColorMaterial(( GLenum ) arg0, ( GLenum ) arg1);
-  return v8::Undefined();
+  glColorMaterial((GLenum) arg0, (GLenum) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelZoomCallback(const Arguments& args) {
+Handle<Value> GLglPixelZoomCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glPixelZoom(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glPixelZoom((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelStorefCallback(const Arguments& args) {
+Handle<Value> GLglPixelStorefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glPixelStoref(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glPixelStoref((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelStoreiCallback(const Arguments& args) {
+Handle<Value> GLglPixelStoreiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glPixelStorei(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glPixelStorei((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelTransferfCallback(const Arguments& args) {
+Handle<Value> GLglPixelTransferfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glPixelTransferf(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glPixelTransferf((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelTransferiCallback(const Arguments& args) {
+Handle<Value> GLglPixelTransferiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glPixelTransferi(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glPixelTransferi((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelMapfvCallback(const Arguments& args) {
+Handle<Value> GLglPixelMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glPixelMapfv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glPixelMapfv((GLenum) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelMapuivCallback(const Arguments& args) {
+Handle<Value> GLglPixelMapuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLuint*   arg2 = new   GLuint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLuint* arg2 = new  GLuint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glPixelMapuiv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLuint* ) arg2);
-  return v8::Undefined();
+  glPixelMapuiv((GLenum) arg0, (GLsizei) arg1, (const GLuint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPixelMapusvCallback(const Arguments& args) {
+Handle<Value> GLglPixelMapusvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLushort*   arg2 = new   GLushort  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLushort   aux = (  GLushort  )arg->Uint32Value();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLushort* arg2 = new  GLushort[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLushort aux = ( GLushort)arg->Uint32Value();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glPixelMapusv(( GLenum ) arg0, ( GLsizei ) arg1, ( const GLushort* ) arg2);
-  return v8::Undefined();
+  glPixelMapusv((GLenum) arg0, (GLsizei) arg1, (const GLushort*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetPixelMapfvCallback(const Arguments& args) {
+Handle<Value> GLglGetPixelMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLfloat*   arg1 = new  GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLfloat* arg1 = new GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetPixelMapfv(( GLenum ) arg0, ( GLfloat* ) arg1);
-  return v8::Undefined();
+  glGetPixelMapfv((GLenum) arg0, (GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetPixelMapuivCallback(const Arguments& args) {
+Handle<Value> GLglGetPixelMapuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLuint* arg1 = new GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLuint aux = (GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetPixelMapuiv(( GLenum ) arg0, ( GLuint* ) arg1);
-  return v8::Undefined();
+  glGetPixelMapuiv((GLenum) arg0, (GLuint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetPixelMapusvCallback(const Arguments& args) {
+Handle<Value> GLglGetPixelMapusvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLushort*   arg1 = new  GLushort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLushort   aux = ( GLushort  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLushort* arg1 = new GLushort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLushort aux = (GLushort)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGetPixelMapusv(( GLenum ) arg0, ( GLushort* ) arg1);
-  return v8::Undefined();
+  glGetPixelMapusv((GLenum) arg0, (GLushort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBitmapCallback(const Arguments& args) {
+Handle<Value> GLglBitmapCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 7) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9460,29 +9560,29 @@ Handle<Value> GLBitmapCallback(const Arguments& args) {
   double arg5 = args[5]->NumberValue();
 
     
-
-Handle<Array> arrHandle6 = Handle<Array>::Cast(args[6]);
-  GLubyte*   arg6 = new   GLubyte  [arrHandle6->Length()];
-for (unsigned j = 0; j < arrHandle6->Length(); j++) {
-    Handle<Value> arg(arrHandle6->Get(Integer::New(j)));
-      GLubyte   aux = (  GLubyte  )arg->Uint32Value();
-    arg6[j] = aux; 
-}
+  Handle<Array> arrHandle6 = Handle<Array>::Cast(args[6]);
+   GLubyte* arg6 = new  GLubyte[arrHandle6->Length()];
+  for (unsigned j = 0; j < arrHandle6->Length(); j++) {
+      Handle<Value> arg(arrHandle6->Get(Integer::New(j)));
+       GLubyte aux = ( GLubyte)arg->Uint32Value();
+      arg6[j] = aux; 
+  }
     
     
   //make call
-  glBitmap(( GLsizei ) arg0, ( GLsizei ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3, ( GLfloat ) arg4, ( GLfloat ) arg5, ( const GLubyte* ) arg6);
-  return v8::Undefined();
+  glBitmap((GLsizei) arg0, (GLsizei) arg1, (GLfloat) arg2, (GLfloat) arg3, (GLfloat) arg4, (GLfloat) arg5, (const GLubyte*) arg6);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyPixelsCallback(const Arguments& args) {
+Handle<Value> GLglCopyPixelsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9491,825 +9591,833 @@ Handle<Value> GLCopyPixelsCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glCopyPixels(( GLint ) arg0, ( GLint ) arg1, ( GLsizei ) arg2, ( GLsizei ) arg3, ( GLenum ) arg4);
-  return v8::Undefined();
+  glCopyPixels((GLint) arg0, (GLint) arg1, (GLsizei) arg2, (GLsizei) arg3, (GLenum) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLStencilFuncCallback(const Arguments& args) {
+Handle<Value> GLglStencilFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   unsigned int arg2 = args[2]->Uint32Value();
 
   //make call
-  glStencilFunc(( GLenum ) arg0, ( GLint ) arg1, ( GLuint ) arg2);
-  return v8::Undefined();
+  glStencilFunc((GLenum) arg0, (GLint) arg1, (GLuint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLStencilMaskCallback(const Arguments& args) {
+Handle<Value> GLglStencilMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glStencilMask(( GLuint ) arg0);
-  return v8::Undefined();
+  glStencilMask((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLStencilOpCallback(const Arguments& args) {
+Handle<Value> GLglStencilOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glStencilOp(( GLenum ) arg0, ( GLenum ) arg1, ( GLenum ) arg2);
-  return v8::Undefined();
+  glStencilOp((GLenum) arg0, (GLenum) arg1, (GLenum) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClearStencilCallback(const Arguments& args) {
+Handle<Value> GLglClearStencilCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glClearStencil(( GLint ) arg0);
-  return v8::Undefined();
+  glClearStencil((GLint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexGendCallback(const Arguments& args) {
+Handle<Value> GLglTexGendCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  double arg2 = args[2]->NumberValue();
-
-  //make call
-  glTexGend(( GLenum ) arg0, ( GLenum ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexGenfCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTexGenf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glTexGend((GLenum) arg0, (GLenum) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexGeniCallback(const Arguments& args) {
+Handle<Value> GLglTexGenfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  double arg2 = args[2]->NumberValue();
+
+  //make call
+  glTexGenf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexGeniCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glTexGeni(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glTexGeni((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexGendvCallback(const Arguments& args) {
+Handle<Value> GLglTexGendvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLdouble*   arg2 = new   GLdouble  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLdouble* arg2 = new  GLdouble[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glTexGendv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLdouble* ) arg2);
-  return v8::Undefined();
+  glTexGendv((GLenum) arg0, (GLenum) arg1, (const GLdouble*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexGenfvCallback(const Arguments& args) {
+Handle<Value> GLglTexGenfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glTexGenfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glTexGenfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexGenivCallback(const Arguments& args) {
+Handle<Value> GLglTexGenivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glTexGeniv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glTexGeniv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexGendvCallback(const Arguments& args) {
+Handle<Value> GLglGetTexGendvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLdouble*   arg2 = new  GLdouble  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLdouble* arg2 = new GLdouble[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLdouble aux = (GLdouble)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetTexGendv(( GLenum ) arg0, ( GLenum ) arg1, ( GLdouble* ) arg2);
-  return v8::Undefined();
+  glGetTexGendv((GLenum) arg0, (GLenum) arg1, (GLdouble*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexGenfvCallback(const Arguments& args) {
+Handle<Value> GLglGetTexGenfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetTexGenfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetTexGenfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexGenivCallback(const Arguments& args) {
+Handle<Value> GLglGetTexGenivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetTexGeniv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetTexGeniv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexEnvfCallback(const Arguments& args) {
+Handle<Value> GLglTexEnvfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  double arg2 = args[2]->NumberValue();
-
-  //make call
-  glTexEnvf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexEnviCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  int arg2 = args[2]->IntegerValue();
-
-  //make call
-  glTexEnvi(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexEnvfvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glTexEnvfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexEnvivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glTexEnviv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLGetTexEnvfvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glGetTexEnvfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLGetTexEnvivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glGetTexEnviv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLTexParameterfCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glTexParameterf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glTexEnvf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexParameteriCallback(const Arguments& args) {
+Handle<Value> GLglTexEnviCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glTexParameteri(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glTexEnvi((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglTexEnvfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glTexParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glTexEnvfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLTexParameterivCallback(const Arguments& args) {
+Handle<Value> GLglTexEnvivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glTexParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glTexEnviv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglGetTexEnvfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetTexParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetTexEnvfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexParameterivCallback(const Arguments& args) {
+Handle<Value> GLglGetTexEnvivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetTexParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetTexEnviv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexLevelParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglTexParameterfCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  double arg2 = args[2]->NumberValue();
+
+  //make call
+  glTexParameterf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexParameteriCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+  int arg2 = args[2]->IntegerValue();
+
+  //make call
+  glTexParameteri((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexParameterfvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexParameterfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglTexParameterivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glTexParameteriv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglGetTexParameterfvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glGetTexParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglGetTexParameterivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glGetTexParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglGetTexLevelParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
     
-
-Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
- GLfloat*   arg3 = new  GLfloat  [arrHandle3->Length()];
-for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-    Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg3[j] = aux; 
-}
+  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
+  GLfloat* arg3 = new GLfloat[arrHandle3->Length()];
+  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
+      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg3[j] = aux; 
+  }
     
     
   //make call
-  glGetTexLevelParameterfv(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLfloat* ) arg3);
-  return v8::Undefined();
+  glGetTexLevelParameterfv((GLenum) arg0, (GLint) arg1, (GLenum) arg2, (GLfloat*) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetTexLevelParameterivCallback(const Arguments& args) {
+Handle<Value> GLglGetTexLevelParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
     
-
-Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
- GLint*   arg3 = new  GLint  [arrHandle3->Length()];
-for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-    Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg3[j] = aux; 
-}
+  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
+  GLint* arg3 = new GLint[arrHandle3->Length()];
+  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
+      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg3[j] = aux; 
+  }
     
     
   //make call
-  glGetTexLevelParameteriv(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLint* ) arg3);
-  return v8::Undefined();
+  glGetTexLevelParameteriv((GLenum) arg0, (GLint) arg1, (GLenum) arg2, (GLint*) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGenTexturesCallback(const Arguments& args) {
+Handle<Value> GLglGenTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLuint* arg1 = new GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLuint aux = (GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glGenTextures(( GLsizei ) arg0, ( GLuint* ) arg1);
-  return v8::Undefined();
+  glGenTextures((GLsizei) arg0, (GLuint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLDeleteTexturesCallback(const Arguments& args) {
+Handle<Value> GLglDeleteTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLuint* arg1 = new  GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glDeleteTextures(( GLsizei ) arg0, ( const GLuint* ) arg1);
-  return v8::Undefined();
+  glDeleteTextures((GLsizei) arg0, (const GLuint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBindTextureCallback(const Arguments& args) {
+Handle<Value> GLglBindTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
 
   //make call
-  glBindTexture(( GLenum ) arg0, ( GLuint ) arg1);
-  return v8::Undefined();
+  glBindTexture((GLenum) arg0, (GLuint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPrioritizeTexturesCallback(const Arguments& args) {
+Handle<Value> GLglPrioritizeTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLuint* arg1 = new  GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLclampf*   arg2 = new   GLclampf  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLclampf   aux = (  GLclampf  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLclampf* arg2 = new  GLclampf[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLclampf aux = ( GLclampf)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glPrioritizeTextures(( GLsizei ) arg0, ( const GLuint* ) arg1, ( const GLclampf* ) arg2);
-  return v8::Undefined();
+  glPrioritizeTextures((GLsizei) arg0, (const GLuint*) arg1, (const GLclampf*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLAreTexturesResidentCallback(const Arguments& args) {
+Handle<Value> GLglAreTexturesResidentCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLuint*   arg1 = new   GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLuint   aux = (  GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLuint* arg1 = new  GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLuint aux = ( GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLboolean*   arg2 = new  GLboolean  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLboolean   aux = ( GLboolean  )arg->Uint32Value();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLboolean* arg2 = new GLboolean[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLboolean aux = (GLboolean)arg->Uint32Value();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glAreTexturesResident(( GLsizei ) arg0, ( const GLuint* ) arg1, ( GLboolean* ) arg2);
-  return v8::Undefined();
+  return Uint32::New(glAreTexturesResident((GLsizei) arg0, (const GLuint*) arg1, (GLboolean*) arg2));
 }
 
 
 
 
-Handle<Value> GLIsTextureCallback(const Arguments& args) {
+Handle<Value> GLglIsTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glIsTexture(( GLuint ) arg0);
-  return v8::Undefined();
+  return Uint32::New(glIsTexture((GLuint) arg0));
 }
 
 
 
 
-Handle<Value> GLCopyTexImage1DCallback(const Arguments& args) {
+Handle<Value> GLglCopyTexImage1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 7) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -10320,18 +10428,19 @@ Handle<Value> GLCopyTexImage1DCallback(const Arguments& args) {
   int arg6 = args[6]->IntegerValue();
 
   //make call
-  glCopyTexImage1D(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLsizei ) arg5, ( GLint ) arg6);
-  return v8::Undefined();
+  glCopyTexImage1D((GLenum) arg0, (GLint) arg1, (GLenum) arg2, (GLint) arg3, (GLint) arg4, (GLsizei) arg5, (GLint) arg6);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyTexImage2DCallback(const Arguments& args) {
+Handle<Value> GLglCopyTexImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -10343,18 +10452,19 @@ Handle<Value> GLCopyTexImage2DCallback(const Arguments& args) {
   int arg7 = args[7]->IntegerValue();
 
   //make call
-  glCopyTexImage2D(( GLenum ) arg0, ( GLint ) arg1, ( GLenum ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLsizei ) arg5, ( GLsizei ) arg6, ( GLint ) arg7);
-  return v8::Undefined();
+  glCopyTexImage2D((GLenum) arg0, (GLint) arg1, (GLenum) arg2, (GLint) arg3, (GLint) arg4, (GLsizei) arg5, (GLsizei) arg6, (GLint) arg7);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyTexSubImage1DCallback(const Arguments& args) {
+Handle<Value> GLglCopyTexSubImage1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -10364,18 +10474,19 @@ Handle<Value> GLCopyTexSubImage1DCallback(const Arguments& args) {
   int arg5 = args[5]->IntegerValue();
 
   //make call
-  glCopyTexSubImage1D(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLsizei ) arg5);
-  return v8::Undefined();
+  glCopyTexSubImage1D((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4, (GLsizei) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyTexSubImage2DCallback(const Arguments& args) {
+Handle<Value> GLglCopyTexSubImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -10387,18 +10498,19 @@ Handle<Value> GLCopyTexSubImage2DCallback(const Arguments& args) {
   int arg7 = args[7]->IntegerValue();
 
   //make call
-  glCopyTexSubImage2D(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLint ) arg5, ( GLsizei ) arg6, ( GLsizei ) arg7);
-  return v8::Undefined();
+  glCopyTexSubImage2D((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4, (GLint) arg5, (GLsizei) arg6, (GLsizei) arg7);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMap1dCallback(const Arguments& args) {
+Handle<Value> GLglMap1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10407,29 +10519,29 @@ Handle<Value> GLMap1dCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
     
-
-Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
-  GLdouble*   arg5 = new   GLdouble  [arrHandle5->Length()];
-for (unsigned j = 0; j < arrHandle5->Length(); j++) {
-    Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg5[j] = aux; 
-}
+  Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
+   GLdouble* arg5 = new  GLdouble[arrHandle5->Length()];
+  for (unsigned j = 0; j < arrHandle5->Length(); j++) {
+      Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg5[j] = aux; 
+  }
     
     
   //make call
-  glMap1d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( const GLdouble* ) arg5);
-  return v8::Undefined();
+  glMap1d((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLint) arg3, (GLint) arg4, (const GLdouble*) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMap1fCallback(const Arguments& args) {
+Handle<Value> GLglMap1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10438,29 +10550,29 @@ Handle<Value> GLMap1fCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
     
-
-Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
-  GLfloat*   arg5 = new   GLfloat  [arrHandle5->Length()];
-for (unsigned j = 0; j < arrHandle5->Length(); j++) {
-    Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg5[j] = aux; 
-}
+  Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
+   GLfloat* arg5 = new  GLfloat[arrHandle5->Length()];
+  for (unsigned j = 0; j < arrHandle5->Length(); j++) {
+      Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg5[j] = aux; 
+  }
     
     
   //make call
-  glMap1f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( const GLfloat* ) arg5);
-  return v8::Undefined();
+  glMap1f((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLint) arg3, (GLint) arg4, (const GLfloat*) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMap2dCallback(const Arguments& args) {
+Handle<Value> GLglMap2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 10) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10473,29 +10585,29 @@ Handle<Value> GLMap2dCallback(const Arguments& args) {
   int arg8 = args[8]->IntegerValue();
 
     
-
-Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
-  GLdouble*   arg9 = new   GLdouble  [arrHandle9->Length()];
-for (unsigned j = 0; j < arrHandle9->Length(); j++) {
-    Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg9[j] = aux; 
-}
+  Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
+   GLdouble* arg9 = new  GLdouble[arrHandle9->Length()];
+  for (unsigned j = 0; j < arrHandle9->Length(); j++) {
+      Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg9[j] = aux; 
+  }
     
     
   //make call
-  glMap2d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLdouble ) arg5, ( GLdouble ) arg6, ( GLint ) arg7, ( GLint ) arg8, ( const GLdouble* ) arg9);
-  return v8::Undefined();
+  glMap2d((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLint) arg3, (GLint) arg4, (GLdouble) arg5, (GLdouble) arg6, (GLint) arg7, (GLint) arg8, (const GLdouble*) arg9);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMap2fCallback(const Arguments& args) {
+Handle<Value> GLglMap2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 10) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10508,319 +10620,325 @@ Handle<Value> GLMap2fCallback(const Arguments& args) {
   int arg8 = args[8]->IntegerValue();
 
     
-
-Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
-  GLfloat*   arg9 = new   GLfloat  [arrHandle9->Length()];
-for (unsigned j = 0; j < arrHandle9->Length(); j++) {
-    Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg9[j] = aux; 
-}
+  Handle<Array> arrHandle9 = Handle<Array>::Cast(args[9]);
+   GLfloat* arg9 = new  GLfloat[arrHandle9->Length()];
+  for (unsigned j = 0; j < arrHandle9->Length(); j++) {
+      Handle<Value> arg(arrHandle9->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg9[j] = aux; 
+  }
     
     
   //make call
-  glMap2f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLfloat ) arg5, ( GLfloat ) arg6, ( GLint ) arg7, ( GLint ) arg8, ( const GLfloat* ) arg9);
-  return v8::Undefined();
+  glMap2f((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLint) arg3, (GLint) arg4, (GLfloat) arg5, (GLfloat) arg6, (GLint) arg7, (GLint) arg8, (const GLfloat*) arg9);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMapdvCallback(const Arguments& args) {
+Handle<Value> GLglGetMapdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLdouble*   arg2 = new  GLdouble  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLdouble   aux = ( GLdouble  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLdouble* arg2 = new GLdouble[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLdouble aux = (GLdouble)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMapdv(( GLenum ) arg0, ( GLenum ) arg1, ( GLdouble* ) arg2);
-  return v8::Undefined();
+  glGetMapdv((GLenum) arg0, (GLenum) arg1, (GLdouble*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMapfvCallback(const Arguments& args) {
+Handle<Value> GLglGetMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMapfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetMapfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMapivCallback(const Arguments& args) {
+Handle<Value> GLglGetMapivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMapiv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetMapiv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord1dCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glEvalCoord1d(( GLdouble ) arg0);
-  return v8::Undefined();
+  glEvalCoord1d((GLdouble) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord1fCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glEvalCoord1f(( GLfloat ) arg0);
-  return v8::Undefined();
+  glEvalCoord1f((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord1dvCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glEvalCoord1dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glEvalCoord1dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord1fvCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glEvalCoord1fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glEvalCoord1fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord2dCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glEvalCoord2d(( GLdouble ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
+  glEvalCoord2d((GLdouble) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord2fCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glEvalCoord2f(( GLfloat ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glEvalCoord2f((GLfloat) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord2dvCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glEvalCoord2dv(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glEvalCoord2dv((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalCoord2fvCallback(const Arguments& args) {
+Handle<Value> GLglEvalCoord2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glEvalCoord2fv(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glEvalCoord2fv((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMapGrid1dCallback(const Arguments& args) {
+Handle<Value> GLglMapGrid1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMapGrid1d(( GLint ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glMapGrid1d((GLint) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMapGrid1fCallback(const Arguments& args) {
+Handle<Value> GLglMapGrid1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMapGrid1f(( GLint ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glMapGrid1f((GLint) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMapGrid2dCallback(const Arguments& args) {
+Handle<Value> GLglMapGrid2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10830,18 +10948,19 @@ Handle<Value> GLMapGrid2dCallback(const Arguments& args) {
   double arg5 = args[5]->NumberValue();
 
   //make call
-  glMapGrid2d(( GLint ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLint ) arg3, ( GLdouble ) arg4, ( GLdouble ) arg5);
-  return v8::Undefined();
+  glMapGrid2d((GLint) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLint) arg3, (GLdouble) arg4, (GLdouble) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMapGrid2fCallback(const Arguments& args) {
+Handle<Value> GLglMapGrid2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -10851,69 +10970,73 @@ Handle<Value> GLMapGrid2fCallback(const Arguments& args) {
   double arg5 = args[5]->NumberValue();
 
   //make call
-  glMapGrid2f(( GLint ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLint ) arg3, ( GLfloat ) arg4, ( GLfloat ) arg5);
-  return v8::Undefined();
+  glMapGrid2f((GLint) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLint) arg3, (GLfloat) arg4, (GLfloat) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalPoint1Callback(const Arguments& args) {
+Handle<Value> GLglEvalPoint1Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glEvalPoint1(( GLint ) arg0);
-  return v8::Undefined();
+  glEvalPoint1((GLint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalPoint2Callback(const Arguments& args) {
+Handle<Value> GLglEvalPoint2Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glEvalPoint2(( GLint ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glEvalPoint2((GLint) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalMesh1Callback(const Arguments& args) {
+Handle<Value> GLglEvalMesh1Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glEvalMesh1(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glEvalMesh1((GLenum) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLEvalMesh2Callback(const Arguments& args) {
+Handle<Value> GLglEvalMesh2Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -10922,229 +11045,237 @@ Handle<Value> GLEvalMesh2Callback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glEvalMesh2(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4);
-  return v8::Undefined();
+  glEvalMesh2((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFogfCallback(const Arguments& args) {
+Handle<Value> GLglFogfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glFogf(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glFogf((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFogiCallback(const Arguments& args) {
+Handle<Value> GLglFogiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glFogi(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
+  glFogi((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFogfvCallback(const Arguments& args) {
+Handle<Value> GLglFogfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glFogfv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glFogfv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFogivCallback(const Arguments& args) {
+Handle<Value> GLglFogivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glFogiv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glFogiv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLFeedbackBufferCallback(const Arguments& args) {
+Handle<Value> GLglFeedbackBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glFeedbackBuffer(( GLsizei ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glFeedbackBuffer((GLsizei) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPassThroughCallback(const Arguments& args) {
+Handle<Value> GLglPassThroughCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
   //make call
-  glPassThrough(( GLfloat ) arg0);
-  return v8::Undefined();
+  glPassThrough((GLfloat) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLSelectBufferCallback(const Arguments& args) {
+Handle<Value> GLglSelectBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
- GLuint*   arg1 = new  GLuint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-     GLuint   aux = ( GLuint  )arg->Uint32Value();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+  GLuint* arg1 = new GLuint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+      GLuint aux = (GLuint)arg->Uint32Value();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glSelectBuffer(( GLsizei ) arg0, ( GLuint* ) arg1);
-  return v8::Undefined();
+  glSelectBuffer((GLsizei) arg0, (GLuint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLInitNamesCallback(const Arguments& args) {
+Handle<Value> GLglInitNamesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glInitNames();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadNameCallback(const Arguments& args) {
+Handle<Value> GLglLoadNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glLoadName(( GLuint ) arg0);
-  return v8::Undefined();
+  glLoadName((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPushNameCallback(const Arguments& args) {
+Handle<Value> GLglPushNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glPushName(( GLuint ) arg0);
-  return v8::Undefined();
+  glPushName((GLuint) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLPopNameCallback(const Arguments& args) {
+Handle<Value> GLglPopNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
   //make call
   glPopName();
-  return v8::Undefined();
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
@@ -11478,11 +11609,11 @@ Handle<Value> GetGL_TEXTURE_BINDING_3D(Local<String> property,
 
 
 
-Handle<Value> GLCopyTexSubImage3DCallback(const Arguments& args) {
+Handle<Value> GLglCopyTexSubImage3DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 9) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11495,8 +11626,9 @@ Handle<Value> GLCopyTexSubImage3DCallback(const Arguments& args) {
   int arg8 = args[8]->IntegerValue();
 
   //make call
-  glCopyTexSubImage3D(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4, ( GLint ) arg5, ( GLint ) arg6, ( GLsizei ) arg7, ( GLsizei ) arg8);
-  return v8::Undefined();
+  glCopyTexSubImage3D((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4, (GLint) arg5, (GLint) arg6, (GLsizei) arg7, (GLsizei) arg8);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
@@ -12046,14 +12178,6 @@ Handle<Value> GetGL_TABLE_TOO_LARGE(Local<String> property,
 
 
 
-Handle<Value> GetGL_BLEND_EQUATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_BLEND_EQUATION);
-}
-
-
-
-
 Handle<Value> GetGL_MIN(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GL_MIN);
@@ -12102,67 +12226,67 @@ Handle<Value> GetGL_BLEND_COLOR(Local<String> property,
 
 
 
-Handle<Value> GLColorTableParameterivCallback(const Arguments& args) {
+Handle<Value> GLglColorTableParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glColorTableParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glColorTableParameteriv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLColorTableParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglColorTableParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glColorTableParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glColorTableParameterfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyColorSubTableCallback(const Arguments& args) {
+Handle<Value> GLglCopyColorSubTableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -12171,18 +12295,19 @@ Handle<Value> GLCopyColorSubTableCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glCopyColorSubTable(( GLenum ) arg0, ( GLsizei ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLsizei ) arg4);
-  return v8::Undefined();
+  glCopyColorSubTable((GLenum) arg0, (GLsizei) arg1, (GLint) arg2, (GLint) arg3, (GLsizei) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyColorTableCallback(const Arguments& args) {
+Handle<Value> GLglCopyColorTableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -12191,90 +12316,92 @@ Handle<Value> GLCopyColorTableCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glCopyColorTable(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLsizei ) arg4);
-  return v8::Undefined();
+  glCopyColorTable((GLenum) arg0, (GLenum) arg1, (GLint) arg2, (GLint) arg3, (GLsizei) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetColorTableParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglGetColorTableParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetColorTableParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetColorTableParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetColorTableParameterivCallback(const Arguments& args) {
+Handle<Value> GLglGetColorTableParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetColorTableParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetColorTableParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBlendEquationCallback(const Arguments& args) {
+Handle<Value> GLglBlendEquationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glBlendEquation(( GLenum ) arg0);
-  return v8::Undefined();
+  glBlendEquation((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLBlendColorCallback(const Arguments& args) {
+Handle<Value> GLglBlendColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -12282,18 +12409,19 @@ Handle<Value> GLBlendColorCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glBlendColor(( GLclampf ) arg0, ( GLclampf ) arg1, ( GLclampf ) arg2, ( GLclampf ) arg3);
-  return v8::Undefined();
+  glBlendColor((GLclampf) arg0, (GLclampf) arg1, (GLclampf) arg2, (GLclampf) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLHistogramCallback(const Arguments& args) {
+Handle<Value> GLglHistogramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -12301,272 +12429,278 @@ Handle<Value> GLHistogramCallback(const Arguments& args) {
   unsigned int arg3 = args[3]->Uint32Value();
 
   //make call
-  glHistogram(( GLenum ) arg0, ( GLsizei ) arg1, ( GLenum ) arg2, ( GLboolean ) arg3);
-  return v8::Undefined();
+  glHistogram((GLenum) arg0, (GLsizei) arg1, (GLenum) arg2, (GLboolean) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLResetHistogramCallback(const Arguments& args) {
+Handle<Value> GLglResetHistogramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glResetHistogram(( GLenum ) arg0);
-  return v8::Undefined();
+  glResetHistogram((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetHistogramParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglGetHistogramParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glGetHistogramParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLGetHistogramParameterivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetHistogramParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetHistogramParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMinmaxCallback(const Arguments& args) {
+Handle<Value> GLglGetHistogramParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glGetHistogramParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMinmaxCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   unsigned int arg2 = args[2]->Uint32Value();
 
   //make call
-  glMinmax(( GLenum ) arg0, ( GLenum ) arg1, ( GLboolean ) arg2);
-  return v8::Undefined();
+  glMinmax((GLenum) arg0, (GLenum) arg1, (GLboolean) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLResetMinmaxCallback(const Arguments& args) {
+Handle<Value> GLglResetMinmaxCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glResetMinmax(( GLenum ) arg0);
-  return v8::Undefined();
+  glResetMinmax((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetMinmaxParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglGetMinmaxParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
-    
-    
-  //make call
-  glGetMinmaxParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLGetMinmaxParameterivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetMinmaxParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetMinmaxParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLConvolutionParameterfCallback(const Arguments& args) {
+Handle<Value> GLglGetMinmaxParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+    
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
+    
+    
+  //make call
+  glGetMinmaxParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglConvolutionParameterfCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glConvolutionParameterf(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glConvolutionParameterf((GLenum) arg0, (GLenum) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLConvolutionParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglConvolutionParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLfloat*   arg2 = new   GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glConvolutionParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLfloat* ) arg2);
-  return v8::Undefined();
+  glConvolutionParameterfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLConvolutionParameteriCallback(const Arguments& args) {
+Handle<Value> GLglConvolutionParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glConvolutionParameteri(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glConvolutionParameteri((GLenum) arg0, (GLenum) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLConvolutionParameterivCallback(const Arguments& args) {
+Handle<Value> GLglConvolutionParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint*   arg2 = new   GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+   GLint* arg2 = new  GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glConvolutionParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( const GLint* ) arg2);
-  return v8::Undefined();
+  glConvolutionParameteriv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyConvolutionFilter1DCallback(const Arguments& args) {
+Handle<Value> GLglCopyConvolutionFilter1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -12575,18 +12709,19 @@ Handle<Value> GLCopyConvolutionFilter1DCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glCopyConvolutionFilter1D(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLsizei ) arg4);
-  return v8::Undefined();
+  glCopyConvolutionFilter1D((GLenum) arg0, (GLenum) arg1, (GLint) arg2, (GLint) arg3, (GLsizei) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLCopyConvolutionFilter2DCallback(const Arguments& args) {
+Handle<Value> GLglCopyConvolutionFilter2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -12596,64 +12731,65 @@ Handle<Value> GLCopyConvolutionFilter2DCallback(const Arguments& args) {
   int arg5 = args[5]->IntegerValue();
 
   //make call
-  glCopyConvolutionFilter2D(( GLenum ) arg0, ( GLenum ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLsizei ) arg4, ( GLsizei ) arg5);
-  return v8::Undefined();
+  glCopyConvolutionFilter2D((GLenum) arg0, (GLenum) arg1, (GLint) arg2, (GLint) arg3, (GLsizei) arg4, (GLsizei) arg5);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetConvolutionParameterfvCallback(const Arguments& args) {
+Handle<Value> GLglGetConvolutionParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLfloat*   arg2 = new  GLfloat  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLfloat   aux = ( GLfloat  )arg->NumberValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLfloat aux = (GLfloat)arg->NumberValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetConvolutionParameterfv(( GLenum ) arg0, ( GLenum ) arg1, ( GLfloat* ) arg2);
-  return v8::Undefined();
+  glGetConvolutionParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLGetConvolutionParameterivCallback(const Arguments& args) {
+Handle<Value> GLglGetConvolutionParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
     
-
-Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
- GLint*   arg2 = new  GLint  [arrHandle2->Length()];
-for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-    Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-     GLint   aux = ( GLint  )arg->IntegerValue();
-    arg2[j] = aux; 
-}
+  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
+  GLint* arg2 = new GLint[arrHandle2->Length()];
+  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
+      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
+      GLint aux = (GLint)arg->IntegerValue();
+      arg2[j] = aux; 
+  }
     
     
   //make call
-  glGetConvolutionParameteriv(( GLenum ) arg0, ( GLenum ) arg1, ( GLint* ) arg2);
-  return v8::Undefined();
+  glGetConvolutionParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
@@ -12979,14 +13115,6 @@ Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_X(Local<String> property,
 
 
 
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_NEGATIVE_X(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_X);
-}
-
-
-
-
 Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_Y(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Y);
@@ -12995,25 +13123,9 @@ Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_Y(Local<String> property,
 
 
 
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_NEGATIVE_Y(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y);
-}
-
-
-
-
 Handle<Value> GetGL_TEXTURE_CUBE_MAP_POSITIVE_Z(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Z);
-}
-
-
-
-
-Handle<Value> GetGL_TEXTURE_CUBE_MAP_NEGATIVE_Z(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z);
 }
 
 
@@ -13427,399 +13539,409 @@ Handle<Value> GetGL_CLAMP_TO_BORDER(Local<String> property,
 
 
 
-Handle<Value> GLActiveTextureCallback(const Arguments& args) {
+Handle<Value> GLglActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glActiveTexture(( GLenum ) arg0);
-  return v8::Undefined();
+  glActiveTexture((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClientActiveTextureCallback(const Arguments& args) {
+Handle<Value> GLglClientActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glClientActiveTexture(( GLenum ) arg0);
-  return v8::Undefined();
+  glClientActiveTexture((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1dCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glMultiTexCoord1d(( GLenum ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1d((GLenum) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1dvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1dv((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1fCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glMultiTexCoord1f(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1f((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1fvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1fv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1iCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glMultiTexCoord1i(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord1ivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
-    
-    
-  //make call
-  glMultiTexCoord1iv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord1sCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glMultiTexCoord1s(( GLenum ) arg0, ( GLshort ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1i((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1svCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1sv(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1iv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2dCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1sCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glMultiTexCoord1s((GLenum) arg0, (GLshort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord1svCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+    
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
+    
+    
+  //make call
+  glMultiTexCoord1sv((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMultiTexCoord2d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2d((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2dvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2dv((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2fCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMultiTexCoord2f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2f((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2fvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2fv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2iCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glMultiTexCoord2i(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2i((GLenum) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2ivCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2iv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2iv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2sCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glMultiTexCoord2s(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2s((GLenum) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2svCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2sv(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2sv((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3dCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -13827,45 +13949,46 @@ Handle<Value> GLMultiTexCoord3dCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glMultiTexCoord3d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3d((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3dvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3dv((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3fCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -13873,45 +13996,46 @@ Handle<Value> GLMultiTexCoord3fCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glMultiTexCoord3f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3f((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3fvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3fv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3iCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -13919,45 +14043,46 @@ Handle<Value> GLMultiTexCoord3iCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glMultiTexCoord3i(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3i((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3ivCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3iv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3iv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3sCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -13965,92 +14090,46 @@ Handle<Value> GLMultiTexCoord3sCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glMultiTexCoord3s(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3s((GLenum) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3svCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3sv(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3sv((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4dCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-  double arg3 = args[3]->NumberValue();
-  double arg4 = args[4]->NumberValue();
-
-  //make call
-  glMultiTexCoord4d(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLdouble ) arg4);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord4dvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
-    
-    
-  //make call
-  glMultiTexCoord4dv(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord4fCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -14059,45 +14138,94 @@ Handle<Value> GLMultiTexCoord4fCallback(const Arguments& args) {
   double arg4 = args[4]->NumberValue();
 
   //make call
-  glMultiTexCoord4f(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3, ( GLfloat ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4d((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3, (GLdouble) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4fvCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4fv(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4dv((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4iCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+  double arg4 = args[4]->NumberValue();
+
+  //make call
+  glMultiTexCoord4f((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3, (GLfloat) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord4fvCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+    
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
+    
+    
+  //make call
+  glMultiTexCoord4fv((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord4iCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 5) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -14106,45 +14234,46 @@ Handle<Value> GLMultiTexCoord4iCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glMultiTexCoord4i(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4i((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4ivCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4iv(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4iv((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4sCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -14153,156 +14282,158 @@ Handle<Value> GLMultiTexCoord4sCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glMultiTexCoord4s(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3, ( GLshort ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4s((GLenum) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3, (GLshort) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4svCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4sv(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4sv((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadTransposeMatrixdCallback(const Arguments& args) {
+Handle<Value> GLglLoadTransposeMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glLoadTransposeMatrixd(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glLoadTransposeMatrixd((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLLoadTransposeMatrixfCallback(const Arguments& args) {
+Handle<Value> GLglLoadTransposeMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glLoadTransposeMatrixf(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glLoadTransposeMatrixf((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultTransposeMatrixdCallback(const Arguments& args) {
+Handle<Value> GLglMultTransposeMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLdouble*   arg0 = new   GLdouble  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLdouble* arg0 = new  GLdouble[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glMultTransposeMatrixd(( const GLdouble* ) arg0);
-  return v8::Undefined();
+  glMultTransposeMatrixd((const GLdouble*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultTransposeMatrixfCallback(const Arguments& args) {
+Handle<Value> GLglMultTransposeMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
 
     
-
-Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
-  GLfloat*   arg0 = new   GLfloat  [arrHandle0->Length()];
-for (unsigned j = 0; j < arrHandle0->Length(); j++) {
-    Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg0[j] = aux; 
-}
+  Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
+   GLfloat* arg0 = new  GLfloat[arrHandle0->Length()];
+  for (unsigned j = 0; j < arrHandle0->Length(); j++) {
+      Handle<Value> arg(arrHandle0->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg0[j] = aux; 
+  }
     
     
   //make call
-  glMultTransposeMatrixf(( const GLfloat* ) arg0);
-  return v8::Undefined();
+  glMultTransposeMatrixf((const GLfloat*) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLSampleCoverageCallback(const Arguments& args) {
+Handle<Value> GLglSampleCoverageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   unsigned int arg1 = args[1]->Uint32Value();
 
   //make call
-  glSampleCoverage(( GLclampf ) arg0, ( GLboolean ) arg1);
-  return v8::Undefined();
+  glSampleCoverage((GLclampf) arg0, (GLboolean) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
@@ -14596,399 +14727,409 @@ Handle<Value> GetGL_MAX_TEXTURE_UNITS_ARB(Local<String> property,
 
 
 
-Handle<Value> GLActiveTextureARBCallback(const Arguments& args) {
+Handle<Value> GLglActiveTextureARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glActiveTextureARB(( GLenum ) arg0);
-  return v8::Undefined();
+  glActiveTextureARB((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLClientActiveTextureARBCallback(const Arguments& args) {
+Handle<Value> GLglClientActiveTextureARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glClientActiveTextureARB(( GLenum ) arg0);
-  return v8::Undefined();
+  glClientActiveTextureARB((GLenum) arg0);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1dARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1dARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glMultiTexCoord1dARB(( GLenum ) arg0, ( GLdouble ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1dARB((GLenum) arg0, (GLdouble) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1dvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1dvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1dvARB((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1fARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1fARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
 
   //make call
-  glMultiTexCoord1fARB(( GLenum ) arg0, ( GLfloat ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1fARB((GLenum) arg0, (GLfloat) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1fvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1fvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1fvARB((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1iARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1iARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glMultiTexCoord1iARB(( GLenum ) arg0, ( GLint ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord1ivARBCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-
-    
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
-    
-    
-  //make call
-  glMultiTexCoord1ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLMultiTexCoord1sARBCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glMultiTexCoord1sARB(( GLenum ) arg0, ( GLshort ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1iARB((GLenum) arg0, (GLint) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord1svARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1ivARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord1svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord1ivARB((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2dARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord1sARBCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glMultiTexCoord1sARB((GLenum) arg0, (GLshort) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord1svARBCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+    
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
+    
+    
+  //make call
+  glMultiTexCoord1svARB((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
+}
+
+
+
+
+Handle<Value> GLglMultiTexCoord2dARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMultiTexCoord2dARB(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2dARB((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2dvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2dvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2dvARB((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2fARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2fARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
 
   //make call
-  glMultiTexCoord2fARB(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2fARB((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2fvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2fvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2fvARB((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2iARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2iARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glMultiTexCoord2iARB(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2iARB((GLenum) arg0, (GLint) arg1, (GLint) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2ivARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2ivARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2ivARB((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2sARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2sARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glMultiTexCoord2sARB(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2);
-  return v8::Undefined();
+  glMultiTexCoord2sARB((GLenum) arg0, (GLshort) arg1, (GLshort) arg2);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord2svARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord2svARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord2svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord2svARB((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3dARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3dARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -14996,45 +15137,46 @@ Handle<Value> GLMultiTexCoord3dARBCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glMultiTexCoord3dARB(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3dARB((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3dvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3dvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3dvARB((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3fARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3fARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -15042,45 +15184,46 @@ Handle<Value> GLMultiTexCoord3fARBCallback(const Arguments& args) {
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glMultiTexCoord3fARB(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3fARB((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3fvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3fvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3fvARB((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3iARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3iARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -15088,45 +15231,46 @@ Handle<Value> GLMultiTexCoord3iARBCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glMultiTexCoord3iARB(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3iARB((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3ivARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3ivARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3ivARB((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3sARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3sARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -15134,45 +15278,46 @@ Handle<Value> GLMultiTexCoord3sARBCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glMultiTexCoord3sARB(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3);
-  return v8::Undefined();
+  glMultiTexCoord3sARB((GLenum) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord3svARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord3svARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord3svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord3svARB((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4dARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4dARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -15181,45 +15326,46 @@ Handle<Value> GLMultiTexCoord4dARBCallback(const Arguments& args) {
   double arg4 = args[4]->NumberValue();
 
   //make call
-  glMultiTexCoord4dARB(( GLenum ) arg0, ( GLdouble ) arg1, ( GLdouble ) arg2, ( GLdouble ) arg3, ( GLdouble ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4dARB((GLenum) arg0, (GLdouble) arg1, (GLdouble) arg2, (GLdouble) arg3, (GLdouble) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4dvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4dvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLdouble*   arg1 = new   GLdouble  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLdouble   aux = (  GLdouble  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLdouble* arg1 = new  GLdouble[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLdouble aux = ( GLdouble)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4dvARB(( GLenum ) arg0, ( const GLdouble* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4dvARB((GLenum) arg0, (const GLdouble*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4fARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4fARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -15228,45 +15374,46 @@ Handle<Value> GLMultiTexCoord4fARBCallback(const Arguments& args) {
   double arg4 = args[4]->NumberValue();
 
   //make call
-  glMultiTexCoord4fARB(( GLenum ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3, ( GLfloat ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4fARB((GLenum) arg0, (GLfloat) arg1, (GLfloat) arg2, (GLfloat) arg3, (GLfloat) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4fvARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4fvARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLfloat*   arg1 = new   GLfloat  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLfloat   aux = (  GLfloat  )arg->NumberValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLfloat aux = ( GLfloat)arg->NumberValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4fvARB(( GLenum ) arg0, ( const GLfloat* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4fvARB((GLenum) arg0, (const GLfloat*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4iARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4iARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -15275,45 +15422,46 @@ Handle<Value> GLMultiTexCoord4iARBCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glMultiTexCoord4iARB(( GLenum ) arg0, ( GLint ) arg1, ( GLint ) arg2, ( GLint ) arg3, ( GLint ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4iARB((GLenum) arg0, (GLint) arg1, (GLint) arg2, (GLint) arg3, (GLint) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4ivARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4ivARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLint*   arg1 = new   GLint  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLint   aux = (  GLint  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLint aux = ( GLint)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4ivARB(( GLenum ) arg0, ( const GLint* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4ivARB((GLenum) arg0, (const GLint*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4sARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4sARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -15322,211 +15470,110 @@ Handle<Value> GLMultiTexCoord4sARBCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glMultiTexCoord4sARB(( GLenum ) arg0, ( GLshort ) arg1, ( GLshort ) arg2, ( GLshort ) arg3, ( GLshort ) arg4);
-  return v8::Undefined();
+  glMultiTexCoord4sARB((GLenum) arg0, (GLshort) arg1, (GLshort) arg2, (GLshort) arg3, (GLshort) arg4);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GLMultiTexCoord4svARBCallback(const Arguments& args) {
+Handle<Value> GLglMultiTexCoord4svARBCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
   //define handle scope
-  HandleScope scope;
+  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
     
-
-Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLshort*   arg1 = new   GLshort  [arrHandle1->Length()];
-for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-    Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLshort   aux = (  GLshort  )arg->IntegerValue();
-    arg1[j] = aux; 
-}
+  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
+   GLshort* arg1 = new  GLshort[arrHandle1->Length()];
+  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
+      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
+       GLshort aux = ( GLshort)arg->IntegerValue();
+      arg1[j] = aux; 
+  }
     
     
   //make call
-  glMultiTexCoord4svARB(( GLenum ) arg0, ( const GLshort* ) arg1);
-  return v8::Undefined();
+  glMultiTexCoord4svARB((GLenum) arg0, (const GLshort*) arg1);
+  Handle<Object> res(GlFactory::self_);
+  return res;
 }
 
 
 
 
-Handle<Value> GetGL_MESA_shader_debug(Local<String> property,
+Handle<Value> GetGL_TEXTURE_1D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_MESA_shader_debug);
+    return Uint32::New(GL_TEXTURE_1D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_DEBUG_OBJECT_MESA(Local<String> property,
+Handle<Value> GetGL_PROXY_TEXTURE_1D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_DEBUG_OBJECT_MESA);
+    return Uint32::New(GL_PROXY_TEXTURE_1D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_DEBUG_PRINT_MESA(Local<String> property,
+Handle<Value> GetGL_TEXTURE_2D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_DEBUG_PRINT_MESA);
+    return Uint32::New(GL_TEXTURE_2D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_DEBUG_ASSERT_MESA(Local<String> property,
+Handle<Value> GetGL_PROXY_TEXTURE_2D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_DEBUG_ASSERT_MESA);
+    return Uint32::New(GL_PROXY_TEXTURE_2D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_MESA_packed_depth_stencil(Local<String> property,
+Handle<Value> GetGL_TEXTURE_BINDING_1D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_MESA_packed_depth_stencil);
+    return Uint32::New(GL_TEXTURE_BINDING_1D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_DEPTH_STENCIL_MESA(Local<String> property,
+Handle<Value> GetGL_TEXTURE_BINDING_2D_ARRAY_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_DEPTH_STENCIL_MESA);
+    return Uint32::New(GL_TEXTURE_BINDING_2D_ARRAY_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_UNSIGNED_INT_24_8_MESA(Local<String> property,
+Handle<Value> GetGL_MAX_ARRAY_TEXTURE_LAYERS_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_24_8_MESA);
+    return Uint32::New(GL_MAX_ARRAY_TEXTURE_LAYERS_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_UNSIGNED_INT_8_24_REV_MESA(Local<String> property,
+Handle<Value> GetGL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT(Local<String> property,
                       const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_INT_8_24_REV_MESA);
+    return Uint32::New(GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT);
 }
 
 
 
 
-Handle<Value> GetGL_UNSIGNED_SHORT_15_1_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_15_1_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_UNSIGNED_SHORT_1_15_REV_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_UNSIGNED_SHORT_1_15_REV_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_MESA_program_debug(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_MESA_program_debug);
-}
-
-
-
-
-Handle<Value> GetGL_FRAGMENT_PROGRAM_POSITION_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRAGMENT_PROGRAM_POSITION_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_FRAGMENT_PROGRAM_CALLBACK_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRAGMENT_PROGRAM_CALLBACK_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_FRAGMENT_PROGRAM_CALLBACK_FUNC_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRAGMENT_PROGRAM_CALLBACK_FUNC_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_FRAGMENT_PROGRAM_CALLBACK_DATA_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_FRAGMENT_PROGRAM_CALLBACK_DATA_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_PROGRAM_POSITION_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_PROGRAM_POSITION_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_PROGRAM_CALLBACK_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_PROGRAM_CALLBACK_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_PROGRAM_CALLBACK_FUNC_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_PROGRAM_CALLBACK_FUNC_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_VERTEX_PROGRAM_CALLBACK_DATA_MESA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_VERTEX_PROGRAM_CALLBACK_DATA_MESA);
-}
-
-
-
-
-Handle<Value> GetGL_ATI_blend_equation_separate(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ATI_blend_equation_separate);
-}
-
-
-
-
-Handle<Value> GetGL_ALPHA_BLEND_EQUATION_ATI(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GL_ALPHA_BLEND_EQUATION_ATI);
-}
-
-
-
-Handle<ObjectTemplate> createGl(void) {
+Handle<ObjectTemplate> GlFactory::createGl(void) {
       HandleScope handle_scope;
 
       Handle<ObjectTemplate> Gl = ObjectTemplate::New();
+      
       Gl->SetInternalFieldCount(1);
 
      Gl->SetAccessor(String::NewSymbol("VERSION_1_1"), GetGL_VERSION_1_1);
@@ -15792,12 +15839,6 @@ Handle<ObjectTemplate> createGl(void) {
      Gl->SetAccessor(String::NewSymbol("SPOT_EXPONENT"), GetGL_SPOT_EXPONENT);
 
      Gl->SetAccessor(String::NewSymbol("SPOT_CUTOFF"), GetGL_SPOT_CUTOFF);
-
-     Gl->SetAccessor(String::NewSymbol("CONSTANT_ATTENUATION"), GetGL_CONSTANT_ATTENUATION);
-
-     Gl->SetAccessor(String::NewSymbol("LINEAR_ATTENUATION"), GetGL_LINEAR_ATTENUATION);
-
-     Gl->SetAccessor(String::NewSymbol("QUADRATIC_ATTENUATION"), GetGL_QUADRATIC_ATTENUATION);
 
      Gl->SetAccessor(String::NewSymbol("AMBIENT"), GetGL_AMBIENT);
 
@@ -16457,8 +16498,6 @@ Handle<ObjectTemplate> createGl(void) {
 
      Gl->SetAccessor(String::NewSymbol("INVALID_VALUE"), GetGL_INVALID_VALUE);
 
-     Gl->SetAccessor(String::NewSymbol("INVALID_OPERATION"), GetGL_INVALID_OPERATION);
-
      Gl->SetAccessor(String::NewSymbol("STACK_OVERFLOW"), GetGL_STACK_OVERFLOW);
 
      Gl->SetAccessor(String::NewSymbol("STACK_UNDERFLOW"), GetGL_STACK_UNDERFLOW);
@@ -16813,8 +16852,6 @@ Handle<ObjectTemplate> createGl(void) {
 
      Gl->SetAccessor(String::NewSymbol("TABLE_TOO_LARGE"), GetGL_TABLE_TOO_LARGE);
 
-     Gl->SetAccessor(String::NewSymbol("BLEND_EQUATION"), GetGL_BLEND_EQUATION);
-
      Gl->SetAccessor(String::NewSymbol("MIN"), GetGL_MIN);
 
      Gl->SetAccessor(String::NewSymbol("MAX"), GetGL_MAX);
@@ -16907,15 +16944,9 @@ Handle<ObjectTemplate> createGl(void) {
 
      Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_X"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_X);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_X"), GetGL_TEXTURE_CUBE_MAP_NEGATIVE_X);
-
      Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Y"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_Y);
 
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_Y"), GetGL_TEXTURE_CUBE_MAP_NEGATIVE_Y);
-
      Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Z"), GetGL_TEXTURE_CUBE_MAP_POSITIVE_Z);
-
-     Gl->SetAccessor(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_Z"), GetGL_TEXTURE_CUBE_MAP_NEGATIVE_Z);
 
      Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_CUBE_MAP"), GetGL_PROXY_TEXTURE_CUBE_MAP);
 
@@ -17091,878 +17122,853 @@ Handle<ObjectTemplate> createGl(void) {
 
      Gl->SetAccessor(String::NewSymbol("MAX_TEXTURE_UNITS_ARB"), GetGL_MAX_TEXTURE_UNITS_ARB);
 
-     Gl->SetAccessor(String::NewSymbol("MESA_shader_debug"), GetGL_MESA_shader_debug);
+     Gl->SetAccessor(String::NewSymbol("TEXTURE_1D_ARRAY_EXT"), GetGL_TEXTURE_1D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("DEBUG_OBJECT_MESA"), GetGL_DEBUG_OBJECT_MESA);
+     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_1D_ARRAY_EXT"), GetGL_PROXY_TEXTURE_1D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("DEBUG_PRINT_MESA"), GetGL_DEBUG_PRINT_MESA);
+     Gl->SetAccessor(String::NewSymbol("TEXTURE_2D_ARRAY_EXT"), GetGL_TEXTURE_2D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("DEBUG_ASSERT_MESA"), GetGL_DEBUG_ASSERT_MESA);
+     Gl->SetAccessor(String::NewSymbol("PROXY_TEXTURE_2D_ARRAY_EXT"), GetGL_PROXY_TEXTURE_2D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("MESA_packed_depth_stencil"), GetGL_MESA_packed_depth_stencil);
+     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_1D_ARRAY_EXT"), GetGL_TEXTURE_BINDING_1D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("DEPTH_STENCIL_MESA"), GetGL_DEPTH_STENCIL_MESA);
+     Gl->SetAccessor(String::NewSymbol("TEXTURE_BINDING_2D_ARRAY_EXT"), GetGL_TEXTURE_BINDING_2D_ARRAY_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_24_8_MESA"), GetGL_UNSIGNED_INT_24_8_MESA);
+     Gl->SetAccessor(String::NewSymbol("MAX_ARRAY_TEXTURE_LAYERS_EXT"), GetGL_MAX_ARRAY_TEXTURE_LAYERS_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_INT_8_24_REV_MESA"), GetGL_UNSIGNED_INT_8_24_REV_MESA);
+     Gl->SetAccessor(String::NewSymbol("FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT"), GetGL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT);
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_15_1_MESA"), GetGL_UNSIGNED_SHORT_15_1_MESA);
+     Gl->Set(String::NewSymbol("ClearIndex"), FunctionTemplate::New(GLglClearIndexCallback));
 
-     Gl->SetAccessor(String::NewSymbol("UNSIGNED_SHORT_1_15_REV_MESA"), GetGL_UNSIGNED_SHORT_1_15_REV_MESA);
+     Gl->Set(String::NewSymbol("ClearColor"), FunctionTemplate::New(GLglClearColorCallback));
 
-     Gl->SetAccessor(String::NewSymbol("MESA_program_debug"), GetGL_MESA_program_debug);
+     Gl->Set(String::NewSymbol("Clear"), FunctionTemplate::New(GLglClearCallback));
 
-     Gl->SetAccessor(String::NewSymbol("FRAGMENT_PROGRAM_POSITION_MESA"), GetGL_FRAGMENT_PROGRAM_POSITION_MESA);
+     Gl->Set(String::NewSymbol("IndexMask"), FunctionTemplate::New(GLglIndexMaskCallback));
 
-     Gl->SetAccessor(String::NewSymbol("FRAGMENT_PROGRAM_CALLBACK_MESA"), GetGL_FRAGMENT_PROGRAM_CALLBACK_MESA);
+     Gl->Set(String::NewSymbol("ColorMask"), FunctionTemplate::New(GLglColorMaskCallback));
 
-     Gl->SetAccessor(String::NewSymbol("FRAGMENT_PROGRAM_CALLBACK_FUNC_MESA"), GetGL_FRAGMENT_PROGRAM_CALLBACK_FUNC_MESA);
+     Gl->Set(String::NewSymbol("AlphaFunc"), FunctionTemplate::New(GLglAlphaFuncCallback));
 
-     Gl->SetAccessor(String::NewSymbol("FRAGMENT_PROGRAM_CALLBACK_DATA_MESA"), GetGL_FRAGMENT_PROGRAM_CALLBACK_DATA_MESA);
+     Gl->Set(String::NewSymbol("BlendFunc"), FunctionTemplate::New(GLglBlendFuncCallback));
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_PROGRAM_POSITION_MESA"), GetGL_VERTEX_PROGRAM_POSITION_MESA);
+     Gl->Set(String::NewSymbol("LogicOp"), FunctionTemplate::New(GLglLogicOpCallback));
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_PROGRAM_CALLBACK_MESA"), GetGL_VERTEX_PROGRAM_CALLBACK_MESA);
+     Gl->Set(String::NewSymbol("CullFace"), FunctionTemplate::New(GLglCullFaceCallback));
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_PROGRAM_CALLBACK_FUNC_MESA"), GetGL_VERTEX_PROGRAM_CALLBACK_FUNC_MESA);
+     Gl->Set(String::NewSymbol("FrontFace"), FunctionTemplate::New(GLglFrontFaceCallback));
 
-     Gl->SetAccessor(String::NewSymbol("VERTEX_PROGRAM_CALLBACK_DATA_MESA"), GetGL_VERTEX_PROGRAM_CALLBACK_DATA_MESA);
+     Gl->Set(String::NewSymbol("PointSize"), FunctionTemplate::New(GLglPointSizeCallback));
 
-     Gl->SetAccessor(String::NewSymbol("ATI_blend_equation_separate"), GetGL_ATI_blend_equation_separate);
+     Gl->Set(String::NewSymbol("LineWidth"), FunctionTemplate::New(GLglLineWidthCallback));
 
-     Gl->SetAccessor(String::NewSymbol("ALPHA_BLEND_EQUATION_ATI"), GetGL_ALPHA_BLEND_EQUATION_ATI);
-     Gl->Set(String::NewSymbol("ClearIndex"), FunctionTemplate::New(GLClearIndexCallback));
+     Gl->Set(String::NewSymbol("LineStipple"), FunctionTemplate::New(GLglLineStippleCallback));
 
-     Gl->Set(String::NewSymbol("ClearColor"), FunctionTemplate::New(GLClearColorCallback));
+     Gl->Set(String::NewSymbol("PolygonMode"), FunctionTemplate::New(GLglPolygonModeCallback));
 
-     Gl->Set(String::NewSymbol("Clear"), FunctionTemplate::New(GLClearCallback));
+     Gl->Set(String::NewSymbol("PolygonOffset"), FunctionTemplate::New(GLglPolygonOffsetCallback));
 
-     Gl->Set(String::NewSymbol("IndexMask"), FunctionTemplate::New(GLIndexMaskCallback));
+     Gl->Set(String::NewSymbol("PolygonStipple"), FunctionTemplate::New(GLglPolygonStippleCallback));
 
-     Gl->Set(String::NewSymbol("ColorMask"), FunctionTemplate::New(GLColorMaskCallback));
+     Gl->Set(String::NewSymbol("GetPolygonStipple"), FunctionTemplate::New(GLglGetPolygonStippleCallback));
 
-     Gl->Set(String::NewSymbol("AlphaFunc"), FunctionTemplate::New(GLAlphaFuncCallback));
+     Gl->Set(String::NewSymbol("EdgeFlag"), FunctionTemplate::New(GLglEdgeFlagCallback));
 
-     Gl->Set(String::NewSymbol("BlendFunc"), FunctionTemplate::New(GLBlendFuncCallback));
+     Gl->Set(String::NewSymbol("EdgeFlagv"), FunctionTemplate::New(GLglEdgeFlagvCallback));
 
-     Gl->Set(String::NewSymbol("LogicOp"), FunctionTemplate::New(GLLogicOpCallback));
+     Gl->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLglScissorCallback));
 
-     Gl->Set(String::NewSymbol("CullFace"), FunctionTemplate::New(GLCullFaceCallback));
+     Gl->Set(String::NewSymbol("ClipPlane"), FunctionTemplate::New(GLglClipPlaneCallback));
 
-     Gl->Set(String::NewSymbol("FrontFace"), FunctionTemplate::New(GLFrontFaceCallback));
+     Gl->Set(String::NewSymbol("GetClipPlane"), FunctionTemplate::New(GLglGetClipPlaneCallback));
 
-     Gl->Set(String::NewSymbol("PointSize"), FunctionTemplate::New(GLPointSizeCallback));
+     Gl->Set(String::NewSymbol("DrawBuffer"), FunctionTemplate::New(GLglDrawBufferCallback));
 
-     Gl->Set(String::NewSymbol("LineWidth"), FunctionTemplate::New(GLLineWidthCallback));
+     Gl->Set(String::NewSymbol("ReadBuffer"), FunctionTemplate::New(GLglReadBufferCallback));
 
-     Gl->Set(String::NewSymbol("LineStipple"), FunctionTemplate::New(GLLineStippleCallback));
+     Gl->Set(String::NewSymbol("Enable"), FunctionTemplate::New(GLglEnableCallback));
 
-     Gl->Set(String::NewSymbol("PolygonMode"), FunctionTemplate::New(GLPolygonModeCallback));
+     Gl->Set(String::NewSymbol("Disable"), FunctionTemplate::New(GLglDisableCallback));
 
-     Gl->Set(String::NewSymbol("PolygonOffset"), FunctionTemplate::New(GLPolygonOffsetCallback));
+     Gl->Set(String::NewSymbol("IsEnabled"), FunctionTemplate::New(GLglIsEnabledCallback));
 
-     Gl->Set(String::NewSymbol("PolygonStipple"), FunctionTemplate::New(GLPolygonStippleCallback));
+     Gl->Set(String::NewSymbol("EnableClientState"), FunctionTemplate::New(GLglEnableClientStateCallback));
 
-     Gl->Set(String::NewSymbol("GetPolygonStipple"), FunctionTemplate::New(GLGetPolygonStippleCallback));
+     Gl->Set(String::NewSymbol("DisableClientState"), FunctionTemplate::New(GLglDisableClientStateCallback));
 
-     Gl->Set(String::NewSymbol("EdgeFlag"), FunctionTemplate::New(GLEdgeFlagCallback));
+     Gl->Set(String::NewSymbol("GetBooleanv"), FunctionTemplate::New(GLglGetBooleanvCallback));
 
-     Gl->Set(String::NewSymbol("EdgeFlagv"), FunctionTemplate::New(GLEdgeFlagvCallback));
+     Gl->Set(String::NewSymbol("GetDoublev"), FunctionTemplate::New(GLglGetDoublevCallback));
 
-     Gl->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLScissorCallback));
+     Gl->Set(String::NewSymbol("GetFloatv"), FunctionTemplate::New(GLglGetFloatvCallback));
 
-     Gl->Set(String::NewSymbol("ClipPlane"), FunctionTemplate::New(GLClipPlaneCallback));
+     Gl->Set(String::NewSymbol("GetIntegerv"), FunctionTemplate::New(GLglGetIntegervCallback));
 
-     Gl->Set(String::NewSymbol("GetClipPlane"), FunctionTemplate::New(GLGetClipPlaneCallback));
+     Gl->Set(String::NewSymbol("PushAttrib"), FunctionTemplate::New(GLglPushAttribCallback));
 
-     Gl->Set(String::NewSymbol("DrawBuffer"), FunctionTemplate::New(GLDrawBufferCallback));
+     Gl->Set(String::NewSymbol("PopAttrib"), FunctionTemplate::New(GLglPopAttribCallback));
 
-     Gl->Set(String::NewSymbol("ReadBuffer"), FunctionTemplate::New(GLReadBufferCallback));
+     Gl->Set(String::NewSymbol("PushClientAttrib"), FunctionTemplate::New(GLglPushClientAttribCallback));
 
-     Gl->Set(String::NewSymbol("Enable"), FunctionTemplate::New(GLEnableCallback));
+     Gl->Set(String::NewSymbol("PopClientAttrib"), FunctionTemplate::New(GLglPopClientAttribCallback));
 
-     Gl->Set(String::NewSymbol("Disable"), FunctionTemplate::New(GLDisableCallback));
+     Gl->Set(String::NewSymbol("RenderMode"), FunctionTemplate::New(GLglRenderModeCallback));
 
-     Gl->Set(String::NewSymbol("IsEnabled"), FunctionTemplate::New(GLIsEnabledCallback));
+     Gl->Set(String::NewSymbol("GetError"), FunctionTemplate::New(GLglGetErrorCallback));
 
-     Gl->Set(String::NewSymbol("EnableClientState"), FunctionTemplate::New(GLEnableClientStateCallback));
+     Gl->Set(String::NewSymbol("Finish"), FunctionTemplate::New(GLglFinishCallback));
 
-     Gl->Set(String::NewSymbol("DisableClientState"), FunctionTemplate::New(GLDisableClientStateCallback));
+     Gl->Set(String::NewSymbol("Flush"), FunctionTemplate::New(GLglFlushCallback));
 
-     Gl->Set(String::NewSymbol("GetBooleanv"), FunctionTemplate::New(GLGetBooleanvCallback));
+     Gl->Set(String::NewSymbol("Hint"), FunctionTemplate::New(GLglHintCallback));
 
-     Gl->Set(String::NewSymbol("GetDoublev"), FunctionTemplate::New(GLGetDoublevCallback));
+     Gl->Set(String::NewSymbol("ClearDepth"), FunctionTemplate::New(GLglClearDepthCallback));
 
-     Gl->Set(String::NewSymbol("GetFloatv"), FunctionTemplate::New(GLGetFloatvCallback));
+     Gl->Set(String::NewSymbol("DepthFunc"), FunctionTemplate::New(GLglDepthFuncCallback));
 
-     Gl->Set(String::NewSymbol("GetIntegerv"), FunctionTemplate::New(GLGetIntegervCallback));
+     Gl->Set(String::NewSymbol("DepthMask"), FunctionTemplate::New(GLglDepthMaskCallback));
 
-     Gl->Set(String::NewSymbol("PushAttrib"), FunctionTemplate::New(GLPushAttribCallback));
+     Gl->Set(String::NewSymbol("DepthRange"), FunctionTemplate::New(GLglDepthRangeCallback));
 
-     Gl->Set(String::NewSymbol("PopAttrib"), FunctionTemplate::New(GLPopAttribCallback));
+     Gl->Set(String::NewSymbol("ClearAccum"), FunctionTemplate::New(GLglClearAccumCallback));
 
-     Gl->Set(String::NewSymbol("PushClientAttrib"), FunctionTemplate::New(GLPushClientAttribCallback));
+     Gl->Set(String::NewSymbol("Accum"), FunctionTemplate::New(GLglAccumCallback));
 
-     Gl->Set(String::NewSymbol("PopClientAttrib"), FunctionTemplate::New(GLPopClientAttribCallback));
+     Gl->Set(String::NewSymbol("MatrixMode"), FunctionTemplate::New(GLglMatrixModeCallback));
 
-     Gl->Set(String::NewSymbol("RenderMode"), FunctionTemplate::New(GLRenderModeCallback));
+     Gl->Set(String::NewSymbol("Ortho"), FunctionTemplate::New(GLglOrthoCallback));
 
-     Gl->Set(String::NewSymbol("GetError"), FunctionTemplate::New(GLGetErrorCallback));
+     Gl->Set(String::NewSymbol("Frustum"), FunctionTemplate::New(GLglFrustumCallback));
 
-     Gl->Set(String::NewSymbol("Finish"), FunctionTemplate::New(GLFinishCallback));
+     Gl->Set(String::NewSymbol("Viewport"), FunctionTemplate::New(GLglViewportCallback));
 
-     Gl->Set(String::NewSymbol("Flush"), FunctionTemplate::New(GLFlushCallback));
+     Gl->Set(String::NewSymbol("PushMatrix"), FunctionTemplate::New(GLglPushMatrixCallback));
 
-     Gl->Set(String::NewSymbol("Hint"), FunctionTemplate::New(GLHintCallback));
+     Gl->Set(String::NewSymbol("PopMatrix"), FunctionTemplate::New(GLglPopMatrixCallback));
 
-     Gl->Set(String::NewSymbol("ClearDepth"), FunctionTemplate::New(GLClearDepthCallback));
+     Gl->Set(String::NewSymbol("LoadIdentity"), FunctionTemplate::New(GLglLoadIdentityCallback));
 
-     Gl->Set(String::NewSymbol("DepthFunc"), FunctionTemplate::New(GLDepthFuncCallback));
+     Gl->Set(String::NewSymbol("LoadMatrixd"), FunctionTemplate::New(GLglLoadMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("DepthMask"), FunctionTemplate::New(GLDepthMaskCallback));
+     Gl->Set(String::NewSymbol("LoadMatrixf"), FunctionTemplate::New(GLglLoadMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("DepthRange"), FunctionTemplate::New(GLDepthRangeCallback));
+     Gl->Set(String::NewSymbol("MultMatrixd"), FunctionTemplate::New(GLglMultMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("ClearAccum"), FunctionTemplate::New(GLClearAccumCallback));
+     Gl->Set(String::NewSymbol("MultMatrixf"), FunctionTemplate::New(GLglMultMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("Accum"), FunctionTemplate::New(GLAccumCallback));
+     Gl->Set(String::NewSymbol("Rotated"), FunctionTemplate::New(GLglRotatedCallback));
 
-     Gl->Set(String::NewSymbol("MatrixMode"), FunctionTemplate::New(GLMatrixModeCallback));
+     Gl->Set(String::NewSymbol("Rotatef"), FunctionTemplate::New(GLglRotatefCallback));
 
-     Gl->Set(String::NewSymbol("Ortho"), FunctionTemplate::New(GLOrthoCallback));
+     Gl->Set(String::NewSymbol("Scaled"), FunctionTemplate::New(GLglScaledCallback));
 
-     Gl->Set(String::NewSymbol("Frustum"), FunctionTemplate::New(GLFrustumCallback));
+     Gl->Set(String::NewSymbol("Scalef"), FunctionTemplate::New(GLglScalefCallback));
 
-     Gl->Set(String::NewSymbol("Viewport"), FunctionTemplate::New(GLViewportCallback));
+     Gl->Set(String::NewSymbol("Translated"), FunctionTemplate::New(GLglTranslatedCallback));
 
-     Gl->Set(String::NewSymbol("PushMatrix"), FunctionTemplate::New(GLPushMatrixCallback));
+     Gl->Set(String::NewSymbol("Translatef"), FunctionTemplate::New(GLglTranslatefCallback));
 
-     Gl->Set(String::NewSymbol("PopMatrix"), FunctionTemplate::New(GLPopMatrixCallback));
+     Gl->Set(String::NewSymbol("IsList"), FunctionTemplate::New(GLglIsListCallback));
 
-     Gl->Set(String::NewSymbol("LoadIdentity"), FunctionTemplate::New(GLLoadIdentityCallback));
+     Gl->Set(String::NewSymbol("DeleteLists"), FunctionTemplate::New(GLglDeleteListsCallback));
 
-     Gl->Set(String::NewSymbol("LoadMatrixd"), FunctionTemplate::New(GLLoadMatrixdCallback));
+     Gl->Set(String::NewSymbol("GenLists"), FunctionTemplate::New(GLglGenListsCallback));
 
-     Gl->Set(String::NewSymbol("LoadMatrixf"), FunctionTemplate::New(GLLoadMatrixfCallback));
+     Gl->Set(String::NewSymbol("NewList"), FunctionTemplate::New(GLglNewListCallback));
 
-     Gl->Set(String::NewSymbol("MultMatrixd"), FunctionTemplate::New(GLMultMatrixdCallback));
+     Gl->Set(String::NewSymbol("EndList"), FunctionTemplate::New(GLglEndListCallback));
 
-     Gl->Set(String::NewSymbol("MultMatrixf"), FunctionTemplate::New(GLMultMatrixfCallback));
+     Gl->Set(String::NewSymbol("CallList"), FunctionTemplate::New(GLglCallListCallback));
 
-     Gl->Set(String::NewSymbol("Rotated"), FunctionTemplate::New(GLRotatedCallback));
+     Gl->Set(String::NewSymbol("ListBase"), FunctionTemplate::New(GLglListBaseCallback));
 
-     Gl->Set(String::NewSymbol("Rotatef"), FunctionTemplate::New(GLRotatefCallback));
+     Gl->Set(String::NewSymbol("Begin"), FunctionTemplate::New(GLglBeginCallback));
 
-     Gl->Set(String::NewSymbol("Scaled"), FunctionTemplate::New(GLScaledCallback));
+     Gl->Set(String::NewSymbol("End"), FunctionTemplate::New(GLglEndCallback));
 
-     Gl->Set(String::NewSymbol("Scalef"), FunctionTemplate::New(GLScalefCallback));
+     Gl->Set(String::NewSymbol("Vertex2d"), FunctionTemplate::New(GLglVertex2dCallback));
 
-     Gl->Set(String::NewSymbol("Translated"), FunctionTemplate::New(GLTranslatedCallback));
+     Gl->Set(String::NewSymbol("Vertex2f"), FunctionTemplate::New(GLglVertex2fCallback));
 
-     Gl->Set(String::NewSymbol("Translatef"), FunctionTemplate::New(GLTranslatefCallback));
+     Gl->Set(String::NewSymbol("Vertex2i"), FunctionTemplate::New(GLglVertex2iCallback));
 
-     Gl->Set(String::NewSymbol("IsList"), FunctionTemplate::New(GLIsListCallback));
+     Gl->Set(String::NewSymbol("Vertex2s"), FunctionTemplate::New(GLglVertex2sCallback));
 
-     Gl->Set(String::NewSymbol("DeleteLists"), FunctionTemplate::New(GLDeleteListsCallback));
+     Gl->Set(String::NewSymbol("Vertex3d"), FunctionTemplate::New(GLglVertex3dCallback));
 
-     Gl->Set(String::NewSymbol("GenLists"), FunctionTemplate::New(GLGenListsCallback));
+     Gl->Set(String::NewSymbol("Vertex3f"), FunctionTemplate::New(GLglVertex3fCallback));
 
-     Gl->Set(String::NewSymbol("NewList"), FunctionTemplate::New(GLNewListCallback));
+     Gl->Set(String::NewSymbol("Vertex3i"), FunctionTemplate::New(GLglVertex3iCallback));
 
-     Gl->Set(String::NewSymbol("EndList"), FunctionTemplate::New(GLEndListCallback));
+     Gl->Set(String::NewSymbol("Vertex3s"), FunctionTemplate::New(GLglVertex3sCallback));
 
-     Gl->Set(String::NewSymbol("CallList"), FunctionTemplate::New(GLCallListCallback));
+     Gl->Set(String::NewSymbol("Vertex4d"), FunctionTemplate::New(GLglVertex4dCallback));
 
-     Gl->Set(String::NewSymbol("ListBase"), FunctionTemplate::New(GLListBaseCallback));
+     Gl->Set(String::NewSymbol("Vertex4f"), FunctionTemplate::New(GLglVertex4fCallback));
 
-     Gl->Set(String::NewSymbol("Begin"), FunctionTemplate::New(GLBeginCallback));
+     Gl->Set(String::NewSymbol("Vertex4i"), FunctionTemplate::New(GLglVertex4iCallback));
 
-     Gl->Set(String::NewSymbol("End"), FunctionTemplate::New(GLEndCallback));
+     Gl->Set(String::NewSymbol("Vertex4s"), FunctionTemplate::New(GLglVertex4sCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2d"), FunctionTemplate::New(GLVertex2dCallback));
+     Gl->Set(String::NewSymbol("Vertex2dv"), FunctionTemplate::New(GLglVertex2dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2f"), FunctionTemplate::New(GLVertex2fCallback));
+     Gl->Set(String::NewSymbol("Vertex2fv"), FunctionTemplate::New(GLglVertex2fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2i"), FunctionTemplate::New(GLVertex2iCallback));
+     Gl->Set(String::NewSymbol("Vertex2iv"), FunctionTemplate::New(GLglVertex2ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2s"), FunctionTemplate::New(GLVertex2sCallback));
+     Gl->Set(String::NewSymbol("Vertex2sv"), FunctionTemplate::New(GLglVertex2svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3d"), FunctionTemplate::New(GLVertex3dCallback));
+     Gl->Set(String::NewSymbol("Vertex3dv"), FunctionTemplate::New(GLglVertex3dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3f"), FunctionTemplate::New(GLVertex3fCallback));
+     Gl->Set(String::NewSymbol("Vertex3fv"), FunctionTemplate::New(GLglVertex3fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3i"), FunctionTemplate::New(GLVertex3iCallback));
+     Gl->Set(String::NewSymbol("Vertex3iv"), FunctionTemplate::New(GLglVertex3ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3s"), FunctionTemplate::New(GLVertex3sCallback));
+     Gl->Set(String::NewSymbol("Vertex3sv"), FunctionTemplate::New(GLglVertex3svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4d"), FunctionTemplate::New(GLVertex4dCallback));
+     Gl->Set(String::NewSymbol("Vertex4dv"), FunctionTemplate::New(GLglVertex4dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4f"), FunctionTemplate::New(GLVertex4fCallback));
+     Gl->Set(String::NewSymbol("Vertex4fv"), FunctionTemplate::New(GLglVertex4fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4i"), FunctionTemplate::New(GLVertex4iCallback));
+     Gl->Set(String::NewSymbol("Vertex4iv"), FunctionTemplate::New(GLglVertex4ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4s"), FunctionTemplate::New(GLVertex4sCallback));
+     Gl->Set(String::NewSymbol("Vertex4sv"), FunctionTemplate::New(GLglVertex4svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2dv"), FunctionTemplate::New(GLVertex2dvCallback));
+     Gl->Set(String::NewSymbol("Normal3b"), FunctionTemplate::New(GLglNormal3bCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2fv"), FunctionTemplate::New(GLVertex2fvCallback));
+     Gl->Set(String::NewSymbol("Normal3d"), FunctionTemplate::New(GLglNormal3dCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2iv"), FunctionTemplate::New(GLVertex2ivCallback));
+     Gl->Set(String::NewSymbol("Normal3f"), FunctionTemplate::New(GLglNormal3fCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2sv"), FunctionTemplate::New(GLVertex2svCallback));
+     Gl->Set(String::NewSymbol("Normal3i"), FunctionTemplate::New(GLglNormal3iCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3dv"), FunctionTemplate::New(GLVertex3dvCallback));
+     Gl->Set(String::NewSymbol("Normal3s"), FunctionTemplate::New(GLglNormal3sCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3fv"), FunctionTemplate::New(GLVertex3fvCallback));
+     Gl->Set(String::NewSymbol("Normal3bv"), FunctionTemplate::New(GLglNormal3bvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3iv"), FunctionTemplate::New(GLVertex3ivCallback));
+     Gl->Set(String::NewSymbol("Normal3dv"), FunctionTemplate::New(GLglNormal3dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3sv"), FunctionTemplate::New(GLVertex3svCallback));
+     Gl->Set(String::NewSymbol("Normal3fv"), FunctionTemplate::New(GLglNormal3fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4dv"), FunctionTemplate::New(GLVertex4dvCallback));
+     Gl->Set(String::NewSymbol("Normal3iv"), FunctionTemplate::New(GLglNormal3ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4fv"), FunctionTemplate::New(GLVertex4fvCallback));
+     Gl->Set(String::NewSymbol("Normal3sv"), FunctionTemplate::New(GLglNormal3svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4iv"), FunctionTemplate::New(GLVertex4ivCallback));
+     Gl->Set(String::NewSymbol("Indexd"), FunctionTemplate::New(GLglIndexdCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4sv"), FunctionTemplate::New(GLVertex4svCallback));
+     Gl->Set(String::NewSymbol("Indexf"), FunctionTemplate::New(GLglIndexfCallback));
 
-     Gl->Set(String::NewSymbol("Normal3b"), FunctionTemplate::New(GLNormal3bCallback));
+     Gl->Set(String::NewSymbol("Indexi"), FunctionTemplate::New(GLglIndexiCallback));
 
-     Gl->Set(String::NewSymbol("Normal3d"), FunctionTemplate::New(GLNormal3dCallback));
+     Gl->Set(String::NewSymbol("Indexs"), FunctionTemplate::New(GLglIndexsCallback));
 
-     Gl->Set(String::NewSymbol("Normal3f"), FunctionTemplate::New(GLNormal3fCallback));
+     Gl->Set(String::NewSymbol("Indexub"), FunctionTemplate::New(GLglIndexubCallback));
 
-     Gl->Set(String::NewSymbol("Normal3i"), FunctionTemplate::New(GLNormal3iCallback));
+     Gl->Set(String::NewSymbol("Indexdv"), FunctionTemplate::New(GLglIndexdvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3s"), FunctionTemplate::New(GLNormal3sCallback));
+     Gl->Set(String::NewSymbol("Indexfv"), FunctionTemplate::New(GLglIndexfvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3bv"), FunctionTemplate::New(GLNormal3bvCallback));
+     Gl->Set(String::NewSymbol("Indexiv"), FunctionTemplate::New(GLglIndexivCallback));
 
-     Gl->Set(String::NewSymbol("Normal3dv"), FunctionTemplate::New(GLNormal3dvCallback));
+     Gl->Set(String::NewSymbol("Indexsv"), FunctionTemplate::New(GLglIndexsvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3fv"), FunctionTemplate::New(GLNormal3fvCallback));
+     Gl->Set(String::NewSymbol("Indexubv"), FunctionTemplate::New(GLglIndexubvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3iv"), FunctionTemplate::New(GLNormal3ivCallback));
+     Gl->Set(String::NewSymbol("Color3b"), FunctionTemplate::New(GLglColor3bCallback));
 
-     Gl->Set(String::NewSymbol("Normal3sv"), FunctionTemplate::New(GLNormal3svCallback));
+     Gl->Set(String::NewSymbol("Color3d"), FunctionTemplate::New(GLglColor3dCallback));
 
-     Gl->Set(String::NewSymbol("Indexd"), FunctionTemplate::New(GLIndexdCallback));
+     Gl->Set(String::NewSymbol("Color3f"), FunctionTemplate::New(GLglColor3fCallback));
 
-     Gl->Set(String::NewSymbol("Indexf"), FunctionTemplate::New(GLIndexfCallback));
+     Gl->Set(String::NewSymbol("Color3i"), FunctionTemplate::New(GLglColor3iCallback));
 
-     Gl->Set(String::NewSymbol("Indexi"), FunctionTemplate::New(GLIndexiCallback));
+     Gl->Set(String::NewSymbol("Color3s"), FunctionTemplate::New(GLglColor3sCallback));
 
-     Gl->Set(String::NewSymbol("Indexs"), FunctionTemplate::New(GLIndexsCallback));
+     Gl->Set(String::NewSymbol("Color3ub"), FunctionTemplate::New(GLglColor3ubCallback));
 
-     Gl->Set(String::NewSymbol("Indexub"), FunctionTemplate::New(GLIndexubCallback));
+     Gl->Set(String::NewSymbol("Color3ui"), FunctionTemplate::New(GLglColor3uiCallback));
 
-     Gl->Set(String::NewSymbol("Indexdv"), FunctionTemplate::New(GLIndexdvCallback));
+     Gl->Set(String::NewSymbol("Color3us"), FunctionTemplate::New(GLglColor3usCallback));
 
-     Gl->Set(String::NewSymbol("Indexfv"), FunctionTemplate::New(GLIndexfvCallback));
+     Gl->Set(String::NewSymbol("Color4b"), FunctionTemplate::New(GLglColor4bCallback));
 
-     Gl->Set(String::NewSymbol("Indexiv"), FunctionTemplate::New(GLIndexivCallback));
+     Gl->Set(String::NewSymbol("Color4d"), FunctionTemplate::New(GLglColor4dCallback));
 
-     Gl->Set(String::NewSymbol("Indexsv"), FunctionTemplate::New(GLIndexsvCallback));
+     Gl->Set(String::NewSymbol("Color4f"), FunctionTemplate::New(GLglColor4fCallback));
 
-     Gl->Set(String::NewSymbol("Indexubv"), FunctionTemplate::New(GLIndexubvCallback));
+     Gl->Set(String::NewSymbol("Color4i"), FunctionTemplate::New(GLglColor4iCallback));
 
-     Gl->Set(String::NewSymbol("Color3b"), FunctionTemplate::New(GLColor3bCallback));
+     Gl->Set(String::NewSymbol("Color4s"), FunctionTemplate::New(GLglColor4sCallback));
 
-     Gl->Set(String::NewSymbol("Color3d"), FunctionTemplate::New(GLColor3dCallback));
+     Gl->Set(String::NewSymbol("Color4ub"), FunctionTemplate::New(GLglColor4ubCallback));
 
-     Gl->Set(String::NewSymbol("Color3f"), FunctionTemplate::New(GLColor3fCallback));
+     Gl->Set(String::NewSymbol("Color4ui"), FunctionTemplate::New(GLglColor4uiCallback));
 
-     Gl->Set(String::NewSymbol("Color3i"), FunctionTemplate::New(GLColor3iCallback));
+     Gl->Set(String::NewSymbol("Color4us"), FunctionTemplate::New(GLglColor4usCallback));
 
-     Gl->Set(String::NewSymbol("Color3s"), FunctionTemplate::New(GLColor3sCallback));
+     Gl->Set(String::NewSymbol("Color3bv"), FunctionTemplate::New(GLglColor3bvCallback));
 
-     Gl->Set(String::NewSymbol("Color3ub"), FunctionTemplate::New(GLColor3ubCallback));
+     Gl->Set(String::NewSymbol("Color3dv"), FunctionTemplate::New(GLglColor3dvCallback));
 
-     Gl->Set(String::NewSymbol("Color3ui"), FunctionTemplate::New(GLColor3uiCallback));
+     Gl->Set(String::NewSymbol("Color3fv"), FunctionTemplate::New(GLglColor3fvCallback));
 
-     Gl->Set(String::NewSymbol("Color3us"), FunctionTemplate::New(GLColor3usCallback));
+     Gl->Set(String::NewSymbol("Color3iv"), FunctionTemplate::New(GLglColor3ivCallback));
 
-     Gl->Set(String::NewSymbol("Color4b"), FunctionTemplate::New(GLColor4bCallback));
+     Gl->Set(String::NewSymbol("Color3sv"), FunctionTemplate::New(GLglColor3svCallback));
 
-     Gl->Set(String::NewSymbol("Color4d"), FunctionTemplate::New(GLColor4dCallback));
+     Gl->Set(String::NewSymbol("Color3ubv"), FunctionTemplate::New(GLglColor3ubvCallback));
 
-     Gl->Set(String::NewSymbol("Color4f"), FunctionTemplate::New(GLColor4fCallback));
+     Gl->Set(String::NewSymbol("Color3uiv"), FunctionTemplate::New(GLglColor3uivCallback));
 
-     Gl->Set(String::NewSymbol("Color4i"), FunctionTemplate::New(GLColor4iCallback));
+     Gl->Set(String::NewSymbol("Color3usv"), FunctionTemplate::New(GLglColor3usvCallback));
 
-     Gl->Set(String::NewSymbol("Color4s"), FunctionTemplate::New(GLColor4sCallback));
+     Gl->Set(String::NewSymbol("Color4bv"), FunctionTemplate::New(GLglColor4bvCallback));
 
-     Gl->Set(String::NewSymbol("Color4ub"), FunctionTemplate::New(GLColor4ubCallback));
+     Gl->Set(String::NewSymbol("Color4dv"), FunctionTemplate::New(GLglColor4dvCallback));
 
-     Gl->Set(String::NewSymbol("Color4ui"), FunctionTemplate::New(GLColor4uiCallback));
+     Gl->Set(String::NewSymbol("Color4fv"), FunctionTemplate::New(GLglColor4fvCallback));
 
-     Gl->Set(String::NewSymbol("Color4us"), FunctionTemplate::New(GLColor4usCallback));
+     Gl->Set(String::NewSymbol("Color4iv"), FunctionTemplate::New(GLglColor4ivCallback));
 
-     Gl->Set(String::NewSymbol("Color3bv"), FunctionTemplate::New(GLColor3bvCallback));
+     Gl->Set(String::NewSymbol("Color4sv"), FunctionTemplate::New(GLglColor4svCallback));
 
-     Gl->Set(String::NewSymbol("Color3dv"), FunctionTemplate::New(GLColor3dvCallback));
+     Gl->Set(String::NewSymbol("Color4ubv"), FunctionTemplate::New(GLglColor4ubvCallback));
 
-     Gl->Set(String::NewSymbol("Color3fv"), FunctionTemplate::New(GLColor3fvCallback));
+     Gl->Set(String::NewSymbol("Color4uiv"), FunctionTemplate::New(GLglColor4uivCallback));
 
-     Gl->Set(String::NewSymbol("Color3iv"), FunctionTemplate::New(GLColor3ivCallback));
+     Gl->Set(String::NewSymbol("Color4usv"), FunctionTemplate::New(GLglColor4usvCallback));
 
-     Gl->Set(String::NewSymbol("Color3sv"), FunctionTemplate::New(GLColor3svCallback));
+     Gl->Set(String::NewSymbol("TexCoord1d"), FunctionTemplate::New(GLglTexCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("Color3ubv"), FunctionTemplate::New(GLColor3ubvCallback));
+     Gl->Set(String::NewSymbol("TexCoord1f"), FunctionTemplate::New(GLglTexCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("Color3uiv"), FunctionTemplate::New(GLColor3uivCallback));
+     Gl->Set(String::NewSymbol("TexCoord1i"), FunctionTemplate::New(GLglTexCoord1iCallback));
 
-     Gl->Set(String::NewSymbol("Color3usv"), FunctionTemplate::New(GLColor3usvCallback));
+     Gl->Set(String::NewSymbol("TexCoord1s"), FunctionTemplate::New(GLglTexCoord1sCallback));
 
-     Gl->Set(String::NewSymbol("Color4bv"), FunctionTemplate::New(GLColor4bvCallback));
+     Gl->Set(String::NewSymbol("TexCoord2d"), FunctionTemplate::New(GLglTexCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("Color4dv"), FunctionTemplate::New(GLColor4dvCallback));
+     Gl->Set(String::NewSymbol("TexCoord2f"), FunctionTemplate::New(GLglTexCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("Color4fv"), FunctionTemplate::New(GLColor4fvCallback));
+     Gl->Set(String::NewSymbol("TexCoord2i"), FunctionTemplate::New(GLglTexCoord2iCallback));
 
-     Gl->Set(String::NewSymbol("Color4iv"), FunctionTemplate::New(GLColor4ivCallback));
+     Gl->Set(String::NewSymbol("TexCoord2s"), FunctionTemplate::New(GLglTexCoord2sCallback));
 
-     Gl->Set(String::NewSymbol("Color4sv"), FunctionTemplate::New(GLColor4svCallback));
+     Gl->Set(String::NewSymbol("TexCoord3d"), FunctionTemplate::New(GLglTexCoord3dCallback));
 
-     Gl->Set(String::NewSymbol("Color4ubv"), FunctionTemplate::New(GLColor4ubvCallback));
+     Gl->Set(String::NewSymbol("TexCoord3f"), FunctionTemplate::New(GLglTexCoord3fCallback));
 
-     Gl->Set(String::NewSymbol("Color4uiv"), FunctionTemplate::New(GLColor4uivCallback));
+     Gl->Set(String::NewSymbol("TexCoord3i"), FunctionTemplate::New(GLglTexCoord3iCallback));
 
-     Gl->Set(String::NewSymbol("Color4usv"), FunctionTemplate::New(GLColor4usvCallback));
+     Gl->Set(String::NewSymbol("TexCoord3s"), FunctionTemplate::New(GLglTexCoord3sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1d"), FunctionTemplate::New(GLTexCoord1dCallback));
+     Gl->Set(String::NewSymbol("TexCoord4d"), FunctionTemplate::New(GLglTexCoord4dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1f"), FunctionTemplate::New(GLTexCoord1fCallback));
+     Gl->Set(String::NewSymbol("TexCoord4f"), FunctionTemplate::New(GLglTexCoord4fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1i"), FunctionTemplate::New(GLTexCoord1iCallback));
+     Gl->Set(String::NewSymbol("TexCoord4i"), FunctionTemplate::New(GLglTexCoord4iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1s"), FunctionTemplate::New(GLTexCoord1sCallback));
+     Gl->Set(String::NewSymbol("TexCoord4s"), FunctionTemplate::New(GLglTexCoord4sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2d"), FunctionTemplate::New(GLTexCoord2dCallback));
+     Gl->Set(String::NewSymbol("TexCoord1dv"), FunctionTemplate::New(GLglTexCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2f"), FunctionTemplate::New(GLTexCoord2fCallback));
+     Gl->Set(String::NewSymbol("TexCoord1fv"), FunctionTemplate::New(GLglTexCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2i"), FunctionTemplate::New(GLTexCoord2iCallback));
+     Gl->Set(String::NewSymbol("TexCoord1iv"), FunctionTemplate::New(GLglTexCoord1ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2s"), FunctionTemplate::New(GLTexCoord2sCallback));
+     Gl->Set(String::NewSymbol("TexCoord1sv"), FunctionTemplate::New(GLglTexCoord1svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3d"), FunctionTemplate::New(GLTexCoord3dCallback));
+     Gl->Set(String::NewSymbol("TexCoord2dv"), FunctionTemplate::New(GLglTexCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3f"), FunctionTemplate::New(GLTexCoord3fCallback));
+     Gl->Set(String::NewSymbol("TexCoord2fv"), FunctionTemplate::New(GLglTexCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3i"), FunctionTemplate::New(GLTexCoord3iCallback));
+     Gl->Set(String::NewSymbol("TexCoord2iv"), FunctionTemplate::New(GLglTexCoord2ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3s"), FunctionTemplate::New(GLTexCoord3sCallback));
+     Gl->Set(String::NewSymbol("TexCoord2sv"), FunctionTemplate::New(GLglTexCoord2svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4d"), FunctionTemplate::New(GLTexCoord4dCallback));
+     Gl->Set(String::NewSymbol("TexCoord3dv"), FunctionTemplate::New(GLglTexCoord3dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4f"), FunctionTemplate::New(GLTexCoord4fCallback));
+     Gl->Set(String::NewSymbol("TexCoord3fv"), FunctionTemplate::New(GLglTexCoord3fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4i"), FunctionTemplate::New(GLTexCoord4iCallback));
+     Gl->Set(String::NewSymbol("TexCoord3iv"), FunctionTemplate::New(GLglTexCoord3ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4s"), FunctionTemplate::New(GLTexCoord4sCallback));
+     Gl->Set(String::NewSymbol("TexCoord3sv"), FunctionTemplate::New(GLglTexCoord3svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1dv"), FunctionTemplate::New(GLTexCoord1dvCallback));
+     Gl->Set(String::NewSymbol("TexCoord4dv"), FunctionTemplate::New(GLglTexCoord4dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1fv"), FunctionTemplate::New(GLTexCoord1fvCallback));
+     Gl->Set(String::NewSymbol("TexCoord4fv"), FunctionTemplate::New(GLglTexCoord4fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1iv"), FunctionTemplate::New(GLTexCoord1ivCallback));
+     Gl->Set(String::NewSymbol("TexCoord4iv"), FunctionTemplate::New(GLglTexCoord4ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1sv"), FunctionTemplate::New(GLTexCoord1svCallback));
+     Gl->Set(String::NewSymbol("TexCoord4sv"), FunctionTemplate::New(GLglTexCoord4svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2dv"), FunctionTemplate::New(GLTexCoord2dvCallback));
+     Gl->Set(String::NewSymbol("RasterPos2d"), FunctionTemplate::New(GLglRasterPos2dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2fv"), FunctionTemplate::New(GLTexCoord2fvCallback));
+     Gl->Set(String::NewSymbol("RasterPos2f"), FunctionTemplate::New(GLglRasterPos2fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2iv"), FunctionTemplate::New(GLTexCoord2ivCallback));
+     Gl->Set(String::NewSymbol("RasterPos2i"), FunctionTemplate::New(GLglRasterPos2iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2sv"), FunctionTemplate::New(GLTexCoord2svCallback));
+     Gl->Set(String::NewSymbol("RasterPos2s"), FunctionTemplate::New(GLglRasterPos2sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3dv"), FunctionTemplate::New(GLTexCoord3dvCallback));
+     Gl->Set(String::NewSymbol("RasterPos3d"), FunctionTemplate::New(GLglRasterPos3dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3fv"), FunctionTemplate::New(GLTexCoord3fvCallback));
+     Gl->Set(String::NewSymbol("RasterPos3f"), FunctionTemplate::New(GLglRasterPos3fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3iv"), FunctionTemplate::New(GLTexCoord3ivCallback));
+     Gl->Set(String::NewSymbol("RasterPos3i"), FunctionTemplate::New(GLglRasterPos3iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3sv"), FunctionTemplate::New(GLTexCoord3svCallback));
+     Gl->Set(String::NewSymbol("RasterPos3s"), FunctionTemplate::New(GLglRasterPos3sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4dv"), FunctionTemplate::New(GLTexCoord4dvCallback));
+     Gl->Set(String::NewSymbol("RasterPos4d"), FunctionTemplate::New(GLglRasterPos4dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4fv"), FunctionTemplate::New(GLTexCoord4fvCallback));
+     Gl->Set(String::NewSymbol("RasterPos4f"), FunctionTemplate::New(GLglRasterPos4fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4iv"), FunctionTemplate::New(GLTexCoord4ivCallback));
+     Gl->Set(String::NewSymbol("RasterPos4i"), FunctionTemplate::New(GLglRasterPos4iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4sv"), FunctionTemplate::New(GLTexCoord4svCallback));
+     Gl->Set(String::NewSymbol("RasterPos4s"), FunctionTemplate::New(GLglRasterPos4sCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2d"), FunctionTemplate::New(GLRasterPos2dCallback));
+     Gl->Set(String::NewSymbol("RasterPos2dv"), FunctionTemplate::New(GLglRasterPos2dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2f"), FunctionTemplate::New(GLRasterPos2fCallback));
+     Gl->Set(String::NewSymbol("RasterPos2fv"), FunctionTemplate::New(GLglRasterPos2fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2i"), FunctionTemplate::New(GLRasterPos2iCallback));
+     Gl->Set(String::NewSymbol("RasterPos2iv"), FunctionTemplate::New(GLglRasterPos2ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2s"), FunctionTemplate::New(GLRasterPos2sCallback));
+     Gl->Set(String::NewSymbol("RasterPos2sv"), FunctionTemplate::New(GLglRasterPos2svCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3d"), FunctionTemplate::New(GLRasterPos3dCallback));
+     Gl->Set(String::NewSymbol("RasterPos3dv"), FunctionTemplate::New(GLglRasterPos3dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3f"), FunctionTemplate::New(GLRasterPos3fCallback));
+     Gl->Set(String::NewSymbol("RasterPos3fv"), FunctionTemplate::New(GLglRasterPos3fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3i"), FunctionTemplate::New(GLRasterPos3iCallback));
+     Gl->Set(String::NewSymbol("RasterPos3iv"), FunctionTemplate::New(GLglRasterPos3ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3s"), FunctionTemplate::New(GLRasterPos3sCallback));
+     Gl->Set(String::NewSymbol("RasterPos3sv"), FunctionTemplate::New(GLglRasterPos3svCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4d"), FunctionTemplate::New(GLRasterPos4dCallback));
+     Gl->Set(String::NewSymbol("RasterPos4dv"), FunctionTemplate::New(GLglRasterPos4dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4f"), FunctionTemplate::New(GLRasterPos4fCallback));
+     Gl->Set(String::NewSymbol("RasterPos4fv"), FunctionTemplate::New(GLglRasterPos4fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4i"), FunctionTemplate::New(GLRasterPos4iCallback));
+     Gl->Set(String::NewSymbol("RasterPos4iv"), FunctionTemplate::New(GLglRasterPos4ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4s"), FunctionTemplate::New(GLRasterPos4sCallback));
+     Gl->Set(String::NewSymbol("RasterPos4sv"), FunctionTemplate::New(GLglRasterPos4svCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2dv"), FunctionTemplate::New(GLRasterPos2dvCallback));
+     Gl->Set(String::NewSymbol("Rectd"), FunctionTemplate::New(GLglRectdCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2fv"), FunctionTemplate::New(GLRasterPos2fvCallback));
+     Gl->Set(String::NewSymbol("Rectf"), FunctionTemplate::New(GLglRectfCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2iv"), FunctionTemplate::New(GLRasterPos2ivCallback));
+     Gl->Set(String::NewSymbol("Recti"), FunctionTemplate::New(GLglRectiCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2sv"), FunctionTemplate::New(GLRasterPos2svCallback));
+     Gl->Set(String::NewSymbol("Rects"), FunctionTemplate::New(GLglRectsCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3dv"), FunctionTemplate::New(GLRasterPos3dvCallback));
+     Gl->Set(String::NewSymbol("Rectdv"), FunctionTemplate::New(GLglRectdvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3fv"), FunctionTemplate::New(GLRasterPos3fvCallback));
+     Gl->Set(String::NewSymbol("Rectfv"), FunctionTemplate::New(GLglRectfvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3iv"), FunctionTemplate::New(GLRasterPos3ivCallback));
+     Gl->Set(String::NewSymbol("Rectiv"), FunctionTemplate::New(GLglRectivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3sv"), FunctionTemplate::New(GLRasterPos3svCallback));
+     Gl->Set(String::NewSymbol("Rectsv"), FunctionTemplate::New(GLglRectsvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4dv"), FunctionTemplate::New(GLRasterPos4dvCallback));
+     Gl->Set(String::NewSymbol("ArrayElement"), FunctionTemplate::New(GLglArrayElementCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4fv"), FunctionTemplate::New(GLRasterPos4fvCallback));
+     Gl->Set(String::NewSymbol("DrawArrays"), FunctionTemplate::New(GLglDrawArraysCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4iv"), FunctionTemplate::New(GLRasterPos4ivCallback));
+     Gl->Set(String::NewSymbol("ShadeModel"), FunctionTemplate::New(GLglShadeModelCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4sv"), FunctionTemplate::New(GLRasterPos4svCallback));
+     Gl->Set(String::NewSymbol("Lightf"), FunctionTemplate::New(GLglLightfCallback));
 
-     Gl->Set(String::NewSymbol("Rectd"), FunctionTemplate::New(GLRectdCallback));
+     Gl->Set(String::NewSymbol("Lighti"), FunctionTemplate::New(GLglLightiCallback));
 
-     Gl->Set(String::NewSymbol("Rectf"), FunctionTemplate::New(GLRectfCallback));
+     Gl->Set(String::NewSymbol("Lightfv"), FunctionTemplate::New(GLglLightfvCallback));
 
-     Gl->Set(String::NewSymbol("Recti"), FunctionTemplate::New(GLRectiCallback));
+     Gl->Set(String::NewSymbol("Lightiv"), FunctionTemplate::New(GLglLightivCallback));
 
-     Gl->Set(String::NewSymbol("Rects"), FunctionTemplate::New(GLRectsCallback));
+     Gl->Set(String::NewSymbol("GetLightfv"), FunctionTemplate::New(GLglGetLightfvCallback));
 
-     Gl->Set(String::NewSymbol("Rectdv"), FunctionTemplate::New(GLRectdvCallback));
+     Gl->Set(String::NewSymbol("GetLightiv"), FunctionTemplate::New(GLglGetLightivCallback));
 
-     Gl->Set(String::NewSymbol("Rectfv"), FunctionTemplate::New(GLRectfvCallback));
+     Gl->Set(String::NewSymbol("LightModelf"), FunctionTemplate::New(GLglLightModelfCallback));
 
-     Gl->Set(String::NewSymbol("Rectiv"), FunctionTemplate::New(GLRectivCallback));
+     Gl->Set(String::NewSymbol("LightModeli"), FunctionTemplate::New(GLglLightModeliCallback));
 
-     Gl->Set(String::NewSymbol("Rectsv"), FunctionTemplate::New(GLRectsvCallback));
+     Gl->Set(String::NewSymbol("LightModelfv"), FunctionTemplate::New(GLglLightModelfvCallback));
 
-     Gl->Set(String::NewSymbol("ArrayElement"), FunctionTemplate::New(GLArrayElementCallback));
+     Gl->Set(String::NewSymbol("LightModeliv"), FunctionTemplate::New(GLglLightModelivCallback));
 
-     Gl->Set(String::NewSymbol("DrawArrays"), FunctionTemplate::New(GLDrawArraysCallback));
+     Gl->Set(String::NewSymbol("Materialf"), FunctionTemplate::New(GLglMaterialfCallback));
 
-     Gl->Set(String::NewSymbol("ShadeModel"), FunctionTemplate::New(GLShadeModelCallback));
+     Gl->Set(String::NewSymbol("Materiali"), FunctionTemplate::New(GLglMaterialiCallback));
 
-     Gl->Set(String::NewSymbol("Lightf"), FunctionTemplate::New(GLLightfCallback));
+     Gl->Set(String::NewSymbol("Materialfv"), FunctionTemplate::New(GLglMaterialfvCallback));
 
-     Gl->Set(String::NewSymbol("Lighti"), FunctionTemplate::New(GLLightiCallback));
+     Gl->Set(String::NewSymbol("Materialiv"), FunctionTemplate::New(GLglMaterialivCallback));
 
-     Gl->Set(String::NewSymbol("Lightfv"), FunctionTemplate::New(GLLightfvCallback));
+     Gl->Set(String::NewSymbol("GetMaterialfv"), FunctionTemplate::New(GLglGetMaterialfvCallback));
 
-     Gl->Set(String::NewSymbol("Lightiv"), FunctionTemplate::New(GLLightivCallback));
+     Gl->Set(String::NewSymbol("GetMaterialiv"), FunctionTemplate::New(GLglGetMaterialivCallback));
 
-     Gl->Set(String::NewSymbol("GetLightfv"), FunctionTemplate::New(GLGetLightfvCallback));
+     Gl->Set(String::NewSymbol("ColorMaterial"), FunctionTemplate::New(GLglColorMaterialCallback));
 
-     Gl->Set(String::NewSymbol("GetLightiv"), FunctionTemplate::New(GLGetLightivCallback));
+     Gl->Set(String::NewSymbol("PixelZoom"), FunctionTemplate::New(GLglPixelZoomCallback));
 
-     Gl->Set(String::NewSymbol("LightModelf"), FunctionTemplate::New(GLLightModelfCallback));
+     Gl->Set(String::NewSymbol("PixelStoref"), FunctionTemplate::New(GLglPixelStorefCallback));
 
-     Gl->Set(String::NewSymbol("LightModeli"), FunctionTemplate::New(GLLightModeliCallback));
+     Gl->Set(String::NewSymbol("PixelStorei"), FunctionTemplate::New(GLglPixelStoreiCallback));
 
-     Gl->Set(String::NewSymbol("LightModelfv"), FunctionTemplate::New(GLLightModelfvCallback));
+     Gl->Set(String::NewSymbol("PixelTransferf"), FunctionTemplate::New(GLglPixelTransferfCallback));
 
-     Gl->Set(String::NewSymbol("LightModeliv"), FunctionTemplate::New(GLLightModelivCallback));
+     Gl->Set(String::NewSymbol("PixelTransferi"), FunctionTemplate::New(GLglPixelTransferiCallback));
 
-     Gl->Set(String::NewSymbol("Materialf"), FunctionTemplate::New(GLMaterialfCallback));
+     Gl->Set(String::NewSymbol("PixelMapfv"), FunctionTemplate::New(GLglPixelMapfvCallback));
 
-     Gl->Set(String::NewSymbol("Materiali"), FunctionTemplate::New(GLMaterialiCallback));
+     Gl->Set(String::NewSymbol("PixelMapuiv"), FunctionTemplate::New(GLglPixelMapuivCallback));
 
-     Gl->Set(String::NewSymbol("Materialfv"), FunctionTemplate::New(GLMaterialfvCallback));
+     Gl->Set(String::NewSymbol("PixelMapusv"), FunctionTemplate::New(GLglPixelMapusvCallback));
 
-     Gl->Set(String::NewSymbol("Materialiv"), FunctionTemplate::New(GLMaterialivCallback));
+     Gl->Set(String::NewSymbol("GetPixelMapfv"), FunctionTemplate::New(GLglGetPixelMapfvCallback));
 
-     Gl->Set(String::NewSymbol("GetMaterialfv"), FunctionTemplate::New(GLGetMaterialfvCallback));
+     Gl->Set(String::NewSymbol("GetPixelMapuiv"), FunctionTemplate::New(GLglGetPixelMapuivCallback));
 
-     Gl->Set(String::NewSymbol("GetMaterialiv"), FunctionTemplate::New(GLGetMaterialivCallback));
+     Gl->Set(String::NewSymbol("GetPixelMapusv"), FunctionTemplate::New(GLglGetPixelMapusvCallback));
 
-     Gl->Set(String::NewSymbol("ColorMaterial"), FunctionTemplate::New(GLColorMaterialCallback));
+     Gl->Set(String::NewSymbol("Bitmap"), FunctionTemplate::New(GLglBitmapCallback));
 
-     Gl->Set(String::NewSymbol("PixelZoom"), FunctionTemplate::New(GLPixelZoomCallback));
+     Gl->Set(String::NewSymbol("CopyPixels"), FunctionTemplate::New(GLglCopyPixelsCallback));
 
-     Gl->Set(String::NewSymbol("PixelStoref"), FunctionTemplate::New(GLPixelStorefCallback));
+     Gl->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLglStencilFuncCallback));
 
-     Gl->Set(String::NewSymbol("PixelStorei"), FunctionTemplate::New(GLPixelStoreiCallback));
+     Gl->Set(String::NewSymbol("StencilMask"), FunctionTemplate::New(GLglStencilMaskCallback));
 
-     Gl->Set(String::NewSymbol("PixelTransferf"), FunctionTemplate::New(GLPixelTransferfCallback));
+     Gl->Set(String::NewSymbol("StencilOp"), FunctionTemplate::New(GLglStencilOpCallback));
 
-     Gl->Set(String::NewSymbol("PixelTransferi"), FunctionTemplate::New(GLPixelTransferiCallback));
+     Gl->Set(String::NewSymbol("ClearStencil"), FunctionTemplate::New(GLglClearStencilCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapfv"), FunctionTemplate::New(GLPixelMapfvCallback));
+     Gl->Set(String::NewSymbol("TexGend"), FunctionTemplate::New(GLglTexGendCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapuiv"), FunctionTemplate::New(GLPixelMapuivCallback));
+     Gl->Set(String::NewSymbol("TexGenf"), FunctionTemplate::New(GLglTexGenfCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapusv"), FunctionTemplate::New(GLPixelMapusvCallback));
+     Gl->Set(String::NewSymbol("TexGeni"), FunctionTemplate::New(GLglTexGeniCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapfv"), FunctionTemplate::New(GLGetPixelMapfvCallback));
+     Gl->Set(String::NewSymbol("TexGendv"), FunctionTemplate::New(GLglTexGendvCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapuiv"), FunctionTemplate::New(GLGetPixelMapuivCallback));
+     Gl->Set(String::NewSymbol("TexGenfv"), FunctionTemplate::New(GLglTexGenfvCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapusv"), FunctionTemplate::New(GLGetPixelMapusvCallback));
+     Gl->Set(String::NewSymbol("TexGeniv"), FunctionTemplate::New(GLglTexGenivCallback));
 
-     Gl->Set(String::NewSymbol("Bitmap"), FunctionTemplate::New(GLBitmapCallback));
+     Gl->Set(String::NewSymbol("GetTexGendv"), FunctionTemplate::New(GLglGetTexGendvCallback));
 
-     Gl->Set(String::NewSymbol("CopyPixels"), FunctionTemplate::New(GLCopyPixelsCallback));
+     Gl->Set(String::NewSymbol("GetTexGenfv"), FunctionTemplate::New(GLglGetTexGenfvCallback));
 
-     Gl->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLStencilFuncCallback));
+     Gl->Set(String::NewSymbol("GetTexGeniv"), FunctionTemplate::New(GLglGetTexGenivCallback));
 
-     Gl->Set(String::NewSymbol("StencilMask"), FunctionTemplate::New(GLStencilMaskCallback));
+     Gl->Set(String::NewSymbol("TexEnvf"), FunctionTemplate::New(GLglTexEnvfCallback));
 
-     Gl->Set(String::NewSymbol("StencilOp"), FunctionTemplate::New(GLStencilOpCallback));
+     Gl->Set(String::NewSymbol("TexEnvi"), FunctionTemplate::New(GLglTexEnviCallback));
 
-     Gl->Set(String::NewSymbol("ClearStencil"), FunctionTemplate::New(GLClearStencilCallback));
+     Gl->Set(String::NewSymbol("TexEnvfv"), FunctionTemplate::New(GLglTexEnvfvCallback));
 
-     Gl->Set(String::NewSymbol("TexGend"), FunctionTemplate::New(GLTexGendCallback));
+     Gl->Set(String::NewSymbol("TexEnviv"), FunctionTemplate::New(GLglTexEnvivCallback));
 
-     Gl->Set(String::NewSymbol("TexGenf"), FunctionTemplate::New(GLTexGenfCallback));
+     Gl->Set(String::NewSymbol("GetTexEnvfv"), FunctionTemplate::New(GLglGetTexEnvfvCallback));
 
-     Gl->Set(String::NewSymbol("TexGeni"), FunctionTemplate::New(GLTexGeniCallback));
+     Gl->Set(String::NewSymbol("GetTexEnviv"), FunctionTemplate::New(GLglGetTexEnvivCallback));
 
-     Gl->Set(String::NewSymbol("TexGendv"), FunctionTemplate::New(GLTexGendvCallback));
+     Gl->Set(String::NewSymbol("TexParameterf"), FunctionTemplate::New(GLglTexParameterfCallback));
 
-     Gl->Set(String::NewSymbol("TexGenfv"), FunctionTemplate::New(GLTexGenfvCallback));
+     Gl->Set(String::NewSymbol("TexParameteri"), FunctionTemplate::New(GLglTexParameteriCallback));
 
-     Gl->Set(String::NewSymbol("TexGeniv"), FunctionTemplate::New(GLTexGenivCallback));
+     Gl->Set(String::NewSymbol("TexParameterfv"), FunctionTemplate::New(GLglTexParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGendv"), FunctionTemplate::New(GLGetTexGendvCallback));
+     Gl->Set(String::NewSymbol("TexParameteriv"), FunctionTemplate::New(GLglTexParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGenfv"), FunctionTemplate::New(GLGetTexGenfvCallback));
+     Gl->Set(String::NewSymbol("GetTexParameterfv"), FunctionTemplate::New(GLglGetTexParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGeniv"), FunctionTemplate::New(GLGetTexGenivCallback));
+     Gl->Set(String::NewSymbol("GetTexParameteriv"), FunctionTemplate::New(GLglGetTexParameterivCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvf"), FunctionTemplate::New(GLTexEnvfCallback));
+     Gl->Set(String::NewSymbol("GetTexLevelParameterfv"), FunctionTemplate::New(GLglGetTexLevelParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvi"), FunctionTemplate::New(GLTexEnviCallback));
+     Gl->Set(String::NewSymbol("GetTexLevelParameteriv"), FunctionTemplate::New(GLglGetTexLevelParameterivCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvfv"), FunctionTemplate::New(GLTexEnvfvCallback));
+     Gl->Set(String::NewSymbol("GenTextures"), FunctionTemplate::New(GLglGenTexturesCallback));
 
-     Gl->Set(String::NewSymbol("TexEnviv"), FunctionTemplate::New(GLTexEnvivCallback));
+     Gl->Set(String::NewSymbol("DeleteTextures"), FunctionTemplate::New(GLglDeleteTexturesCallback));
 
-     Gl->Set(String::NewSymbol("GetTexEnvfv"), FunctionTemplate::New(GLGetTexEnvfvCallback));
+     Gl->Set(String::NewSymbol("BindTexture"), FunctionTemplate::New(GLglBindTextureCallback));
 
-     Gl->Set(String::NewSymbol("GetTexEnviv"), FunctionTemplate::New(GLGetTexEnvivCallback));
+     Gl->Set(String::NewSymbol("PrioritizeTextures"), FunctionTemplate::New(GLglPrioritizeTexturesCallback));
 
-     Gl->Set(String::NewSymbol("TexParameterf"), FunctionTemplate::New(GLTexParameterfCallback));
+     Gl->Set(String::NewSymbol("AreTexturesResident"), FunctionTemplate::New(GLglAreTexturesResidentCallback));
 
-     Gl->Set(String::NewSymbol("TexParameteri"), FunctionTemplate::New(GLTexParameteriCallback));
+     Gl->Set(String::NewSymbol("IsTexture"), FunctionTemplate::New(GLglIsTextureCallback));
 
-     Gl->Set(String::NewSymbol("TexParameterfv"), FunctionTemplate::New(GLTexParameterfvCallback));
+     Gl->Set(String::NewSymbol("CopyTexImage1D"), FunctionTemplate::New(GLglCopyTexImage1DCallback));
 
-     Gl->Set(String::NewSymbol("TexParameteriv"), FunctionTemplate::New(GLTexParameterivCallback));
+     Gl->Set(String::NewSymbol("CopyTexImage2D"), FunctionTemplate::New(GLglCopyTexImage2DCallback));
 
-     Gl->Set(String::NewSymbol("GetTexParameterfv"), FunctionTemplate::New(GLGetTexParameterfvCallback));
+     Gl->Set(String::NewSymbol("CopyTexSubImage1D"), FunctionTemplate::New(GLglCopyTexSubImage1DCallback));
 
-     Gl->Set(String::NewSymbol("GetTexParameteriv"), FunctionTemplate::New(GLGetTexParameterivCallback));
+     Gl->Set(String::NewSymbol("CopyTexSubImage2D"), FunctionTemplate::New(GLglCopyTexSubImage2DCallback));
 
-     Gl->Set(String::NewSymbol("GetTexLevelParameterfv"), FunctionTemplate::New(GLGetTexLevelParameterfvCallback));
+     Gl->Set(String::NewSymbol("Map1d"), FunctionTemplate::New(GLglMap1dCallback));
 
-     Gl->Set(String::NewSymbol("GetTexLevelParameteriv"), FunctionTemplate::New(GLGetTexLevelParameterivCallback));
+     Gl->Set(String::NewSymbol("Map1f"), FunctionTemplate::New(GLglMap1fCallback));
 
-     Gl->Set(String::NewSymbol("GenTextures"), FunctionTemplate::New(GLGenTexturesCallback));
+     Gl->Set(String::NewSymbol("Map2d"), FunctionTemplate::New(GLglMap2dCallback));
 
-     Gl->Set(String::NewSymbol("DeleteTextures"), FunctionTemplate::New(GLDeleteTexturesCallback));
+     Gl->Set(String::NewSymbol("Map2f"), FunctionTemplate::New(GLglMap2fCallback));
 
-     Gl->Set(String::NewSymbol("BindTexture"), FunctionTemplate::New(GLBindTextureCallback));
+     Gl->Set(String::NewSymbol("GetMapdv"), FunctionTemplate::New(GLglGetMapdvCallback));
 
-     Gl->Set(String::NewSymbol("PrioritizeTextures"), FunctionTemplate::New(GLPrioritizeTexturesCallback));
+     Gl->Set(String::NewSymbol("GetMapfv"), FunctionTemplate::New(GLglGetMapfvCallback));
 
-     Gl->Set(String::NewSymbol("AreTexturesResident"), FunctionTemplate::New(GLAreTexturesResidentCallback));
+     Gl->Set(String::NewSymbol("GetMapiv"), FunctionTemplate::New(GLglGetMapivCallback));
 
-     Gl->Set(String::NewSymbol("IsTexture"), FunctionTemplate::New(GLIsTextureCallback));
+     Gl->Set(String::NewSymbol("EvalCoord1d"), FunctionTemplate::New(GLglEvalCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexImage1D"), FunctionTemplate::New(GLCopyTexImage1DCallback));
+     Gl->Set(String::NewSymbol("EvalCoord1f"), FunctionTemplate::New(GLglEvalCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexImage2D"), FunctionTemplate::New(GLCopyTexImage2DCallback));
+     Gl->Set(String::NewSymbol("EvalCoord1dv"), FunctionTemplate::New(GLglEvalCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage1D"), FunctionTemplate::New(GLCopyTexSubImage1DCallback));
+     Gl->Set(String::NewSymbol("EvalCoord1fv"), FunctionTemplate::New(GLglEvalCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage2D"), FunctionTemplate::New(GLCopyTexSubImage2DCallback));
+     Gl->Set(String::NewSymbol("EvalCoord2d"), FunctionTemplate::New(GLglEvalCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("Map1d"), FunctionTemplate::New(GLMap1dCallback));
+     Gl->Set(String::NewSymbol("EvalCoord2f"), FunctionTemplate::New(GLglEvalCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("Map1f"), FunctionTemplate::New(GLMap1fCallback));
+     Gl->Set(String::NewSymbol("EvalCoord2dv"), FunctionTemplate::New(GLglEvalCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("Map2d"), FunctionTemplate::New(GLMap2dCallback));
+     Gl->Set(String::NewSymbol("EvalCoord2fv"), FunctionTemplate::New(GLglEvalCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("Map2f"), FunctionTemplate::New(GLMap2fCallback));
+     Gl->Set(String::NewSymbol("MapGrid1d"), FunctionTemplate::New(GLglMapGrid1dCallback));
 
-     Gl->Set(String::NewSymbol("GetMapdv"), FunctionTemplate::New(GLGetMapdvCallback));
+     Gl->Set(String::NewSymbol("MapGrid1f"), FunctionTemplate::New(GLglMapGrid1fCallback));
 
-     Gl->Set(String::NewSymbol("GetMapfv"), FunctionTemplate::New(GLGetMapfvCallback));
+     Gl->Set(String::NewSymbol("MapGrid2d"), FunctionTemplate::New(GLglMapGrid2dCallback));
 
-     Gl->Set(String::NewSymbol("GetMapiv"), FunctionTemplate::New(GLGetMapivCallback));
+     Gl->Set(String::NewSymbol("MapGrid2f"), FunctionTemplate::New(GLglMapGrid2fCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1d"), FunctionTemplate::New(GLEvalCoord1dCallback));
+     Gl->Set(String::NewSymbol("EvalPoint1"), FunctionTemplate::New(GLglEvalPoint1Callback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1f"), FunctionTemplate::New(GLEvalCoord1fCallback));
+     Gl->Set(String::NewSymbol("EvalPoint2"), FunctionTemplate::New(GLglEvalPoint2Callback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1dv"), FunctionTemplate::New(GLEvalCoord1dvCallback));
+     Gl->Set(String::NewSymbol("EvalMesh1"), FunctionTemplate::New(GLglEvalMesh1Callback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1fv"), FunctionTemplate::New(GLEvalCoord1fvCallback));
+     Gl->Set(String::NewSymbol("EvalMesh2"), FunctionTemplate::New(GLglEvalMesh2Callback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2d"), FunctionTemplate::New(GLEvalCoord2dCallback));
+     Gl->Set(String::NewSymbol("Fogf"), FunctionTemplate::New(GLglFogfCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2f"), FunctionTemplate::New(GLEvalCoord2fCallback));
+     Gl->Set(String::NewSymbol("Fogi"), FunctionTemplate::New(GLglFogiCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2dv"), FunctionTemplate::New(GLEvalCoord2dvCallback));
+     Gl->Set(String::NewSymbol("Fogfv"), FunctionTemplate::New(GLglFogfvCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2fv"), FunctionTemplate::New(GLEvalCoord2fvCallback));
+     Gl->Set(String::NewSymbol("Fogiv"), FunctionTemplate::New(GLglFogivCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid1d"), FunctionTemplate::New(GLMapGrid1dCallback));
+     Gl->Set(String::NewSymbol("FeedbackBuffer"), FunctionTemplate::New(GLglFeedbackBufferCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid1f"), FunctionTemplate::New(GLMapGrid1fCallback));
+     Gl->Set(String::NewSymbol("PassThrough"), FunctionTemplate::New(GLglPassThroughCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid2d"), FunctionTemplate::New(GLMapGrid2dCallback));
+     Gl->Set(String::NewSymbol("SelectBuffer"), FunctionTemplate::New(GLglSelectBufferCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid2f"), FunctionTemplate::New(GLMapGrid2fCallback));
+     Gl->Set(String::NewSymbol("InitNames"), FunctionTemplate::New(GLglInitNamesCallback));
 
-     Gl->Set(String::NewSymbol("EvalPoint1"), FunctionTemplate::New(GLEvalPoint1Callback));
+     Gl->Set(String::NewSymbol("LoadName"), FunctionTemplate::New(GLglLoadNameCallback));
 
-     Gl->Set(String::NewSymbol("EvalPoint2"), FunctionTemplate::New(GLEvalPoint2Callback));
+     Gl->Set(String::NewSymbol("PushName"), FunctionTemplate::New(GLglPushNameCallback));
 
-     Gl->Set(String::NewSymbol("EvalMesh1"), FunctionTemplate::New(GLEvalMesh1Callback));
+     Gl->Set(String::NewSymbol("PopName"), FunctionTemplate::New(GLglPopNameCallback));
 
-     Gl->Set(String::NewSymbol("EvalMesh2"), FunctionTemplate::New(GLEvalMesh2Callback));
+     Gl->Set(String::NewSymbol("CopyTexSubImage3D"), FunctionTemplate::New(GLglCopyTexSubImage3DCallback));
 
-     Gl->Set(String::NewSymbol("Fogf"), FunctionTemplate::New(GLFogfCallback));
+     Gl->Set(String::NewSymbol("ColorTableParameteriv"), FunctionTemplate::New(GLglColorTableParameterivCallback));
 
-     Gl->Set(String::NewSymbol("Fogi"), FunctionTemplate::New(GLFogiCallback));
+     Gl->Set(String::NewSymbol("ColorTableParameterfv"), FunctionTemplate::New(GLglColorTableParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("Fogfv"), FunctionTemplate::New(GLFogfvCallback));
+     Gl->Set(String::NewSymbol("CopyColorSubTable"), FunctionTemplate::New(GLglCopyColorSubTableCallback));
 
-     Gl->Set(String::NewSymbol("Fogiv"), FunctionTemplate::New(GLFogivCallback));
+     Gl->Set(String::NewSymbol("CopyColorTable"), FunctionTemplate::New(GLglCopyColorTableCallback));
 
-     Gl->Set(String::NewSymbol("FeedbackBuffer"), FunctionTemplate::New(GLFeedbackBufferCallback));
+     Gl->Set(String::NewSymbol("GetColorTableParameterfv"), FunctionTemplate::New(GLglGetColorTableParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("PassThrough"), FunctionTemplate::New(GLPassThroughCallback));
+     Gl->Set(String::NewSymbol("GetColorTableParameteriv"), FunctionTemplate::New(GLglGetColorTableParameterivCallback));
 
-     Gl->Set(String::NewSymbol("SelectBuffer"), FunctionTemplate::New(GLSelectBufferCallback));
+     Gl->Set(String::NewSymbol("BlendEquation"), FunctionTemplate::New(GLglBlendEquationCallback));
 
-     Gl->Set(String::NewSymbol("InitNames"), FunctionTemplate::New(GLInitNamesCallback));
+     Gl->Set(String::NewSymbol("BlendColor"), FunctionTemplate::New(GLglBlendColorCallback));
 
-     Gl->Set(String::NewSymbol("LoadName"), FunctionTemplate::New(GLLoadNameCallback));
+     Gl->Set(String::NewSymbol("Histogram"), FunctionTemplate::New(GLglHistogramCallback));
 
-     Gl->Set(String::NewSymbol("PushName"), FunctionTemplate::New(GLPushNameCallback));
+     Gl->Set(String::NewSymbol("ResetHistogram"), FunctionTemplate::New(GLglResetHistogramCallback));
 
-     Gl->Set(String::NewSymbol("PopName"), FunctionTemplate::New(GLPopNameCallback));
+     Gl->Set(String::NewSymbol("GetHistogramParameterfv"), FunctionTemplate::New(GLglGetHistogramParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage3D"), FunctionTemplate::New(GLCopyTexSubImage3DCallback));
+     Gl->Set(String::NewSymbol("GetHistogramParameteriv"), FunctionTemplate::New(GLglGetHistogramParameterivCallback));
 
-     Gl->Set(String::NewSymbol("ColorTableParameteriv"), FunctionTemplate::New(GLColorTableParameterivCallback));
+     Gl->Set(String::NewSymbol("Minmax"), FunctionTemplate::New(GLglMinmaxCallback));
 
-     Gl->Set(String::NewSymbol("ColorTableParameterfv"), FunctionTemplate::New(GLColorTableParameterfvCallback));
+     Gl->Set(String::NewSymbol("ResetMinmax"), FunctionTemplate::New(GLglResetMinmaxCallback));
 
-     Gl->Set(String::NewSymbol("CopyColorSubTable"), FunctionTemplate::New(GLCopyColorSubTableCallback));
+     Gl->Set(String::NewSymbol("GetMinmaxParameterfv"), FunctionTemplate::New(GLglGetMinmaxParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("CopyColorTable"), FunctionTemplate::New(GLCopyColorTableCallback));
+     Gl->Set(String::NewSymbol("GetMinmaxParameteriv"), FunctionTemplate::New(GLglGetMinmaxParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetColorTableParameterfv"), FunctionTemplate::New(GLGetColorTableParameterfvCallback));
+     Gl->Set(String::NewSymbol("ConvolutionParameterf"), FunctionTemplate::New(GLglConvolutionParameterfCallback));
 
-     Gl->Set(String::NewSymbol("GetColorTableParameteriv"), FunctionTemplate::New(GLGetColorTableParameterivCallback));
+     Gl->Set(String::NewSymbol("ConvolutionParameterfv"), FunctionTemplate::New(GLglConvolutionParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("BlendEquation"), FunctionTemplate::New(GLBlendEquationCallback));
+     Gl->Set(String::NewSymbol("ConvolutionParameteri"), FunctionTemplate::New(GLglConvolutionParameteriCallback));
 
-     Gl->Set(String::NewSymbol("BlendColor"), FunctionTemplate::New(GLBlendColorCallback));
+     Gl->Set(String::NewSymbol("ConvolutionParameteriv"), FunctionTemplate::New(GLglConvolutionParameterivCallback));
 
-     Gl->Set(String::NewSymbol("Histogram"), FunctionTemplate::New(GLHistogramCallback));
+     Gl->Set(String::NewSymbol("CopyConvolutionFilter1D"), FunctionTemplate::New(GLglCopyConvolutionFilter1DCallback));
 
-     Gl->Set(String::NewSymbol("ResetHistogram"), FunctionTemplate::New(GLResetHistogramCallback));
+     Gl->Set(String::NewSymbol("CopyConvolutionFilter2D"), FunctionTemplate::New(GLglCopyConvolutionFilter2DCallback));
 
-     Gl->Set(String::NewSymbol("GetHistogramParameterfv"), FunctionTemplate::New(GLGetHistogramParameterfvCallback));
+     Gl->Set(String::NewSymbol("GetConvolutionParameterfv"), FunctionTemplate::New(GLglGetConvolutionParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetHistogramParameteriv"), FunctionTemplate::New(GLGetHistogramParameterivCallback));
+     Gl->Set(String::NewSymbol("GetConvolutionParameteriv"), FunctionTemplate::New(GLglGetConvolutionParameterivCallback));
 
-     Gl->Set(String::NewSymbol("Minmax"), FunctionTemplate::New(GLMinmaxCallback));
+     Gl->Set(String::NewSymbol("ActiveTexture"), FunctionTemplate::New(GLglActiveTextureCallback));
 
-     Gl->Set(String::NewSymbol("ResetMinmax"), FunctionTemplate::New(GLResetMinmaxCallback));
+     Gl->Set(String::NewSymbol("ClientActiveTexture"), FunctionTemplate::New(GLglClientActiveTextureCallback));
 
-     Gl->Set(String::NewSymbol("GetMinmaxParameterfv"), FunctionTemplate::New(GLGetMinmaxParameterfvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1d"), FunctionTemplate::New(GLglMultiTexCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("GetMinmaxParameteriv"), FunctionTemplate::New(GLGetMinmaxParameterivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1dv"), FunctionTemplate::New(GLglMultiTexCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameterf"), FunctionTemplate::New(GLConvolutionParameterfCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1f"), FunctionTemplate::New(GLglMultiTexCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameterfv"), FunctionTemplate::New(GLConvolutionParameterfvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1fv"), FunctionTemplate::New(GLglMultiTexCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameteri"), FunctionTemplate::New(GLConvolutionParameteriCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1i"), FunctionTemplate::New(GLglMultiTexCoord1iCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameteriv"), FunctionTemplate::New(GLConvolutionParameterivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1iv"), FunctionTemplate::New(GLglMultiTexCoord1ivCallback));
 
-     Gl->Set(String::NewSymbol("CopyConvolutionFilter1D"), FunctionTemplate::New(GLCopyConvolutionFilter1DCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1s"), FunctionTemplate::New(GLglMultiTexCoord1sCallback));
 
-     Gl->Set(String::NewSymbol("CopyConvolutionFilter2D"), FunctionTemplate::New(GLCopyConvolutionFilter2DCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1sv"), FunctionTemplate::New(GLglMultiTexCoord1svCallback));
 
-     Gl->Set(String::NewSymbol("GetConvolutionParameterfv"), FunctionTemplate::New(GLGetConvolutionParameterfvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2d"), FunctionTemplate::New(GLglMultiTexCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("GetConvolutionParameteriv"), FunctionTemplate::New(GLGetConvolutionParameterivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2dv"), FunctionTemplate::New(GLglMultiTexCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("ActiveTexture"), FunctionTemplate::New(GLActiveTextureCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2f"), FunctionTemplate::New(GLglMultiTexCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("ClientActiveTexture"), FunctionTemplate::New(GLClientActiveTextureCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2fv"), FunctionTemplate::New(GLglMultiTexCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1d"), FunctionTemplate::New(GLMultiTexCoord1dCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2i"), FunctionTemplate::New(GLglMultiTexCoord2iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1dv"), FunctionTemplate::New(GLMultiTexCoord1dvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2iv"), FunctionTemplate::New(GLglMultiTexCoord2ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1f"), FunctionTemplate::New(GLMultiTexCoord1fCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2s"), FunctionTemplate::New(GLglMultiTexCoord2sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1fv"), FunctionTemplate::New(GLMultiTexCoord1fvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2sv"), FunctionTemplate::New(GLglMultiTexCoord2svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1i"), FunctionTemplate::New(GLMultiTexCoord1iCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3d"), FunctionTemplate::New(GLglMultiTexCoord3dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1iv"), FunctionTemplate::New(GLMultiTexCoord1ivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3dv"), FunctionTemplate::New(GLglMultiTexCoord3dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1s"), FunctionTemplate::New(GLMultiTexCoord1sCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3f"), FunctionTemplate::New(GLglMultiTexCoord3fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1sv"), FunctionTemplate::New(GLMultiTexCoord1svCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3fv"), FunctionTemplate::New(GLglMultiTexCoord3fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2d"), FunctionTemplate::New(GLMultiTexCoord2dCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3i"), FunctionTemplate::New(GLglMultiTexCoord3iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2dv"), FunctionTemplate::New(GLMultiTexCoord2dvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3iv"), FunctionTemplate::New(GLglMultiTexCoord3ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2f"), FunctionTemplate::New(GLMultiTexCoord2fCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3s"), FunctionTemplate::New(GLglMultiTexCoord3sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2fv"), FunctionTemplate::New(GLMultiTexCoord2fvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3sv"), FunctionTemplate::New(GLglMultiTexCoord3svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2i"), FunctionTemplate::New(GLMultiTexCoord2iCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4d"), FunctionTemplate::New(GLglMultiTexCoord4dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2iv"), FunctionTemplate::New(GLMultiTexCoord2ivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4dv"), FunctionTemplate::New(GLglMultiTexCoord4dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2s"), FunctionTemplate::New(GLMultiTexCoord2sCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4f"), FunctionTemplate::New(GLglMultiTexCoord4fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2sv"), FunctionTemplate::New(GLMultiTexCoord2svCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4fv"), FunctionTemplate::New(GLglMultiTexCoord4fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3d"), FunctionTemplate::New(GLMultiTexCoord3dCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4i"), FunctionTemplate::New(GLglMultiTexCoord4iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3dv"), FunctionTemplate::New(GLMultiTexCoord3dvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4iv"), FunctionTemplate::New(GLglMultiTexCoord4ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3f"), FunctionTemplate::New(GLMultiTexCoord3fCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4s"), FunctionTemplate::New(GLglMultiTexCoord4sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3fv"), FunctionTemplate::New(GLMultiTexCoord3fvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4sv"), FunctionTemplate::New(GLglMultiTexCoord4svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3i"), FunctionTemplate::New(GLMultiTexCoord3iCallback));
+     Gl->Set(String::NewSymbol("LoadTransposeMatrixd"), FunctionTemplate::New(GLglLoadTransposeMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3iv"), FunctionTemplate::New(GLMultiTexCoord3ivCallback));
+     Gl->Set(String::NewSymbol("LoadTransposeMatrixf"), FunctionTemplate::New(GLglLoadTransposeMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3s"), FunctionTemplate::New(GLMultiTexCoord3sCallback));
+     Gl->Set(String::NewSymbol("MultTransposeMatrixd"), FunctionTemplate::New(GLglMultTransposeMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3sv"), FunctionTemplate::New(GLMultiTexCoord3svCallback));
+     Gl->Set(String::NewSymbol("MultTransposeMatrixf"), FunctionTemplate::New(GLglMultTransposeMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4d"), FunctionTemplate::New(GLMultiTexCoord4dCallback));
+     Gl->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLglSampleCoverageCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4dv"), FunctionTemplate::New(GLMultiTexCoord4dvCallback));
+     Gl->Set(String::NewSymbol("ActiveTextureARB"), FunctionTemplate::New(GLglActiveTextureARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4f"), FunctionTemplate::New(GLMultiTexCoord4fCallback));
+     Gl->Set(String::NewSymbol("ClientActiveTextureARB"), FunctionTemplate::New(GLglClientActiveTextureARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4fv"), FunctionTemplate::New(GLMultiTexCoord4fvCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1dARB"), FunctionTemplate::New(GLglMultiTexCoord1dARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4i"), FunctionTemplate::New(GLMultiTexCoord4iCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1dvARB"), FunctionTemplate::New(GLglMultiTexCoord1dvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4iv"), FunctionTemplate::New(GLMultiTexCoord4ivCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1fARB"), FunctionTemplate::New(GLglMultiTexCoord1fARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4s"), FunctionTemplate::New(GLMultiTexCoord4sCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1fvARB"), FunctionTemplate::New(GLglMultiTexCoord1fvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4sv"), FunctionTemplate::New(GLMultiTexCoord4svCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1iARB"), FunctionTemplate::New(GLglMultiTexCoord1iARBCallback));
 
-     Gl->Set(String::NewSymbol("LoadTransposeMatrixd"), FunctionTemplate::New(GLLoadTransposeMatrixdCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1ivARB"), FunctionTemplate::New(GLglMultiTexCoord1ivARBCallback));
 
-     Gl->Set(String::NewSymbol("LoadTransposeMatrixf"), FunctionTemplate::New(GLLoadTransposeMatrixfCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1sARB"), FunctionTemplate::New(GLglMultiTexCoord1sARBCallback));
 
-     Gl->Set(String::NewSymbol("MultTransposeMatrixd"), FunctionTemplate::New(GLMultTransposeMatrixdCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord1svARB"), FunctionTemplate::New(GLglMultiTexCoord1svARBCallback));
 
-     Gl->Set(String::NewSymbol("MultTransposeMatrixf"), FunctionTemplate::New(GLMultTransposeMatrixfCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2dARB"), FunctionTemplate::New(GLglMultiTexCoord2dARBCallback));
 
-     Gl->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLSampleCoverageCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2dvARB"), FunctionTemplate::New(GLglMultiTexCoord2dvARBCallback));
 
-     Gl->Set(String::NewSymbol("ActiveTextureARB"), FunctionTemplate::New(GLActiveTextureARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2fARB"), FunctionTemplate::New(GLglMultiTexCoord2fARBCallback));
 
-     Gl->Set(String::NewSymbol("ClientActiveTextureARB"), FunctionTemplate::New(GLClientActiveTextureARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2fvARB"), FunctionTemplate::New(GLglMultiTexCoord2fvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1dARB"), FunctionTemplate::New(GLMultiTexCoord1dARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2iARB"), FunctionTemplate::New(GLglMultiTexCoord2iARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1dvARB"), FunctionTemplate::New(GLMultiTexCoord1dvARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2ivARB"), FunctionTemplate::New(GLglMultiTexCoord2ivARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1fARB"), FunctionTemplate::New(GLMultiTexCoord1fARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2sARB"), FunctionTemplate::New(GLglMultiTexCoord2sARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1fvARB"), FunctionTemplate::New(GLMultiTexCoord1fvARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord2svARB"), FunctionTemplate::New(GLglMultiTexCoord2svARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1iARB"), FunctionTemplate::New(GLMultiTexCoord1iARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3dARB"), FunctionTemplate::New(GLglMultiTexCoord3dARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1ivARB"), FunctionTemplate::New(GLMultiTexCoord1ivARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3dvARB"), FunctionTemplate::New(GLglMultiTexCoord3dvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1sARB"), FunctionTemplate::New(GLMultiTexCoord1sARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3fARB"), FunctionTemplate::New(GLglMultiTexCoord3fARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1svARB"), FunctionTemplate::New(GLMultiTexCoord1svARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3fvARB"), FunctionTemplate::New(GLglMultiTexCoord3fvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2dARB"), FunctionTemplate::New(GLMultiTexCoord2dARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3iARB"), FunctionTemplate::New(GLglMultiTexCoord3iARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2dvARB"), FunctionTemplate::New(GLMultiTexCoord2dvARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3ivARB"), FunctionTemplate::New(GLglMultiTexCoord3ivARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2fARB"), FunctionTemplate::New(GLMultiTexCoord2fARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3sARB"), FunctionTemplate::New(GLglMultiTexCoord3sARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2fvARB"), FunctionTemplate::New(GLMultiTexCoord2fvARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord3svARB"), FunctionTemplate::New(GLglMultiTexCoord3svARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2iARB"), FunctionTemplate::New(GLMultiTexCoord2iARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4dARB"), FunctionTemplate::New(GLglMultiTexCoord4dARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2ivARB"), FunctionTemplate::New(GLMultiTexCoord2ivARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4dvARB"), FunctionTemplate::New(GLglMultiTexCoord4dvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2sARB"), FunctionTemplate::New(GLMultiTexCoord2sARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4fARB"), FunctionTemplate::New(GLglMultiTexCoord4fARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2svARB"), FunctionTemplate::New(GLMultiTexCoord2svARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4fvARB"), FunctionTemplate::New(GLglMultiTexCoord4fvARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3dARB"), FunctionTemplate::New(GLMultiTexCoord3dARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4iARB"), FunctionTemplate::New(GLglMultiTexCoord4iARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3dvARB"), FunctionTemplate::New(GLMultiTexCoord3dvARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4ivARB"), FunctionTemplate::New(GLglMultiTexCoord4ivARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3fARB"), FunctionTemplate::New(GLMultiTexCoord3fARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4sARB"), FunctionTemplate::New(GLglMultiTexCoord4sARBCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3fvARB"), FunctionTemplate::New(GLMultiTexCoord3fvARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord3iARB"), FunctionTemplate::New(GLMultiTexCoord3iARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord3ivARB"), FunctionTemplate::New(GLMultiTexCoord3ivARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord3sARB"), FunctionTemplate::New(GLMultiTexCoord3sARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord3svARB"), FunctionTemplate::New(GLMultiTexCoord3svARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4dARB"), FunctionTemplate::New(GLMultiTexCoord4dARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4dvARB"), FunctionTemplate::New(GLMultiTexCoord4dvARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4fARB"), FunctionTemplate::New(GLMultiTexCoord4fARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4fvARB"), FunctionTemplate::New(GLMultiTexCoord4fvARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4iARB"), FunctionTemplate::New(GLMultiTexCoord4iARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4ivARB"), FunctionTemplate::New(GLMultiTexCoord4ivARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4sARB"), FunctionTemplate::New(GLMultiTexCoord4sARBCallback));
-
-     Gl->Set(String::NewSymbol("MultiTexCoord4svARB"), FunctionTemplate::New(GLMultiTexCoord4svARBCallback));
+     Gl->Set(String::NewSymbol("MultiTexCoord4svARB"), FunctionTemplate::New(GLglMultiTexCoord4svARBCallback));
 
 
       // Again, return the result through the current handle scope.

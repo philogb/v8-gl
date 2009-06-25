@@ -1,55 +1,55 @@
 //Initializes 3D rendering
 function initRendering() {
-	Gl.Enable(Gl.DEPTH_TEST);
-	Gl.Enable(Gl.COLOR_MATERIAL);
+	Gl.Enable(Gl.DEPTH_TEST)
+	  .Enable(Gl.COLOR_MATERIAL);
 }
 
 //Called when the window is resized
 function handleResize(w, h) {
-	Gl.Viewport(0, 0, w, h);
-	Gl.MatrixMode(Gl.PROJECTION);
-	Gl.LoadIdentity();
+	Gl.Viewport(0, 0, w, h)
+	  .MatrixMode(Gl.PROJECTION)
+	  .LoadIdentity();
+
 	Glu.Perspective(45.0, w / h, 1.0, 200.0);
 }
 
 //Draws the 3D scene
 function drawScene() {
-	Gl.Clear(Gl.COLOR_BUFFER_BIT | Gl.DEPTH_BUFFER_BIT);
+	Gl.Clear(Gl.COLOR_BUFFER_BIT | Gl.DEPTH_BUFFER_BIT)
+	  .MatrixMode(Gl.MODELVIEW)
+	  .LoadIdentity()
 
-	Gl.MatrixMode(Gl.MODELVIEW);
-	Gl.LoadIdentity();
-
-	Gl.Begin(Gl.QUADS);
+	  .Begin(Gl.QUADS)
 	
-	//Trapezoid
-	Gl.Vertex3f(-0.7, -1.5, -5.0);
-	Gl.Vertex3f(0.7, -1.5, -5.0);
-	Gl.Vertex3f(0.4, -0.5, -5.0);
-	Gl.Vertex3f(-0.4, -0.5, -5.0);
+	   //Trapezoid
+	  .Vertex3f(-0.7, -1.5, -5.0)
+	  .Vertex3f(0.7, -1.5, -5.0)
+	  .Vertex3f(0.4, -0.5, -5.0)
+	  .Vertex3f(-0.4, -0.5, -5.0)
 	
-	Gl.End(); 
+	  .End() 
 	
-	Gl.Begin(Gl.TRIANGLES);
+	  .Begin(Gl.TRIANGLES)
 	
 	//Pentagon
-	Gl.Vertex3f(0.5, 0.5, -5.0);
-	Gl.Vertex3f(1.5, 0.5, -5.0);
-	Gl.Vertex3f(0.5, 1.0, -5.0);
+	  .Vertex3f(0.5, 0.5, -5.0)
+	  .Vertex3f(1.5, 0.5, -5.0)
+	  .Vertex3f(0.5, 1.0, -5.0)
 	
-	Gl.Vertex3f(0.5, 1.0, -5.0);
-	Gl.Vertex3f(1.5, 0.5, -5.0);
-	Gl.Vertex3f(1.5, 1.0, -5.0);
+	  .Vertex3f(0.5, 1.0, -5.0)
+	  .Vertex3f(1.5, 0.5, -5.0)
+	  .Vertex3f(1.5, 1.0, -5.0)
 	
-	Gl.Vertex3f(0.5, 1.0, -5.0);
-	Gl.Vertex3f(1.5, 1.0, -5.0);
-	Gl.Vertex3f(1.0, 1.5, -5.0);
+	  .Vertex3f(0.5, 1.0, -5.0)
+	  .Vertex3f(1.5, 1.0, -5.0)
+	  .Vertex3f(1.0, 1.5, -5.0)
 	
 	//Triangle
-	Gl.Vertex3f(-0.5, 0.5, -5.0);
-	Gl.Vertex3f(-1.0, 1.5, -5.0);
-	Gl.Vertex3f(-1.5, 0.5, -5.0);
+	  .Vertex3f(-0.5, 0.5, -5.0)
+	  .Vertex3f(-1.0, 1.5, -5.0)
+	  .Vertex3f(-1.5, 0.5, -5.0)
 	
-	Gl.End();
+	  .End();
 
 	Glut.SwapBuffers();
 }

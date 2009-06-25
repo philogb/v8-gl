@@ -21,6 +21,10 @@
 using namespace std;
 using namespace v8;
 
-Handle<ObjectTemplate> createGl(void);
+class GlFactory {
+public:
+	static Handle<ObjectTemplate> createGl(void);
 
+	static Persistent<Object> self_;
+};
 #endif /* GLBIND_H_ */
