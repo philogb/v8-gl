@@ -1,3 +1,5 @@
+from __future__ import with_statement
+
 import json
 import re
 
@@ -13,7 +15,14 @@ def main():
     
     with open(IN_FILE, 'r') as f:
         text_out = []
-        json_in = json.loads(f.read())
+        data = f.read()
+        try:
+            # Try the python 2.6 json module first.
+            json_in = json.loads(data)
+        except AttributeError:
+            # Fall back to json-py.
+            reader = json.JsonReader()
+            json_in = reader.read(data)
         constants, functions = [], []
         
         for obj in json_in:
