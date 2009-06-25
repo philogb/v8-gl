@@ -29,7 +29,6 @@ def main():
             if not re.search(EXCLUDE, obj['name']):
                 try:
                     if obj['type'] == 'c':
-                        text_out.append(generate_constant(obj))
                         constants.append(obj['name'])
                     else:
                         text_out.append(generate_function(obj))
@@ -63,8 +62,8 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
       return handle_scope.Close(Gl);
 }    
 """
-    bind_accessor = lambda n: "     Gl->SetAccessor(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
-        + "\"), Get" + n + ");\n"
+    bind_accessor = lambda n: "     Gl->Set(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
+        + "\"), Uint32::New(" + n + "), ReadOnly);\n"
     bind_function = lambda n: "     Gl->Set(String::NewSymbol(\"" + n[2:] + \
         "\"), FunctionTemplate::New(GL" + n + "Callback));\n"
     
@@ -72,19 +71,6 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
     fts = [bind_function(name) for name in functions]
     
     return text_out_begin + '\n'.join(cts) + '\n' + '\n'.join(fts) + text_out_end
-
-def generate_constant(obj):
-    """Generates code for defining a Constant"""
-    
-    text_out = """
-
-Handle<Value> Get%%(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(%%);
-}
-
-"""
-    return text_out.replace('%%', obj['name'])
 
 def generate_function(obj):
     """Generates code for declaring a Function"""
