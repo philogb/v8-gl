@@ -13,9 +13,8 @@
 
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
-#include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+#include <GL/gl.h>
 #endif
 
 using namespace std;

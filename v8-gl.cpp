@@ -46,8 +46,10 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  // Each processor gets its own context so different processors
 	  // don't affect each other.
 	  Handle<ObjectTemplate> Gl = GlFactory::createGl();
+	  Handle<ObjectTemplate> Gles = GlesFactory::createGles();
 
 	  global->Set(String::New("Gl"), Gl);
+	  global->Set(String::New("Gles"), Gles);
 	  global->Set(String::New("Glu"), createGlu());
 	  global->Set(String::New("Glut"), GlutFactory::createGlut(pargc, argv));
 
@@ -61,6 +63,7 @@ bool V8GL::initialize(int* pargc, char** argv) {
 
 	  //Append *this* as Gl static variable so we can do dot-this-dot-that stuff
 	  GlFactory::self_ = Persistent<Object>::New(Gl->NewInstance());
+	  GlesFactory::self_ = Persistent<Object>::New(Gles->NewInstance());
 
 	  // Compile and run the script
 	  if (!executeScript())
