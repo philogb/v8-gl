@@ -1,0 +1,27 @@
+
+Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  //the _length_ parameter isn't taken into account.
+  //the function requires NULL terminated strings.
+  //I don't think this is going to be a problem.
+  if (args.Length() < 3) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned int shader = args[0]->Uint32Value();
+
+  int count = args[1]->IntegerValue();
+  char** code = new char* [count];
+  Handle<Array> code_array = Handle<Array>::Cast(args[2]);
+
+  for (unsigned j = 0; j < count; j++) {
+      Handle<Value> code_line(code_array->Get(Integer::New(j)));
+      String::Utf8Value value(code_line);
+      code[j] = *code_line;
+  }
+  
+  //make call
+  glShaderSource((GLuint) shader, (GLsizei) count, (char**) code, NULL);
+  Handle<Object> res(GlesFactory::self_);
+  return res;
+}
