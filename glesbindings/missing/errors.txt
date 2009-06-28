@@ -1,0 +1,196 @@
+main.cpp: In function 'void ParseOptions(int, char**, std::string*)':
+main.cpp:15: warning: comparison between signed and unsigned integer expressions
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglAttachShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:34: error: 'glAttachShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBindAttribLocationCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:54: error: 'glBindAttribLocation' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBindBufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:72: error: 'glBindBuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBindFramebufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:90: error: 'glBindFramebuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBindRenderbufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:108: error: 'glBindRenderbuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBlendEquationSeparateCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:181: error: 'glBlendEquationSeparate' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglBlendFuncSeparateCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:219: error: 'glBlendFuncSeparate' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglCheckFramebufferStatusCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:236: error: 'glCheckFramebufferStatus' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglClearDepthfCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:288: error: 'glClearDepthf' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglCompileShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:342: error: 'glCompileShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglCreateProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:406: error: 'glCreateProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglCreateShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:421: error: 'glCreateShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDeleteBuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:463: error: 'glDeleteBuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDeleteFramebuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:490: error: 'glDeleteFramebuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDeleteProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:507: error: 'glDeleteProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDeleteRenderbuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:534: error: 'glDeleteRenderbuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDeleteShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:551: error: 'glDeleteShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDepthRangefCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:630: error: 'glDepthRangef' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDetachShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:648: error: 'glDetachShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglDisableVertexAttribArrayCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:682: error: 'glDisableVertexAttribArray' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglEnableVertexAttribArrayCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:735: error: 'glEnableVertexAttribArray' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglFramebufferRenderbufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:787: error: 'glFramebufferRenderbuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglFramebufferTexture2DCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:808: error: 'glFramebufferTexture2D' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGenBuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:852: error: 'glGenBuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGenerateMipmapCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:869: error: 'glGenerateMipmap' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGenFramebuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:896: error: 'glGenFramebuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGenRenderbuffersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:923: error: 'glGenRenderbuffers' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetActiveAttribCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1001: error: 'glGetActiveAttrib' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetActiveUniformCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1052: error: 'glGetActiveUniform' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetAttachedShadersCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1090: error: 'glGetAttachedShaders' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetAttribLocationCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1109: error: 'glGetAttribLocation' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetBufferParameterivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1162: error: 'glGetBufferParameteriv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetFramebufferAttachmentParameterivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1232: error: 'glGetFramebufferAttachmentParameteriv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetProgramivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1287: error: 'glGetProgramiv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetProgramInfoLogCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1317: error: 'glGetProgramInfoLog' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetRenderbufferParameterivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1345: error: 'glGetRenderbufferParameteriv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetShaderivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1373: error: 'glGetShaderiv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetShaderInfoLogCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1403: error: 'glGetShaderInfoLog' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetShaderPrecisionFormatCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1441: error: 'glGetShaderPrecisionFormat' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetShaderSourceCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1471: error: 'glGetShaderSource' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetUniformfvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1555: error: 'glGetUniformfv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetUniformivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1583: error: 'glGetUniformiv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetUniformLocationCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1602: error: 'glGetUniformLocation' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetVertexAttribfvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1628: error: 'glGetVertexAttribfv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglGetVertexAttribivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1656: error: 'glGetVertexAttribiv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglIsBufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1691: error: 'glIsBuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglIsFramebufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1721: error: 'glIsFramebuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglIsProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1736: error: 'glIsProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglIsRenderbufferCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1751: error: 'glIsRenderbuffer' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglIsShaderCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1766: error: 'glIsShader' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglLinkProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1813: error: 'glLinkProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglReleaseShaderCompilerCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1865: error: 'glReleaseShaderCompiler' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglRenderbufferStorageCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1885: error: 'glRenderbufferStorage' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglShaderSourceCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1945: warning: comparison between signed and unsigned integer expressions
+glesbindings/glesbind.cpp:1948: error: cannot convert 'v8::Value*' to 'char*' in assignment
+glesbindings/glesbind.cpp:1952: error: 'glShaderSource' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglStencilFuncSeparateCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:1990: error: 'glStencilFuncSeparate' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglStencilMaskSeparateCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2025: error: 'glStencilMaskSeparate' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglStencilOpSeparateCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2064: error: 'glStencilOpSeparate' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform1fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2176: error: 'glUniform1f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform1fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2204: error: 'glUniform1fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform1iCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2222: error: 'glUniform1i' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform1ivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2250: error: 'glUniform1iv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform2fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2269: error: 'glUniform2f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform2fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2297: error: 'glUniform2fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform2iCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2316: error: 'glUniform2i' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform2ivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2344: error: 'glUniform2iv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform3fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2364: error: 'glUniform3f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform3fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2392: error: 'glUniform3fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform3iCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2412: error: 'glUniform3i' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform3ivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2440: error: 'glUniform3iv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform4fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2461: error: 'glUniform4f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform4fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2489: error: 'glUniform4fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform4iCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2510: error: 'glUniform4i' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniform4ivCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2538: error: 'glUniform4iv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniformMatrix2fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2567: error: 'glUniformMatrix2fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniformMatrix3fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2596: error: 'glUniformMatrix3fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUniformMatrix4fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2625: error: 'glUniformMatrix4fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglUseProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2642: error: 'glUseProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglValidateProgramCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2659: error: 'glValidateProgram' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib1fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2677: error: 'glVertexAttrib1f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib1fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2704: error: 'glVertexAttrib1fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib2fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2723: error: 'glVertexAttrib2f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib2fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2750: error: 'glVertexAttrib2fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib3fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2770: error: 'glVertexAttrib3f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib3fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2797: error: 'glVertexAttrib3fv' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib4fCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2818: error: 'glVertexAttrib4f' was not declared in this scope
+glesbindings/glesbind.cpp: In function 'v8::Handle<v8::Value> GLESglVertexAttrib4fvCallback(const v8::Arguments&)':
+glesbindings/glesbind.cpp:2845: error: 'glVertexAttrib4fv' was not declared in this scope
+glesbindings/glesbind.cpp: In static member function 'static v8::Handle<v8::ObjectTemplate> GlesFactory::createGles()':
+glesbindings/glesbind.cpp:2880: error: 'GL_ES_VERSION_2_0' was not declared in this scope
+glesbindings/glesbind.cpp:3126: error: 'GL_FIXED' was not declared in this scope
+glesbindings/glesbind.cpp:3152: error: 'GL_MAX_VERTEX_UNIFORM_VECTORS' was not declared in this scope
+glesbindings/glesbind.cpp:3154: error: 'GL_MAX_VARYING_VECTORS' was not declared in this scope
+glesbindings/glesbind.cpp:3162: error: 'GL_MAX_FRAGMENT_UNIFORM_VECTORS' was not declared in this scope
+glesbindings/glesbind.cpp:3380: error: 'GL_SHADER_COMPILER' was not declared in this scope
+glesbindings/glesbind.cpp:3382: error: 'GL_SHADER_BINARY_FORMATS' was not declared in this scope
+glesbindings/glesbind.cpp:3384: error: 'GL_NUM_SHADER_BINARY_FORMATS' was not declared in this scope
+glesbindings/glesbind.cpp:3386: error: 'GL_LOW_FLOAT' was not declared in this scope
+glesbindings/glesbind.cpp:3388: error: 'GL_MEDIUM_FLOAT' was not declared in this scope
+glesbindings/glesbind.cpp:3390: error: 'GL_HIGH_FLOAT' was not declared in this scope
+glesbindings/glesbind.cpp:3392: error: 'GL_LOW_INT' was not declared in this scope
+glesbindings/glesbind.cpp:3394: error: 'GL_MEDIUM_INT' was not declared in this scope
+glesbindings/glesbind.cpp:3396: error: 'GL_HIGH_INT' was not declared in this scope
+glesbindings/glesbind.cpp:3406: error: 'GL_RGB565' was not declared in this scope
+glesbindings/glesbind.cpp:3454: error: 'GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS' was not declared in this scope
+glubindings/glubind.cpp: In function 'v8::Handle<v8::Value> GetGLU_TESS_MAX_COORD(v8::Local<v8::String>, const v8::AccessorInfo&)':
+glubindings/glubind.cpp:1241: warning: overflow in implicit constant conversion
+make: *** [v8-gl] Error 1

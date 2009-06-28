@@ -2,8 +2,6 @@
 
 Persistent<Object> GlesFactory::self_;
 
-
-
 Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -449,16 +447,16 @@ Handle<Value> GLESglDeleteBuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLuint* arg1 = new  GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLuint aux = ( GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glDeleteBuffers((GLsizei) arg0, (const GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -476,16 +474,16 @@ Handle<Value> GLESglDeleteFramebuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLuint* arg1 = new  GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLuint aux = ( GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glDeleteFramebuffers((GLsizei) arg0, (const GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -520,16 +518,16 @@ Handle<Value> GLESglDeleteRenderbuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLuint* arg1 = new  GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLuint aux = ( GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glDeleteRenderbuffers((GLsizei) arg0, (const GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -564,16 +562,16 @@ Handle<Value> GLESglDeleteTexturesCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLuint* arg1 = new  GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLuint aux = ( GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glDeleteTextures((GLsizei) arg0, (const GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -838,16 +836,16 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint* arg1 = new GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint aux = (GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGenBuffers((GLsizei) arg0, (GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -882,16 +880,16 @@ Handle<Value> GLESglGenFramebuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint* arg1 = new GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint aux = (GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGenFramebuffers((GLsizei) arg0, (GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -909,16 +907,16 @@ Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint* arg1 = new GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint aux = (GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGenRenderbuffers((GLsizei) arg0, (GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -936,16 +934,16 @@ Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLuint* arg1 = new GLuint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLuint aux = (GLuint)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGenTextures((GLsizei) arg0, (GLuint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -965,35 +963,35 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
   unsigned int arg1 = args[1]->Uint32Value();
   int arg2 = args[2]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
   GLsizei* arg3 = new GLsizei[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle4 = Handle<Array>::Cast(args[4]);
   GLint* arg4 = new GLint[arrHandle4->Length()];
   for (unsigned j = 0; j < arrHandle4->Length(); j++) {
       Handle<Value> arg(arrHandle4->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg4[j] = aux; 
+      arg4[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
   GLenum* arg5 = new GLenum[arrHandle5->Length()];
   for (unsigned j = 0; j < arrHandle5->Length(); j++) {
       Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
       GLenum aux = (GLenum)arg->IntegerValue();
-      arg5[j] = aux; 
+      arg5[j] = aux;
   }
-    
+
       String::Utf8Value value6(args[6]);
   char* arg6 = *value6;
 
@@ -1016,35 +1014,35 @@ Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
   unsigned int arg1 = args[1]->Uint32Value();
   int arg2 = args[2]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
   GLsizei* arg3 = new GLsizei[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle4 = Handle<Array>::Cast(args[4]);
   GLint* arg4 = new GLint[arrHandle4->Length()];
   for (unsigned j = 0; j < arrHandle4->Length(); j++) {
       Handle<Value> arg(arrHandle4->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg4[j] = aux; 
+      arg4[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle5 = Handle<Array>::Cast(args[5]);
   GLenum* arg5 = new GLenum[arrHandle5->Length()];
   for (unsigned j = 0; j < arrHandle5->Length(); j++) {
       Handle<Value> arg(arrHandle5->Get(Integer::New(j)));
       GLenum aux = (GLenum)arg->IntegerValue();
-      arg5[j] = aux; 
+      arg5[j] = aux;
   }
-    
+
       String::Utf8Value value6(args[6]);
   char* arg6 = *value6;
 
@@ -1066,26 +1064,26 @@ Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLsizei* arg2 = new GLsizei[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
   GLuint* arg3 = new GLuint[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
       GLuint aux = (GLuint)arg->Uint32Value();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetAttachedShaders((GLuint) arg0, (GLsizei) arg1, (GLsizei*) arg2, (GLuint*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -1120,16 +1118,16 @@ Handle<Value> GLESglGetBooleanvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLboolean* arg1 = new GLboolean[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLboolean aux = (GLboolean)arg->Uint32Value();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetBooleanv((GLenum) arg0, (GLboolean*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -1148,16 +1146,16 @@ Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetBufferParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1189,16 +1187,16 @@ Handle<Value> GLESglGetFloatvCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLfloat* arg1 = new GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLfloat aux = (GLfloat)arg->NumberValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetFloatv((GLenum) arg0, (GLfloat*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -1218,16 +1216,16 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterivCallback(const Arguments&
   int arg1 = args[1]->IntegerValue();
   int arg2 = args[2]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
   GLint* arg3 = new GLint[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetFramebufferAttachmentParameteriv((GLenum) arg0, (GLenum) arg1, (GLenum) arg2, (GLint*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -1245,16 +1243,16 @@ Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
   GLint* arg1 = new GLint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetIntegerv((GLenum) arg0, (GLint*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -1273,16 +1271,16 @@ Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetProgramiv((GLuint) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1301,15 +1299,15 @@ Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLsizei* arg2 = new GLsizei[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
+
       String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
@@ -1331,16 +1329,16 @@ Handle<Value> GLESglGetRenderbufferParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetRenderbufferParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1359,16 +1357,16 @@ Handle<Value> GLESglGetShaderivCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetShaderiv((GLuint) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1387,15 +1385,15 @@ Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLsizei* arg2 = new GLsizei[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
+
       String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
@@ -1417,26 +1415,26 @@ Handle<Value> GLESglGetShaderPrecisionFormatCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
-    
+
+
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
   GLint* arg3 = new GLint[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetShaderPrecisionFormat((GLenum) arg0, (GLenum) arg1, (GLint*) arg2, (GLint*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -1455,15 +1453,15 @@ Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLsizei* arg2 = new GLsizei[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLsizei aux = (GLsizei)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
+
       String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
@@ -1485,16 +1483,16 @@ Handle<Value> GLESglGetTexParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat aux = (GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetTexParameterfv((GLenum) arg0, (GLenum) arg1, (GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1513,16 +1511,16 @@ Handle<Value> GLESglGetTexParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetTexParameteriv((GLenum) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1541,16 +1539,16 @@ Handle<Value> GLESglGetUniformfvCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat aux = (GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetUniformfv((GLuint) arg0, (GLint) arg1, (GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1569,16 +1567,16 @@ Handle<Value> GLESglGetUniformivCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetUniformiv((GLuint) arg0, (GLint) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1614,16 +1612,16 @@ Handle<Value> GLESglGetVertexAttribfvCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLfloat* arg2 = new GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLfloat aux = (GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetVertexAttribfv((GLuint) arg0, (GLenum) arg1, (GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1642,16 +1640,16 @@ Handle<Value> GLESglGetVertexAttribivCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
   GLint* arg2 = new GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
       GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glGetVertexAttribiv((GLuint) arg0, (GLenum) arg1, (GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -1927,33 +1925,6 @@ Handle<Value> GLESglScissorCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  //the _length_ parameter isn't taken into account.
-  //the function requires NULL terminated strings.
-  //I don't think this is going to be a problem.
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
-  //get arguments
-  unsigned int shader = args[0]->Uint32Value();
-
-  int count = args[1]->IntegerValue();
-  char** code = new char* [count];
-  Handle<Array> code_array = Handle<Array>::Cast(args[2]);
-
-  for (unsigned j = 0; j < count; j++) {
-      Handle<Value> code_line(code_array->Get(Integer::New(j)));
-      String::Utf8Value value(code_line);
-      code[j] = *code_line;
-  }
-  
-  //make call
-  glShaderSource((GLuint) shader, (GLsizei) count, (char**) code, NULL);
-  Handle<Object> res(GlesFactory::self_);
-  return res;
-}
-
 
 
 Handle<Value> GLESglStencilFuncCallback(const Arguments& args) {
@@ -2097,16 +2068,16 @@ Handle<Value> GLESglTexParameterfvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glTexParameterfv((GLenum) arg0, (GLenum) arg1, (const GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2144,16 +2115,16 @@ Handle<Value> GLESglTexParameterivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLint* arg2 = new  GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLint aux = ( GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glTexParameteriv((GLenum) arg0, (GLenum) arg1, (const GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2190,16 +2161,16 @@ Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform1fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2236,16 +2207,16 @@ Handle<Value> GLESglUniform1ivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLint* arg2 = new  GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLint aux = ( GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform1iv((GLint) arg0, (GLsizei) arg1, (const GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2283,16 +2254,16 @@ Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform2fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2330,16 +2301,16 @@ Handle<Value> GLESglUniform2ivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLint* arg2 = new  GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLint aux = ( GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform2iv((GLint) arg0, (GLsizei) arg1, (const GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2378,16 +2349,16 @@ Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform3fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2426,16 +2397,16 @@ Handle<Value> GLESglUniform3ivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLint* arg2 = new  GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLint aux = ( GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform3iv((GLint) arg0, (GLsizei) arg1, (const GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2475,16 +2446,16 @@ Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform4fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2524,16 +2495,16 @@ Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
 
-    
+
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
    GLint* arg2 = new  GLint[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
        GLint aux = ( GLint)arg->IntegerValue();
-      arg2[j] = aux; 
+      arg2[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniform4iv((GLint) arg0, (GLsizei) arg1, (const GLint*) arg2);
   Handle<Object> res(GlesFactory::self_);
@@ -2553,16 +2524,16 @@ Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
   unsigned int arg2 = args[2]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
    GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniformMatrix2fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -2582,16 +2553,16 @@ Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
   unsigned int arg2 = args[2]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
    GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniformMatrix3fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -2611,16 +2582,16 @@ Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
   unsigned int arg2 = args[2]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
    GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
   for (unsigned j = 0; j < arrHandle3->Length(); j++) {
       Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux; 
+      arg3[j] = aux;
   }
-    
-    
+
+
   //make call
   glUniformMatrix4fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
   Handle<Object> res(GlesFactory::self_);
@@ -2690,16 +2661,16 @@ Handle<Value> GLESglVertexAttrib1fvCallback(const Arguments& args) {
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glVertexAttrib1fv((GLuint) arg0, (const GLfloat*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -2736,16 +2707,16 @@ Handle<Value> GLESglVertexAttrib2fvCallback(const Arguments& args) {
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glVertexAttrib2fv((GLuint) arg0, (const GLfloat*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -2783,16 +2754,16 @@ Handle<Value> GLESglVertexAttrib3fvCallback(const Arguments& args) {
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glVertexAttrib3fv((GLuint) arg0, (const GLfloat*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -2831,16 +2802,16 @@ Handle<Value> GLESglVertexAttrib4fvCallback(const Arguments& args) {
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
-    
+
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
    GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
        GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg1[j] = aux; 
+      arg1[j] = aux;
   }
-    
-    
+
+
   //make call
   glVertexAttrib4fv((GLuint) arg0, (const GLfloat*) arg1);
   Handle<Object> res(GlesFactory::self_);
@@ -2874,7 +2845,7 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
       HandleScope handle_scope;
 
       Handle<ObjectTemplate> Gl = ObjectTemplate::New();
-      
+
       Gl->SetInternalFieldCount(1);
 
      Gl->Set(String::NewSymbol("ES_VERSION_2_0"), Uint32::New(GL_ES_VERSION_2_0), ReadOnly);
@@ -3722,4 +3693,4 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
       // Again, return the result through the current handle scope.
       return handle_scope.Close(Gl);
-}    
+}

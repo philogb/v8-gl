@@ -1,0 +1,103 @@
+#define GL_ES_VERSION_2_0 1
+#define GL_FIXED 1
+#define GL_MAX_VERTEX_UNIFORM_VECTORS 1
+#define GL_MAX_VARYING_VECTORS 1
+#define GL_MAX_FRAGMENT_UNIFORM_VECTORS 1
+#define GL_SHADER_COMPILER 1
+#define GL_SHADER_BINARY_FORMATS 1
+#define GL_NUM_SHADER_BINARY_FORMATS 1
+#define GL_LOW_FLOAT 1
+#define GL_MEDIUM_FLOAT 1
+#define GL_HIGH_FLOAT 1
+#define GL_LOW_INT 1
+#define GL_MEDIUM_INT 1
+#define GL_HIGH_INT 1
+#define GL_RGB565 1
+#define GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS 1
+
+void glAttachShader(GLuint arg0, GLuint arg1) {}
+void glBindAttribLocation(GLuint arg0, GLuint arg1, const char* arg2) {}
+void glBindBuffer(GLenum arg0, GLuint arg1) {}
+void glBindFramebuffer(GLenum arg0, GLuint arg1) {}
+void glBindRenderbuffer(GLenum arg0, GLuint arg1) {}
+void glBlendEquationSeparate(GLenum arg0, GLenum arg1) {}
+void glBlendFuncSeparate(GLenum arg0, GLenum arg1, GLenum arg2, GLenum arg3) {}
+GLenum glCheckFramebufferStatus(GLenum arg0) { return 1;}
+void glClearDepthf(GLclampf arg0) {}
+void glCompileShader(GLuint arg0) {}
+GLuint glCreateProgram() {return 1;}
+GLuint glCreateShader(GLenum arg0) {return 1;}
+void glDeleteBuffers(GLsizei arg0, const GLuint* arg1) {}
+void glDeleteFramebuffers(GLsizei arg0, const GLuint* arg1) {}
+void glDeleteProgram(GLuint arg0) {}
+void glDeleteRenderbuffers(GLsizei arg0, const GLuint* arg1) {}
+void glDeleteShader(GLuint arg0) {}
+void glDepthRangef(GLclampf arg0, GLclampf arg1) {}
+void glDetachShader(GLuint arg0, GLuint arg1) {}
+void glDisableVertexAttribArray(GLuint arg0) {}
+void glEnableVertexAttribArray(GLuint arg0) {}
+void glFramebufferRenderbuffer(GLenum arg0, GLenum arg1, GLenum arg2, GLuint arg3) {}
+void glFramebufferTexture2D(GLenum arg0, GLenum arg1, GLenum arg2, GLuint arg3, GLint arg4) {}
+void glGenBuffers(GLsizei arg0, GLuint* arg1) {}
+void glGenerateMipmap(GLenum arg0) {}
+void glGenFramebuffers(GLsizei arg0, GLuint* arg1) {}
+void glGenRenderbuffers(GLsizei arg0, GLuint* arg1) {}
+void glGetActiveAttrib(GLuint arg0, GLuint arg1, GLsizei arg2, GLsizei* arg3, GLint* arg4, GLenum* arg5, char* arg6) {}
+void glGetActiveUniform(GLuint arg0, GLuint arg1, GLsizei arg2, GLsizei* arg3, GLint* arg4, GLenum* arg5, char* arg6) {}
+void glGetAttachedShaders(GLuint arg0, GLsizei arg1, GLsizei* arg2, GLuint* arg3) {}
+int glGetAttribLocation(GLuint arg0, const char* arg1) {}
+void glGetBufferParameteriv(GLenum arg0, GLenum arg1, GLint* arg2) {}
+void glGetFramebufferAttachmentParameteriv(GLenum arg0, GLenum arg1, GLenum arg2, GLint* arg3) {}
+void glGetProgramiv(GLuint arg0, GLenum arg1, GLint* arg2) {}
+void glGetProgramInfoLog(GLuint arg0, GLsizei arg1, GLsizei* arg2, char* arg3) {}
+void glGetRenderbufferParameteriv(GLenum arg0, GLenum arg1, GLint* arg2) {}
+void glGetShaderiv(GLuint arg0, GLenum arg1, GLint* arg2) {}
+void glGetShaderInfoLog(GLuint arg0, GLsizei arg1, GLsizei* arg2, char* arg3) {}
+void glGetShaderPrecisionFormat(GLenum arg0, GLenum arg1, GLint* arg2, GLint* arg3) {}
+void glGetShaderSource(GLuint arg0, GLsizei arg1, GLsizei* arg2, char* arg3) {}
+void glGetUniformfv(GLuint arg0, GLint arg1, GLfloat* arg2) {}
+void glGetUniformiv(GLuint arg0, GLint arg1, GLint* arg2) {}
+int glGetUniformLocation(GLuint arg0, const char* arg1) {}
+void glGetVertexAttribfv(GLuint arg0, GLenum arg1, GLfloat* arg2) {}
+void glGetVertexAttribiv(GLuint arg0, GLenum arg1, GLint* arg2) {}
+GLboolean glIsBuffer(GLuint arg0) { return false; }
+GLboolean glIsFramebuffer(GLuint arg0) { return false;}
+GLboolean glIsProgram(GLuint arg0) { return false;}
+GLboolean glIsRenderbuffer(GLuint arg0) { return false;}
+GLboolean glIsShader(GLuint arg0) { return false;}
+void glLinkProgram(GLuint arg0) { }
+void glReleaseShaderCompiler() {}
+void glRenderbufferStorage(GLenum arg0, GLenum arg1, GLsizei arg2, GLsizei arg3) {}
+void glShaderSource(GLuint arg0, GLsizei arg1, const char** arg2, const GLint* arg3) {}
+void glStencilFuncSeparate(GLenum arg0, GLenum arg1, GLint arg2, GLuint arg3) {}
+void glStencilMaskSeparate(GLenum arg0, GLuint arg1) {}
+void glStencilOpSeparate(GLenum arg0, GLenum arg1, GLenum arg2, GLenum arg3) {}
+void glUniform1f(GLint arg0, GLfloat arg1) {}
+void glUniform1fv(GLint arg0, GLsizei arg1, const GLfloat* arg2) {}
+void glUniform1i(GLint arg0, GLint arg1) {}
+void glUniform1iv(GLint arg0, GLsizei arg1, const GLint* arg2) {}
+void glUniform2f(GLint arg0, GLfloat arg1, GLfloat arg2) {}
+void glUniform2fv(GLint arg0, GLsizei arg1, const GLfloat* arg2) {}
+void glUniform2i(GLint arg0, GLint arg1, GLint arg2) {}
+void glUniform2iv(GLint arg0, GLsizei arg1, const GLint* arg2) {}
+void glUniform3f(GLint arg0, GLfloat arg1, GLfloat arg2, GLfloat arg3) {}
+void glUniform3fv(GLint arg0, GLsizei arg1, const GLfloat* arg2) {}
+void glUniform3i(GLint arg0, GLint arg1, GLint arg2, GLint arg3) {}
+void glUniform3iv(GLint arg0, GLsizei arg1, const GLint* arg2) {}
+void glUniform4f(GLint arg0, GLfloat arg1, GLfloat arg2, GLfloat arg3, GLfloat arg4) {}
+void glUniform4fv(GLint arg0, GLsizei arg1, const GLfloat* arg2) {}
+void glUniform4i(GLint arg0, GLint arg1, GLint arg2, GLint arg3, GLint arg4) {}
+void glUniform4iv(GLint arg0, GLsizei arg1, const GLint* arg2) {}
+void glUniformMatrix2fv(GLint arg0, GLsizei arg1, GLboolean arg2, const GLfloat* arg3) {}
+void glUniformMatrix3fv(GLint arg0, GLsizei arg1, GLboolean arg2, const GLfloat* arg3) {}
+void glUniformMatrix4fv(GLint arg0, GLsizei arg1, GLboolean arg2, const GLfloat* arg3) {}
+void glUseProgram(GLuint arg0) {}
+void glValidateProgram(GLuint arg0) {}
+void glVertexAttrib1f(GLuint arg0, GLfloat arg1) {}
+void glVertexAttrib1fv(GLuint arg0, const GLfloat* arg1) {}
+void glVertexAttrib2f(GLuint arg0, GLfloat arg1, GLfloat arg2) {}
+void glVertexAttrib2fv(GLuint arg0, const GLfloat* arg1) {}
+void glVertexAttrib3f(GLuint arg0, GLfloat arg1, GLfloat arg2, GLfloat arg3) {}
+void glVertexAttrib3fv(GLuint arg0, const GLfloat* arg1) {}
+void glVertexAttrib4f(GLuint arg0, GLfloat arg1, GLfloat arg2, GLfloat arg3, GLfloat arg4) {}
+void glVertexAttrib4fv(GLuint arg0, const GLfloat* arg1) {}
