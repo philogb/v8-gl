@@ -19,6 +19,7 @@ bool V8GL::executeScript() {
   Handle<Script> compiled_script = Script::Compile(script_);
   if (compiled_script.IsEmpty()) {
     String::Utf8Value error(try_catch.Exception());
+    printf("%s \n\n", *error);
     // The script failed to compile; bail out.
     return false;
   }
