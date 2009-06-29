@@ -1,27 +1,20 @@
 
+// We expect to be called with a shader id and a single string.
 Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  //the _length_ parameter isn't taken into account.
-  //the function requires NULL terminated strings.
-  //I don't think this is going to be a problem.
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
+  if (args.Length() != 2)
+    return v8::Undefined();
+
   HandleScope handle_scope;
-  //get arguments
-  unsigned int shader = args[0]->Uint32Value();
+  GLuint shader_id = args[0]->Uint32Value();
+  // GLSL source is defined as an ASCII subset.
+  v8::String::AsciiValue code_ascii(args[1]);
+  if (!*code_ascii)
+    return v8::Undefined();
 
-  int count = args[1]->IntegerValue();
-  char** code = new char* [count];
-  Handle<Array> code_array = Handle<Array>::Cast(args[2]);
+  const char* code_str = *code_ascii;
+  GLsizei code_len = code_ascii.length();
+  glShaderSource(shader_id, 1, &code_str, &code_len);
 
-  for (unsigned j = 0; j < count; j++) {
-      Handle<Value> code_line(code_array->Get(Integer::New(j)));
-      String::Utf8Value value(code_line);
-      code[j] = *code_line;
-  }
-  
-  //make call
-  glShaderSource((GLuint) shader, (GLsizei) count, (char**) code, NULL);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
