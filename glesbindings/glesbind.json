@@ -2172,17 +2172,17 @@
             "char*"
         ]
     }, 
-    {
-        "return_type": "void", 
-        "type": "f", 
-        "name": "glGetShaderPrecisionFormat", 
-        "parameters": [
-            "GLenum", 
-            "GLenum", 
-            "GLint*", 
-            "GLint*"
-        ]
-    }, 
+//    {
+//        "return_type": "void", 
+//        "type": "f", 
+//        "name": "glGetShaderPrecisionFormat", 
+//        "parameters": [
+//            "GLenum", 
+//            "GLenum", 
+//            "GLint*", 
+//            "GLint*"
+//        ]
+//    }, 
     {
         "return_type": "void", 
         "type": "f", 
@@ -2386,12 +2386,12 @@
             "void*"
         ]
     }, 
-    {
-        "return_type": "void", 
-        "type": "f", 
-        "name": "glReleaseShaderCompiler", 
-        "parameters": []
-    }, 
+//    {
+//        "return_type": "void", 
+//        "type": "f", 
+//        "name": "glReleaseShaderCompiler", 
+//        "parameters": []
+//    }, 
     {
         "return_type": "void", 
         "type": "f", 

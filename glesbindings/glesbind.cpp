@@ -2,6 +2,8 @@
 
 Persistent<Object> GlesFactory::self_;
 
+
+
 Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -992,7 +994,7 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
       arg5[j] = aux;
   }
 
-      String::Utf8Value value6(args[6]);
+  String::Utf8Value value6(args[6]);
   char* arg6 = *value6;
 
   //make call
@@ -1043,7 +1045,7 @@ Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
       arg5[j] = aux;
   }
 
-      String::Utf8Value value6(args[6]);
+  String::Utf8Value value6(args[6]);
   char* arg6 = *value6;
 
   //make call
@@ -1308,7 +1310,7 @@ Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
       arg2[j] = aux;
   }
 
-      String::Utf8Value value3(args[3]);
+  String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
   //make call
@@ -1394,49 +1396,11 @@ Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
       arg2[j] = aux;
   }
 
-      String::Utf8Value value3(args[3]);
+  String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
   //make call
   glGetShaderInfoLog((GLuint) arg0, (GLsizei) arg1, (GLsizei*) arg2, (char*) arg3);
-  Handle<Object> res(GlesFactory::self_);
-  return res;
-}
-
-
-
-
-Handle<Value> GLESglGetShaderPrecisionFormatCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint* arg2 = new GLint[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux;
-  }
-
-
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-  GLint* arg3 = new GLint[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-      GLint aux = (GLint)arg->IntegerValue();
-      arg3[j] = aux;
-  }
-
-
-  //make call
-  glGetShaderPrecisionFormat((GLenum) arg0, (GLenum) arg1, (GLint*) arg2, (GLint*) arg3);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -1462,7 +1426,7 @@ Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
       arg2[j] = aux;
   }
 
-      String::Utf8Value value3(args[3]);
+  String::Utf8Value value3(args[3]);
   char* arg3 = *value3;
 
   //make call
@@ -1852,22 +1816,6 @@ Handle<Value> GLESglPolygonOffsetCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLESglReleaseShaderCompilerCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
-  //get arguments
-
-  //make call
-  glReleaseShaderCompiler();
-  Handle<Object> res(GlesFactory::self_);
-  return res;
-}
-
-
-
-
 Handle<Value> GLESglRenderbufferStorageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
@@ -1924,6 +1872,26 @@ Handle<Value> GLESglScissorCallback(const Arguments& args) {
 }
 
 
+
+// We expect to be called with a shader id and a single string.
+Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
+  if (args.Length() != 2)
+    return v8::Undefined();
+
+  HandleScope handle_scope;
+  GLuint shader_id = args[0]->Uint32Value();
+  // GLSL source is defined as an ASCII subset.
+  v8::String::AsciiValue code_ascii(args[1]);
+  if (!*code_ascii)
+    return v8::Undefined();
+
+  const char* code_str = *code_ascii;
+  GLsizei code_len = code_ascii.length();
+  glShaderSource(shader_id, 1, &code_str, &code_len);
+
+  Handle<Object> res(GlesFactory::self_);
+  return res;
+}
 
 
 
@@ -2845,7 +2813,7 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
       HandleScope handle_scope;
 
       Handle<ObjectTemplate> Gl = ObjectTemplate::New();
-
+      
       Gl->SetInternalFieldCount(1);
 
      Gl->Set(String::NewSymbol("ES_VERSION_2_0"), Uint32::New(GL_ES_VERSION_2_0), ReadOnly);
@@ -3560,8 +3528,6 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gl->Set(String::NewSymbol("GetShaderInfoLog"), FunctionTemplate::New(GLESglGetShaderInfoLogCallback));
 
-     Gl->Set(String::NewSymbol("GetShaderPrecisionFormat"), FunctionTemplate::New(GLESglGetShaderPrecisionFormatCallback));
-
      Gl->Set(String::NewSymbol("GetShaderSource"), FunctionTemplate::New(GLESglGetShaderSourceCallback));
 
      Gl->Set(String::NewSymbol("GetTexParameterfv"), FunctionTemplate::New(GLESglGetTexParameterfvCallback));
@@ -3601,8 +3567,6 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
      Gl->Set(String::NewSymbol("PixelStorei"), FunctionTemplate::New(GLESglPixelStoreiCallback));
 
      Gl->Set(String::NewSymbol("PolygonOffset"), FunctionTemplate::New(GLESglPolygonOffsetCallback));
-
-     Gl->Set(String::NewSymbol("ReleaseShaderCompiler"), FunctionTemplate::New(GLESglReleaseShaderCompilerCallback));
 
      Gl->Set(String::NewSymbol("RenderbufferStorage"), FunctionTemplate::New(GLESglRenderbufferStorageCallback));
 
@@ -3693,4 +3657,4 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
       // Again, return the result through the current handle scope.
       return handle_scope.Close(Gl);
-}
+}    
