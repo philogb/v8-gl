@@ -3,24 +3,22 @@
 #include "v8-gl.h"
 #include <string>
 
-
 using namespace v8;
 
 void ParseOptions(int argc,
                   char* argv[],
                   string* file) {
   for (int i = 1; i < argc; i++) {
-    string arg = argv[i];
-    int index = arg.find('=', 0);
-    if (index == string::npos) {
+    std::string arg = argv[i];
+    size_t index = arg.find('=', 0);
+    if (index == std::string::npos) {
       *file = arg;
     } else {
-      string key = arg.substr(0, index);
-      string value = arg.substr(index+1);
+      std::string key = arg.substr(0, index);
+      std::string value = arg.substr(index+1);
     }
   }
 }
-
 
 // Reads a file into a v8 string.
 Handle<String> ReadFile(const string& name) {
