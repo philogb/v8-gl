@@ -1,0 +1,13 @@
+// glGetProgramiv uses an output parameter to return an int.
+Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
+  if (args.Length() < 2)
+    return v8::Undefined();
+  HandleScope handle_scope;
+  unsigned int arg0 = args[0]->Uint32Value();
+  int arg1 = args[1]->IntegerValue();
+
+  int out;
+  glGetProgramiv((GLuint) arg0, (GLenum) arg1, (GLint*)&out);
+  v8::Local<v8::Value> val = v8::Integer::New(out);
+  return handle_scope.Close(val);
+}

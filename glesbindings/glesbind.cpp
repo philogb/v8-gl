@@ -1262,33 +1262,19 @@ Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
 }
 
 
-
-
+// glGetProgramiv uses an output parameter to return an int.
 Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
+  if (args.Length() < 2)
+    return v8::Undefined();
   HandleScope handle_scope;
-  //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint* arg2 = new GLint[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux;
-  }
-
-
-  //make call
-  glGetProgramiv((GLuint) arg0, (GLenum) arg1, (GLint*) arg2);
-  Handle<Object> res(GlesFactory::self_);
-  return res;
+  int out;
+  glGetProgramiv((GLuint) arg0, (GLenum) arg1, (GLint*)&out);
+  v8::Local<v8::Value> val = v8::Integer::New(out);
+  return handle_scope.Close(val);
 }
-
 
 
 
@@ -1348,33 +1334,19 @@ Handle<Value> GLESglGetRenderbufferParameterivCallback(const Arguments& args) {
 }
 
 
-
-
+// glGetShaderiv uses an output parameter to return an int.
 Handle<Value> GLESglGetShaderivCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
+  if (args.Length() < 2)
+    return v8::Undefined();
   HandleScope handle_scope;
-  //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-  GLint* arg2 = new GLint[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-      GLint aux = (GLint)arg->IntegerValue();
-      arg2[j] = aux;
-  }
-
-
-  //make call
-  glGetShaderiv((GLuint) arg0, (GLenum) arg1, (GLint*) arg2);
-  Handle<Object> res(GlesFactory::self_);
-  return res;
+  int out;
+  glGetShaderiv((GLuint) arg0, (GLenum) arg1, (GLint*)&out);
+  v8::Local<v8::Value> val = v8::Integer::New(out);
+  return handle_scope.Close(val);
 }
-
 
 
 
