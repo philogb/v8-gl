@@ -150,16 +150,16 @@ def generate_array_expression(type, i):
     clean_type = type.replace('*', '')
     
     text_out = """
-    
+
   Handle<Array> arrHandle##1 = Handle<Array>::Cast(args[##1]);
   ##2 arg##1 = new ##3[arrHandle##1->Length()];
   for (unsigned j = 0; j < arrHandle##1->Length(); j++) {
       Handle<Value> arg(arrHandle##1->Get(Integer::New(j)));
       ##3 aux = (##3)arg->##4;
-      arg##1[j] = aux; 
+      arg##1[j] = aux;
   }
-    
-    """
+
+"""
     return multiple_replace({
         '##1': str(i),
         '##2': type,
