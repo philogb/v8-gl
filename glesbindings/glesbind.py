@@ -31,6 +31,7 @@ def main():
             if path.exists(obj['name'] + '.template'):
                 with open(obj['name'] + '.template') as template_file:
                     text_out.append(template_file.read())
+                functions.append(obj['name'])
             else:
                 if not re.search(EXCLUDE, obj['name']):
                     try:

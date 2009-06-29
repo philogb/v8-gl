@@ -3574,6 +3574,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gl->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLESglScissorCallback));
 
+     Gl->Set(String::NewSymbol("ShaderSource"), FunctionTemplate::New(GLESglShaderSourceCallback));
+
      Gl->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLESglStencilFuncCallback));
 
      Gl->Set(String::NewSymbol("StencilFuncSeparate"), FunctionTemplate::New(GLESglStencilFuncSeparateCallback));
