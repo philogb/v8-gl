@@ -828,32 +828,24 @@ Handle<Value> GLESglFrontFaceCallback(const Arguments& args) {
 }
 
 
-
-
+// glGenBuffers uses an output parameter to return an array of ints.
 Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
   HandleScope handle_scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
+  GLsizei num_buffers = args[0]->Int32Value();
 
+  GLuint* buffers = new GLuint[num_buffers];
+  glGenBuffers(num_buffers, buffers);
 
-  Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-  GLuint* arg1 = new GLuint[arrHandle1->Length()];
-  for (unsigned j = 0; j < arrHandle1->Length(); j++) {
-      Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-      GLuint aux = (GLuint)arg->Uint32Value();
-      arg1[j] = aux;
+  // TODO(deanm): There should be a way to initialize the array faster.
+  v8::Local<v8::Array> res = v8::Array::New(num_buffers);
+  for (int i = 0; i < num_buffers; ++i) {
+    res->Set(v8::Integer::New(i), v8::Integer::New(buffers[i]));
   }
 
+  delete[] buffers;
 
-  //make call
-  glGenBuffers((GLsizei) arg0, (GLuint*) arg1);
-  Handle<Object> res(GlesFactory::self_);
-  return res;
+  return handle_scope.Close(res);
 }
-
 
 
 
