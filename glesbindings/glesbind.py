@@ -7,13 +7,42 @@ from os import path
 #input output files
 IN_FILE = 'glesbind.json'
 OUT_FILE = 'glesbind.cpp'
+CUSTOM_CODE_FILE = 'glescustom.cpp'
 
 #exclude functions by name
-EXCLUDE = re.compile('ATI|MESA')
+exclude = """
+    ATI|MESA     
+    
+    |glGenBuffers               #custom code functions
+    |glGetProgramiv
+    |glGetShaderiv
+    |glShaderSource
+
+    |glBufferData                #functions to be considered for custom implementation
+    |glBufferSubData             #might be missing some
+    |glCompressedTexImage2D
+    |glCompressedTexSubImage2D
+    |glDrawElements
+    |glGetVertexAttribPointerv
+    |glReadPixels
+    |glShaderBinary
+    |glTexImage2D
+    |glTexSubImage2D
+    |glVertexAttribPointer
+    
+    |glReleaseShaderCompiler    #commented functions
+    |glGetShaderPrecisionFormat
+    
+"""
+EXCLUDE = re.compile(exclude, re.VERBOSE)
 
 def main():
     """Generates GLES bindings"""
     
+    #read custom code
+    with open(CUSTOM_CODE_FILE, 'r') as f:
+        custom_code = f.read()
+        
     with open(IN_FILE, 'r') as f:
         text_out = []
         data = f.read()
@@ -27,26 +56,20 @@ def main():
         constants, functions = [], []
         
         for obj in json_in:
-            #if there's a template for it use it
-            if path.exists(obj['name'] + '.template'):
-                with open(obj['name'] + '.template') as template_file:
-                    text_out.append(template_file.read())
-                functions.append(obj['name'])
-            else:
-                if not re.search(EXCLUDE, obj['name']):
-                    try:
-                        if obj['type'] == 'c':
-                            constants.append(obj['name'])
-                        else:
-                            text_out.append(generate_function(obj))
-                            functions.append(obj['name'])
-                    except Exception, e: #probably an unhandled type
-                        print e
-                        pass
+            if not re.search(EXCLUDE, obj['name']):
+                try:
+                    if obj['type'] == 'c':
+                        constants.append(obj['name'])
+                    else:
+                        text_out.append(generate_function(obj))
+                        functions.append(obj['name'])
+                except Exception, e: #probably an unhandled type
+                    print e
+                    pass
 
     with open(OUT_FILE, 'w') as fout:
         fout.write('#include "glesbind.h"\n\nPersistent<Object> GlesFactory::self_;\n\n' \
-                   + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
+                 + custom_code  + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
 def generate_main_function(constants, functions):
