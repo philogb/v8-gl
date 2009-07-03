@@ -3453,6 +3453,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gl->Set(String::NewSymbol("FrontFace"), FunctionTemplate::New(GLESglFrontFaceCallback));
 
+     Gl->Set(String::NewSymbol("GenBuffers"), FunctionTemplate::New(GLESglGenBuffersCallback));
+
      Gl->Set(String::NewSymbol("GenerateMipmap"), FunctionTemplate::New(GLESglGenerateMipmapCallback));
 
      Gl->Set(String::NewSymbol("GenFramebuffers"), FunctionTemplate::New(GLESglGenFramebuffersCallback));
@@ -3481,9 +3483,13 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gl->Set(String::NewSymbol("GetIntegerv"), FunctionTemplate::New(GLESglGetIntegervCallback));
 
+     Gl->Set(String::NewSymbol("GetProgramiv"), FunctionTemplate::New(GLESglGetProgramivCallback));
+
      Gl->Set(String::NewSymbol("GetProgramInfoLog"), FunctionTemplate::New(GLESglGetProgramInfoLogCallback));
 
      Gl->Set(String::NewSymbol("GetRenderbufferParameteriv"), FunctionTemplate::New(GLESglGetRenderbufferParameterivCallback));
+
+     Gl->Set(String::NewSymbol("GetShaderiv"), FunctionTemplate::New(GLESglGetShaderivCallback));
 
      Gl->Set(String::NewSymbol("GetShaderInfoLog"), FunctionTemplate::New(GLESglGetShaderInfoLogCallback));
 
@@ -3532,6 +3538,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
      Gl->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLESglSampleCoverageCallback));
 
      Gl->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLESglScissorCallback));
+
+     Gl->Set(String::NewSymbol("ShaderSource"), FunctionTemplate::New(GLESglShaderSourceCallback));
 
      Gl->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLESglStencilFuncCallback));
 

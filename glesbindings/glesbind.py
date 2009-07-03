@@ -9,15 +9,20 @@ IN_FILE = 'glesbind.json'
 OUT_FILE = 'glesbind.cpp'
 CUSTOM_CODE_FILE = 'glescustom.cpp'
 
-#exclude functions by name
-exclude = """
-    ATI|MESA     
-    
-    |glGenBuffers               #custom code functions
+#functions found in template
+template = """
+    glGenBuffers               #custom code functions
     |glGetProgramiv
     |glGetShaderiv
     |glShaderSource
+"""
 
+#excluded functions
+#there won't be an accessor for these functions
+#in the Gles object.
+exclude = """
+    ATI|MESA     
+    
     |glBufferData                #functions to be considered for custom implementation
     |glBufferSubData             #might be missing some
     |glCompressedTexImage2D
@@ -35,6 +40,7 @@ exclude = """
     
 """
 EXCLUDE = re.compile(exclude, re.VERBOSE)
+TEMPLATE = re.compile(template, re.VERBOSE)
 
 def main():
     """Generates GLES bindings"""
@@ -61,8 +67,9 @@ def main():
                     if obj['type'] == 'c':
                         constants.append(obj['name'])
                     else:
+                      if not re.search(TEMPLATE, obj['name']):
                         text_out.append(generate_function(obj))
-                        functions.append(obj['name'])
+                      functions.append(obj['name'])
                 except Exception, e: #probably an unhandled type
                     print e
                     pass
