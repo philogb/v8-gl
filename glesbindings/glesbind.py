@@ -9,12 +9,19 @@ IN_FILE = 'glesbind.json'
 OUT_FILE = 'glesbind.cpp'
 CUSTOM_CODE_FILE = 'glescustom.cpp'
 
-#functions found in template
+#functions found in custom code file
 template = """
     glGenBuffers               #custom code functions
     |glGetProgramiv
     |glGetShaderiv
     |glShaderSource
+    |glVertexAttribPointer
+    |glDrawElements
+    |glBufferData                
+    |glBufferSubData             
+    |glReadPixels
+    |glGetActiveAttrib
+    |glGetActiveUniform
 """
 
 #excluded functions
@@ -23,18 +30,14 @@ template = """
 exclude = """
     ATI|MESA     
     
-    |glBufferData                #functions to be considered for custom implementation
-    |glBufferSubData             #might be missing some
-    |glCompressedTexImage2D
-    |glCompressedTexSubImage2D
-    |glDrawElements
+    |glTexImage2D              #functions to be considered for custom implementation
+    |glTexSubImage2D           #might be missing some
     |glGetVertexAttribPointerv
-    |glReadPixels
-    |glShaderBinary
-    |glTexImage2D
-    |glTexSubImage2D
-    |glVertexAttribPointer
-    
+
+    |glCompressedTexImage2D    
+    |glCompressedTexSubImage2D 
+    |glShaderBinary            
+        
     |glReleaseShaderCompiler    #commented functions
     |glGetShaderPrecisionFormat
     
