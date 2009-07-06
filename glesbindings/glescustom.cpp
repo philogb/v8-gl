@@ -10,12 +10,33 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
   glGenBuffers(num_buffers, buffers);
 
   // TODO(deanm): There should be a way to initialize the array faster.
-  v8::Local<v8::Array> res = v8::Array::New(num_buffers);
+  Local<Array> res = Array::New(num_buffers);
   for (int i = 0; i < num_buffers; ++i) {
-    res->Set(v8::Integer::New(i), v8::Integer::New(buffers[i]));
+    res->Set(Integer::New(i), Integer::New(buffers[i]));
   }
 
   delete[] buffers;
+
+  return handle_scope.Close(res);
+}
+
+
+Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
+  if (args.Length() != 1)
+	return v8::Undefined();
+
+  HandleScope handle_scope;
+  GLsizei num_textures = args[0]->Int32Value();
+
+  GLuint* textures = new GLuint[num_textures];
+  glGenTextures(num_textures, textures);
+
+  Local<Array> res = Array::New(num_textures);
+  for (int i = 0; i < num_textures; ++i) {
+    res->Set(Integer::New(i), Integer::New(textures[i]));
+  }
+
+  delete[] textures;
 
   return handle_scope.Close(res);
 }
@@ -434,4 +455,300 @@ Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
   delete[] shaders;
 
   return handle_scope.Close(res);
+}
+
+Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->IntegerValue();
+  unsigned pname = args[1]->IntegerValue();
+  int ans = 0;
+  //TODO(nico): does this return an array or just GLint?
+  glGetBufferParameteriv((GLenum)target,
+		  (GLenum)pname,
+		  (GLint*)&ans);
+
+  return handle_scope.Close(Integer::New(ans));
+}
+
+Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned pname = args[0]->Uint32Value();
+
+
+  //TODO(nico): does this return an array or just GLints?
+  glGetBufferParameteriv((GLenum)target,
+		  (GLenum)pname,
+		  (GLint*)&ans);
+
+
+  switch(pname) {
+  //un value int
+  case GL_ACCUM_ALPHA_BITS:
+  case GL_ACCUM_BLUE_BITS:
+  case GL_ACCUM_GREEN_BITS:
+  case GL_ACCUM_RED_BITS:
+  case GL_ALPHA_BITS:
+  case GL_ATTRIB_STACK_DEPTH:
+  case GL_AUX_BUFFERS:
+  case GL_BLEND_DST:
+  case GL_BLEND_EQUATION_EXT:
+  case GL_BLEND_SRC:
+  case GL_BLUE_BITS:
+  case GL_SUBPIXEL_BITS:
+  case GL_CLIENT_ATTRIB_STACK_DEPTH:
+  case GL_COLOR_ARRAY_SIZE:
+  case GL_COLOR_ARRAY_STRIDE:
+  case GL_COLOR_ARRAY_TYPE:
+  case GL_COLOR_MATERIAL_FACE:
+  case GL_COLOR_MATERIAL_PARAMETER:
+  case GL_CULL_FACE_MODE:
+  case GL_DEPTH_BITS:
+  case GL_DEPTH_FUNC:
+  case GL_DRAW_BUFFER:
+  case GL_EDGE_FLAG_ARRAY_STRIDE:
+  case GL_FOG_HINT:
+  case GL_FOG_MODE:
+  case GL_FRONT_FACE:
+  case GL_GREEN_BITS:
+  case GL_INDEX_ARRAY_STRIDE:
+  case GL_INDEX_ARRAY_TYPE:
+  case GL_INDEX_BITS:
+  case GL_INDEX_WRITEMASK:
+  case GL_LINE_SMOOTH_HINT:
+  case GL_LINE_STIPPLE_PATTERN:
+  case GL_LINE_STIPPLE_REPEAT:
+  case GL_LIST_BASE:
+  case GL_LIST_INDEX: //name of the display list
+  case GL_LIST_MODE:
+  case GL_LOGIC_OP_MODE:
+  case GL_MAP1_GRID_SEGMENTS:
+  case GL_MATRIX_MODE:
+  case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
+  case GL_MAX_ATTRIB_STACK_DEPTH:
+  case GL_MAX_CLIP_PLANES:
+  case GL_MAX_EVAL_ORDER:
+  case GL_MAX_LIGHTS:
+  case GL_MAX_LIST_NESTING:
+  case GL_MAX_MODELVIEW_STACK_DEPTH:
+  case GL_MAX_NAME_STACK_DEPTH:
+  case GL_MAX_PIXEL_MAP_TABLE:
+  case GL_MAX_PROJECTION_STACK_DEPTH:
+  case GL_MAX_TEXTURE_SIZE:
+  case GL_MAX_TEXTURE_STACK_DEPTH:
+  case GL_MODELVIEW_STACK_DEPTH:
+  case GL_NAME_STACK_DEPTH:
+  case GL_NORMAL_ARRAY_STRIDE:
+  case GL_NORMAL_ARRAY_TYPE:
+  case GL_PACK_ALIGNMENT:
+  case GL_PACK_ROW_LENGTH:
+  case GL_PACK_SKIP_PIXELS:
+  case GL_PACK_SKIP_ROWS:
+  case GL_PERSPECTIVE_CORRECTION_HINT:
+  case GL_PIXEL_MAP_A_TO_A_SIZE:
+  case GL_PIXEL_MAP_B_TO_B_SIZE:
+  case GL_PIXEL_MAP_G_TO_G_SIZE:
+  case GL_PIXEL_MAP_I_TO_A_SIZE:
+  case GL_PIXEL_MAP_I_TO_B_SIZE:
+  case GL_PIXEL_MAP_I_TO_G_SIZE:
+  case GL_PIXEL_MAP_I_TO_I_SIZE:
+  case GL_PIXEL_MAP_I_TO_R_SIZE:
+  case GL_PIXEL_MAP_R_TO_R_SIZE:
+  case GL_PIXEL_MAP_S_TO_S_SIZE:
+  case GL_POINT_SMOOTH_HINT:
+  case GL_POLYGON_SMOOTH_HINT:
+  case GL_PROJECTION_STACK_DEPTH:
+  case GL_RED_BITS:
+  case GL_RENDER_MODE:
+  case GL_SHADE_MODEL:
+  case GL_STENCIL_BITS:
+  case GL_STENCIL_CLEAR_VALUE:
+  case GL_STENCIL_FAIL:
+  case GL_STENCIL_FUNC:
+  case GL_STENCIL_PASS_DEPTH_FAIL:
+  case GL_STENCIL_PASS_DEPTH_PASS:
+  case GL_STENCIL_REF:
+  case GL_STENCIL_VALUE_MASK:
+  case GL_STENCIL_WRITEMASK:
+  case GL_TEXTURE_1D_BINDING:
+  case GL_TEXTURE_2D_BINDING:
+  case GL_TEXTURE_COORD_ARRAY_SIZE:
+  case GL_TEXTURE_COORD_ARRAY_STRIDE:
+  case GL_TEXTURE_COORD_ARRAY_TYPE:
+  case GL_TEXTURE_STACK_DEPTH:
+  case GL_UNPACK_ALIGNMENT:
+  case GL_UNPACK_ROW_LENGTH:
+  case GL_UNPACK_SKIP_PIXELS:
+  case GL_UNPACK_SKIP_ROWS:
+  case GL_VERTEX_ARRAY_SIZE:
+  case GL_VERTEX_ARRAY_STRIDE:
+  case GL_VERTEX_ARRAY_TYPE:
+
+
+  //dos values int
+  case GL_LINE_WIDTH_RANGE:
+  case GL_MAP2_GRID_SEGMENTS:
+  case GL_MAX_VIEWPORT_DIMS:
+  case GL_POLYGON_MODE:
+
+  //4 values int
+  case GL_SCISSOR_BOX:
+  case GL_VIEWPORT:
+
+
+  //un value boolean
+  case GL_ALPHA_TEST:
+  case GL_AUTO_NORMAL:
+  case GL_BLEND:
+  case GL_DEPTH_TEST:
+  case GL_CLIP_PLANEi:
+  case GL_COLOR_ARRAY:
+  case GL_COLOR_LOGIC_OP:
+  case GL_COLOR_MATERIAL:
+  case GL_CULL_FACE:
+  case GL_CURRENT_RASTER_POSITION_VALID:
+  case GL_DEPTH_WRITEMASK:
+  case GL_DITHER:
+  case GL_DOUBLEBUFFER:
+  case GL_EDGE_FLAG:
+  case GL_EDGE_FLAG_ARRAY:
+  case GL_FOG:
+  case GL_INDEX_ARRAY:
+  case GL_INDEX_LOGIC_OP:
+  case GL_INDEX_MODE:
+  case GL_LIGHTi:
+  case GL_LIGHTING:
+  case GL_LIGHT_MODEL_LOCAL_VIEWER:
+  case GL_LIGHT_MODEL_TWO_SIDE:
+  case GL_LINE_SMOOTH:
+  case GL_LINE_STIPPLE:
+  case GL_MAP1_COLOR_4:
+  case GL_MAP1_INDEX:
+  case GL_MAP1_NORMAL:
+  case GL_MAP1_TEXTURE_COORD_1:
+  case GL_MAP1_TEXTURE_COORD_2:
+  case GL_MAP1_TEXTURE_COORD_3:
+  case GL_MAP1_TEXTURE_COORD_4:
+  case GL_MAP1_TEXTURE_COORD_3:
+  case GL_MAP1_TEXTURE_COORD_4:
+  case GL_MAP1_VERTEX_3:
+  case GL_MAP1_VERTEX_4:
+  case GL_MAP2_COLOR_4:
+  case GL_MAP2_INDEX:
+  case GL_MAP2_NORMAL:
+  case GL_MAP2_TEXTURE_COORD_1:
+  case GL_MAP2_TEXTURE_COORD_2:
+  case GL_MAP2_TEXTURE_COORD_3:
+  case GL_MAP2_TEXTURE_COORD_4:
+  case GL_MAP2_VERTEX_3:
+  case GL_MAP2_VERTEX_4:
+  case GL_MAP_COLOR:
+  case GL_MAP_STENCIL:
+  case GL_MAP2_TEXTURE_COORD_2:
+  case GL_MAP2_TEXTURE_COORD_3:
+  case GL_MAP2_TEXTURE_COORD_4:
+  case GL_NORMAL_ARRAY:
+  case GL_NORMALIZE:
+  case GL_PACK_LSB_FIRST:
+  case GL_PACK_SWAP_BYTES:
+  case GL_POINT_SMOOTH:
+  case GL_POLYGON_OFFSET_FILL:
+  case GL_POLYGON_OFFSET_LINE:
+  case GL_POLYGON_OFFSET_POINT:
+  case GL_POLYGON_SMOOTH:
+  case GL_POLYGON_STIPPLE:
+  case GL_READ_BUFFER:
+  case GL_RGBA_MODE:
+  case GL_SCISSOR_TEST:
+  case GL_STENCIL_TEST:
+  case GL_STEREO:
+  case GL_TEXTURE_1D:
+  case GL_TEXTURE_2D:
+  case GL_TEXTURE_COORD_ARRAY:
+  case GL_TEXTURE_GEN_Q:
+  case GL_TEXTURE_GEN_R:
+  case GL_TEXTURE_GEN_S:
+  case GL_TEXTURE_GEN_T:
+  case GL_UNPACK_LSB_FIRST:
+  case GL_VERTEX_ARRAY:
+  case GL_UNPACK_SWAP_BYTES:
+
+
+
+	  //un value string
+  case GL_ALPHA_TEST_FUNC:
+
+  //un value float
+  case GL_ALPHA_BIAS:
+  case GL_ALPHA_SCALE:
+  case GL_BLUE_BIAS:
+  case GL_BLUE_SCALE:
+  case GL_RED_BIAS:
+  case GL_RED_SCALE:
+  case GL_GREEN_BIAS:
+  case GL_GREEN_SCALE:
+  case GL_DEPTH_BIAS:
+  case GL_DEPTH_SCALE:
+  case GL_ALPHA_TEST_REF:
+  case GL_ZOOM_X:
+  case GL_ZOOM_Y:
+  case GL_CURRENT_INDEX:
+  case GL_CURRENT_RASTER_DISTANCE:
+  case GL_CURRENT_RASTER_INDEX:
+  case GL_DEPTH_CLEAR_VALUE:
+  case GL_FOG_DENSITY:
+  case GL_FOG_END:
+  case GL_FOG_INDEX:
+  case GL_FOG_START:
+  case GL_INDEX_CLEAR_VALUE:
+  case GL_INDEX_OFFSET:
+  case GL_INDEX_SHIFT:
+  case GL_LINE_WIDTH:
+  case GL_LINE_WIDTH_GRANULARITY:
+  case GL_POINT_SIZE:
+  case GL_POINT_SIZE_GRANULARITY:
+
+
+  //4 values float
+  case GL_BLEND_COLOR_EXT:
+  case GL_ACCUM_CLEAR_VALUE:
+  case GL_COLOR_CLEAR_VALUE:
+  case GL_CURRENT_COLOR:
+  case GL_CURRENT_RASTER_COLOR:
+  case GL_CURRENT_RASTER_POSITION:
+  case GL_CURRENT_RASTER_TEXTURE_COORDS:
+  case GL_CURRENT_TEXTURE_COORDS:
+  case GL_FOG_COLOR:
+  case GL_LIGHT_MODEL_AMBIENT:
+  case GL_MAP2_GRID_DOMAIN:
+  case GL_POLYGON_OFFSET_FACTOR:
+  case GL_POLYGON_OFFSET_UNITS:
+
+
+   //3 values float
+  case GL_CURRENT_NORMAL:
+
+  //2 values float
+  case GL_DEPTH_RANGE:
+  case GL_MAP1_GRID_DOMAIN:
+  case GL_POINT_SIZE_RANGE:
+
+  //16 values float
+  case GL_MODELVIEW_MATRIX:
+  case GL_PROJECTION_MATRIX:
+  case GL_TEXTURE_MATRIX:
+
+
+  //4 values boolean
+  case GL_COLOR_WRITEMASK:
+  }
+
+  return handle_scope.Close(Integer::New(ans));
 }

@@ -12,6 +12,7 @@ CUSTOM_CODE_FILE = 'glescustom.cpp'
 #functions found in custom code file
 template = """
     glGenBuffers               #custom code functions
+    |glGenTextures
     |glGetProgramiv
     |glGetShaderiv
     |glShaderSource
@@ -22,6 +23,7 @@ template = """
     |glReadPixels
     |glGetActiveAttrib
     |glGetActiveUniform
+    |glGetBufferParameteriv
 """
 
 #excluded functions
