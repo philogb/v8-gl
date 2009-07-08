@@ -10,8 +10,12 @@ OUT_FILE = 'glesbind.cpp'
 CUSTOM_CODE_FILE = 'glescustom.cpp'
 
 #functions found in custom code file
+#there won't be an automatic code generation
+#for these functions. However there will be a corresponding
+#accessor in the Gles object, if found.
 template = """
     glGenBuffers               #custom code functions
+    |glGenRenderbuffers
     |glGenTextures
     |glGetProgramiv
     |glGetShaderiv
@@ -24,6 +28,11 @@ template = """
     |glGetActiveAttrib
     |glGetActiveUniform
     |glGetBufferParameteriv
+    |glGetProgramiv
+    |glGetProgramInfoLog
+    |glTexImage2D              
+    |glTexSubImage2D           
+    
 """
 
 #excluded functions
@@ -32,10 +41,9 @@ template = """
 exclude = """
     ATI|MESA     
     
-    |glTexImage2D              #functions to be considered for custom implementation
-    |glTexSubImage2D           #might be missing some
-    |glGetVertexAttribPointerv
-
+    |glGetVertexAttribPointerv #functions to be considered for custom implementation
+                               #might be missing some
+                               
     |glCompressedTexImage2D    
     |glCompressedTexSubImage2D 
     |glShaderBinary            
@@ -43,7 +51,32 @@ exclude = """
     |glReleaseShaderCompiler    #commented functions
     |glGetShaderPrecisionFormat
     
+    
+    
+    |glGetBooleaniv             #are replaced by glGetParameter
+    |glGetIntegeriv
+    |glGetFloativ
+    |glGetDoubleiv
+    
+    |glGetTexParameterfv        #are replaced by glGetTexParameter
+    |glGetTexParameteriv
+    
+    |glGetUniformfv                 #should be implemented but I find quite difficult
+                                    #to guess the type of a queried uniform, so I'm not
+                                    #sure how to allocate the resulting data.
+                                
+    |glGetVertexAttribiv            #are replaced by glGetVertexAttrib
+    |glGetVertexAttribfv
+    
+    |glGetRenderbufferParameteriv    #is replaced by glGetRenderbufferParameter
+    
 """
+
+accessor_extras = ['GetParameter', 
+                   'GetTexParameter', 
+                   'GetVertexAttrib', 
+                   'GetRenderbufferParameter']
+
 EXCLUDE = re.compile(exclude, re.VERBOSE)
 TEMPLATE = re.compile(template, re.VERBOSE)
 

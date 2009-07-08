@@ -21,6 +21,29 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
 }
 
 
+Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
+	  if (args.Length() != 1)
+		return v8::Undefined();
+
+	  HandleScope handle_scope;
+	  GLsizei num_buffers = args[0]->Int32Value();
+
+	  GLuint* buffers = new GLuint[num_buffers];
+	  glGenRenderbuffers(num_buffers, buffers);
+
+	  // TODO(deanm): There should be a way to initialize the array faster.
+	  Local<Array> res = Array::New(num_buffers);
+	  for (int i = 0; i < num_buffers; ++i) {
+	    res->Set(Integer::New(i), Integer::New(buffers[i]));
+	  }
+
+	  delete[] buffers;
+
+	  return handle_scope.Close(res);
+}
+
+
+
 Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
   if (args.Length() != 1)
 	return v8::Undefined();
@@ -474,6 +497,7 @@ Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
   return handle_scope.Close(Integer::New(ans));
 }
 
+//GetBooleanv, GetIntegerv, GetString, GetFloatv, GetDoublev should map here.
 Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -483,14 +507,9 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   unsigned pname = args[0]->Uint32Value();
 
 
-  //TODO(nico): does this return an array or just GLints?
-  glGetBufferParameteriv((GLenum)target,
-		  (GLenum)pname,
-		  (GLint*)&ans);
-
-
   switch(pname) {
-  //un value int
+  //return 1 int value
+  case GL_ALPHA_TEST_FUNC:
   case GL_ACCUM_ALPHA_BITS:
   case GL_ACCUM_BLUE_BITS:
   case GL_ACCUM_GREEN_BITS:
@@ -590,20 +609,44 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_VERTEX_ARRAY_SIZE:
   case GL_VERTEX_ARRAY_STRIDE:
   case GL_VERTEX_ARRAY_TYPE:
+	  int ans = 0;
+	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
+	  return handle_scope.Close(Integer::New(ans));
 
-
-  //dos values int
+  //2 values int
   case GL_LINE_WIDTH_RANGE:
   case GL_MAP2_GRID_SEGMENTS:
   case GL_MAX_VIEWPORT_DIMS:
   case GL_POLYGON_MODE:
+	  int* ans = new int[2];
+	  glGetIntegerv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(2);
+	  for (int i = 0; i < 2; ++i) {
+	    res->Set(Integer::New(i), Integer::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
   //4 values int
   case GL_SCISSOR_BOX:
   case GL_VIEWPORT:
+	  int* ans = new int[4];
+	  glGetIntegerv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Integer::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
 
-  //un value boolean
+  //1 value boolean
   case GL_ALPHA_TEST:
   case GL_AUTO_NORMAL:
   case GL_BLEND:
@@ -679,13 +722,11 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_UNPACK_LSB_FIRST:
   case GL_VERTEX_ARRAY:
   case GL_UNPACK_SWAP_BYTES:
+	  GLboolean ans = 0;
+	  glGetBooleanv((GLenum)pname, &ans);
+	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
 
-
-
-	  //un value string
-  case GL_ALPHA_TEST_FUNC:
-
-  //un value float
+  //1 value float
   case GL_ALPHA_BIAS:
   case GL_ALPHA_SCALE:
   case GL_BLUE_BIAS:
@@ -714,7 +755,9 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_LINE_WIDTH_GRANULARITY:
   case GL_POINT_SIZE:
   case GL_POINT_SIZE_GRANULARITY:
-
+	  float ans = 0.0f;
+	  glGetFloatv((GLenum)pname, &ans);
+	  return handle_scope.Close(Number::New(ans));
 
   //4 values float
   case GL_BLEND_COLOR_EXT:
@@ -730,25 +773,828 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_MAP2_GRID_DOMAIN:
   case GL_POLYGON_OFFSET_FACTOR:
   case GL_POLYGON_OFFSET_UNITS:
+	  float* ans = new float[4];
+	  glGetFloatv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Number::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
 
    //3 values float
   case GL_CURRENT_NORMAL:
+	  float* ans = new float[3];
+	  glGetFloatv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(3);
+	  for (int i = 0; i < 3; ++i) {
+	    res->Set(Integer::New(i), Number::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
   //2 values float
   case GL_DEPTH_RANGE:
   case GL_MAP1_GRID_DOMAIN:
   case GL_POINT_SIZE_RANGE:
+	  float* ans = new float[2];
+	  glGetFloatv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(2);
+	  for (int i = 0; i < 2; ++i) {
+	    res->Set(Integer::New(i), Number::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
   //16 values float
   case GL_MODELVIEW_MATRIX:
   case GL_PROJECTION_MATRIX:
   case GL_TEXTURE_MATRIX:
+	  float* ans = new float[16];
+	  glGetFloatv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(16);
+	  for (int i = 0; i < 16; ++i) {
+	    res->Set(Integer::New(i), Number::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
 
 
   //4 values boolean
   case GL_COLOR_WRITEMASK:
+	  GLboolean* ans = new GLboolean[4];
+	  glGetBooleanv((GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Boolean::New(ans[i] != GL_FALSE));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
+
   }
 
+  return v8::Undefined();
+}
+
+
+Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() != 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned program = args[0]->Uint32Value();
+  unsigned pname = args[1]->Uint32Value();
+  int ans;
+
+  //TODO(nico): I haven't seen any case where this function might return
+  //an array.
+  glGetProgramiv((GLuint)program, (GLenum)pname, (GLint*) &ans);
+
   return handle_scope.Close(Integer::New(ans));
+}
+
+
+Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
+
+  if (args.Length() != 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned program = args[0]->Uint32Value();
+
+  //query string length
+  int len = 0;
+  glGetProgramiv((GLuint)program, GL_INFO_LOG_LENGTH, &len);
+
+  char* log = new char[len];
+  glGetProgramInfoLog((GLuint)program, (GLsizei)len, NULL, log);
+
+  return handle_scope.Close(String::New(log));
+}
+
+Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
+
+  if (args.Length() != 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->Uint32Value();
+  unsigned pname = args[1]->Uint32Value();
+
+  switch(pname) {
+  //1 int
+  case GL_TEXTURE_MAG_FILTER:
+  case GL_TEXTURE_MIN_FILTER:
+  case GL_TEXTURE_WRAP_S:
+  case GL_TEXTURE_WRAP_T:
+	  int ans = 0;
+	  glTexParameteriv((GLenum)target, (GLenum)pname, (GLint*) &ans);
+	  return handle_scope.Close(Integer::New(ans));
+
+	  //4 floats
+  case GL_TEXTURE_BORDER_COLOR:
+	  float* ans = new float[4];
+	  glTexParameterfv((GLenum)target, (GLenum)pname, (GLfloat*) ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Number::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
+
+	  //1 float
+  case GL_TEXTURE_PRIORITY:
+	  float ans = 0;
+	  glTexParameterfv((GLenum)target, (GLenum)pname, (GLfloat*) &ans);
+	  return handle_scope.Close(Number::New(ans));
+
+	  //1 boolean
+  case GL_TEXTURE_RESIDENT:
+	  int ans = 0;
+	  glTexParameteriv((GLenum)target, (GLenum)pname, (GLint*) &ans);
+	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+
+  }
+
+  return v8::Undefined();
+}
+
+Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
+
+  if (args.Length() != 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned index = args[0]->Uint32Value();
+  unsigned pname = args[1]->Uint32Value();
+
+  switch(pname) {
+  //1 int value
+  case GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING:
+  case GL_VERTEX_ATTRIB_ARRAY_SIZE:
+  case GL_VERTEX_ATTRIB_ARRAY_STRIDE:
+  case GL_VERTEX_ATTRIB_ARRAY_TYPE:
+	  GLint ans = 0;
+	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
+	  return handle_scope.Close(Integer::New(ans));
+
+  //1 boolean value
+  case GL_VERTEX_ATTRIB_ARRAY_ENABLED:
+  case GL_VERTEX_ATTRIB_ARRAY_NORMALIZED:
+	  GLint ans = 0;
+	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
+	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+
+  //4 float values
+  case GL_CURRENT_VERTEX_ATTRIB: //(?)
+	  GLfloat* ans = new GLfloat[4];
+	  glGetVertexAttribfv((GLuint)index, (GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Integer::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
+  }
+
+  return v8::Undefined();
+}
+
+Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
+
+  if (args.Length() != 9) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->Uint32Value();
+  int level = args[1]->IntegerValue();
+  int internal_format = args[2]->IntegerValue();
+  int width = args[3]->IntegerValue();
+  int height = args[4]->IntegerValue();
+  int border = args[5]->IntegerValue();
+  unsigned format = args[6]->Uint32Value();
+  unsigned type = args[7]->Uint32Value();
+
+  if(args[8]->IsArray()) {
+	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
+
+	  switch(type) {
+	  case GL_UNSIGNED_BYTE:
+		  GLubyte* pixels = new  GLubyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLubyte aux = (GLubyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_BYTE:
+		  GLbyte* pixels = new  GLbyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbyte aux = (GLbyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+	  case GL_BITMAP:
+		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbitfield aux = (GLbitfield)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_SHORT:
+		  GLushort* pixels = new  GLushort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLushort aux = (GLushort)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_SHORT:
+		  GLshort* pixels = new  GLshort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLshort aux = (GLshort)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_INT:
+		  GLuint* pixels = new  GLuint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLuint aux = (GLuint)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_INT:
+		  GLint* pixels = new  GLint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLint aux = (GLint)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_FLOAT:
+		  GLfloat* pixels = new  GLfloat[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLfloat aux = (GLfloat)arg->NumberValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+	  }
+  }
+
+  return v8::Undefined();
+}
+
+Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
+
+  if (args.Length() != 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned index = args[0]->Uint32Value();
+  unsigned pname = args[1]->Uint32Value();
+
+  switch(pname) {
+  //1 int value
+  case GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING:
+  case GL_VERTEX_ATTRIB_ARRAY_SIZE:
+  case GL_VERTEX_ATTRIB_ARRAY_STRIDE:
+  case GL_VERTEX_ATTRIB_ARRAY_TYPE:
+	  GLint ans = 0;
+	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
+	  return handle_scope.Close(Integer::New(ans));
+
+  //1 boolean value
+  case GL_VERTEX_ATTRIB_ARRAY_ENABLED:
+  case GL_VERTEX_ATTRIB_ARRAY_NORMALIZED:
+	  GLint ans = 0;
+	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
+	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+
+  //4 float values
+  case GL_CURRENT_VERTEX_ATTRIB: //(?)
+	  GLfloat* ans = new GLfloat[4];
+	  glGetVertexAttribfv((GLuint)index, (GLenum)pname, ans);
+
+	  Local<Array> res = Array::New(4);
+	  for (int i = 0; i < 4; ++i) {
+	    res->Set(Integer::New(i), Integer::New(ans[i]));
+	  }
+
+	  delete[] ans;
+
+	  return handle_scope.Close(res);
+  }
+
+  return v8::Undefined();
+}
+
+Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
+
+  if (args.Length() != 9) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->Uint32Value();
+  int level = args[1]->IntegerValue();
+  int internal_format = args[2]->IntegerValue();
+  int width = args[3]->IntegerValue();
+  int height = args[4]->IntegerValue();
+  int border = args[5]->IntegerValue();
+  unsigned format = args[6]->Uint32Value();
+  unsigned type = args[7]->Uint32Value();
+
+  if(args[8]->IsArray()) {
+	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
+
+	  switch(type) {
+	  case GL_UNSIGNED_BYTE:
+		  GLubyte* pixels = new  GLubyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLubyte aux = (GLubyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_BYTE:
+		  GLbyte* pixels = new  GLbyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbyte aux = (GLbyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+	  case GL_BITMAP:
+		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbitfield aux = (GLbitfield)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_SHORT:
+		  GLushort* pixels = new  GLushort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLushort aux = (GLushort)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_SHORT:
+		  GLshort* pixels = new  GLshort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLshort aux = (GLshort)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_INT:
+		  GLuint* pixels = new  GLuint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLuint aux = (GLuint)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_INT:
+		  GLint* pixels = new  GLint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLint aux = (GLint)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_FLOAT:
+		  GLfloat* pixels = new  GLfloat[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLfloat aux = (GLfloat)arg->NumberValue();
+		      pixels[j] = aux;
+		  }
+		  glTexImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLenum)internal_format,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLint)border,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+	  }
+  }
+
+  return v8::Undefined();
+}
+
+Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
+
+  if (args.Length() != 9) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->Uint32Value();
+  int level = args[1]->IntegerValue();
+  int xoffset = args[2]->IntegerValue();
+  int yoffset = args[3]->IntegerValue();
+  int width = args[4]->IntegerValue();
+  int height = args[5]->IntegerValue();
+  unsigned format = args[6]->Uint32Value();
+  unsigned type = args[7]->Uint32Value();
+
+  if(args[8]->IsArray()) {
+	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
+
+	  switch(type) {
+	  case GL_UNSIGNED_BYTE:
+		  GLubyte* pixels = new  GLubyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLubyte aux = (GLubyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_BYTE:
+		  GLbyte* pixels = new  GLbyte[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbyte aux = (GLbyte)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+	  case GL_BITMAP:
+		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLbitfield aux = (GLbitfield)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_SHORT:
+		  GLushort* pixels = new  GLushort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLushort aux = (GLushort)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_SHORT:
+		  GLshort* pixels = new  GLshort[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLshort aux = (GLshort)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_UNSIGNED_INT:
+		  GLuint* pixels = new  GLuint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLuint aux = (GLuint)arg->Uint32Value();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_INT:
+		  GLint* pixels = new  GLint[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLint aux = (GLint)arg->IntegerValue();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+
+	  case GL_FLOAT:
+		  GLfloat* pixels = new  GLfloat[arr_handle->Length()];
+		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
+		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
+		      GLfloat aux = (GLfloat)arg->NumberValue();
+		      pixels[j] = aux;
+		  }
+		  glTexSubImage2D((GLenum)target,
+				  (GLint)level,
+				  (GLint)xoffset,
+				  (GLint)yoffset,
+				  (GLsizei)width,
+				  (GLsizei)height,
+				  (GLenum)format,
+				  (GLenum)type,
+				  (const void*)pixels);
+
+		  delete[] pixels;
+		  break;
+	  }
+  }
+
+  return v8::Undefined();
+}
+
+
+Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() != 2) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  unsigned target = args[0]->Uint32Value();
+  unsigned pname = args[1]->Uint32Value();
+
+  switch(pname) {
+  //1 int value
+  case GL_RENDERBUFFER_WIDTH:
+  case GL_RENDERBUFFER_HEIGHT:
+  case GL_RENDERBUFFER_INTERNAL_FORMAT:
+  case GL_RENDERBUFFER_RED_SIZE:
+  case GL_RENDERBUFFER_GREEN_SIZE:
+  case GL_RENDERBUFFER_BLUE_SIZE:
+  case GL_RENDERBUFFER_ALPHA_SIZE:
+  case GL_RENDERBUFFER_DEPTH_SIZE:
+  case  GL_RENDERBUFFER_STENCIL_SIZE:
+	  int ans = 0;
+	  glGetRenderbufferParameteriv((GLenum)target, (GLenum)pname, (GLint*)&ans);
+	  return handle_scope.Close(Integer::New(ans));
+  }
+
+  return v8::Undefined();
 }
