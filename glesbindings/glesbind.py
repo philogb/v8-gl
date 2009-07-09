@@ -16,6 +16,7 @@ CUSTOM_CODE_FILE = 'glescustom.cpp'
 template = """
     glGenBuffers               #custom code functions
     |glGenRenderbuffers
+    |glGenFramebuffers
     |glGenTextures
     |glGetProgramiv
     |glGetShaderiv
@@ -28,11 +29,13 @@ template = """
     |glGetActiveAttrib
     |glGetActiveUniform
     |glGetBufferParameteriv
-    |glGetProgramiv
     |glGetProgramInfoLog
+    |glGetShaderInfoLog
     |glTexImage2D              
-    |glTexSubImage2D           
-    
+    |glTexSubImage2D
+    |glGetShaderSource
+    |glGetAttachedShaders
+           
 """
 
 #excluded functions
@@ -72,10 +75,10 @@ exclude = """
     
 """
 
-accessor_extras = ['GetParameter', 
-                   'GetTexParameter', 
-                   'GetVertexAttrib', 
-                   'GetRenderbufferParameter']
+accessor_extras = ['glGetParameter', 
+                   'glGetTexParameter', 
+                   'glGetVertexAttrib', 
+                   'glGetRenderbufferParameter']
 
 EXCLUDE = re.compile(exclude, re.VERBOSE)
 TEMPLATE = re.compile(template, re.VERBOSE)
@@ -111,9 +114,14 @@ def main():
                 except Exception, e: #probably an unhandled type
                     print e
                     pass
+            else:
+                print obj['name']
+
+        functions.extend(accessor_extras)
 
     with open(OUT_FILE, 'w') as fout:
-        fout.write('#include "glesbind.h"\n\nPersistent<Object> GlesFactory::self_;\n\n' \
+        fout.write('#include "glesbind.h"\n\nPersistent<Object> GlesFactory::self_;\n' \
+                   + 'Persistent<Context> GlesFactory::gles_persistent_context;\n\n' \
                  + custom_code  + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
@@ -125,21 +133,21 @@ def generate_main_function(constants, functions):
 Handle<ObjectTemplate> GlesFactory::createGles(void) {
       HandleScope handle_scope;
 
-      Handle<ObjectTemplate> Gl = ObjectTemplate::New();
+      Handle<ObjectTemplate> Gles = ObjectTemplate::New();
       
-      Gl->SetInternalFieldCount(1);
+      Gles->SetInternalFieldCount(1);
 
 """
 
     text_out_end = """
 
       // Again, return the result through the current handle scope.
-      return handle_scope.Close(Gl);
+      return handle_scope.Close(Gles);
 }    
 """
-    bind_accessor = lambda n: "     Gl->Set(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
+    bind_accessor = lambda n: "     Gles->Set(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
         + "\"), Uint32::New(" + n + "), ReadOnly);\n"
-    bind_function = lambda n: "     Gl->Set(String::NewSymbol(\"" + n[2:] + \
+    bind_function = lambda n: "     Gles->Set(String::NewSymbol(\"" + n[2:] + \
         "\"), FunctionTemplate::New(GLES" + n + "Callback));\n"
     
     cts = [bind_accessor(name) for name in constants]
@@ -174,8 +182,8 @@ Handle<<ret>> GLES<name>Callback(const Arguments& args) {
 
 
 #map some OpenGL types to V8 types
-unsigned = re.compile('unsigned|ubyte|ushort|uint|bitfield|boolean')
-integer = re.compile('int|enum|sizei|short|byte')
+unsigned = re.compile('unsigned|ubyte|ushort|uint|bitfield|boolean|enum')
+integer = re.compile('int|sizei|short|byte')
 double = re.compile('double|float|clampf|clampd')
 
 def generate_arguments(params):

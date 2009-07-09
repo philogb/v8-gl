@@ -57,6 +57,7 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  Handle<Context> context = Context::New(NULL, global);
 
 	  GlutFactory::glut_persistent_context = Persistent<Context>::New(context);
+	  GlesFactory::gles_persistent_context = Persistent<Context>::New(context);
 
 	  // Enter the new context so all the following operations take place
 	  // within it.

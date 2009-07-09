@@ -18,6 +18,7 @@
 // If we're running on desktop OpenGL, some ES 2.0 constants don't exist, or
 // are under a name with EXT in them, etc.
 #ifndef GL_ES_VERSION_2_0
+//#include "missing.h"
 #include "gles_desktop_shim.h"
 #endif
 
@@ -29,6 +30,7 @@ public:
 	static Handle<ObjectTemplate> createGles(void);
 
 	static Persistent<Object> self_;
+	static Persistent<Context> gles_persistent_context;
 };
 
 #endif /* GLESBIND_H_ */
