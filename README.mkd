@@ -20,7 +20,7 @@ Other goals will be explained at [my blog](http://blog.thejit.org) in due time.
 Status
 ---------
 
-No releases yet. OpenGL bindings are 75% complete. The repo already has some functional examples. See the *example* readme section for a complete working example.
+No releases yet. OpenGL bindings are 75% complete. The repo already has some functional examples. See the *example* readme section for a complete working example. **The repo is currently unstable though. Use at your own risk**.
 
 Requirements
 ---------
