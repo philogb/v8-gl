@@ -20,12 +20,12 @@ Other goals will be explained at [my blog](http://blog.thejit.org) in due time.
 Status
 ---------
 
-No releases yet. OpenGL bindings are 75% complete. The repo already has some functional examples. See the *example* readme section for a complete working example. **The repo is currently unstable though. Use at your own risk**.
+No releases yet. OpenGL 2.1 bindings are 75% complete. The repo already has some functional examples. See the *example* readme section for a complete working example.
 
 Requirements
 ---------
 
-- I use Ubuntu/Linux, but you can try to build your examples with Mac or Windows if you want
+- I use Mac OS X, but you can try to build your examples with Linux or Windows if you want. I guess that the only differences between Mac and Linux might be a couple of lines in the Makefile.
 - OpenGL 2.1+
 - [V8](http://code.google.com/p/v8/) and its requirements
 
