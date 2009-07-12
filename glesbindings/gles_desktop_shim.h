@@ -64,3 +64,4 @@
 // These don't exist in desktop OpenGL, just stub them out.
 #define glReleaseShaderCompiler ((void) 0)
 #define glGetShaderPrecisionFormat(a, b, c, d) ((void) 0)
+

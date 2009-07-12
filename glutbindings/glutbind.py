@@ -1,7 +1,7 @@
 import sys
 import re
 
-PATH_GLUT = '/usr/include/GL/freeglut_std.h'
+PATH_GLUT = 'glut.h'
 FILE_GLUT = 'glutbind.cpp'
 
 TEMPLATES = ['glutInit', 'glutTimerFunc']
@@ -20,7 +20,7 @@ def make_glut():
     void_stars = []
     
     constant = re.compile(".+define[\s]+GLUT_([^\s]+).*")
-    function = re.compile("[\s]*FGAPI[\s]+([^\s]+)[\s]+FGAPIENTRY[\s]+glut([A-Za-z0-9]+)\((.*)\);")
+    function = re.compile("[\s]*extern[\s]+([^\s]+)[\s]+APIENTRY[\s]+glut([A-Za-z0-9]+)\((.*)\);")
     
     text_out = []
     
@@ -175,13 +175,13 @@ Handle<Value> GLUT<name>Callback(const Arguments& args) {
   persistent<name> = Persistent<Function>::New(value0);
 
   //make call
-  glut<name>((<signature>) callback<name>);
+  glut<name>((<signature>) func<name>);
   return v8::Undefined();
 }
 
 """
     nformalparams, prototype = make_prototype(name, params_list[0])
-    signature = params_list[0].replace('callback', '')
+    signature = params_list[0].replace('func', '')
     formalparamassignment = formal_param_assignment(signature)
      
     return multiple_replace({
@@ -194,28 +194,32 @@ Handle<Value> GLUT<name>Callback(const Arguments& args) {
 
 def make_prototype(name, signature):
     print 'prev ' + signature
-    signature = signature.replace('(* callback)', 'callback' + name)
+    signature = signature.replace('(*func)', 'func' + name)
     ht = signature.split('(')
     hd, tail = ht[0], ht[1].replace(')', '')
-    ans = [''.join(val) + ' arg' + str(i) for i, val in enumerate(tail.split(',')) if val.find('void') == -1]
+    ans = [get_type(''.join(val), False) + ' arg' + str(i) for i, val in enumerate(tail.split(',')) if val.find('void') == -1]
     #.strip().split(' ')[:-1]
     print 'end ' + hd + ' ( ' + ','.join(ans) + ')'
     return len(ans), hd + ' ( ' + ','.join(ans) + ')'
 
 def formal_param_assignment(signature):
-    pat = re.compile('[\s]*[a-zA-Z0-9\*]+[\s]*\(\* \)\((.*)\)')
+    print "signature"
+    print signature
+    pat = re.compile('[\s]*[a-zA-Z0-9\*]+[\s]*\(\*[\s]*\)\((.*)\)')
     pars = re.match(pat, signature)
-    pars = pars.group(1).split(',')
-    ans = []
-    for i, val in enumerate(pars):
-        if val.find('int') != -1 or val.find('unsigned char') != -1:
-            ans.append("  valueArr[" + str(i) + "] = Integer::New(arg" + str(i) + ");")
-        elif val.find('float') != -1 or val.find('double') != -1:
-            ans.append("  valueArr[" + str(i) + "] = Number::New(arg" + str(i) + ");")
-        elif val.find('char*') != -1:
-            ans.append("  valueArr[" + str(i) + "] = String::New(arg" + str(i) + ");")
-    return '\n'.join(ans)
-    
+    if pars:
+        pars = pars.group(1).split(',')
+        ans = []
+        for i, val in enumerate(pars):
+            if val.find('int') != -1 or val.find('unsigned char') != -1:
+                ans.append("  valueArr[" + str(i) + "] = Integer::New(arg" + str(i) + ");")
+            elif val.find('float') != -1 or val.find('double') != -1:
+                ans.append("  valueArr[" + str(i) + "] = Number::New(arg" + str(i) + ");")
+            elif val.find('char*') != -1:
+                ans.append("  valueArr[" + str(i) + "] = String::New(arg" + str(i) + ");")
+        return '\n'.join(ans)
+    else:
+        return ''    
 
 def get_param_list(params):
     params_list = []
@@ -229,11 +233,11 @@ def get_param_list(params):
         passed = True
     
     aux = len(params_list)
-    if aux == 1 and params_list[0].find('callback') == -1 and len(params_list[0].strip().split(' ')) == 1: 
+    if aux == 1 and params_list[0].find('func') == -1 and len(params_list[0].strip().split(' ')) == 1: 
         nb = 0
     else:
         nb = aux
-    return ' '.join(params_list).find('callback') != -1, nb, params_list
+    return ' '.join(params_list).find('func') != -1, nb, params_list
     
 
 def make_args(params_list, count):
@@ -247,7 +251,7 @@ def make_args(params_list, count):
             ans.append("  Handle<Function> value" + str(i) + " = Handle<Function>::Cast(args[" + str(i) + "]);\n  void* arg" + str(i) + " = *value" + str(i) + ";\n")
             #print "function " + type
         #is string
-        elif type.find('char* ') != -1:
+        elif type.find('char*') != -1:
             ans.append("  String::Utf8Value value"+ str(i) +"(args["+ str(i) +"]);\n  char* arg" + str(i) + " = *value"+ str(i) +";\n")
             #print "string " + type
         #is void*
@@ -289,10 +293,12 @@ def bind_font(name):
     return "     font_[\""+ name +"\"] = GLUT_" + name + ";\n"
 
 
-def get_type(t):
-    if t.find('callback') != -1: 
-        return '( ' + t.replace('callback', '') + ') '
-    return '( ' + ' '.join(t.strip().split(' ')[:-1]) + ' ) '
+def get_type(t, parens=True):
+    if t.find('(*') != -1 or t.find('func') != -1: 
+        ans = t.replace('func', '')
+    else:
+        ans = ' '.join(t.strip().split(' ')[:-1]) + '*' * (t.strip().split(' ')[-1].count('*'))
+    return '(' + ans + ')' if parens else ans
 
 def multiple_replace(dict, text): 
   """ Replace in 'text' all occurences of any key in the given

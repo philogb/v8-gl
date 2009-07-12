@@ -1,7 +1,7 @@
 import sys
 import re
 
-PATH_GL = '/usr/include/GL/glu.h'
+PATH_GL = 'glu.h'
 FILE_GL = 'glubind.cpp'
 
 def main():
@@ -13,7 +13,7 @@ def make_gl():
     void_stars = []
     
     constant = re.compile(".+define[\s]+GLU_([^\s]+).*")
-    function = re.compile("[\s]*GLAPI[\s]+([^\s]+)[\s]+GLAPIENTRY[\s]+glu([A-Za-z0-9]+)[\s]*\((.*)\);")
+    function = re.compile("[\s]*extern[\s]+([^\s]+)[\s]+glu([A-Za-z0-9]+)[\s]*\((.*)\);")
     
     text_out = []
     

@@ -9,6 +9,22 @@ Persistent<Context> GlutFactory::glut_persistent_context;
     
     
 
+Handle<Value> GetGLUT_APIENTRY_DEFINED(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_APIENTRY_DEFINED);
+}
+
+
+
+
+Handle<Value> GetGLUT_WINGDIAPI_DEFINED(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_WINGDIAPI_DEFINED);
+}
+
+
+
+
 Handle<Value> GetGLUT_API_VERSION(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_API_VERSION);
@@ -20,6 +36,158 @@ Handle<Value> GetGLUT_API_VERSION(Local<String> property,
 Handle<Value> GetGLUT_XLIB_IMPLEMENTATION(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_XLIB_IMPLEMENTATION);
+}
+
+
+
+
+Handle<Value> GetGLUT_MACOSX_IMPLEMENTATION(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_MACOSX_IMPLEMENTATION);
+}
+
+
+
+
+Handle<Value> GetGLUT_RGB(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_RGB);
+}
+
+
+
+
+Handle<Value> GetGLUT_RGBA(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_RGBA);
+}
+
+
+
+
+Handle<Value> GetGLUT_INDEX(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_INDEX);
+}
+
+
+
+
+Handle<Value> GetGLUT_SINGLE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_SINGLE);
+}
+
+
+
+
+Handle<Value> GetGLUT_DOUBLE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_DOUBLE);
+}
+
+
+
+
+Handle<Value> GetGLUT_ACCUM(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_ACCUM);
+}
+
+
+
+
+Handle<Value> GetGLUT_ALPHA(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_ALPHA);
+}
+
+
+
+
+Handle<Value> GetGLUT_DEPTH(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_DEPTH);
+}
+
+
+
+
+Handle<Value> GetGLUT_STENCIL(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_STENCIL);
+}
+
+
+
+
+Handle<Value> GetGLUT_MULTISAMPLE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_MULTISAMPLE);
+}
+
+
+
+
+Handle<Value> GetGLUT_STEREO(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_STEREO);
+}
+
+
+
+
+Handle<Value> GetGLUT_LUMINANCE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_LUMINANCE);
+}
+
+
+
+
+Handle<Value> GetGLUT_NO_RECOVERY(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_NO_RECOVERY);
+}
+
+
+
+
+Handle<Value> GetGLUT_LEFT_BUTTON(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_LEFT_BUTTON);
+}
+
+
+
+
+Handle<Value> GetGLUT_MIDDLE_BUTTON(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_MIDDLE_BUTTON);
+}
+
+
+
+
+Handle<Value> GetGLUT_RIGHT_BUTTON(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_RIGHT_BUTTON);
+}
+
+
+
+
+Handle<Value> GetGLUT_DOWN(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_DOWN);
+}
+
+
+
+
+Handle<Value> GetGLUT_UP(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_UP);
 }
 
 
@@ -193,46 +361,6 @@ Handle<Value> GetGLUT_KEY_INSERT(Local<String> property,
 
 
 
-Handle<Value> GetGLUT_LEFT_BUTTON(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_LEFT_BUTTON);
-}
-
-
-
-
-Handle<Value> GetGLUT_MIDDLE_BUTTON(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_MIDDLE_BUTTON);
-}
-
-
-
-
-Handle<Value> GetGLUT_RIGHT_BUTTON(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_RIGHT_BUTTON);
-}
-
-
-
-
-Handle<Value> GetGLUT_DOWN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_DOWN);
-}
-
-
-
-
-Handle<Value> GetGLUT_UP(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_UP);
-}
-
-
-
-
 Handle<Value> GetGLUT_LEFT(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_LEFT);
@@ -244,102 +372,6 @@ Handle<Value> GetGLUT_LEFT(Local<String> property,
 Handle<Value> GetGLUT_ENTERED(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_ENTERED);
-}
-
-
-
-
-Handle<Value> GetGLUT_RGB(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_RGB);
-}
-
-
-
-
-Handle<Value> GetGLUT_RGBA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_RGBA);
-}
-
-
-
-
-Handle<Value> GetGLUT_INDEX(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_INDEX);
-}
-
-
-
-
-Handle<Value> GetGLUT_SINGLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_SINGLE);
-}
-
-
-
-
-Handle<Value> GetGLUT_DOUBLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_DOUBLE);
-}
-
-
-
-
-Handle<Value> GetGLUT_ACCUM(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_ACCUM);
-}
-
-
-
-
-Handle<Value> GetGLUT_ALPHA(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_ALPHA);
-}
-
-
-
-
-Handle<Value> GetGLUT_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGLUT_STENCIL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_STENCIL);
-}
-
-
-
-
-Handle<Value> GetGLUT_MULTISAMPLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_MULTISAMPLE);
-}
-
-
-
-
-Handle<Value> GetGLUT_STEREO(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_STEREO);
-}
-
-
-
-
-Handle<Value> GetGLUT_LUMINANCE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_LUMINANCE);
 }
 
 
@@ -404,6 +436,46 @@ Handle<Value> GetGLUT_PARTIALLY_RETAINED(Local<String> property,
 Handle<Value> GetGLUT_FULLY_COVERED(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_FULLY_COVERED);
+}
+
+
+
+
+Handle<Value> GetGLUT_RED(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_RED);
+}
+
+
+
+
+Handle<Value> GetGLUT_GREEN(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GREEN);
+}
+
+
+
+
+Handle<Value> GetGLUT_BLUE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_BLUE);
+}
+
+
+
+
+Handle<Value> GetGLUT_NORMAL(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_NORMAL);
+}
+
+
+
+
+Handle<Value> GetGLUT_OVERLAY(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_OVERLAY);
 }
 
 
@@ -778,14 +850,6 @@ Handle<Value> GetGLUT_WINDOW_FORMAT_ID(Local<String> property,
 
 
 
-Handle<Value> GetGLUT_INIT_STATE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_INIT_STATE);
-}
-
-
-
-
 Handle<Value> GetGLUT_HAS_KEYBOARD(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_HAS_KEYBOARD);
@@ -1050,22 +1114,6 @@ Handle<Value> GetGLUT_VIDEO_RESIZE_HEIGHT(Local<String> property,
 
 
 
-Handle<Value> GetGLUT_NORMAL(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_NORMAL);
-}
-
-
-
-
-Handle<Value> GetGLUT_OVERLAY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_OVERLAY);
-}
-
-
-
-
 Handle<Value> GetGLUT_ACTIVE_SHIFT(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_ACTIVE_SHIFT);
@@ -1273,180 +1321,10 @@ Handle<Value> GetGLUT_CURSOR_FULL_CROSSHAIR(Local<String> property,
 
 
 
-
-Handle<Value> GetGLUT_RED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_RED);
-}
-
-
-
-
-Handle<Value> GetGLUT_GREEN(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GREEN);
-}
-
-
-
-
-Handle<Value> GetGLUT_BLUE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_BLUE);
-}
-
-
-
-
-Handle<Value> GetGLUT_KEY_REPEAT_OFF(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_KEY_REPEAT_OFF);
-}
-
-
-
-
-Handle<Value> GetGLUT_KEY_REPEAT_ON(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_KEY_REPEAT_ON);
-}
-
-
-
-
-Handle<Value> GetGLUT_KEY_REPEAT_DEFAULT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_KEY_REPEAT_DEFAULT);
-}
-
-
-
-
-Handle<Value> GetGLUT_JOYSTICK_BUTTON_A(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_JOYSTICK_BUTTON_A);
-}
-
-
-
-
-Handle<Value> GetGLUT_JOYSTICK_BUTTON_B(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_JOYSTICK_BUTTON_B);
-}
-
-
-
-
-Handle<Value> GetGLUT_JOYSTICK_BUTTON_C(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_JOYSTICK_BUTTON_C);
-}
-
-
-
-
-Handle<Value> GetGLUT_JOYSTICK_BUTTON_D(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_JOYSTICK_BUTTON_D);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_ACTIVE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_ACTIVE);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_POSSIBLE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_POSSIBLE);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_WIDTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_WIDTH);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_HEIGHT(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_HEIGHT);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_PIXEL_DEPTH(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_PIXEL_DEPTH);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_REFRESH_RATE(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_REFRESH_RATE);
-}
-
-
-
-
-Handle<Value> GetGLUT_GAME_MODE_DISPLAY_CHANGED(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_GAME_MODE_DISPLAY_CHANGED);
-}
-
-
-
 Handle<Value> GLUTInitCallback(const Arguments& args) {
   glutInit(( int* ) pargc_, ( char** ) argv_);
   return v8::Undefined();
 }
-
-
-
-Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glutInitWindowPosition(( int ) arg0, ( int ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTInitWindowSizeCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glutInitWindowSize(( int ) arg0, ( int ) arg1);
-  return v8::Undefined();
-}
-
 
 
 
@@ -1459,7 +1337,7 @@ Handle<Value> GLUTInitDisplayModeCallback(const Arguments& args) {
   unsigned int arg0 = args[0]->Uint32Value();
 
   //make call
-  glutInitDisplayMode(( unsigned int ) arg0);
+  glutInitDisplayMode((unsigned int)arg0);
   return v8::Undefined();
 }
 
@@ -1476,7 +1354,41 @@ Handle<Value> GLUTInitDisplayStringCallback(const Arguments& args) {
   char* arg0 = *value0;
 
   //make call
-  glutInitDisplayString(( const char* ) arg0);
+  glutInitDisplayString((const char*)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glutInitWindowPosition((int)arg0, (int)arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTInitWindowSizeCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glutInitWindowSize((int)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -1508,7 +1420,7 @@ Handle<Value> GLUTCreateWindowCallback(const Arguments& args) {
   char* arg0 = *value0;
 
   //make call
-  glutCreateWindow(( const char* ) arg0);
+  glutCreateWindow((const char*)arg0);
   return v8::Undefined();
 }
 
@@ -1528,7 +1440,7 @@ Handle<Value> GLUTCreateSubWindowCallback(const Arguments& args) {
   int arg4 = args[4]->IntegerValue();
 
   //make call
-  glutCreateSubWindow(( int ) arg0, ( int ) arg1, ( int ) arg2, ( int ) arg3, ( int ) arg4);
+  glutCreateSubWindow((int)arg0, (int)arg1, (int)arg2, (int)arg3, (int)arg4);
   return v8::Undefined();
 }
 
@@ -1544,14 +1456,29 @@ Handle<Value> GLUTDestroyWindowCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutDestroyWindow(( int ) arg0);
+  glutDestroyWindow((int)arg0);
   return v8::Undefined();
 }
 
 
 
 
-Handle<Value> GLUTSetWindowCallback(const Arguments& args) {
+Handle<Value> GLUTPostRedisplayCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutPostRedisplay();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTPostWindowRedisplayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
@@ -1560,7 +1487,22 @@ Handle<Value> GLUTSetWindowCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutSetWindow(( int ) arg0);
+  glutPostWindowRedisplay((int)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTSwapBuffersCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutSwapBuffers();
   return v8::Undefined();
 }
 
@@ -1582,6 +1524,22 @@ Handle<Value> GLUTGetWindowCallback(const Arguments& args) {
 
 
 
+Handle<Value> GLUTSetWindowCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+  //make call
+  glutSetWindow((int)arg0);
+  return v8::Undefined();
+}
+
+
+
+
 Handle<Value> GLUTSetWindowTitleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -1592,7 +1550,7 @@ Handle<Value> GLUTSetWindowTitleCallback(const Arguments& args) {
   char* arg0 = *value0;
 
   //make call
-  glutSetWindowTitle(( const char* ) arg0);
+  glutSetWindowTitle((const char*)arg0);
   return v8::Undefined();
 }
 
@@ -1609,24 +1567,7 @@ Handle<Value> GLUTSetIconTitleCallback(const Arguments& args) {
   char* arg0 = *value0;
 
   //make call
-  glutSetIconTitle(( const char* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTReshapeWindowCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glutReshapeWindow(( int ) arg0, ( int ) arg1);
+  glutSetIconTitle((const char*)arg0);
   return v8::Undefined();
 }
 
@@ -1643,7 +1584,69 @@ Handle<Value> GLUTPositionWindowCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutPositionWindow(( int ) arg0, ( int ) arg1);
+  glutPositionWindow((int)arg0, (int)arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTReshapeWindowCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glutReshapeWindow((int)arg0, (int)arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTPopWindowCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutPopWindow();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTPushWindowCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutPushWindow();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTIconifyWindowCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutIconifyWindow();
   return v8::Undefined();
 }
 
@@ -1680,51 +1683,6 @@ Handle<Value> GLUTHideWindowCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLUTIconifyWindowCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutIconifyWindow();
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTPushWindowCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutPushWindow();
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTPopWindowCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutPopWindow();
-  return v8::Undefined();
-}
-
-
-
-
 Handle<Value> GLUTFullScreenCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
@@ -1740,7 +1698,7 @@ Handle<Value> GLUTFullScreenCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLUTPostWindowRedisplayCallback(const Arguments& args) {
+Handle<Value> GLUTSetCursorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
@@ -1749,37 +1707,7 @@ Handle<Value> GLUTPostWindowRedisplayCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutPostWindowRedisplay(( int ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTPostRedisplayCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutPostRedisplay();
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTSwapBuffersCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutSwapBuffers();
+  glutSetCursor((int)arg0);
   return v8::Undefined();
 }
 
@@ -1796,23 +1724,56 @@ Handle<Value> GLUTWarpPointerCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutWarpPointer(( int ) arg0, ( int ) arg1);
+  glutWarpPointer((int)arg0, (int)arg1);
   return v8::Undefined();
 }
 
 
 
 
-Handle<Value> GLUTSetCursorCallback(const Arguments& args) {
+Persistent<Function> persistentWMCloseFunc;
+
+void funcWMCloseFunc ( ) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[0];
+
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentWMCloseFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in WMCloseFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentWMCloseFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentWMCloseFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutWMCloseFunc((void (*)(void)) funcWMCloseFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
   //define handle scope
   HandleScope scope;
   //get arguments
-  int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutSetCursor(( int ) arg0);
+  glutCheckLoop();
   return v8::Undefined();
 }
 
@@ -1858,7 +1819,7 @@ Handle<Value> GLUTUseLayerCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutUseLayer(( GLenum ) arg0);
+  glutUseLayer((GLenum)arg0);
   return v8::Undefined();
 }
 
@@ -1889,7 +1850,7 @@ Handle<Value> GLUTPostWindowOverlayRedisplayCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutPostWindowOverlayRedisplay(( int ) arg0);
+  glutPostWindowOverlayRedisplay((int)arg0);
   return v8::Undefined();
 }
 
@@ -1926,34 +1887,17 @@ Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentCreateMenu;
-
- void callbackCreateMenu (  int arg0) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[1];
-  valueArr[0] = Integer::New(arg0);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentCreateMenu->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in CreateMenu: %s\n", *error);
-  }
-}
-
 Handle<Value> GLUTCreateMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
   //get arguments
-  //delete previous assigned function
-  persistentCreateMenu.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentCreateMenu = Persistent<Function>::New(value0);
+  void* arg0 = *value0;
 
   //make call
-  glutCreateMenu(( void (* )( int menu ) ) callbackCreateMenu);
+  glutCreateMenu((void (*)(int))arg0);
   return v8::Undefined();
 }
 
@@ -1969,7 +1913,7 @@ Handle<Value> GLUTDestroyMenuCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutDestroyMenu(( int ) arg0);
+  glutDestroyMenu((int)arg0);
   return v8::Undefined();
 }
 
@@ -2000,7 +1944,7 @@ Handle<Value> GLUTSetMenuCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutSetMenu(( int ) arg0);
+  glutSetMenu((int)arg0);
   return v8::Undefined();
 }
 
@@ -2018,7 +1962,7 @@ Handle<Value> GLUTAddMenuEntryCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutAddMenuEntry(( const char* ) arg0, ( int ) arg1);
+  glutAddMenuEntry((const char*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -2036,7 +1980,7 @@ Handle<Value> GLUTAddSubMenuCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutAddSubMenu(( const char* ) arg0, ( int ) arg1);
+  glutAddSubMenu((const char*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -2055,7 +1999,7 @@ Handle<Value> GLUTChangeToMenuEntryCallback(const Arguments& args) {
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glutChangeToMenuEntry(( int ) arg0, ( const char* ) arg1, ( int ) arg2);
+  glutChangeToMenuEntry((int)arg0, (const char*)arg1, (int)arg2);
   return v8::Undefined();
 }
 
@@ -2074,7 +2018,7 @@ Handle<Value> GLUTChangeToSubMenuCallback(const Arguments& args) {
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glutChangeToSubMenu(( int ) arg0, ( const char* ) arg1, ( int ) arg2);
+  glutChangeToSubMenu((int)arg0, (const char*)arg1, (int)arg2);
   return v8::Undefined();
 }
 
@@ -2090,7 +2034,7 @@ Handle<Value> GLUTRemoveMenuItemCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutRemoveMenuItem(( int ) arg0);
+  glutRemoveMenuItem((int)arg0);
   return v8::Undefined();
 }
 
@@ -2106,7 +2050,7 @@ Handle<Value> GLUTAttachMenuCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutAttachMenu(( int ) arg0);
+  glutAttachMenu((int)arg0);
   return v8::Undefined();
 }
 
@@ -2122,7 +2066,321 @@ Handle<Value> GLUTDetachMenuCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutDetachMenu(( int ) arg0);
+  glutDetachMenu((int)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentDisplayFunc;
+
+void funcDisplayFunc ( ) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[0];
+
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in DisplayFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTDisplayFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentDisplayFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentDisplayFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutDisplayFunc((void (*)(void)) funcDisplayFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentReshapeFunc;
+
+void funcReshapeFunc ( int arg0,int arg1) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[2];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentReshapeFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in ReshapeFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTReshapeFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentReshapeFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentReshapeFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutReshapeFunc((void (*)(int width, int height)) funcReshapeFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentKeyboardFunc;
+
+void funcKeyboardFunc ( unsigned char arg0,int arg1,int arg2) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[3];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  valueArr[2] = Integer::New(arg2);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentKeyboardFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in KeyboardFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentKeyboardFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentKeyboardFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutKeyboardFunc((void (*)(unsigned char key, int x, int y)) funcKeyboardFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentMouseFunc;
+
+void funcMouseFunc ( int arg0,int arg1,int arg2,int arg3) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[4];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  valueArr[2] = Integer::New(arg2);
+  valueArr[3] = Integer::New(arg3);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMouseFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MouseFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTMouseFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentMouseFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentMouseFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutMouseFunc((void (*)(int button, int state, int x, int y)) funcMouseFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentMotionFunc;
+
+void funcMotionFunc ( int arg0,int arg1) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[2];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MotionFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTMotionFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentMotionFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentMotionFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutMotionFunc((void (*)(int x, int y)) funcMotionFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentPassiveMotionFunc;
+
+void funcPassiveMotionFunc ( int arg0,int arg1) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[2];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentPassiveMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in PassiveMotionFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTPassiveMotionFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentPassiveMotionFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentPassiveMotionFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutPassiveMotionFunc((void (*)(int x, int y)) funcPassiveMotionFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentEntryFunc;
+
+void funcEntryFunc ( int arg0) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[1];
+  valueArr[0] = Integer::New(arg0);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentEntryFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in EntryFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTEntryFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentEntryFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentEntryFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutEntryFunc((void (*)(int state)) funcEntryFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentVisibilityFunc;
+
+void funcVisibilityFunc ( int arg0) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[1];
+  valueArr[0] = Integer::New(arg0);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentVisibilityFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in VisibilityFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTVisibilityFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentVisibilityFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentVisibilityFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutVisibilityFunc((void (*)(int state)) funcVisibilityFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentIdleFunc;
+
+void funcIdleFunc ( ) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[0];
+
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentIdleFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in IdleFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTIdleFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentIdleFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentIdleFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutIdleFunc((void (*)(void)) funcIdleFunc);
   return v8::Undefined();
 }
 
@@ -2189,70 +2447,34 @@ Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
 
 
 
-Persistent<Function> persistentIdleFunc;
+Persistent<Function> persistentMenuStateFunc;
 
- void callbackIdleFunc ( ) {
+void funcMenuStateFunc ( int arg0) {
   //define handle scope
   HandleScope scope;
 
-  Handle<Value> valueArr[0];
-
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentIdleFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in IdleFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTIdleFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentIdleFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentIdleFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutIdleFunc(( void (* )( void ) ) callbackIdleFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentKeyboardFunc;
-
- void callbackKeyboardFunc (  unsigned char arg0, int arg1, int   arg2) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[3];
+  Handle<Value> valueArr[1];
   valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  valueArr[2] = Integer::New(arg2);
   
   TryCatch try_catch;
-  Handle<Value> result = persistentKeyboardFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  Handle<Value> result = persistentMenuStateFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
   if (result.IsEmpty()) {
     String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in KeyboardFunc: %s\n", *error);
+    fprintf(stderr, "Exception in MenuStateFunc: %s\n", *error);
   }
 }
 
-Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
+Handle<Value> GLUTMenuStateFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
   //get arguments
   //delete previous assigned function
-  persistentKeyboardFunc.Dispose();
+  persistentMenuStateFunc.Dispose();
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentKeyboardFunc = Persistent<Function>::New(value0);
+  persistentMenuStateFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutKeyboardFunc(( void (* )( unsigned char, int, int ) ) callbackKeyboardFunc);
+  glutMenuStateFunc((void (*)(int state)) funcMenuStateFunc);
   return v8::Undefined();
 }
 
@@ -2261,7 +2483,7 @@ Handle<Value> GLUTKeyboardFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentSpecialFunc;
 
- void callbackSpecialFunc (  int arg0, int arg1, int   arg2) {
+void funcSpecialFunc ( int arg0,int arg1,int arg2) {
   //define handle scope
   HandleScope scope;
 
@@ -2288,479 +2510,7 @@ Handle<Value> GLUTSpecialFuncCallback(const Arguments& args) {
   persistentSpecialFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutSpecialFunc(( void (* )( int, int, int ) ) callbackSpecialFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentReshapeFunc;
-
- void callbackReshapeFunc (  int arg0, int   arg1) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[2];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentReshapeFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in ReshapeFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTReshapeFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentReshapeFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentReshapeFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutReshapeFunc(( void (* )( int, int ) ) callbackReshapeFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentVisibilityFunc;
-
- void callbackVisibilityFunc (  int   arg0) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[1];
-  valueArr[0] = Integer::New(arg0);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentVisibilityFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in VisibilityFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTVisibilityFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentVisibilityFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentVisibilityFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutVisibilityFunc(( void (* )( int ) ) callbackVisibilityFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentDisplayFunc;
-
- void callbackDisplayFunc ( ) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[0];
-
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in DisplayFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTDisplayFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentDisplayFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentDisplayFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutDisplayFunc(( void (* )( void ) ) callbackDisplayFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentMouseFunc;
-
- void callbackMouseFunc (  int arg0, int arg1, int arg2, int   arg3) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[4];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  valueArr[2] = Integer::New(arg2);
-  valueArr[3] = Integer::New(arg3);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentMouseFunc->Call(GlutFactory::glut_persistent_context->Global(), 4, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in MouseFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTMouseFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentMouseFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentMouseFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutMouseFunc(( void (* )( int, int, int, int ) ) callbackMouseFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentMotionFunc;
-
- void callbackMotionFunc (  int arg0, int   arg1) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[2];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in MotionFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTMotionFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentMotionFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentMotionFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutMotionFunc(( void (* )( int, int ) ) callbackMotionFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentPassiveMotionFunc;
-
- void callbackPassiveMotionFunc (  int arg0, int   arg1) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[2];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentPassiveMotionFunc->Call(GlutFactory::glut_persistent_context->Global(), 2, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in PassiveMotionFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTPassiveMotionFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentPassiveMotionFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentPassiveMotionFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutPassiveMotionFunc(( void (* )( int, int ) ) callbackPassiveMotionFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentEntryFunc;
-
- void callbackEntryFunc (  int   arg0) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[1];
-  valueArr[0] = Integer::New(arg0);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentEntryFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in EntryFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTEntryFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentEntryFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentEntryFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutEntryFunc(( void (* )( int ) ) callbackEntryFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentKeyboardUpFunc;
-
- void callbackKeyboardUpFunc (  unsigned char arg0, int arg1, int   arg2) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[3];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  valueArr[2] = Integer::New(arg2);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentKeyboardUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in KeyboardUpFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTKeyboardUpFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentKeyboardUpFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentKeyboardUpFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutKeyboardUpFunc(( void (* )( unsigned char, int, int ) ) callbackKeyboardUpFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentSpecialUpFunc;
-
- void callbackSpecialUpFunc (  int arg0, int arg1, int   arg2) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[3];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  valueArr[2] = Integer::New(arg2);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentSpecialUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in SpecialUpFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTSpecialUpFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentSpecialUpFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentSpecialUpFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutSpecialUpFunc(( void (* )( int, int, int ) ) callbackSpecialUpFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTJoystickFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  void* arg0 = *value0;
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glutJoystickFunc((  void (* )( unsigned int, int, int, int )) arg0, ( int ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentMenuStateFunc;
-
- void callbackMenuStateFunc (  int   arg0) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[1];
-  valueArr[0] = Integer::New(arg0);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentMenuStateFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in MenuStateFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTMenuStateFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentMenuStateFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentMenuStateFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutMenuStateFunc(( void (* )( int ) ) callbackMenuStateFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentMenuStatusFunc;
-
- void callbackMenuStatusFunc (  int arg0, int arg1, int   arg2) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[3];
-  valueArr[0] = Integer::New(arg0);
-  valueArr[1] = Integer::New(arg1);
-  valueArr[2] = Integer::New(arg2);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentMenuStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in MenuStatusFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTMenuStatusFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentMenuStatusFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentMenuStatusFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutMenuStatusFunc(( void (* )( int, int, int ) ) callbackMenuStatusFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentOverlayDisplayFunc;
-
- void callbackOverlayDisplayFunc ( ) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[0];
-
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentOverlayDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in OverlayDisplayFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTOverlayDisplayFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentOverlayDisplayFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentOverlayDisplayFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutOverlayDisplayFunc(( void (* )( void ) ) callbackOverlayDisplayFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Persistent<Function> persistentWindowStatusFunc;
-
- void callbackWindowStatusFunc (  int   arg0) {
-  //define handle scope
-  HandleScope scope;
-
-  Handle<Value> valueArr[1];
-  valueArr[0] = Integer::New(arg0);
-  
-  TryCatch try_catch;
-  Handle<Value> result = persistentWindowStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
-  if (result.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    fprintf(stderr, "Exception in WindowStatusFunc: %s\n", *error);
-  }
-}
-
-Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentWindowStatusFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentWindowStatusFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutWindowStatusFunc(( void (* )( int ) ) callbackWindowStatusFunc);
+  glutSpecialFunc((void (*)(int key, int x, int y)) funcSpecialFunc);
   return v8::Undefined();
 }
 
@@ -2769,7 +2519,7 @@ Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentSpaceballMotionFunc;
 
- void callbackSpaceballMotionFunc (  int arg0, int arg1, int   arg2) {
+void funcSpaceballMotionFunc ( int arg0,int arg1,int arg2) {
   //define handle scope
   HandleScope scope;
 
@@ -2796,7 +2546,7 @@ Handle<Value> GLUTSpaceballMotionFuncCallback(const Arguments& args) {
   persistentSpaceballMotionFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutSpaceballMotionFunc(( void (* )( int, int, int ) ) callbackSpaceballMotionFunc);
+  glutSpaceballMotionFunc((void (*)(int x, int y, int z)) funcSpaceballMotionFunc);
   return v8::Undefined();
 }
 
@@ -2805,7 +2555,7 @@ Handle<Value> GLUTSpaceballMotionFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentSpaceballRotateFunc;
 
- void callbackSpaceballRotateFunc (  int arg0, int arg1, int   arg2) {
+void funcSpaceballRotateFunc ( int arg0,int arg1,int arg2) {
   //define handle scope
   HandleScope scope;
 
@@ -2832,7 +2582,7 @@ Handle<Value> GLUTSpaceballRotateFuncCallback(const Arguments& args) {
   persistentSpaceballRotateFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutSpaceballRotateFunc(( void (* )( int, int, int ) ) callbackSpaceballRotateFunc);
+  glutSpaceballRotateFunc((void (*)(int x, int y, int z)) funcSpaceballRotateFunc);
   return v8::Undefined();
 }
 
@@ -2841,7 +2591,7 @@ Handle<Value> GLUTSpaceballRotateFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentSpaceballButtonFunc;
 
- void callbackSpaceballButtonFunc (  int arg0, int   arg1) {
+void funcSpaceballButtonFunc ( int arg0,int arg1) {
   //define handle scope
   HandleScope scope;
 
@@ -2867,7 +2617,7 @@ Handle<Value> GLUTSpaceballButtonFuncCallback(const Arguments& args) {
   persistentSpaceballButtonFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutSpaceballButtonFunc(( void (* )( int, int ) ) callbackSpaceballButtonFunc);
+  glutSpaceballButtonFunc((void (*)(int button, int state)) funcSpaceballButtonFunc);
   return v8::Undefined();
 }
 
@@ -2876,7 +2626,7 @@ Handle<Value> GLUTSpaceballButtonFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentButtonBoxFunc;
 
- void callbackButtonBoxFunc (  int arg0, int   arg1) {
+void funcButtonBoxFunc ( int arg0,int arg1) {
   //define handle scope
   HandleScope scope;
 
@@ -2902,7 +2652,7 @@ Handle<Value> GLUTButtonBoxFuncCallback(const Arguments& args) {
   persistentButtonBoxFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutButtonBoxFunc(( void (* )( int, int ) ) callbackButtonBoxFunc);
+  glutButtonBoxFunc((void (*)(int button, int state)) funcButtonBoxFunc);
   return v8::Undefined();
 }
 
@@ -2911,7 +2661,7 @@ Handle<Value> GLUTButtonBoxFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentDialsFunc;
 
- void callbackDialsFunc (  int arg0, int   arg1) {
+void funcDialsFunc ( int arg0,int arg1) {
   //define handle scope
   HandleScope scope;
 
@@ -2937,7 +2687,7 @@ Handle<Value> GLUTDialsFuncCallback(const Arguments& args) {
   persistentDialsFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutDialsFunc(( void (* )( int, int ) ) callbackDialsFunc);
+  glutDialsFunc((void (*)(int dial, int value)) funcDialsFunc);
   return v8::Undefined();
 }
 
@@ -2946,7 +2696,7 @@ Handle<Value> GLUTDialsFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentTabletMotionFunc;
 
- void callbackTabletMotionFunc (  int arg0, int   arg1) {
+void funcTabletMotionFunc ( int arg0,int arg1) {
   //define handle scope
   HandleScope scope;
 
@@ -2972,7 +2722,7 @@ Handle<Value> GLUTTabletMotionFuncCallback(const Arguments& args) {
   persistentTabletMotionFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutTabletMotionFunc(( void (* )( int, int ) ) callbackTabletMotionFunc);
+  glutTabletMotionFunc((void (*)(int x, int y)) funcTabletMotionFunc);
   return v8::Undefined();
 }
 
@@ -2981,7 +2731,7 @@ Handle<Value> GLUTTabletMotionFuncCallback(const Arguments& args) {
 
 Persistent<Function> persistentTabletButtonFunc;
 
- void callbackTabletButtonFunc (  int arg0, int arg1, int arg2, int   arg3) {
+void funcTabletButtonFunc ( int arg0,int arg1,int arg2,int arg3) {
   //define handle scope
   HandleScope scope;
 
@@ -3009,7 +2759,253 @@ Handle<Value> GLUTTabletButtonFuncCallback(const Arguments& args) {
   persistentTabletButtonFunc = Persistent<Function>::New(value0);
 
   //make call
-  glutTabletButtonFunc(( void (* )( int, int, int, int ) ) callbackTabletButtonFunc);
+  glutTabletButtonFunc((void (*)(int button, int state, int x, int y)) funcTabletButtonFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentMenuStatusFunc;
+
+void funcMenuStatusFunc ( int arg0,int arg1,int arg2) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[3];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  valueArr[2] = Integer::New(arg2);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentMenuStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in MenuStatusFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTMenuStatusFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentMenuStatusFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentMenuStatusFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutMenuStatusFunc((void (*)(int status, int x, int y)) funcMenuStatusFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentOverlayDisplayFunc;
+
+void funcOverlayDisplayFunc ( ) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[0];
+
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentOverlayDisplayFunc->Call(GlutFactory::glut_persistent_context->Global(), 0, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in OverlayDisplayFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTOverlayDisplayFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentOverlayDisplayFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentOverlayDisplayFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutOverlayDisplayFunc((void (*)(void)) funcOverlayDisplayFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentWindowStatusFunc;
+
+void funcWindowStatusFunc ( int arg0) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[1];
+  valueArr[0] = Integer::New(arg0);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentWindowStatusFunc->Call(GlutFactory::glut_persistent_context->Global(), 1, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in WindowStatusFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTWindowStatusFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentWindowStatusFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentWindowStatusFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutWindowStatusFunc((void (*)(int state)) funcWindowStatusFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentKeyboardUpFunc;
+
+void funcKeyboardUpFunc ( unsigned char arg0,int arg1,int arg2) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[3];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  valueArr[2] = Integer::New(arg2);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentKeyboardUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in KeyboardUpFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTKeyboardUpFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentKeyboardUpFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentKeyboardUpFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutKeyboardUpFunc((void (*)(unsigned char key, int x, int y)) funcKeyboardUpFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Persistent<Function> persistentSpecialUpFunc;
+
+void funcSpecialUpFunc ( int arg0,int arg1,int arg2) {
+  //define handle scope
+  HandleScope scope;
+
+  Handle<Value> valueArr[3];
+  valueArr[0] = Integer::New(arg0);
+  valueArr[1] = Integer::New(arg1);
+  valueArr[2] = Integer::New(arg2);
+  
+  TryCatch try_catch;
+  Handle<Value> result = persistentSpecialUpFunc->Call(GlutFactory::glut_persistent_context->Global(), 3, valueArr);
+  if (result.IsEmpty()) {
+    String::Utf8Value error(try_catch.Exception());
+    fprintf(stderr, "Exception in SpecialUpFunc: %s\n", *error);
+  }
+}
+
+Handle<Value> GLUTSpecialUpFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentSpecialUpFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentSpecialUpFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutSpecialUpFunc((void (*)(int key, int x, int y)) funcSpecialUpFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTJoystickFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  void* arg0 = *value0;
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glutJoystickFunc((void (*)(unsigned int buttonMask, int x, int y, int z))arg0, (int)arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTSetColorCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 4) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  double arg1 = args[1]->NumberValue();
+  double arg2 = args[2]->NumberValue();
+  double arg3 = args[3]->NumberValue();
+
+  //make call
+  glutSetColor((int)arg0, (GLfloat)arg1, (GLfloat)arg2, (GLfloat)arg3);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTGetColorCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 2) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+  int arg1 = args[1]->IntegerValue();
+
+  //make call
+  glutGetColor((int)arg0, (int)arg1);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTCopyColormapCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+  //make call
+  glutCopyColormap((int)arg0);
   return v8::Undefined();
 }
 
@@ -3025,7 +3021,7 @@ Handle<Value> GLUTGetCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutGet(( GLenum ) arg0);
+  glutGet((GLenum)arg0);
   return v8::Undefined();
 }
 
@@ -3041,7 +3037,24 @@ Handle<Value> GLUTDeviceGetCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutDeviceGet(( GLenum ) arg0);
+  glutDeviceGet((GLenum)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTExtensionSupportedCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  String::Utf8Value value0(args[0]);
+  char* arg0 = *value0;
+
+  //make call
+  glutExtensionSupported((const char*)arg0);
   return v8::Undefined();
 }
 
@@ -3072,7 +3085,7 @@ Handle<Value> GLUTLayerGetCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutLayerGet(( GLenum ) arg0);
+  glutLayerGet((GLenum)arg0);
   return v8::Undefined();
 }
 
@@ -3091,7 +3104,7 @@ Handle<Value> GLUTBitmapCharacterCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutBitmapCharacter(( void* ) arg0, ( int ) arg1);
+  glutBitmapCharacter((void*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -3110,7 +3123,7 @@ Handle<Value> GLUTBitmapWidthCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutBitmapWidth(( void* ) arg0, ( int ) arg1);
+  glutBitmapWidth((void*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -3129,7 +3142,7 @@ Handle<Value> GLUTStrokeCharacterCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutStrokeCharacter(( void* ) arg0, ( int ) arg1);
+  glutStrokeCharacter((void*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -3148,7 +3161,7 @@ Handle<Value> GLUTStrokeWidthCallback(const Arguments& args) {
   int arg1 = args[1]->IntegerValue();
 
   //make call
-  glutStrokeWidth(( void* ) arg0, ( int ) arg1);
+  glutStrokeWidth((void*)arg0, (int)arg1);
   return v8::Undefined();
 }
 
@@ -3168,7 +3181,7 @@ Handle<Value> GLUTBitmapLengthCallback(const Arguments& args) {
   char* arg1 = *value1;
 
   //make call
-  glutBitmapLength(( void* ) arg0, ( const unsigned char* ) arg1);
+  glutBitmapLength((void*)arg0, (const unsigned char*)arg1);
   return v8::Undefined();
 }
 
@@ -3188,39 +3201,7 @@ Handle<Value> GLUTStrokeLengthCallback(const Arguments& args) {
   char* arg1 = *value1;
 
   //make call
-  glutStrokeLength(( void* ) arg0, ( const unsigned char* ) arg1);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTWireCubeCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glutWireCube(( GLdouble ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTSolidCubeCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glutSolidCube(( GLdouble ) arg0);
+  glutStrokeLength((void*)arg0, (const unsigned char*)arg1);
   return v8::Undefined();
 }
 
@@ -3238,7 +3219,7 @@ Handle<Value> GLUTWireSphereCallback(const Arguments& args) {
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glutWireSphere(( GLdouble ) arg0, ( GLint ) arg1, ( GLint ) arg2);
+  glutWireSphere((GLdouble)arg0, (GLint)arg1, (GLint)arg2);
   return v8::Undefined();
 }
 
@@ -3256,7 +3237,7 @@ Handle<Value> GLUTSolidSphereCallback(const Arguments& args) {
   int arg2 = args[2]->IntegerValue();
 
   //make call
-  glutSolidSphere(( GLdouble ) arg0, ( GLint ) arg1, ( GLint ) arg2);
+  glutSolidSphere((GLdouble)arg0, (GLint)arg1, (GLint)arg2);
   return v8::Undefined();
 }
 
@@ -3275,7 +3256,7 @@ Handle<Value> GLUTWireConeCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutWireCone(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLint ) arg2, ( GLint ) arg3);
+  glutWireCone((GLdouble)arg0, (GLdouble)arg1, (GLint)arg2, (GLint)arg3);
   return v8::Undefined();
 }
 
@@ -3294,7 +3275,39 @@ Handle<Value> GLUTSolidConeCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutSolidCone(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLint ) arg2, ( GLint ) arg3);
+  glutSolidCone((GLdouble)arg0, (GLdouble)arg1, (GLint)arg2, (GLint)arg3);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTWireCubeCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glutWireCube((GLdouble)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTSolidCubeCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glutSolidCube((GLdouble)arg0);
   return v8::Undefined();
 }
 
@@ -3313,7 +3326,7 @@ Handle<Value> GLUTWireTorusCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutWireTorus(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLint ) arg2, ( GLint ) arg3);
+  glutWireTorus((GLdouble)arg0, (GLdouble)arg1, (GLint)arg2, (GLint)arg3);
   return v8::Undefined();
 }
 
@@ -3332,7 +3345,7 @@ Handle<Value> GLUTSolidTorusCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutSolidTorus(( GLdouble ) arg0, ( GLdouble ) arg1, ( GLint ) arg2, ( GLint ) arg3);
+  glutSolidTorus((GLdouble)arg0, (GLdouble)arg1, (GLint)arg2, (GLint)arg3);
   return v8::Undefined();
 }
 
@@ -3363,6 +3376,38 @@ Handle<Value> GLUTSolidDodecahedronCallback(const Arguments& args) {
 
   //make call
   glutSolidDodecahedron();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTWireTeapotCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glutWireTeapot((GLdouble)arg0);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTSolidTeapotCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  double arg0 = args[0]->NumberValue();
+
+  //make call
+  glutSolidTeapot((GLdouble)arg0);
   return v8::Undefined();
 }
 
@@ -3459,101 +3504,6 @@ Handle<Value> GLUTSolidIcosahedronCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLUTWireTeapotCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glutWireTeapot(( GLdouble ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTSolidTeapotCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  double arg0 = args[0]->NumberValue();
-
-  //make call
-  glutSolidTeapot(( GLdouble ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTGameModeStringCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  String::Utf8Value value0(args[0]);
-  char* arg0 = *value0;
-
-  //make call
-  glutGameModeString(( const char* ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTEnterGameModeCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutEnterGameMode();
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTLeaveGameModeCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutLeaveGameMode();
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTGameModeGetCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-
-  //make call
-  glutGameModeGet(( GLenum ) arg0);
-  return v8::Undefined();
-}
-
-
-
-
 Handle<Value> GLUTVideoResizeGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -3563,7 +3513,7 @@ Handle<Value> GLUTVideoResizeGetCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutVideoResizeGet(( GLenum ) arg0);
+  glutVideoResizeGet((GLenum)arg0);
   return v8::Undefined();
 }
 
@@ -3612,7 +3562,7 @@ Handle<Value> GLUTVideoResizeCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutVideoResize(( int ) arg0, ( int ) arg1, ( int ) arg2, ( int ) arg3);
+  glutVideoResize((int)arg0, (int)arg1, (int)arg2, (int)arg3);
   return v8::Undefined();
 }
 
@@ -3631,60 +3581,79 @@ Handle<Value> GLUTVideoPanCallback(const Arguments& args) {
   int arg3 = args[3]->IntegerValue();
 
   //make call
-  glutVideoPan(( int ) arg0, ( int ) arg1, ( int ) arg2, ( int ) arg3);
+  glutVideoPan((int)arg0, (int)arg1, (int)arg2, (int)arg3);
   return v8::Undefined();
 }
 
 
 
 
-Handle<Value> GLUTSetColorCallback(const Arguments& args) {
+Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 0) return v8::Undefined();
   //define handle scope
   HandleScope scope;
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  double arg1 = args[1]->NumberValue();
-  double arg2 = args[2]->NumberValue();
-  double arg3 = args[3]->NumberValue();
 
   //make call
-  glutSetColor(( int ) arg0, ( GLfloat ) arg1, ( GLfloat ) arg2, ( GLfloat ) arg3);
+  glutReportErrors();
   return v8::Undefined();
 }
 
 
 
 
-Handle<Value> GLUTGetColorCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-
-  //make call
-  glutGetColor(( int ) arg0, ( int ) arg1);
-  return v8::Undefined();
+Handle<Value> GetGLUT_KEY_REPEAT_OFF(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_KEY_REPEAT_OFF);
 }
 
 
 
 
-Handle<Value> GLUTCopyColormapCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
+Handle<Value> GetGLUT_KEY_REPEAT_ON(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_KEY_REPEAT_ON);
+}
 
-  //make call
-  glutCopyColormap(( int ) arg0);
-  return v8::Undefined();
+
+
+
+Handle<Value> GetGLUT_KEY_REPEAT_DEFAULT(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_KEY_REPEAT_DEFAULT);
+}
+
+
+
+
+Handle<Value> GetGLUT_JOYSTICK_BUTTON_A(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_JOYSTICK_BUTTON_A);
+}
+
+
+
+
+Handle<Value> GetGLUT_JOYSTICK_BUTTON_B(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_JOYSTICK_BUTTON_B);
+}
+
+
+
+
+Handle<Value> GetGLUT_JOYSTICK_BUTTON_C(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_JOYSTICK_BUTTON_C);
+}
+
+
+
+
+Handle<Value> GetGLUT_JOYSTICK_BUTTON_D(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_JOYSTICK_BUTTON_D);
 }
 
 
@@ -3699,7 +3668,7 @@ Handle<Value> GLUTIgnoreKeyRepeatCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutIgnoreKeyRepeat(( int ) arg0);
+  glutIgnoreKeyRepeat((int)arg0);
   return v8::Undefined();
 }
 
@@ -3715,7 +3684,7 @@ Handle<Value> GLUTSetKeyRepeatCallback(const Arguments& args) {
   int arg0 = args[0]->IntegerValue();
 
   //make call
-  glutSetKeyRepeat(( int ) arg0);
+  glutSetKeyRepeat((int)arg0);
   return v8::Undefined();
 }
 
@@ -3737,7 +3706,63 @@ Handle<Value> GLUTForceJoystickFuncCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLUTExtensionSupportedCallback(const Arguments& args) {
+Handle<Value> GetGLUT_GAME_MODE_ACTIVE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_ACTIVE);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_POSSIBLE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_POSSIBLE);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_WIDTH(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_WIDTH);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_HEIGHT(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_HEIGHT);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_PIXEL_DEPTH(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_PIXEL_DEPTH);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_REFRESH_RATE(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_REFRESH_RATE);
+}
+
+
+
+
+Handle<Value> GetGLUT_GAME_MODE_DISPLAY_CHANGED(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_GAME_MODE_DISPLAY_CHANGED);
+}
+
+
+
+
+Handle<Value> GLUTGameModeStringCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //define handle scope
@@ -3747,14 +3772,14 @@ Handle<Value> GLUTExtensionSupportedCallback(const Arguments& args) {
   char* arg0 = *value0;
 
   //make call
-  glutExtensionSupported(( const char* ) arg0);
+  glutGameModeString((const char*)arg0);
   return v8::Undefined();
 }
 
 
 
 
-Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
+Handle<Value> GLUTEnterGameModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
   //define handle scope
@@ -3762,7 +3787,38 @@ Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
   //get arguments
 
   //make call
-  glutReportErrors();
+  glutEnterGameMode();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTLeaveGameModeCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutLeaveGameMode();
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTGameModeGetCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  int arg0 = args[0]->IntegerValue();
+
+  //make call
+  glutGameModeGet((GLenum)arg0);
   return v8::Undefined();
 }
 
@@ -3794,9 +3850,51 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      font_["BITMAP_HELVETICA_12"] = GLUT_BITMAP_HELVETICA_12;
 
      font_["BITMAP_HELVETICA_18"] = GLUT_BITMAP_HELVETICA_18;
+     Glut->SetAccessor(String::NewSymbol("APIENTRY_DEFINED"), GetGLUT_APIENTRY_DEFINED);
+
+     Glut->SetAccessor(String::NewSymbol("WINGDIAPI_DEFINED"), GetGLUT_WINGDIAPI_DEFINED);
+
      Glut->SetAccessor(String::NewSymbol("API_VERSION"), GetGLUT_API_VERSION);
 
      Glut->SetAccessor(String::NewSymbol("XLIB_IMPLEMENTATION"), GetGLUT_XLIB_IMPLEMENTATION);
+
+     Glut->SetAccessor(String::NewSymbol("MACOSX_IMPLEMENTATION"), GetGLUT_MACOSX_IMPLEMENTATION);
+
+     Glut->SetAccessor(String::NewSymbol("RGB"), GetGLUT_RGB);
+
+     Glut->SetAccessor(String::NewSymbol("RGBA"), GetGLUT_RGBA);
+
+     Glut->SetAccessor(String::NewSymbol("INDEX"), GetGLUT_INDEX);
+
+     Glut->SetAccessor(String::NewSymbol("SINGLE"), GetGLUT_SINGLE);
+
+     Glut->SetAccessor(String::NewSymbol("DOUBLE"), GetGLUT_DOUBLE);
+
+     Glut->SetAccessor(String::NewSymbol("ACCUM"), GetGLUT_ACCUM);
+
+     Glut->SetAccessor(String::NewSymbol("ALPHA"), GetGLUT_ALPHA);
+
+     Glut->SetAccessor(String::NewSymbol("DEPTH"), GetGLUT_DEPTH);
+
+     Glut->SetAccessor(String::NewSymbol("STENCIL"), GetGLUT_STENCIL);
+
+     Glut->SetAccessor(String::NewSymbol("MULTISAMPLE"), GetGLUT_MULTISAMPLE);
+
+     Glut->SetAccessor(String::NewSymbol("STEREO"), GetGLUT_STEREO);
+
+     Glut->SetAccessor(String::NewSymbol("LUMINANCE"), GetGLUT_LUMINANCE);
+
+     Glut->SetAccessor(String::NewSymbol("NO_RECOVERY"), GetGLUT_NO_RECOVERY);
+
+     Glut->SetAccessor(String::NewSymbol("LEFT_BUTTON"), GetGLUT_LEFT_BUTTON);
+
+     Glut->SetAccessor(String::NewSymbol("MIDDLE_BUTTON"), GetGLUT_MIDDLE_BUTTON);
+
+     Glut->SetAccessor(String::NewSymbol("RIGHT_BUTTON"), GetGLUT_RIGHT_BUTTON);
+
+     Glut->SetAccessor(String::NewSymbol("DOWN"), GetGLUT_DOWN);
+
+     Glut->SetAccessor(String::NewSymbol("UP"), GetGLUT_UP);
 
      Glut->SetAccessor(String::NewSymbol("KEY_F1"), GetGLUT_KEY_F1);
 
@@ -3840,43 +3938,9 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("KEY_INSERT"), GetGLUT_KEY_INSERT);
 
-     Glut->SetAccessor(String::NewSymbol("LEFT_BUTTON"), GetGLUT_LEFT_BUTTON);
-
-     Glut->SetAccessor(String::NewSymbol("MIDDLE_BUTTON"), GetGLUT_MIDDLE_BUTTON);
-
-     Glut->SetAccessor(String::NewSymbol("RIGHT_BUTTON"), GetGLUT_RIGHT_BUTTON);
-
-     Glut->SetAccessor(String::NewSymbol("DOWN"), GetGLUT_DOWN);
-
-     Glut->SetAccessor(String::NewSymbol("UP"), GetGLUT_UP);
-
      Glut->SetAccessor(String::NewSymbol("LEFT"), GetGLUT_LEFT);
 
      Glut->SetAccessor(String::NewSymbol("ENTERED"), GetGLUT_ENTERED);
-
-     Glut->SetAccessor(String::NewSymbol("RGB"), GetGLUT_RGB);
-
-     Glut->SetAccessor(String::NewSymbol("RGBA"), GetGLUT_RGBA);
-
-     Glut->SetAccessor(String::NewSymbol("INDEX"), GetGLUT_INDEX);
-
-     Glut->SetAccessor(String::NewSymbol("SINGLE"), GetGLUT_SINGLE);
-
-     Glut->SetAccessor(String::NewSymbol("DOUBLE"), GetGLUT_DOUBLE);
-
-     Glut->SetAccessor(String::NewSymbol("ACCUM"), GetGLUT_ACCUM);
-
-     Glut->SetAccessor(String::NewSymbol("ALPHA"), GetGLUT_ALPHA);
-
-     Glut->SetAccessor(String::NewSymbol("DEPTH"), GetGLUT_DEPTH);
-
-     Glut->SetAccessor(String::NewSymbol("STENCIL"), GetGLUT_STENCIL);
-
-     Glut->SetAccessor(String::NewSymbol("MULTISAMPLE"), GetGLUT_MULTISAMPLE);
-
-     Glut->SetAccessor(String::NewSymbol("STEREO"), GetGLUT_STEREO);
-
-     Glut->SetAccessor(String::NewSymbol("LUMINANCE"), GetGLUT_LUMINANCE);
 
      Glut->SetAccessor(String::NewSymbol("MENU_NOT_IN_USE"), GetGLUT_MENU_NOT_IN_USE);
 
@@ -3893,6 +3957,16 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->SetAccessor(String::NewSymbol("PARTIALLY_RETAINED"), GetGLUT_PARTIALLY_RETAINED);
 
      Glut->SetAccessor(String::NewSymbol("FULLY_COVERED"), GetGLUT_FULLY_COVERED);
+
+     Glut->SetAccessor(String::NewSymbol("RED"), GetGLUT_RED);
+
+     Glut->SetAccessor(String::NewSymbol("GREEN"), GetGLUT_GREEN);
+
+     Glut->SetAccessor(String::NewSymbol("BLUE"), GetGLUT_BLUE);
+
+     Glut->SetAccessor(String::NewSymbol("NORMAL"), GetGLUT_NORMAL);
+
+     Glut->SetAccessor(String::NewSymbol("OVERLAY"), GetGLUT_OVERLAY);
 
      Glut->SetAccessor(String::NewSymbol("STROKE_ROMAN"), GetGLUT_STROKE_ROMAN);
 
@@ -3984,8 +4058,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("WINDOW_FORMAT_ID"), GetGLUT_WINDOW_FORMAT_ID);
 
-     Glut->SetAccessor(String::NewSymbol("INIT_STATE"), GetGLUT_INIT_STATE);
-
      Glut->SetAccessor(String::NewSymbol("HAS_KEYBOARD"), GetGLUT_HAS_KEYBOARD);
 
      Glut->SetAccessor(String::NewSymbol("HAS_MOUSE"), GetGLUT_HAS_MOUSE);
@@ -4052,10 +4124,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("VIDEO_RESIZE_HEIGHT"), GetGLUT_VIDEO_RESIZE_HEIGHT);
 
-     Glut->SetAccessor(String::NewSymbol("NORMAL"), GetGLUT_NORMAL);
-
-     Glut->SetAccessor(String::NewSymbol("OVERLAY"), GetGLUT_OVERLAY);
-
      Glut->SetAccessor(String::NewSymbol("ACTIVE_SHIFT"), GetGLUT_ACTIVE_SHIFT);
 
      Glut->SetAccessor(String::NewSymbol("ACTIVE_CTRL"), GetGLUT_ACTIVE_CTRL);
@@ -4108,12 +4176,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("CURSOR_FULL_CROSSHAIR"), GetGLUT_CURSOR_FULL_CROSSHAIR);
 
-     Glut->SetAccessor(String::NewSymbol("RED"), GetGLUT_RED);
-
-     Glut->SetAccessor(String::NewSymbol("GREEN"), GetGLUT_GREEN);
-
-     Glut->SetAccessor(String::NewSymbol("BLUE"), GetGLUT_BLUE);
-
      Glut->SetAccessor(String::NewSymbol("KEY_REPEAT_OFF"), GetGLUT_KEY_REPEAT_OFF);
 
      Glut->SetAccessor(String::NewSymbol("KEY_REPEAT_ON"), GetGLUT_KEY_REPEAT_ON);
@@ -4143,13 +4205,13 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->SetAccessor(String::NewSymbol("GAME_MODE_DISPLAY_CHANGED"), GetGLUT_GAME_MODE_DISPLAY_CHANGED);
      Glut->Set(String::NewSymbol("Init"), FunctionTemplate::New(GLUTInitCallback));
 
-     Glut->Set(String::NewSymbol("InitWindowPosition"), FunctionTemplate::New(GLUTInitWindowPositionCallback));
-
-     Glut->Set(String::NewSymbol("InitWindowSize"), FunctionTemplate::New(GLUTInitWindowSizeCallback));
-
      Glut->Set(String::NewSymbol("InitDisplayMode"), FunctionTemplate::New(GLUTInitDisplayModeCallback));
 
      Glut->Set(String::NewSymbol("InitDisplayString"), FunctionTemplate::New(GLUTInitDisplayStringCallback));
+
+     Glut->Set(String::NewSymbol("InitWindowPosition"), FunctionTemplate::New(GLUTInitWindowPositionCallback));
+
+     Glut->Set(String::NewSymbol("InitWindowSize"), FunctionTemplate::New(GLUTInitWindowSizeCallback));
 
      Glut->Set(String::NewSymbol("MainLoop"), FunctionTemplate::New(GLUTMainLoopCallback));
 
@@ -4159,39 +4221,43 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("DestroyWindow"), FunctionTemplate::New(GLUTDestroyWindowCallback));
 
-     Glut->Set(String::NewSymbol("SetWindow"), FunctionTemplate::New(GLUTSetWindowCallback));
+     Glut->Set(String::NewSymbol("PostRedisplay"), FunctionTemplate::New(GLUTPostRedisplayCallback));
+
+     Glut->Set(String::NewSymbol("PostWindowRedisplay"), FunctionTemplate::New(GLUTPostWindowRedisplayCallback));
+
+     Glut->Set(String::NewSymbol("SwapBuffers"), FunctionTemplate::New(GLUTSwapBuffersCallback));
 
      Glut->Set(String::NewSymbol("GetWindow"), FunctionTemplate::New(GLUTGetWindowCallback));
+
+     Glut->Set(String::NewSymbol("SetWindow"), FunctionTemplate::New(GLUTSetWindowCallback));
 
      Glut->Set(String::NewSymbol("SetWindowTitle"), FunctionTemplate::New(GLUTSetWindowTitleCallback));
 
      Glut->Set(String::NewSymbol("SetIconTitle"), FunctionTemplate::New(GLUTSetIconTitleCallback));
 
+     Glut->Set(String::NewSymbol("PositionWindow"), FunctionTemplate::New(GLUTPositionWindowCallback));
+
      Glut->Set(String::NewSymbol("ReshapeWindow"), FunctionTemplate::New(GLUTReshapeWindowCallback));
 
-     Glut->Set(String::NewSymbol("PositionWindow"), FunctionTemplate::New(GLUTPositionWindowCallback));
+     Glut->Set(String::NewSymbol("PopWindow"), FunctionTemplate::New(GLUTPopWindowCallback));
+
+     Glut->Set(String::NewSymbol("PushWindow"), FunctionTemplate::New(GLUTPushWindowCallback));
+
+     Glut->Set(String::NewSymbol("IconifyWindow"), FunctionTemplate::New(GLUTIconifyWindowCallback));
 
      Glut->Set(String::NewSymbol("ShowWindow"), FunctionTemplate::New(GLUTShowWindowCallback));
 
      Glut->Set(String::NewSymbol("HideWindow"), FunctionTemplate::New(GLUTHideWindowCallback));
 
-     Glut->Set(String::NewSymbol("IconifyWindow"), FunctionTemplate::New(GLUTIconifyWindowCallback));
-
-     Glut->Set(String::NewSymbol("PushWindow"), FunctionTemplate::New(GLUTPushWindowCallback));
-
-     Glut->Set(String::NewSymbol("PopWindow"), FunctionTemplate::New(GLUTPopWindowCallback));
-
      Glut->Set(String::NewSymbol("FullScreen"), FunctionTemplate::New(GLUTFullScreenCallback));
 
-     Glut->Set(String::NewSymbol("PostWindowRedisplay"), FunctionTemplate::New(GLUTPostWindowRedisplayCallback));
-
-     Glut->Set(String::NewSymbol("PostRedisplay"), FunctionTemplate::New(GLUTPostRedisplayCallback));
-
-     Glut->Set(String::NewSymbol("SwapBuffers"), FunctionTemplate::New(GLUTSwapBuffersCallback));
+     Glut->Set(String::NewSymbol("SetCursor"), FunctionTemplate::New(GLUTSetCursorCallback));
 
      Glut->Set(String::NewSymbol("WarpPointer"), FunctionTemplate::New(GLUTWarpPointerCallback));
 
-     Glut->Set(String::NewSymbol("SetCursor"), FunctionTemplate::New(GLUTSetCursorCallback));
+     Glut->Set(String::NewSymbol("WMCloseFunc"), FunctionTemplate::New(GLUTWMCloseFuncCallback));
+
+     Glut->Set(String::NewSymbol("CheckLoop"), FunctionTemplate::New(GLUTCheckLoopCallback));
 
      Glut->Set(String::NewSymbol("EstablishOverlay"), FunctionTemplate::New(GLUTEstablishOverlayCallback));
 
@@ -4229,19 +4295,11 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("DetachMenu"), FunctionTemplate::New(GLUTDetachMenuCallback));
 
-     Glut->Set(String::NewSymbol("TimerFunc"), FunctionTemplate::New(GLUTTimerFuncCallback));
-
-     Glut->Set(String::NewSymbol("IdleFunc"), FunctionTemplate::New(GLUTIdleFuncCallback));
-
-     Glut->Set(String::NewSymbol("KeyboardFunc"), FunctionTemplate::New(GLUTKeyboardFuncCallback));
-
-     Glut->Set(String::NewSymbol("SpecialFunc"), FunctionTemplate::New(GLUTSpecialFuncCallback));
+     Glut->Set(String::NewSymbol("DisplayFunc"), FunctionTemplate::New(GLUTDisplayFuncCallback));
 
      Glut->Set(String::NewSymbol("ReshapeFunc"), FunctionTemplate::New(GLUTReshapeFuncCallback));
 
-     Glut->Set(String::NewSymbol("VisibilityFunc"), FunctionTemplate::New(GLUTVisibilityFuncCallback));
-
-     Glut->Set(String::NewSymbol("DisplayFunc"), FunctionTemplate::New(GLUTDisplayFuncCallback));
+     Glut->Set(String::NewSymbol("KeyboardFunc"), FunctionTemplate::New(GLUTKeyboardFuncCallback));
 
      Glut->Set(String::NewSymbol("MouseFunc"), FunctionTemplate::New(GLUTMouseFuncCallback));
 
@@ -4251,19 +4309,15 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("EntryFunc"), FunctionTemplate::New(GLUTEntryFuncCallback));
 
-     Glut->Set(String::NewSymbol("KeyboardUpFunc"), FunctionTemplate::New(GLUTKeyboardUpFuncCallback));
+     Glut->Set(String::NewSymbol("VisibilityFunc"), FunctionTemplate::New(GLUTVisibilityFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpecialUpFunc"), FunctionTemplate::New(GLUTSpecialUpFuncCallback));
+     Glut->Set(String::NewSymbol("IdleFunc"), FunctionTemplate::New(GLUTIdleFuncCallback));
 
-     Glut->Set(String::NewSymbol("JoystickFunc"), FunctionTemplate::New(GLUTJoystickFuncCallback));
+     Glut->Set(String::NewSymbol("TimerFunc"), FunctionTemplate::New(GLUTTimerFuncCallback));
 
      Glut->Set(String::NewSymbol("MenuStateFunc"), FunctionTemplate::New(GLUTMenuStateFuncCallback));
 
-     Glut->Set(String::NewSymbol("MenuStatusFunc"), FunctionTemplate::New(GLUTMenuStatusFuncCallback));
-
-     Glut->Set(String::NewSymbol("OverlayDisplayFunc"), FunctionTemplate::New(GLUTOverlayDisplayFuncCallback));
-
-     Glut->Set(String::NewSymbol("WindowStatusFunc"), FunctionTemplate::New(GLUTWindowStatusFuncCallback));
+     Glut->Set(String::NewSymbol("SpecialFunc"), FunctionTemplate::New(GLUTSpecialFuncCallback));
 
      Glut->Set(String::NewSymbol("SpaceballMotionFunc"), FunctionTemplate::New(GLUTSpaceballMotionFuncCallback));
 
@@ -4279,9 +4333,29 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("TabletButtonFunc"), FunctionTemplate::New(GLUTTabletButtonFuncCallback));
 
+     Glut->Set(String::NewSymbol("MenuStatusFunc"), FunctionTemplate::New(GLUTMenuStatusFuncCallback));
+
+     Glut->Set(String::NewSymbol("OverlayDisplayFunc"), FunctionTemplate::New(GLUTOverlayDisplayFuncCallback));
+
+     Glut->Set(String::NewSymbol("WindowStatusFunc"), FunctionTemplate::New(GLUTWindowStatusFuncCallback));
+
+     Glut->Set(String::NewSymbol("KeyboardUpFunc"), FunctionTemplate::New(GLUTKeyboardUpFuncCallback));
+
+     Glut->Set(String::NewSymbol("SpecialUpFunc"), FunctionTemplate::New(GLUTSpecialUpFuncCallback));
+
+     Glut->Set(String::NewSymbol("JoystickFunc"), FunctionTemplate::New(GLUTJoystickFuncCallback));
+
+     Glut->Set(String::NewSymbol("SetColor"), FunctionTemplate::New(GLUTSetColorCallback));
+
+     Glut->Set(String::NewSymbol("GetColor"), FunctionTemplate::New(GLUTGetColorCallback));
+
+     Glut->Set(String::NewSymbol("CopyColormap"), FunctionTemplate::New(GLUTCopyColormapCallback));
+
      Glut->Set(String::NewSymbol("Get"), FunctionTemplate::New(GLUTGetCallback));
 
      Glut->Set(String::NewSymbol("DeviceGet"), FunctionTemplate::New(GLUTDeviceGetCallback));
+
+     Glut->Set(String::NewSymbol("ExtensionSupported"), FunctionTemplate::New(GLUTExtensionSupportedCallback));
 
      Glut->Set(String::NewSymbol("GetModifiers"), FunctionTemplate::New(GLUTGetModifiersCallback));
 
@@ -4299,10 +4373,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("StrokeLength"), FunctionTemplate::New(GLUTStrokeLengthCallback));
 
-     Glut->Set(String::NewSymbol("WireCube"), FunctionTemplate::New(GLUTWireCubeCallback));
-
-     Glut->Set(String::NewSymbol("SolidCube"), FunctionTemplate::New(GLUTSolidCubeCallback));
-
      Glut->Set(String::NewSymbol("WireSphere"), FunctionTemplate::New(GLUTWireSphereCallback));
 
      Glut->Set(String::NewSymbol("SolidSphere"), FunctionTemplate::New(GLUTSolidSphereCallback));
@@ -4311,6 +4381,10 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("SolidCone"), FunctionTemplate::New(GLUTSolidConeCallback));
 
+     Glut->Set(String::NewSymbol("WireCube"), FunctionTemplate::New(GLUTWireCubeCallback));
+
+     Glut->Set(String::NewSymbol("SolidCube"), FunctionTemplate::New(GLUTSolidCubeCallback));
+
      Glut->Set(String::NewSymbol("WireTorus"), FunctionTemplate::New(GLUTWireTorusCallback));
 
      Glut->Set(String::NewSymbol("SolidTorus"), FunctionTemplate::New(GLUTSolidTorusCallback));
@@ -4318,6 +4392,10 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->Set(String::NewSymbol("WireDodecahedron"), FunctionTemplate::New(GLUTWireDodecahedronCallback));
 
      Glut->Set(String::NewSymbol("SolidDodecahedron"), FunctionTemplate::New(GLUTSolidDodecahedronCallback));
+
+     Glut->Set(String::NewSymbol("WireTeapot"), FunctionTemplate::New(GLUTWireTeapotCallback));
+
+     Glut->Set(String::NewSymbol("SolidTeapot"), FunctionTemplate::New(GLUTSolidTeapotCallback));
 
      Glut->Set(String::NewSymbol("WireOctahedron"), FunctionTemplate::New(GLUTWireOctahedronCallback));
 
@@ -4331,18 +4409,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("SolidIcosahedron"), FunctionTemplate::New(GLUTSolidIcosahedronCallback));
 
-     Glut->Set(String::NewSymbol("WireTeapot"), FunctionTemplate::New(GLUTWireTeapotCallback));
-
-     Glut->Set(String::NewSymbol("SolidTeapot"), FunctionTemplate::New(GLUTSolidTeapotCallback));
-
-     Glut->Set(String::NewSymbol("GameModeString"), FunctionTemplate::New(GLUTGameModeStringCallback));
-
-     Glut->Set(String::NewSymbol("EnterGameMode"), FunctionTemplate::New(GLUTEnterGameModeCallback));
-
-     Glut->Set(String::NewSymbol("LeaveGameMode"), FunctionTemplate::New(GLUTLeaveGameModeCallback));
-
-     Glut->Set(String::NewSymbol("GameModeGet"), FunctionTemplate::New(GLUTGameModeGetCallback));
-
      Glut->Set(String::NewSymbol("VideoResizeGet"), FunctionTemplate::New(GLUTVideoResizeGetCallback));
 
      Glut->Set(String::NewSymbol("SetupVideoResizing"), FunctionTemplate::New(GLUTSetupVideoResizingCallback));
@@ -4353,11 +4419,7 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("VideoPan"), FunctionTemplate::New(GLUTVideoPanCallback));
 
-     Glut->Set(String::NewSymbol("SetColor"), FunctionTemplate::New(GLUTSetColorCallback));
-
-     Glut->Set(String::NewSymbol("GetColor"), FunctionTemplate::New(GLUTGetColorCallback));
-
-     Glut->Set(String::NewSymbol("CopyColormap"), FunctionTemplate::New(GLUTCopyColormapCallback));
+     Glut->Set(String::NewSymbol("ReportErrors"), FunctionTemplate::New(GLUTReportErrorsCallback));
 
      Glut->Set(String::NewSymbol("IgnoreKeyRepeat"), FunctionTemplate::New(GLUTIgnoreKeyRepeatCallback));
 
@@ -4365,9 +4427,13 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->Set(String::NewSymbol("ForceJoystickFunc"), FunctionTemplate::New(GLUTForceJoystickFuncCallback));
 
-     Glut->Set(String::NewSymbol("ExtensionSupported"), FunctionTemplate::New(GLUTExtensionSupportedCallback));
+     Glut->Set(String::NewSymbol("GameModeString"), FunctionTemplate::New(GLUTGameModeStringCallback));
 
-     Glut->Set(String::NewSymbol("ReportErrors"), FunctionTemplate::New(GLUTReportErrorsCallback));
+     Glut->Set(String::NewSymbol("EnterGameMode"), FunctionTemplate::New(GLUTEnterGameModeCallback));
+
+     Glut->Set(String::NewSymbol("LeaveGameMode"), FunctionTemplate::New(GLUTLeaveGameModeCallback));
+
+     Glut->Set(String::NewSymbol("GameModeGet"), FunctionTemplate::New(GLUTGameModeGetCallback));
 
 
       // Again, return the result through the current handle scope.

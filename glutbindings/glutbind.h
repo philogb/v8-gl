@@ -17,6 +17,14 @@
 #include <GL/glut.h>
 #endif
 
+#ifndef GLUT_APIENTRY_DEFINED
+#define GLUT_APIENTRY_DEFINED 1
+#endif
+
+#ifndef GLUT_WINGDIAPI_DEFINED
+#define GLUT_WINGDIAPI_DEFINED 1
+#endif
+
 #include <stdio.h>
 #include <map>
 using namespace std;

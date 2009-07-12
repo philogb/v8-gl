@@ -1,7 +1,7 @@
 import re
 import json
 
-PATH_GL = '/usr/include/GL/gl.h'
+PATH_GL = 'gl.h'
 FILE_JSON = 'glbind.json'
 
 #constant and function patterns
@@ -18,11 +18,11 @@ constant_pattern = """
 """
 
 function_pattern = """
-    [\s]*GLAPI[\s]+          #GLAPI typedef
+    [\s]*extern[\s]+          #extern declaration
     
     (?P<return_type>[^\s]+)  #Function return type
     
-    [\s]+GLAPIENTRY[\s]+     #GLAPIENTRY typedef
+    [\s]+ 
     
     (?P<name>gl[A-Za-z0-9]+) #Function name
     
