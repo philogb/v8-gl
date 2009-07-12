@@ -111,8 +111,7 @@ function draw() {
     Glut.SwapBuffers();
 }
 
-function main() 
-{
+function main() {
 	//Initialize Glut
 	Glut.Init();
 	Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
