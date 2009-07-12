@@ -6,6 +6,20 @@
 #include "v8-gl.h"
 #include <stdio.h>
 
+Handle<Value> log(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  String::Utf8Value value0(args[0]);
+  char* arg0 = *value0;
+
+  //make call
+  fprintf(stdout, "%s", arg0);
+  return v8::Undefined();
+}
+
 V8GL::V8GL(Handle<String> script) : script_(script) {};
 
 bool V8GL::executeScript() {
@@ -53,6 +67,7 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  global->Set(String::New("Gles"), Gles);
 	  global->Set(String::New("Glu"), createGlu());
 	  global->Set(String::New("Glut"), GlutFactory::createGlut(pargc, argv));
+	  global->Set(String::New("log"), FunctionTemplate::New(log));
 
 	  Handle<Context> context = Context::New(NULL, global);
 
