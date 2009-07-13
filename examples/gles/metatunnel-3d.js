@@ -69,7 +69,7 @@ Glut.CreateWindow("OpenGL on V8 baby!");
   var vertex_shader_source =
 	"attribute vec4 pos; void main() { gl_Position = vec4(pos.x * float(" + w/2 + "), pos.y * float(" + h/2 + "), 0.0, 1.0); }";
 
-  var buffers = gl.genBuffers(1);
+  //var buffers = gl.genBuffers(1);
 
   var vs = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vs, vertex_shader_source);
@@ -98,7 +98,7 @@ Glut.CreateWindow("OpenGL on V8 baby!");
   gl.useProgram(p);
 
   // Store our attrib data in a VBO.
-  gl.bindBuffer(gl.GL_ARRAY_BUFFER, buffers[0]);
+  //gl.bindBuffer(gl.GL_ARRAY_BUFFER, buffers[0]);
   //gl.bufferData(gl.GL_ARRAY_BUFFER, 
 
   gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, [ -1, 1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0 ]);
@@ -110,12 +110,12 @@ Glut.CreateWindow("OpenGL on V8 baby!");
     r = n & 0xff;
     g = (n>>8) & 0xff;
     b = (n>>16) & 0xff;
-    gl.uniform4fv(0, [r/255.0, g/255.0, b/255.0, 1.0]);
+    gl.uniform4fv(0, 1, [r/255.0, g/255.0, b/255.0, 1.0]);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
     Glut.SwapBuffers();
 
-    //Glut.PostRedisplay();
+    Glut.PostRedisplay();
     Glut.TimerFunc(25, arguments.callee, 0);
   }, 0);
 
