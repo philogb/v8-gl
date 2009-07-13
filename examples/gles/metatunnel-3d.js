@@ -17,6 +17,28 @@ for (name in Gles) {
 
 w = 740; h = 480;
 
+function draw() {
+  gl.viewport(0, 0, w, h);
+  gl.useProgram(p);
+
+  // Store our attrib data in a VBO.
+  //gl.bindBuffer(gl.GL_ARRAY_BUFFER, buffers[0]);
+  //gl.bufferData(gl.GL_ARRAY_BUFFER, 
+
+  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, [ -1, 1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0 ]);
+  gl.enableVertexAttribArray(0);
+
+   var n = Date.now();
+    r = n & 0xff;
+    g = (n>>8) & 0xff;
+    b = (n>>16) & 0xff;
+    gl.uniform4fv(0, 1, [r/255.0, g/255.0, b/255.0, 1.0]);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    Glut.SwapBuffers();
+
+}
+
 //Initialize Glut
 Glut.Init();
 Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
@@ -83,7 +105,7 @@ Glut.CreateWindow("OpenGL on V8 baby!");
     return;
   }
 
-  var p = gl.createProgram();
+  p = gl.createProgram();
   gl.attachShader(p, vs);
   gl.attachShader(p, fs);
   gl.linkProgram(p);
@@ -93,28 +115,10 @@ Glut.CreateWindow("OpenGL on V8 baby!");
     var error = gl.getProgramInfoLog(p);
     return 0;
   }
-
-  gl.viewport(0, 0, w, h);
-  gl.useProgram(p);
-
-  // Store our attrib data in a VBO.
-  //gl.bindBuffer(gl.GL_ARRAY_BUFFER, buffers[0]);
-  //gl.bufferData(gl.GL_ARRAY_BUFFER, 
-
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, [ -1, 1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0 ]);
-  gl.enableVertexAttribArray(0);
-
+  
+  Glut.DisplayFunc(draw);
   //Set timeout callback
   Glut.TimerFunc(25, function() {
-    var n = Date.now();
-    r = n & 0xff;
-    g = (n>>8) & 0xff;
-    b = (n>>16) & 0xff;
-    gl.uniform4fv(0, 1, [r/255.0, g/255.0, b/255.0, 1.0]);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    Glut.SwapBuffers();
-
     Glut.PostRedisplay();
     Glut.TimerFunc(25, arguments.callee, 0);
   }, 0);
