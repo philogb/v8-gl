@@ -3511,31 +3511,6 @@
     }, 
     {
         "type": "c", 
-        "name": "GL_SRC3_RGB", 
-        "value": "0x8583"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC4_RGB", 
-        "value": "0x8584"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC5_RGB", 
-        "value": "0x8585"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC6_RGB", 
-        "value": "0x8586"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC7_RGB", 
-        "value": "0x8587"
-    }, 
-    {
-        "type": "c", 
         "name": "GL_SRC0_ALPHA", 
         "value": "0x8588"
     }, 
@@ -3548,31 +3523,6 @@
         "type": "c", 
         "name": "GL_SRC2_ALPHA", 
         "value": "0x858A"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC3_ALPHA", 
-        "value": "0x858B"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC4_ALPHA", 
-        "value": "0x858C"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC5_ALPHA", 
-        "value": "0x858D"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC6_ALPHA", 
-        "value": "0x858E"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SRC7_ALPHA", 
-        "value": "0x858F"
     }, 
     {
         "type": "c", 
@@ -3591,31 +3541,6 @@
     }, 
     {
         "type": "c", 
-        "name": "GL_SOURCE3_RGB", 
-        "value": "0x8583"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE4_RGB", 
-        "value": "0x8584"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE5_RGB", 
-        "value": "0x8585"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE6_RGB", 
-        "value": "0x8586"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE7_RGB", 
-        "value": "0x8587"
-    }, 
-    {
-        "type": "c", 
         "name": "GL_SOURCE0_ALPHA", 
         "value": "0x8588"
     }, 
@@ -3628,31 +3553,6 @@
         "type": "c", 
         "name": "GL_SOURCE2_ALPHA", 
         "value": "0x858A"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE3_ALPHA", 
-        "value": "0x858B"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE4_ALPHA", 
-        "value": "0x858C"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE5_ALPHA", 
-        "value": "0x858D"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE6_ALPHA", 
-        "value": "0x858E"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_SOURCE7_ALPHA", 
-        "value": "0x858F"
     }, 
     {
         "type": "c", 
@@ -3671,31 +3571,6 @@
     }, 
     {
         "type": "c", 
-        "name": "GL_OPERAND3_RGB", 
-        "value": "0x8593"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND4_RGB", 
-        "value": "0x8594"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND5_RGB", 
-        "value": "0x8595"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND6_RGB", 
-        "value": "0x8596"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND7_RGB", 
-        "value": "0x8597"
-    }, 
-    {
-        "type": "c", 
         "name": "GL_OPERAND0_ALPHA", 
         "value": "0x8598"
     }, 
@@ -3708,31 +3583,6 @@
         "type": "c", 
         "name": "GL_OPERAND2_ALPHA", 
         "value": "0x859A"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND3_ALPHA", 
-        "value": "0x859B"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND4_ALPHA", 
-        "value": "0x859C"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND5_ALPHA", 
-        "value": "0x859D"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND6_ALPHA", 
-        "value": "0x859E"
-    }, 
-    {
-        "type": "c", 
-        "name": "GL_OPERAND7_ALPHA", 
-        "value": "0x859F"
     }, 
     {
         "type": "c", 
@@ -8438,14 +8288,6 @@
     {
         "return_type": "void", 
         "type": "f", 
-        "name": "glSamplePass", 
-        "parameters": [
-            "GLenum"
-        ]
-    }, 
-    {
-        "return_type": "void", 
-        "type": "f", 
         "name": "glLoadTransposeMatrixf", 
         "parameters": [
             "const GLfloat*"
@@ -9136,8 +8978,8 @@
         "name": "glMultiDrawArrays", 
         "parameters": [
             "GLenum", 
-            "const GLint*", 
-            "const GLsizei*", 
+            "GLint*", 
+            "GLsizei*", 
             "GLsizei"
         ]
     }, 

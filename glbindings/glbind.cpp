@@ -7679,23 +7679,6 @@ Handle<Value> GLglSampleCoverageCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLglSamplePassCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
-  //get arguments
-  int arg0 = args[0]->IntegerValue();
-
-  //make call
-  glSamplePass((GLenum) arg0);
-  Handle<Object> res(GlFactory::self_);
-  return res;
-}
-
-
-
-
 Handle<Value> GLglLoadTransposeMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -9097,27 +9080,27 @@ Handle<Value> GLglMultiDrawArraysCallback(const Arguments& args) {
 
     
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  GLint* arg1 = new GLint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-       GLint aux = ( GLint)arg->IntegerValue();
+      GLint aux = (GLint)arg->IntegerValue();
       arg1[j] = aux; 
   }
     
     
     
   Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLsizei* arg2 = new  GLsizei[arrHandle2->Length()];
+  GLsizei* arg2 = new GLsizei[arrHandle2->Length()];
   for (unsigned j = 0; j < arrHandle2->Length(); j++) {
       Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLsizei aux = ( GLsizei)arg->IntegerValue();
+      GLsizei aux = (GLsizei)arg->IntegerValue();
       arg2[j] = aux; 
   }
     
       int arg3 = args[3]->IntegerValue();
 
   //make call
-  glMultiDrawArrays((GLenum) arg0, (const GLint*) arg1, (const GLsizei*) arg2, (GLsizei) arg3);
+  glMultiDrawArrays((GLenum) arg0, (GLint*) arg1, (GLsizei*) arg2, (GLsizei) arg3);
   Handle<Object> res(GlFactory::self_);
   return res;
 }
@@ -13263,31 +13246,11 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
 
      Gl->Set(String::NewSymbol("SRC2_RGB"), Uint32::New(GL_SRC2_RGB), ReadOnly);
 
-     Gl->Set(String::NewSymbol("SRC3_RGB"), Uint32::New(GL_SRC3_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC4_RGB"), Uint32::New(GL_SRC4_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC5_RGB"), Uint32::New(GL_SRC5_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC6_RGB"), Uint32::New(GL_SRC6_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC7_RGB"), Uint32::New(GL_SRC7_RGB), ReadOnly);
-
      Gl->Set(String::NewSymbol("SRC0_ALPHA"), Uint32::New(GL_SRC0_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("SRC1_ALPHA"), Uint32::New(GL_SRC1_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("SRC2_ALPHA"), Uint32::New(GL_SRC2_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC3_ALPHA"), Uint32::New(GL_SRC3_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC4_ALPHA"), Uint32::New(GL_SRC4_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC5_ALPHA"), Uint32::New(GL_SRC5_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC6_ALPHA"), Uint32::New(GL_SRC6_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SRC7_ALPHA"), Uint32::New(GL_SRC7_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("SOURCE0_RGB"), Uint32::New(GL_SOURCE0_RGB), ReadOnly);
 
@@ -13295,31 +13258,11 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
 
      Gl->Set(String::NewSymbol("SOURCE2_RGB"), Uint32::New(GL_SOURCE2_RGB), ReadOnly);
 
-     Gl->Set(String::NewSymbol("SOURCE3_RGB"), Uint32::New(GL_SOURCE3_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE4_RGB"), Uint32::New(GL_SOURCE4_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE5_RGB"), Uint32::New(GL_SOURCE5_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE6_RGB"), Uint32::New(GL_SOURCE6_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE7_RGB"), Uint32::New(GL_SOURCE7_RGB), ReadOnly);
-
      Gl->Set(String::NewSymbol("SOURCE0_ALPHA"), Uint32::New(GL_SOURCE0_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("SOURCE1_ALPHA"), Uint32::New(GL_SOURCE1_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("SOURCE2_ALPHA"), Uint32::New(GL_SOURCE2_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE3_ALPHA"), Uint32::New(GL_SOURCE3_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE4_ALPHA"), Uint32::New(GL_SOURCE4_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE5_ALPHA"), Uint32::New(GL_SOURCE5_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE6_ALPHA"), Uint32::New(GL_SOURCE6_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("SOURCE7_ALPHA"), Uint32::New(GL_SOURCE7_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("OPERAND0_RGB"), Uint32::New(GL_OPERAND0_RGB), ReadOnly);
 
@@ -13327,31 +13270,11 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
 
      Gl->Set(String::NewSymbol("OPERAND2_RGB"), Uint32::New(GL_OPERAND2_RGB), ReadOnly);
 
-     Gl->Set(String::NewSymbol("OPERAND3_RGB"), Uint32::New(GL_OPERAND3_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND4_RGB"), Uint32::New(GL_OPERAND4_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND5_RGB"), Uint32::New(GL_OPERAND5_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND6_RGB"), Uint32::New(GL_OPERAND6_RGB), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND7_RGB"), Uint32::New(GL_OPERAND7_RGB), ReadOnly);
-
      Gl->Set(String::NewSymbol("OPERAND0_ALPHA"), Uint32::New(GL_OPERAND0_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("OPERAND1_ALPHA"), Uint32::New(GL_OPERAND1_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("OPERAND2_ALPHA"), Uint32::New(GL_OPERAND2_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND3_ALPHA"), Uint32::New(GL_OPERAND3_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND4_ALPHA"), Uint32::New(GL_OPERAND4_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND5_ALPHA"), Uint32::New(GL_OPERAND5_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND6_ALPHA"), Uint32::New(GL_OPERAND6_ALPHA), ReadOnly);
-
-     Gl->Set(String::NewSymbol("OPERAND7_ALPHA"), Uint32::New(GL_OPERAND7_ALPHA), ReadOnly);
 
      Gl->Set(String::NewSymbol("DOT3_RGB"), Uint32::New(GL_DOT3_RGB), ReadOnly);
 
@@ -14478,8 +14401,6 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
      Gl->Set(String::NewSymbol("Viewport"), FunctionTemplate::New(GLglViewportCallback));
 
      Gl->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLglSampleCoverageCallback));
-
-     Gl->Set(String::NewSymbol("SamplePass"), FunctionTemplate::New(GLglSamplePassCallback));
 
      Gl->Set(String::NewSymbol("LoadTransposeMatrixf"), FunctionTemplate::New(GLglLoadTransposeMatrixfCallback));
 
