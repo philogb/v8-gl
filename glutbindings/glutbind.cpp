@@ -41,14 +41,6 @@ Handle<Value> GetGLUT_XLIB_IMPLEMENTATION(Local<String> property,
 
 
 
-Handle<Value> GetGLUT_MACOSX_IMPLEMENTATION(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_MACOSX_IMPLEMENTATION);
-}
-
-
-
-
 Handle<Value> GetGLUT_RGB(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_RGB);
@@ -140,14 +132,6 @@ Handle<Value> GetGLUT_STEREO(Local<String> property,
 Handle<Value> GetGLUT_LUMINANCE(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_LUMINANCE);
-}
-
-
-
-
-Handle<Value> GetGLUT_NO_RECOVERY(Local<String> property,
-                      const AccessorInfo &info) {
-    return Uint32::New(GLUT_NO_RECOVERY);
 }
 
 
@@ -1747,38 +1731,6 @@ void funcWMCloseFunc ( ) {
     fprintf(stderr, "Exception in WMCloseFunc: %s\n", *error);
   }
 }
-
-Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
-  //get arguments
-  //delete previous assigned function
-  persistentWMCloseFunc.Dispose();
-  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
-  persistentWMCloseFunc = Persistent<Function>::New(value0);
-
-  //make call
-  glutWMCloseFunc((void (*)(void)) funcWMCloseFunc);
-  return v8::Undefined();
-}
-
-
-
-
-Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
-  //get arguments
-
-  //make call
-  glutCheckLoop();
-  return v8::Undefined();
-}
-
-
-
 
 Handle<Value> GLUTEstablishOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
@@ -3858,8 +3810,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("XLIB_IMPLEMENTATION"), GetGLUT_XLIB_IMPLEMENTATION);
 
-     Glut->SetAccessor(String::NewSymbol("MACOSX_IMPLEMENTATION"), GetGLUT_MACOSX_IMPLEMENTATION);
-
      Glut->SetAccessor(String::NewSymbol("RGB"), GetGLUT_RGB);
 
      Glut->SetAccessor(String::NewSymbol("RGBA"), GetGLUT_RGBA);
@@ -3883,8 +3833,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->SetAccessor(String::NewSymbol("STEREO"), GetGLUT_STEREO);
 
      Glut->SetAccessor(String::NewSymbol("LUMINANCE"), GetGLUT_LUMINANCE);
-
-     Glut->SetAccessor(String::NewSymbol("NO_RECOVERY"), GetGLUT_NO_RECOVERY);
 
      Glut->SetAccessor(String::NewSymbol("LEFT_BUTTON"), GetGLUT_LEFT_BUTTON);
 
@@ -4254,10 +4202,6 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->Set(String::NewSymbol("SetCursor"), FunctionTemplate::New(GLUTSetCursorCallback));
 
      Glut->Set(String::NewSymbol("WarpPointer"), FunctionTemplate::New(GLUTWarpPointerCallback));
-
-     Glut->Set(String::NewSymbol("WMCloseFunc"), FunctionTemplate::New(GLUTWMCloseFuncCallback));
-
-     Glut->Set(String::NewSymbol("CheckLoop"), FunctionTemplate::New(GLUTCheckLoopCallback));
 
      Glut->Set(String::NewSymbol("EstablishOverlay"), FunctionTemplate::New(GLUTEstablishOverlayCallback));
 
