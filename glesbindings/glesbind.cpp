@@ -267,52 +267,37 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
 //Accepts GL_UNSIGNED_SHORT and GL_FLOAT as types
 //TODO(nico): deal with interleaved data
 Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
-  if (args.Length() != 4)
+  if (args.Length() != 4 || !args[1]->IsArray())
     return v8::Undefined();
 
-  HandleScope handle_scope;
   unsigned int target  = args[0]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
   unsigned int usage  = args[3]->Uint32Value();
+  Handle<Array> data = Handle<Array>::Cast(args[1]);
+  unsigned int len = data->Length();
 
-  void* ans;
-  if(args[1]->IsArray()) {
-	  Handle<Array> data = Handle<Array>::Cast(args[1]);
-	  unsigned int len = data->Length();
-
-	  switch(type) {
-		  case GL_FLOAT:
-		  {
-			  GLfloat* arg1 = new  GLfloat[len];
-			  for (unsigned j = 0; j < len; j++) {
-			      Handle<Value> arg(data->Get(Integer::New(j)));
-			      arg1[j] = (GLfloat)arg->NumberValue();
-			  }
-			  ans = (void *)arg1;
-		  }
-		  break;
-
-		  case GL_UNSIGNED_SHORT:
-		  {
-			  GLushort* arg1 = new  GLushort[len];
-			  for (unsigned j = 0; j < len; j++) {
-			      Handle<Value> arg(data->Get(Integer::New(j)));
-			      arg1[j] = (GLushort)arg->Uint32Value();
-			  }
-			  ans = (void *)arg1;
-		  }
-		  break;
-
-		  default: return v8::Undefined();
-	  }
-
-	  glBufferData((GLenum)target,
-			  (GLsizeiptr)len,
-			  (const void*) ans,
-			  (GLenum)usage);
-
-	  //should I delete[] ans?
-
+  if (type == GL_FLOAT) {
+    GLfloat* arg1 = new GLfloat[len];
+    for (unsigned j = 0; j < len; j++) {
+        Handle<Value> arg(data->Get(Integer::New(j)));
+        arg1[j] = (GLfloat)arg->NumberValue();
+    }
+    glBufferData((GLenum)target,
+                 (GLsizeiptr)(len * sizeof(*arg1)),
+                 (const void*)arg1,
+                 (GLenum)usage);
+    delete[] arg1;
+  } else if (type == GL_UNSIGNED_SHORT) {
+    GLushort* arg1 = new GLushort[len];
+    for (unsigned j = 0; j < len; j++) {
+      Handle<Value> arg(data->Get(Integer::New(j)));
+      arg1[j] = (GLushort)arg->Uint32Value();
+    }
+    glBufferData((GLenum)target,
+                 (GLsizeiptr)(len * sizeof(*arg1)),
+                 (const void*)arg1,
+                 (GLenum)usage);
+    delete[] arg1;
   }
 
   Handle<Object> res(GlesFactory::self_);
@@ -3778,6 +3763,12 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gles->Set(String::NewSymbol("FUNC_ADD"), Uint32::New(GL_FUNC_ADD), ReadOnly);
 
+     Gles->Set(String::NewSymbol("BLEND_EQUATION"), Uint32::New(GL_BLEND_EQUATION), ReadOnly);
+
+     Gles->Set(String::NewSymbol("BLEND_EQUATION_RGB"), Uint32::New(GL_BLEND_EQUATION_RGB), ReadOnly);
+
+     Gles->Set(String::NewSymbol("BLEND_EQUATION_ALPHA"), Uint32::New(GL_BLEND_EQUATION_ALPHA), ReadOnly);
+
      Gles->Set(String::NewSymbol("FUNC_SUBTRACT"), Uint32::New(GL_FUNC_SUBTRACT), ReadOnly);
 
      Gles->Set(String::NewSymbol("FUNC_REVERSE_SUBTRACT"), Uint32::New(GL_FUNC_REVERSE_SUBTRACT), ReadOnly);
@@ -3809,6 +3800,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
      Gles->Set(String::NewSymbol("ELEMENT_ARRAY_BUFFER_BINDING"), Uint32::New(GL_ELEMENT_ARRAY_BUFFER_BINDING), ReadOnly);
 
      Gles->Set(String::NewSymbol("STREAM_DRAW"), Uint32::New(GL_STREAM_DRAW), ReadOnly);
+
+     Gles->Set(String::NewSymbol("STATIC_DRAW"), Uint32::New(GL_STATIC_DRAW), ReadOnly);
 
      Gles->Set(String::NewSymbol("DYNAMIC_DRAW"), Uint32::New(GL_DYNAMIC_DRAW), ReadOnly);
 
@@ -3849,6 +3842,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
      Gles->Set(String::NewSymbol("INVALID_ENUM"), Uint32::New(GL_INVALID_ENUM), ReadOnly);
 
      Gles->Set(String::NewSymbol("INVALID_VALUE"), Uint32::New(GL_INVALID_VALUE), ReadOnly);
+
+     Gles->Set(String::NewSymbol("INVALID_OPERATION"), Uint32::New(GL_INVALID_OPERATION), ReadOnly);
 
      Gles->Set(String::NewSymbol("OUT_OF_MEMORY"), Uint32::New(GL_OUT_OF_MEMORY), ReadOnly);
 
@@ -4100,9 +4095,15 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_X"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_X), ReadOnly);
 
+     Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_X"), Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_X), ReadOnly);
+
      Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Y"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Y), ReadOnly);
 
+     Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_Y"), Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y), ReadOnly);
+
      Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_POSITIVE_Z"), Uint32::New(GL_TEXTURE_CUBE_MAP_POSITIVE_Z), ReadOnly);
+
+     Gles->Set(String::NewSymbol("TEXTURE_CUBE_MAP_NEGATIVE_Z"), Uint32::New(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z), ReadOnly);
 
      Gles->Set(String::NewSymbol("MAX_CUBE_MAP_TEXTURE_SIZE"), Uint32::New(GL_MAX_CUBE_MAP_TEXTURE_SIZE), ReadOnly);
 

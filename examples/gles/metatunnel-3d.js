@@ -17,28 +17,6 @@ for (name in Gles) {
 
 w = 740; h = 480;
 
-function draw() {
-  gl.viewport(0, 0, w, h);
-  gl.useProgram(p);
-
-  // Store our attrib data in a VBO.
-  //gl.bindBuffer(gl.GL_ARRAY_BUFFER, buffers[0]);
-  //gl.bufferData(gl.GL_ARRAY_BUFFER, 
-
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, [ -1, 1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0 ]);
-  gl.enableVertexAttribArray(0);
-
-   var n = Date.now();
-    r = n & 0xff;
-    g = (n>>8) & 0xff;
-    b = (n>>16) & 0xff;
-    gl.uniform4fv(0, 1, [r/255.0, g/255.0, b/255.0, 1.0]);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    Glut.SwapBuffers();
-
-}
-
 //Initialize Glut
 Glut.Init();
 Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
@@ -91,7 +69,7 @@ Glut.CreateWindow("OpenGL on V8 baby!");
   var vertex_shader_source =
 	"attribute vec4 pos; void main() { gl_Position = vec4(pos.x * float(" + w/2 + "), pos.y * float(" + h/2 + "), 0.0, 1.0); }";
 
-  //var buffers = gl.genBuffers(1);
+  var buffers = gl.genBuffers(1);
 
   var vs = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vs, vertex_shader_source);
@@ -115,8 +93,30 @@ Glut.CreateWindow("OpenGL on V8 baby!");
     var error = gl.getProgramInfoLog(p);
     return 0;
   }
+
+  gl.useProgram(p);
+
+  // Store our attrib data in a VBO.
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffers[0]);
+  gl.bufferData(gl.ARRAY_BUFFER, [ -1, 1, 1, 1, -1, -1, 1, -1], gl.FLOAT, gl.STATIC_DRAW);
+
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(0);
   
+  function draw() {
+    gl.viewport(0, 0, w, h);
+    var n = Date.now();
+    r = n & 0xff;
+    g = (n>>8) & 0xff;
+    b = (n>>16) & 0xff;
+    gl.uniform4fv(0, 1, [r/255.0, g/255.0, b/255.0, 1.0]);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    Glut.SwapBuffers();
+  }
+
   Glut.DisplayFunc(draw);
+
   //Set timeout callback
   Glut.TimerFunc(25, function() {
     Glut.PostRedisplay();

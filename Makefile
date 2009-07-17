@@ -2,7 +2,7 @@
 include Makefile.$(firstword $(subst _, ,$(shell uname -s)))
 
 CC = g++
-CFLAGS = -m32 -Wall -Iv8/include 
+CFLAGS := $(CFLAGS) -m32 -Wall -Iv8/include 
 PROG = v8-gl 
 
 SRCS = main.cpp v8-gl.cpp glbindings/glbind.cpp glesbindings/glesbind.cpp glubindings/glubind.cpp glutbindings/glutbind.cpp

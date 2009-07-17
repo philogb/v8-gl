@@ -262,52 +262,37 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
 //Accepts GL_UNSIGNED_SHORT and GL_FLOAT as types
 //TODO(nico): deal with interleaved data
 Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
-  if (args.Length() != 4)
+  if (args.Length() != 4 || !args[1]->IsArray())
     return v8::Undefined();
 
-  HandleScope handle_scope;
   unsigned int target  = args[0]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
   unsigned int usage  = args[3]->Uint32Value();
+  Handle<Array> data = Handle<Array>::Cast(args[1]);
+  unsigned int len = data->Length();
 
-  void* ans;
-  if(args[1]->IsArray()) {
-	  Handle<Array> data = Handle<Array>::Cast(args[1]);
-	  unsigned int len = data->Length();
-
-	  switch(type) {
-		  case GL_FLOAT:
-		  {
-			  GLfloat* arg1 = new  GLfloat[len];
-			  for (unsigned j = 0; j < len; j++) {
-			      Handle<Value> arg(data->Get(Integer::New(j)));
-			      arg1[j] = (GLfloat)arg->NumberValue();
-			  }
-			  ans = (void *)arg1;
-		  }
-		  break;
-
-		  case GL_UNSIGNED_SHORT:
-		  {
-			  GLushort* arg1 = new  GLushort[len];
-			  for (unsigned j = 0; j < len; j++) {
-			      Handle<Value> arg(data->Get(Integer::New(j)));
-			      arg1[j] = (GLushort)arg->Uint32Value();
-			  }
-			  ans = (void *)arg1;
-		  }
-		  break;
-
-		  default: return v8::Undefined();
-	  }
-
-	  glBufferData((GLenum)target,
-			  (GLsizeiptr)len,
-			  (const void*) ans,
-			  (GLenum)usage);
-
-	  //should I delete[] ans?
-
+  if (type == GL_FLOAT) {
+    GLfloat* arg1 = new GLfloat[len];
+    for (unsigned j = 0; j < len; j++) {
+        Handle<Value> arg(data->Get(Integer::New(j)));
+        arg1[j] = (GLfloat)arg->NumberValue();
+    }
+    glBufferData((GLenum)target,
+                 (GLsizeiptr)(len * sizeof(*arg1)),
+                 (const void*)arg1,
+                 (GLenum)usage);
+    delete[] arg1;
+  } else if (type == GL_UNSIGNED_SHORT) {
+    GLushort* arg1 = new GLushort[len];
+    for (unsigned j = 0; j < len; j++) {
+      Handle<Value> arg(data->Get(Integer::New(j)));
+      arg1[j] = (GLushort)arg->Uint32Value();
+    }
+    glBufferData((GLenum)target,
+                 (GLsizeiptr)(len * sizeof(*arg1)),
+                 (const void*)arg1,
+                 (GLenum)usage);
+    delete[] arg1;
   }
 
   Handle<Object> res(GlesFactory::self_);

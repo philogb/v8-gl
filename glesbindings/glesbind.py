@@ -42,7 +42,11 @@ template = """
 #there won't be an accessor for these functions
 #in the Gles object.
 exclude = """
-    ATI|MESA     
+    _ATI
+    |ATI$
+    |MESA     
+    |IMPLEMENTATION
+    |GL_INVALID_FRAMEBUFFER_OPERATION
     
     |glGetVertexAttribPointerv #functions to be considered for custom implementation
                                #might be missing some
