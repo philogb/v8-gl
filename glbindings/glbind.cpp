@@ -1,7 +1,18 @@
+
 #include "glbind.h"
 
-Persistent<Object> GlFactory::self_;
+#if defined(V8_GL_USE_GLEW)
+#include "GL/glew.h"
+#elif defined(__APPLE__)
+#include <OpenGL/OpenGL.h>
+#else
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+#endif
 
+using namespace v8;
+
+Persistent<Object> GlFactory::self_;
 
 
 Handle<Value> GLglAccumCallback(const Arguments& args) {
@@ -8988,16 +8999,16 @@ Handle<Value> GLglPointParameterfvCallback(const Arguments& args) {
 
     
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-   GLfloat* arg1 = new  GLfloat[arrHandle1->Length()];
+  GLfloat* arg1 = new GLfloat[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
+      GLfloat aux = (GLfloat)arg->NumberValue();
       arg1[j] = aux; 
   }
     
     
   //make call
-  glPointParameterfv((GLenum) arg0, (const GLfloat*) arg1);
+  glPointParameterfv((GLenum) arg0, (GLfloat*) arg1);
   Handle<Object> res(GlFactory::self_);
   return res;
 }
@@ -9033,16 +9044,16 @@ Handle<Value> GLglPointParameterivCallback(const Arguments& args) {
 
     
   Handle<Array> arrHandle1 = Handle<Array>::Cast(args[1]);
-   GLint* arg1 = new  GLint[arrHandle1->Length()];
+  GLint* arg1 = new GLint[arrHandle1->Length()];
   for (unsigned j = 0; j < arrHandle1->Length(); j++) {
       Handle<Value> arg(arrHandle1->Get(Integer::New(j)));
-       GLint aux = ( GLint)arg->IntegerValue();
+      GLint aux = (GLint)arg->IntegerValue();
       arg1[j] = aux; 
   }
     
     
   //make call
-  glPointParameteriv((GLenum) arg0, (const GLint*) arg1);
+  glPointParameteriv((GLenum) arg0, (GLint*) arg1);
   Handle<Object> res(GlFactory::self_);
   return res;
 }

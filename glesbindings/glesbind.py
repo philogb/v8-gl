@@ -124,9 +124,28 @@ def main():
         functions.extend(accessor_extras)
 
     with open(OUT_FILE, 'w') as fout:
-        fout.write('#include "glesbind.h"\n\nPersistent<Object> GlesFactory::self_;\n' \
-                   + 'Persistent<Context> GlesFactory::gles_persistent_context;\n\n' \
-                 + custom_code  + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
+        fout.write("""
+#include "glesbind.h"
+
+#if defined(V8_GL_USE_GLEW)
+#include "GL/glew.h"
+#include "glew_desktop_shim.h"
+#elif defined(__APPLE__)
+#include <OpenGL/OpenGL.h>
+#else
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+// If we're running on desktop OpenGL, some ES 2.0 constants don't exist, or
+// are under a name with EXT in them, etc.
+#include "gles_desktop_shim.h"
+#endif
+
+using namespace v8;
+
+
+Persistent<Object> GlesFactory::self_;
+Persistent<Context> GlesFactory::gles_persistent_context;
+""" + custom_code  + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
 def generate_main_function(constants, functions):

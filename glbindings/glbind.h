@@ -8,23 +8,13 @@
 #ifndef GLBIND_H_
 #define GLBIND_H_
 
-
-#include <v8-debug.h>
-
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#else
-#define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#endif
-
-using namespace std;
-using namespace v8;
+#include <v8.h>
 
 class GlFactory {
 public:
-	static Handle<ObjectTemplate> createGl(void);
+	static v8::Handle<v8::ObjectTemplate> createGl(void);
 
-	static Persistent<Object> self_;
+	static v8::Persistent<v8::Object> self_;
 };
+
 #endif /* GLBIND_H_ */

@@ -1,8 +1,24 @@
+
 #include "glesbind.h"
+
+#if defined(V8_GL_USE_GLEW)
+#include "GL/glew.h"
+#include "glew_desktop_shim.h"
+#elif defined(__APPLE__)
+#include <OpenGL/OpenGL.h>
+#else
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+// If we're running on desktop OpenGL, some ES 2.0 constants don't exist, or
+// are under a name with EXT in them, etc.
+#include "gles_desktop_shim.h"
+#endif
+
+using namespace v8;
+
 
 Persistent<Object> GlesFactory::self_;
 Persistent<Context> GlesFactory::gles_persistent_context;
-
 // glGenBuffers uses an output parameter to return an array of ints.
 Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
   if (args.Length() != 1)

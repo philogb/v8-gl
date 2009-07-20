@@ -8940,7 +8940,7 @@
         "name": "glPointParameterfv", 
         "parameters": [
             "GLenum", 
-            "const GLfloat*"
+            "GLfloat*"
         ]
     }, 
     {
@@ -8958,7 +8958,7 @@
         "name": "glPointParameteriv", 
         "parameters": [
             "GLenum", 
-            "const GLint*"
+            "GLint*"
         ]
     }, 
     {

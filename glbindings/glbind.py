@@ -38,8 +38,22 @@ def main():
                     pass
 
     with open(OUT_FILE, 'w') as fout:
-        fout.write('#include "glbind.h"\n\nPersistent<Object> GlFactory::self_;\n\n' \
-                   + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
+        fout.write("""
+#include "glbind.h"
+
+#if defined(V8_GL_USE_GLEW)
+#include "GL/glew.h"
+#elif defined(__APPLE__)
+#include <OpenGL/OpenGL.h>
+#else
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+#endif
+
+using namespace v8;
+
+Persistent<Object> GlFactory::self_;
+""" + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
 def generate_main_function(constants, functions):
