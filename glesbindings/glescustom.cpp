@@ -398,31 +398,24 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
 
-  char* name = new char[256];
+  char name[256];
   int length = 0;
   int size = 0;
   unsigned type = 0;
 
   glGetActiveAttrib((GLuint)program,
 		  (GLuint)index,
-		  (GLsizei)256,
-		  (GLsizei*) &length,
-		  (GLint*) &size,
+		  (GLsizei)sizeof(name),
+		  (GLsizei*)&length,
+		  (GLint*)&size,
 		  (GLenum*)&type,
 		  (GLchar*)name);
 
-  // Create a template for the answer object that'll hold
-  // type/size/name as properties
-  Handle<ObjectTemplate> ans = ObjectTemplate::New();
+  Handle<Object> ans = Object::New();
   ans->Set(String::New("type"), Uint32::New(type));
   ans->Set(String::New("size"), Integer::New(size));
-  ans->Set(String::New("name"), String::New(name));
-
-  //TODO(nico): do I have to get into the active context here before I create an
-  //instance of ans?
-  Context::Scope context_scope(GlesFactory::gles_persistent_context);
-  Handle<Object> res(ans->NewInstance());
-  return res;
+  ans->Set(String::New("name"), String::New(name, length));
+  return ans;
 }
 
 Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
@@ -434,31 +427,26 @@ Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
 
-  char* name = new char[256];
+  char name[256];
   int length = 0;
   int size = 0;
   unsigned type = 0;
 
   glGetActiveUniform((GLuint)program,
 		  (GLuint)index,
-		  (GLsizei)256,
-		  (GLsizei*) &length,
-		  (GLint*) &size,
+		  (GLsizei)sizeof(name),
+		  (GLsizei*)&length,
+		  (GLint*)&size,
 		  (GLenum*)&type,
 		  (GLchar*)name);
 
   // Create a template for the answer object that'll hold
   // type/size/name as properties
-  Handle<ObjectTemplate> ans = ObjectTemplate::New();
+  Handle<Object> ans = Object::New();
   ans->Set(String::New("type"), Uint32::New(type));
   ans->Set(String::New("size"), Integer::New(size));
   ans->Set(String::New("name"), String::New(name));
-
-  //do I have to get into the active context before I create an
-  //instance of ans?
-  Context::Scope context_scope(GlesFactory::gles_persistent_context);
-  Handle<Object> res(ans->NewInstance());
-  return res;
+  return ans;
 }
 
 Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
