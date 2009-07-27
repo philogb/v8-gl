@@ -5,6 +5,7 @@
 
 #include "v8-gl.h"
 #include <stdio.h>
+#include <string.h>
 
 Handle<Value> log(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
@@ -82,6 +83,28 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  GlFactory::self_ = Persistent<Object>::New(Gl->NewInstance());
 	  GlesFactory::self_ = Persistent<Object>::New(Gles->NewInstance());
 
+	  //Set the root_path for opening shader files with
+	  //relative paths
+	  //take path from executable
+	  char* pch = strrchr(argv[0], '/');
+	  int last_index = pch - argv[0] +1;
+	  char* tmp_exec_path = new char[last_index +1];
+	  strncpy(tmp_exec_path, argv[0], last_index);
+	  tmp_exec_path[last_index] = '\0';
+
+	  //take relative path from javascript file
+	  char* p1ch = strrchr(argv[1], '/');
+	  int last_index1 = p1ch - argv[1] +1;
+	  char* tmp_js_path = new char[last_index1 +1];
+	  strncpy(tmp_js_path, argv[1], last_index1);
+	  tmp_js_path[last_index1] = '\0';
+
+	  GlesFactory::root_path = new char[last_index + last_index1 +1];
+	  strcpy(GlesFactory::root_path, tmp_exec_path);
+	  strcat(GlesFactory::root_path, tmp_js_path);
+
+	  delete[] tmp_exec_path;
+	  delete[] tmp_js_path;
 	  // Compile and run the script
 	  if (!executeScript())
 		return false;

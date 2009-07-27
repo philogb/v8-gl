@@ -82,7 +82,8 @@ exclude = """
 accessor_extras = ['glGetParameter', 
                    'glGetTexParameter', 
                    'glGetVertexAttrib', 
-                   'glGetRenderbufferParameter']
+                   'glGetRenderbufferParameter',
+                   'glShaderSourceFile']
 
 EXCLUDE = re.compile(exclude, re.VERBOSE)
 TEMPLATE = re.compile(template, re.VERBOSE)
@@ -141,6 +142,8 @@ def main():
 #include "gles_desktop_shim.h"
 #endif
 
+#include <fstream>
+#include <string>
 using namespace v8;
 
 

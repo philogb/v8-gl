@@ -1014,9 +1014,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
   if(args[8]->IsArray()) {
 	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
 
-	  switch(type) {
-	  case GL_UNSIGNED_BYTE:
-	  {
+	  if( type == GL_UNSIGNED_BYTE ) {
 		  GLubyte* pixels = new  GLubyte[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1034,11 +1032,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
-
-	  case GL_BYTE:
-	  {
+	  } else if( type == GL_BYTE ) {
 		  GLbyte* pixels = new  GLbyte[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1056,11 +1050,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_BITMAP:
-	  {
+	  } else if( type == GL_BITMAP ) {
 		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1078,11 +1069,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_UNSIGNED_SHORT:
-	  {
+	  } else if( type == GL_UNSIGNED_SHORT ) {
 		  GLushort* pixels = new  GLushort[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1100,11 +1088,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_SHORT:
-	  {
+	  } else if( type == GL_SHORT ) {
 		  GLshort* pixels = new  GLshort[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1122,11 +1107,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_UNSIGNED_INT:
-	  {
+	  } else if( type == GL_UNSIGNED_INT ) {
 		  GLuint* pixels = new  GLuint[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1144,11 +1126,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_INT:
-	  {
+	  } else if( type == GL_INT ) {
 		  GLint* pixels = new  GLint[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1166,11 +1145,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 
-	  case GL_FLOAT:
-	  {
+	  } else if( type == GL_FLOAT ) {
 		  GLfloat* pixels = new  GLfloat[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
 		      Handle<Value> arg(arr_handle->Get(Integer::New(j)));
@@ -1188,8 +1164,6 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
-	  }
-	  break;
 	  }
   }
 
@@ -1493,3 +1467,46 @@ Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
 
   return handle_scope.Close(String::New(log));
 }
+
+// We expect to be called with a shader id and a single string.
+Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
+  if (args.Length() != 2)
+    return v8::Undefined();
+
+  HandleScope handle_scope;
+  GLuint shader_id = args[0]->Uint32Value();
+  // GLSL source is defined as an ASCII subset.
+  v8::String::AsciiValue filepath_ascii(args[1]);
+  if (!*filepath_ascii)
+    return v8::Undefined();
+
+  char* filepath_str = *filepath_ascii;
+
+  //read the file source
+  char* filename = new char[strlen(GlesFactory::root_path) + strlen(filepath_str) +1];
+  strcpy(filename, GlesFactory::root_path);
+  strcat(filename, filepath_str);
+
+  std::ifstream in_file(filename);
+
+  if(!in_file.is_open()) return v8::Undefined();
+
+  std::string line, full_text = "";
+  while (! in_file.eof() ) {
+    std::getline (in_file, line);
+    full_text += line + "\n";
+  }
+
+  char* ans = new char[full_text.length() +1];
+  strcpy(ans, full_text.c_str());
+
+  GLsizei code_len = full_text.length();
+  glShaderSource(shader_id, 1, (const GLchar**) &ans, &code_len);
+
+  delete[] ans;
+  delete[] filename;
+
+  Handle<Object> res(GlesFactory::self_);
+  return res;
+}
+

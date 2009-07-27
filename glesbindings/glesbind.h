@@ -14,6 +14,7 @@ public:
 
 	static v8::Persistent<v8::Object> self_;
 	static v8::Persistent<v8::Context> gles_persistent_context;
+	static char* root_path;
 };
 
 #endif /* GLESBIND_H_ */
