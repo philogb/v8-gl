@@ -132,6 +132,7 @@ def main():
 #include "glew_desktop_shim.h"
 #elif defined(__APPLE__)
 #include <OpenGL/OpenGL.h>
+#include "gles_desktop_shim.h"
 #else
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
@@ -145,6 +146,7 @@ using namespace v8;
 
 Persistent<Object> GlesFactory::self_;
 Persistent<Context> GlesFactory::gles_persistent_context;
+char* GlesFactory::root_path;
 """ + custom_code  + '\n'.join(text_out) + '\n' + generate_main_function(constants, functions))
 
 
