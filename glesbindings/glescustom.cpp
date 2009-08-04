@@ -1483,9 +1483,15 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
   char* filepath_str = *filepath_ascii;
 
   //read the file source
-  char* filename = new char[strlen(GlesFactory::root_path) + strlen(filepath_str) +1];
-  strcpy(filename, GlesFactory::root_path);
-  strcat(filename, filepath_str);
+  char* filename = NULL;
+  if(filepath_str[0] != '/') {
+	  filename = new char[strlen(GlesFactory::root_path) + strlen(filepath_str) +1];
+	  strcpy(filename, GlesFactory::root_path);
+	  strcat(filename, filepath_str);
+  } else {
+	  filename = new char[strlen(filepath_str) +1];
+	  strcpy(filename, filepath_str);
+  }
 
   std::ifstream in_file(filename);
 
