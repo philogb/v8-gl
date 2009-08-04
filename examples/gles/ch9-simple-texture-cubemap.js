@@ -625,7 +625,10 @@ function draw()
 
     // clear
     Gles.Clear (Gles.COLOR_BUFFER_BIT);
+    
+    Gles.CullFace(Gles.BACK);
 
+    Gles.Enable(Gles.CULL_FACE);
     // use the program
     Gles.UseProgram (userData.programObject);
 
