@@ -22,7 +22,6 @@ using namespace v8;
 
 Persistent<Object> GlesFactory::self_;
 Persistent<Context> GlesFactory::gles_persistent_context;
-char* GlesFactory::root_path;
 // glGenBuffers uses an output parameter to return an array of ints.
 Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
   if (args.Length() != 1)
@@ -1021,6 +1020,8 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
   return v8::Undefined();
 }
 
+
+
 Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 
   if (args.Length() != 9) return v8::Undefined();
@@ -1195,6 +1196,33 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
   return v8::Undefined();
 }
 
+Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
+
+  if (args.Length() != 1) return v8::Undefined();
+  //define handle scope
+  HandleScope handle_scope;
+  //get arguments
+  String::Utf8Value value(args[0]);
+  char* filepath_str = *value;
+
+  char* filename = Utils::getRealPath(filepath_str);
+
+  //take care of relative/absolute paths.
+  Image* img = loadPNG(filename);
+
+  glTexImage2D(GL_TEXTURE_2D,  // target
+		  0,		  // level
+		  GL_RGB,	  // interal format
+		  img->width, img->height, // width, height
+		  0,		  // border
+		  GL_RGB,	  // format
+		  GL_UNSIGNED_BYTE, // type
+		  (const void*)img->pixels);
+
+  delete[] filename;
+
+  return v8::Undefined();
+}
 
 
 Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
@@ -1506,17 +1534,7 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
     return v8::Undefined();
 
   char* filepath_str = *filepath_ascii;
-
-  //read the file source
-  char* filename = NULL;
-  if(filepath_str[0] != '/') {
-	  filename = new char[strlen(GlesFactory::root_path) + strlen(filepath_str) +1];
-	  strcpy(filename, GlesFactory::root_path);
-	  strcat(filename, filepath_str);
-  } else {
-	  filename = new char[strlen(filepath_str) +1];
-	  strcpy(filename, filepath_str);
-  }
+  char* filename = Utils::getRealPath(filepath_str);
 
   std::ifstream in_file(filename);
 
@@ -4611,6 +4629,8 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
      Gles->Set(String::NewSymbol("GetRenderbufferParameter"), FunctionTemplate::New(GLESglGetRenderbufferParameterCallback));
 
      Gles->Set(String::NewSymbol("ShaderSourceFile"), FunctionTemplate::New(GLESglShaderSourceFileCallback));
+
+     Gles->Set(String::NewSymbol("TexImage2DFile"), FunctionTemplate::New(GLESglTexImage2DFileCallback));
 
 
       // Again, return the result through the current handle scope.

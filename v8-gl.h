@@ -7,6 +7,7 @@
 
 #include <v8-debug.h>
 
+#include "utils.h"
 #include "glbindings/glbind.h"
 #include "glesbindings/glesbind.h"
 #include "glubindings/glubind.h"
@@ -18,14 +19,11 @@ using namespace v8;
 class V8GL {
 
 public:
-	V8GL(Handle<String> script);
+	bool initialize(int* pargc, char** argv, string scriptname);
+	bool executeScript(string scriptname);
 
-	bool initialize(int* pargc, char** argv);
-	bool executeScript();
-
-private:
-	Handle<String> script_;
-
+	//keep a reference to the global context.
+	static Persistent<Context> context;
 };
 
 #endif /* V8GL_H_ */

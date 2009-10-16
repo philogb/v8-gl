@@ -5,8 +5,71 @@
 
 #include "v8-gl.h"
 #include <stdio.h>
+#include <string>
 #include <string.h>
 
+Persistent<Context> V8GL::context;
+
+//UTILITY FUNCTIONS
+// Reads a file into a v8 string.
+Handle<String> ReadFile(const string& name) {
+  FILE* file = fopen(name.c_str(), "rb");
+  if (file == NULL) return Handle<String>();
+
+  fseek(file, 0, SEEK_END);
+  int size = ftell(file);
+  rewind(file);
+
+  char* chars = new char[size + 1];
+  chars[size] = '\0';
+  for (int i = 0; i < size;) {
+    int read = fread(&chars[i], 1, size - i, file);
+    i += read;
+  }
+  fclose(file);
+  Handle<String> result = String::New(chars, size);
+  delete[] chars;
+  return result;
+}
+
+bool exec(string file) {
+  HandleScope handle_scope;
+  Handle<String> source = ReadFile(file);
+
+  if (source.IsEmpty()) {
+	fprintf(stderr, "Error reading '%s'.\n", file.c_str());
+	return false;
+  }
+
+  // We're just about to compile the script; set up an error handler to
+  // catch any exceptions the script might throw.
+  TryCatch try_catch;
+
+  // Compile the script and check for errors.
+  Handle<Script> compiled_script = Script::Compile(source);
+  if (compiled_script.IsEmpty()) {
+	String::Utf8Value error(try_catch.Exception());
+	printf("%s \n\n", *error);
+	// The script failed to compile; bail out.
+	return false;
+  }
+
+  // Run the script!
+  Handle<Value> result = compiled_script->Run();
+  if (result.IsEmpty()) {
+	// The TryCatch above is still in effect and will have caught the error.
+	String::Utf8Value error(try_catch.Exception());
+	printf("%s \n\n", *error);
+	// Running the script failed; bail out.
+	return false;
+  }
+  return true;
+}
+
+
+//FUNCTIONS IN GLOBAL SCOPE
+
+//prints a string to stdout
 Handle<Value> log(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
@@ -21,37 +84,39 @@ Handle<Value> log(const Arguments& args) {
   return v8::Undefined();
 }
 
-V8GL::V8GL(Handle<String> script) : script_(script) {};
+//loads a js file
+Handle<Value> load(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  int len = args.Length();
+  int i;
 
-bool V8GL::executeScript() {
-  HandleScope handle_scope;
+  if (len < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
 
-  // We're just about to compile the script; set up an error handler to
-  // catch any exceptions the script might throw.
-  TryCatch try_catch;
+  // Enter the new context so all the following operations take place
+  // within it.
+  Context::Scope context_scope(V8GL::context);
 
-  // Compile the script and check for errors.
-  Handle<Script> compiled_script = Script::Compile(script_);
-  if (compiled_script.IsEmpty()) {
-    String::Utf8Value error(try_catch.Exception());
-    printf("%s \n\n", *error);
-    // The script failed to compile; bail out.
-    return false;
+  for (i = 0; i < len; ++i) {
+	  //get argument
+	  String::Utf8Value value0(args[i]);
+	  char* arg0 = *value0;
+	  string str(Utils::getRealPath(arg0));
+	  if(!exec(str)) {
+		  fprintf(stderr, "Error reading '%s'.\n", arg0);
+		  return v8::Undefined();
+	  }
   }
 
-  // Run the script!
-  Handle<Value> result = compiled_script->Run();
-  if (result.IsEmpty()) {
-    // The TryCatch above is still in effect and will have caught the error.
-    String::Utf8Value error(try_catch.Exception());
-    printf("%s \n\n", *error);
-    // Running the script failed; bail out.
-    return false;
-  }
-  return true;
+  return v8::Undefined();
 }
 
-bool V8GL::initialize(int* pargc, char** argv) {
+bool V8GL::executeScript(string file) {
+	return exec(file);
+}
+
+bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 	  // Create a handle scope to hold the temporary references.
 	  HandleScope handle_scope;
 
@@ -64,16 +129,20 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  Handle<ObjectTemplate> Gl = GlFactory::createGl();
 	  Handle<ObjectTemplate> Gles = GlesFactory::createGles();
 
+	  //Set global objects and functions.
 	  global->Set(String::New("Gl"), Gl);
 	  global->Set(String::New("Gles"), Gles);
 	  global->Set(String::New("Glu"), createGlu());
 	  global->Set(String::New("Glut"), GlutFactory::createGlut(pargc, argv));
 	  global->Set(String::New("log"), FunctionTemplate::New(log));
+	  global->Set(String::New("load"), FunctionTemplate::New(load));
 
 	  Handle<Context> context = Context::New(NULL, global);
 
-	  GlutFactory::glut_persistent_context = Persistent<Context>::New(context);
-	  GlesFactory::gles_persistent_context = Persistent<Context>::New(context);
+	  //TODO(nico): should find another way to set the right context when calling a func.
+	  V8GL::context = Persistent<Context>::New(context);
+	  GlutFactory::glut_persistent_context = V8GL::context;
+	  GlesFactory::gles_persistent_context = V8GL::context;
 
 	  // Enter the new context so all the following operations take place
 	  // within it.
@@ -83,32 +152,12 @@ bool V8GL::initialize(int* pargc, char** argv) {
 	  GlFactory::self_ = Persistent<Object>::New(Gl->NewInstance());
 	  GlesFactory::self_ = Persistent<Object>::New(Gles->NewInstance());
 
-	  //Set the root_path for opening shader files with
-	  //relative paths
-	  //take path from executable
-	  char* pch = strrchr(argv[0], '/');
-	  int last_index = pch - argv[0] +1;
-	  char* tmp_exec_path = new char[last_index +1];
-	  strncpy(tmp_exec_path, argv[0], last_index);
-	  tmp_exec_path[last_index] = '\0';
+	  //Set (only once) the absolute path for the .js file being executed.
+	  Utils::setRootPath(argv[0], argv[1]);
 
-	  //take relative path from javascript file
-	  char* p1ch = strrchr(argv[1], '/');
-	  int last_index1 = p1ch - argv[1] +1;
-	  char* tmp_js_path = new char[last_index1 +1];
-	  strncpy(tmp_js_path, argv[1], last_index1);
-	  tmp_js_path[last_index1] = '\0';
-
-	  GlesFactory::root_path = new char[last_index + last_index1 +1];
-	  strcpy(GlesFactory::root_path, tmp_exec_path);
-	  strcat(GlesFactory::root_path, tmp_js_path);
-
-	  delete[] tmp_exec_path;
-	  delete[] tmp_js_path;
 	  // Compile and run the script
-	  if (!executeScript())
+	  if (!executeScript(scriptname))
 		return false;
-
 
 	  return true;
 }
