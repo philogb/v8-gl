@@ -1726,21 +1726,21 @@ Handle<ObjectTemplate> createGlu(void) {
      Glu->SetAccessor(String::NewSymbol("TESS_WINDING_ABS_GEQ_TWO"), GetGLU_TESS_WINDING_ABS_GEQ_TWO);
 
      Glu->SetAccessor(String::NewSymbol("TESS_MAX_COORD"), GetGLU_TESS_MAX_COORD);
-     Glu->Set(String::NewSymbol("CheckExtension"), FunctionTemplate::New(GLUCheckExtensionCallback));
+     Glu->Set(String::NewSymbol("checkExtension"), FunctionTemplate::New(GLUCheckExtensionCallback));
 
-     Glu->Set(String::NewSymbol("LookAt"), FunctionTemplate::New(GLULookAtCallback));
+     Glu->Set(String::NewSymbol("lookAt"), FunctionTemplate::New(GLULookAtCallback));
 
-     Glu->Set(String::NewSymbol("NewNurbsRenderer"), FunctionTemplate::New(GLUNewNurbsRendererCallback));
+     Glu->Set(String::NewSymbol("newNurbsRenderer"), FunctionTemplate::New(GLUNewNurbsRendererCallback));
 
-     Glu->Set(String::NewSymbol("NewQuadric"), FunctionTemplate::New(GLUNewQuadricCallback));
+     Glu->Set(String::NewSymbol("newQuadric"), FunctionTemplate::New(GLUNewQuadricCallback));
 
-     Glu->Set(String::NewSymbol("NewTess"), FunctionTemplate::New(GLUNewTessCallback));
+     Glu->Set(String::NewSymbol("newTess"), FunctionTemplate::New(GLUNewTessCallback));
 
-     Glu->Set(String::NewSymbol("Ortho2D"), FunctionTemplate::New(GLUOrtho2DCallback));
+     Glu->Set(String::NewSymbol("ortho2D"), FunctionTemplate::New(GLUOrtho2DCallback));
 
-     Glu->Set(String::NewSymbol("Perspective"), FunctionTemplate::New(GLUPerspectiveCallback));
+     Glu->Set(String::NewSymbol("perspective"), FunctionTemplate::New(GLUPerspectiveCallback));
 
-     Glu->Set(String::NewSymbol("PickMatrix"), FunctionTemplate::New(GLUPickMatrixCallback));
+     Glu->Set(String::NewSymbol("pickMatrix"), FunctionTemplate::New(GLUPickMatrixCallback));
 
 
       // Again, return the result through the current handle scope.

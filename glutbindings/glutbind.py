@@ -287,7 +287,7 @@ def bind_accessor(prefix, name):
     return "     " + prefix + "->SetAccessor(String::NewSymbol(\"" + name + "\"), GetGLUT_" + name + ");\n"
 
 def bind_function(prefix, name):
-    return "     " + prefix + "->Set(String::NewSymbol(\"" + name + "\"), FunctionTemplate::New(GLUT" + name + "Callback));\n"
+    return "     " + prefix + "->Set(String::NewSymbol(\"" + name[0].lower() + name[1:] + "\"), FunctionTemplate::New(GLUT" + name + "Callback));\n"
 
 def bind_font(name):
     return "     font_[\""+ name +"\"] = GLUT_" + name + ";\n"

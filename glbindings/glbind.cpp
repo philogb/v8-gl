@@ -13723,1053 +13723,1053 @@ Handle<ObjectTemplate> GlFactory::createGl(void) {
 
      Gl->Set(String::NewSymbol("COMPRESSED_SLUMINANCE_ALPHA"), Uint32::New(GL_COMPRESSED_SLUMINANCE_ALPHA), ReadOnly);
 
-     Gl->Set(String::NewSymbol("Accum"), FunctionTemplate::New(GLglAccumCallback));
+     Gl->Set(String::NewSymbol("accum"), FunctionTemplate::New(GLglAccumCallback));
 
-     Gl->Set(String::NewSymbol("AlphaFunc"), FunctionTemplate::New(GLglAlphaFuncCallback));
+     Gl->Set(String::NewSymbol("alphaFunc"), FunctionTemplate::New(GLglAlphaFuncCallback));
 
-     Gl->Set(String::NewSymbol("AreTexturesResident"), FunctionTemplate::New(GLglAreTexturesResidentCallback));
+     Gl->Set(String::NewSymbol("areTexturesResident"), FunctionTemplate::New(GLglAreTexturesResidentCallback));
 
-     Gl->Set(String::NewSymbol("ArrayElement"), FunctionTemplate::New(GLglArrayElementCallback));
+     Gl->Set(String::NewSymbol("arrayElement"), FunctionTemplate::New(GLglArrayElementCallback));
 
-     Gl->Set(String::NewSymbol("Begin"), FunctionTemplate::New(GLglBeginCallback));
+     Gl->Set(String::NewSymbol("begin"), FunctionTemplate::New(GLglBeginCallback));
 
-     Gl->Set(String::NewSymbol("BindTexture"), FunctionTemplate::New(GLglBindTextureCallback));
+     Gl->Set(String::NewSymbol("bindTexture"), FunctionTemplate::New(GLglBindTextureCallback));
 
-     Gl->Set(String::NewSymbol("Bitmap"), FunctionTemplate::New(GLglBitmapCallback));
+     Gl->Set(String::NewSymbol("bitmap"), FunctionTemplate::New(GLglBitmapCallback));
 
-     Gl->Set(String::NewSymbol("BlendColor"), FunctionTemplate::New(GLglBlendColorCallback));
+     Gl->Set(String::NewSymbol("blendColor"), FunctionTemplate::New(GLglBlendColorCallback));
 
-     Gl->Set(String::NewSymbol("BlendEquation"), FunctionTemplate::New(GLglBlendEquationCallback));
+     Gl->Set(String::NewSymbol("blendEquation"), FunctionTemplate::New(GLglBlendEquationCallback));
 
-     Gl->Set(String::NewSymbol("BlendEquationSeparate"), FunctionTemplate::New(GLglBlendEquationSeparateCallback));
+     Gl->Set(String::NewSymbol("blendEquationSeparate"), FunctionTemplate::New(GLglBlendEquationSeparateCallback));
 
-     Gl->Set(String::NewSymbol("BlendFunc"), FunctionTemplate::New(GLglBlendFuncCallback));
+     Gl->Set(String::NewSymbol("blendFunc"), FunctionTemplate::New(GLglBlendFuncCallback));
 
-     Gl->Set(String::NewSymbol("CallList"), FunctionTemplate::New(GLglCallListCallback));
+     Gl->Set(String::NewSymbol("callList"), FunctionTemplate::New(GLglCallListCallback));
 
-     Gl->Set(String::NewSymbol("Clear"), FunctionTemplate::New(GLglClearCallback));
+     Gl->Set(String::NewSymbol("clear"), FunctionTemplate::New(GLglClearCallback));
 
-     Gl->Set(String::NewSymbol("ClearAccum"), FunctionTemplate::New(GLglClearAccumCallback));
+     Gl->Set(String::NewSymbol("clearAccum"), FunctionTemplate::New(GLglClearAccumCallback));
 
-     Gl->Set(String::NewSymbol("ClearColor"), FunctionTemplate::New(GLglClearColorCallback));
+     Gl->Set(String::NewSymbol("clearColor"), FunctionTemplate::New(GLglClearColorCallback));
 
-     Gl->Set(String::NewSymbol("ClearDepth"), FunctionTemplate::New(GLglClearDepthCallback));
+     Gl->Set(String::NewSymbol("clearDepth"), FunctionTemplate::New(GLglClearDepthCallback));
 
-     Gl->Set(String::NewSymbol("ClearIndex"), FunctionTemplate::New(GLglClearIndexCallback));
+     Gl->Set(String::NewSymbol("clearIndex"), FunctionTemplate::New(GLglClearIndexCallback));
 
-     Gl->Set(String::NewSymbol("ClearStencil"), FunctionTemplate::New(GLglClearStencilCallback));
+     Gl->Set(String::NewSymbol("clearStencil"), FunctionTemplate::New(GLglClearStencilCallback));
 
-     Gl->Set(String::NewSymbol("ClipPlane"), FunctionTemplate::New(GLglClipPlaneCallback));
+     Gl->Set(String::NewSymbol("clipPlane"), FunctionTemplate::New(GLglClipPlaneCallback));
 
-     Gl->Set(String::NewSymbol("Color3b"), FunctionTemplate::New(GLglColor3bCallback));
+     Gl->Set(String::NewSymbol("color3b"), FunctionTemplate::New(GLglColor3bCallback));
 
-     Gl->Set(String::NewSymbol("Color3bv"), FunctionTemplate::New(GLglColor3bvCallback));
+     Gl->Set(String::NewSymbol("color3bv"), FunctionTemplate::New(GLglColor3bvCallback));
 
-     Gl->Set(String::NewSymbol("Color3d"), FunctionTemplate::New(GLglColor3dCallback));
+     Gl->Set(String::NewSymbol("color3d"), FunctionTemplate::New(GLglColor3dCallback));
 
-     Gl->Set(String::NewSymbol("Color3dv"), FunctionTemplate::New(GLglColor3dvCallback));
+     Gl->Set(String::NewSymbol("color3dv"), FunctionTemplate::New(GLglColor3dvCallback));
 
-     Gl->Set(String::NewSymbol("Color3f"), FunctionTemplate::New(GLglColor3fCallback));
+     Gl->Set(String::NewSymbol("color3f"), FunctionTemplate::New(GLglColor3fCallback));
 
-     Gl->Set(String::NewSymbol("Color3fv"), FunctionTemplate::New(GLglColor3fvCallback));
+     Gl->Set(String::NewSymbol("color3fv"), FunctionTemplate::New(GLglColor3fvCallback));
 
-     Gl->Set(String::NewSymbol("Color3i"), FunctionTemplate::New(GLglColor3iCallback));
+     Gl->Set(String::NewSymbol("color3i"), FunctionTemplate::New(GLglColor3iCallback));
 
-     Gl->Set(String::NewSymbol("Color3iv"), FunctionTemplate::New(GLglColor3ivCallback));
+     Gl->Set(String::NewSymbol("color3iv"), FunctionTemplate::New(GLglColor3ivCallback));
 
-     Gl->Set(String::NewSymbol("Color3s"), FunctionTemplate::New(GLglColor3sCallback));
+     Gl->Set(String::NewSymbol("color3s"), FunctionTemplate::New(GLglColor3sCallback));
 
-     Gl->Set(String::NewSymbol("Color3sv"), FunctionTemplate::New(GLglColor3svCallback));
+     Gl->Set(String::NewSymbol("color3sv"), FunctionTemplate::New(GLglColor3svCallback));
 
-     Gl->Set(String::NewSymbol("Color3ub"), FunctionTemplate::New(GLglColor3ubCallback));
+     Gl->Set(String::NewSymbol("color3ub"), FunctionTemplate::New(GLglColor3ubCallback));
 
-     Gl->Set(String::NewSymbol("Color3ubv"), FunctionTemplate::New(GLglColor3ubvCallback));
+     Gl->Set(String::NewSymbol("color3ubv"), FunctionTemplate::New(GLglColor3ubvCallback));
 
-     Gl->Set(String::NewSymbol("Color3ui"), FunctionTemplate::New(GLglColor3uiCallback));
+     Gl->Set(String::NewSymbol("color3ui"), FunctionTemplate::New(GLglColor3uiCallback));
 
-     Gl->Set(String::NewSymbol("Color3uiv"), FunctionTemplate::New(GLglColor3uivCallback));
+     Gl->Set(String::NewSymbol("color3uiv"), FunctionTemplate::New(GLglColor3uivCallback));
 
-     Gl->Set(String::NewSymbol("Color3us"), FunctionTemplate::New(GLglColor3usCallback));
+     Gl->Set(String::NewSymbol("color3us"), FunctionTemplate::New(GLglColor3usCallback));
 
-     Gl->Set(String::NewSymbol("Color3usv"), FunctionTemplate::New(GLglColor3usvCallback));
+     Gl->Set(String::NewSymbol("color3usv"), FunctionTemplate::New(GLglColor3usvCallback));
 
-     Gl->Set(String::NewSymbol("Color4b"), FunctionTemplate::New(GLglColor4bCallback));
+     Gl->Set(String::NewSymbol("color4b"), FunctionTemplate::New(GLglColor4bCallback));
 
-     Gl->Set(String::NewSymbol("Color4bv"), FunctionTemplate::New(GLglColor4bvCallback));
+     Gl->Set(String::NewSymbol("color4bv"), FunctionTemplate::New(GLglColor4bvCallback));
 
-     Gl->Set(String::NewSymbol("Color4d"), FunctionTemplate::New(GLglColor4dCallback));
+     Gl->Set(String::NewSymbol("color4d"), FunctionTemplate::New(GLglColor4dCallback));
 
-     Gl->Set(String::NewSymbol("Color4dv"), FunctionTemplate::New(GLglColor4dvCallback));
+     Gl->Set(String::NewSymbol("color4dv"), FunctionTemplate::New(GLglColor4dvCallback));
 
-     Gl->Set(String::NewSymbol("Color4f"), FunctionTemplate::New(GLglColor4fCallback));
+     Gl->Set(String::NewSymbol("color4f"), FunctionTemplate::New(GLglColor4fCallback));
 
-     Gl->Set(String::NewSymbol("Color4fv"), FunctionTemplate::New(GLglColor4fvCallback));
+     Gl->Set(String::NewSymbol("color4fv"), FunctionTemplate::New(GLglColor4fvCallback));
 
-     Gl->Set(String::NewSymbol("Color4i"), FunctionTemplate::New(GLglColor4iCallback));
+     Gl->Set(String::NewSymbol("color4i"), FunctionTemplate::New(GLglColor4iCallback));
 
-     Gl->Set(String::NewSymbol("Color4iv"), FunctionTemplate::New(GLglColor4ivCallback));
+     Gl->Set(String::NewSymbol("color4iv"), FunctionTemplate::New(GLglColor4ivCallback));
 
-     Gl->Set(String::NewSymbol("Color4s"), FunctionTemplate::New(GLglColor4sCallback));
+     Gl->Set(String::NewSymbol("color4s"), FunctionTemplate::New(GLglColor4sCallback));
 
-     Gl->Set(String::NewSymbol("Color4sv"), FunctionTemplate::New(GLglColor4svCallback));
+     Gl->Set(String::NewSymbol("color4sv"), FunctionTemplate::New(GLglColor4svCallback));
 
-     Gl->Set(String::NewSymbol("Color4ub"), FunctionTemplate::New(GLglColor4ubCallback));
+     Gl->Set(String::NewSymbol("color4ub"), FunctionTemplate::New(GLglColor4ubCallback));
 
-     Gl->Set(String::NewSymbol("Color4ubv"), FunctionTemplate::New(GLglColor4ubvCallback));
+     Gl->Set(String::NewSymbol("color4ubv"), FunctionTemplate::New(GLglColor4ubvCallback));
 
-     Gl->Set(String::NewSymbol("Color4ui"), FunctionTemplate::New(GLglColor4uiCallback));
+     Gl->Set(String::NewSymbol("color4ui"), FunctionTemplate::New(GLglColor4uiCallback));
 
-     Gl->Set(String::NewSymbol("Color4uiv"), FunctionTemplate::New(GLglColor4uivCallback));
+     Gl->Set(String::NewSymbol("color4uiv"), FunctionTemplate::New(GLglColor4uivCallback));
 
-     Gl->Set(String::NewSymbol("Color4us"), FunctionTemplate::New(GLglColor4usCallback));
+     Gl->Set(String::NewSymbol("color4us"), FunctionTemplate::New(GLglColor4usCallback));
 
-     Gl->Set(String::NewSymbol("Color4usv"), FunctionTemplate::New(GLglColor4usvCallback));
+     Gl->Set(String::NewSymbol("color4usv"), FunctionTemplate::New(GLglColor4usvCallback));
 
-     Gl->Set(String::NewSymbol("ColorMask"), FunctionTemplate::New(GLglColorMaskCallback));
+     Gl->Set(String::NewSymbol("colorMask"), FunctionTemplate::New(GLglColorMaskCallback));
 
-     Gl->Set(String::NewSymbol("ColorMaterial"), FunctionTemplate::New(GLglColorMaterialCallback));
+     Gl->Set(String::NewSymbol("colorMaterial"), FunctionTemplate::New(GLglColorMaterialCallback));
 
-     Gl->Set(String::NewSymbol("ColorTableParameterfv"), FunctionTemplate::New(GLglColorTableParameterfvCallback));
+     Gl->Set(String::NewSymbol("colorTableParameterfv"), FunctionTemplate::New(GLglColorTableParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("ColorTableParameteriv"), FunctionTemplate::New(GLglColorTableParameterivCallback));
+     Gl->Set(String::NewSymbol("colorTableParameteriv"), FunctionTemplate::New(GLglColorTableParameterivCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameterf"), FunctionTemplate::New(GLglConvolutionParameterfCallback));
+     Gl->Set(String::NewSymbol("convolutionParameterf"), FunctionTemplate::New(GLglConvolutionParameterfCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameterfv"), FunctionTemplate::New(GLglConvolutionParameterfvCallback));
+     Gl->Set(String::NewSymbol("convolutionParameterfv"), FunctionTemplate::New(GLglConvolutionParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameteri"), FunctionTemplate::New(GLglConvolutionParameteriCallback));
+     Gl->Set(String::NewSymbol("convolutionParameteri"), FunctionTemplate::New(GLglConvolutionParameteriCallback));
 
-     Gl->Set(String::NewSymbol("ConvolutionParameteriv"), FunctionTemplate::New(GLglConvolutionParameterivCallback));
+     Gl->Set(String::NewSymbol("convolutionParameteriv"), FunctionTemplate::New(GLglConvolutionParameterivCallback));
 
-     Gl->Set(String::NewSymbol("CopyColorSubTable"), FunctionTemplate::New(GLglCopyColorSubTableCallback));
+     Gl->Set(String::NewSymbol("copyColorSubTable"), FunctionTemplate::New(GLglCopyColorSubTableCallback));
 
-     Gl->Set(String::NewSymbol("CopyColorTable"), FunctionTemplate::New(GLglCopyColorTableCallback));
+     Gl->Set(String::NewSymbol("copyColorTable"), FunctionTemplate::New(GLglCopyColorTableCallback));
 
-     Gl->Set(String::NewSymbol("CopyConvolutionFilter1D"), FunctionTemplate::New(GLglCopyConvolutionFilter1DCallback));
+     Gl->Set(String::NewSymbol("copyConvolutionFilter1D"), FunctionTemplate::New(GLglCopyConvolutionFilter1DCallback));
 
-     Gl->Set(String::NewSymbol("CopyConvolutionFilter2D"), FunctionTemplate::New(GLglCopyConvolutionFilter2DCallback));
+     Gl->Set(String::NewSymbol("copyConvolutionFilter2D"), FunctionTemplate::New(GLglCopyConvolutionFilter2DCallback));
 
-     Gl->Set(String::NewSymbol("CopyPixels"), FunctionTemplate::New(GLglCopyPixelsCallback));
+     Gl->Set(String::NewSymbol("copyPixels"), FunctionTemplate::New(GLglCopyPixelsCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexImage1D"), FunctionTemplate::New(GLglCopyTexImage1DCallback));
+     Gl->Set(String::NewSymbol("copyTexImage1D"), FunctionTemplate::New(GLglCopyTexImage1DCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexImage2D"), FunctionTemplate::New(GLglCopyTexImage2DCallback));
+     Gl->Set(String::NewSymbol("copyTexImage2D"), FunctionTemplate::New(GLglCopyTexImage2DCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage1D"), FunctionTemplate::New(GLglCopyTexSubImage1DCallback));
+     Gl->Set(String::NewSymbol("copyTexSubImage1D"), FunctionTemplate::New(GLglCopyTexSubImage1DCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage2D"), FunctionTemplate::New(GLglCopyTexSubImage2DCallback));
+     Gl->Set(String::NewSymbol("copyTexSubImage2D"), FunctionTemplate::New(GLglCopyTexSubImage2DCallback));
 
-     Gl->Set(String::NewSymbol("CopyTexSubImage3D"), FunctionTemplate::New(GLglCopyTexSubImage3DCallback));
+     Gl->Set(String::NewSymbol("copyTexSubImage3D"), FunctionTemplate::New(GLglCopyTexSubImage3DCallback));
 
-     Gl->Set(String::NewSymbol("CullFace"), FunctionTemplate::New(GLglCullFaceCallback));
+     Gl->Set(String::NewSymbol("cullFace"), FunctionTemplate::New(GLglCullFaceCallback));
 
-     Gl->Set(String::NewSymbol("DeleteLists"), FunctionTemplate::New(GLglDeleteListsCallback));
+     Gl->Set(String::NewSymbol("deleteLists"), FunctionTemplate::New(GLglDeleteListsCallback));
 
-     Gl->Set(String::NewSymbol("DeleteTextures"), FunctionTemplate::New(GLglDeleteTexturesCallback));
+     Gl->Set(String::NewSymbol("deleteTextures"), FunctionTemplate::New(GLglDeleteTexturesCallback));
 
-     Gl->Set(String::NewSymbol("DepthFunc"), FunctionTemplate::New(GLglDepthFuncCallback));
+     Gl->Set(String::NewSymbol("depthFunc"), FunctionTemplate::New(GLglDepthFuncCallback));
 
-     Gl->Set(String::NewSymbol("DepthMask"), FunctionTemplate::New(GLglDepthMaskCallback));
+     Gl->Set(String::NewSymbol("depthMask"), FunctionTemplate::New(GLglDepthMaskCallback));
 
-     Gl->Set(String::NewSymbol("DepthRange"), FunctionTemplate::New(GLglDepthRangeCallback));
+     Gl->Set(String::NewSymbol("depthRange"), FunctionTemplate::New(GLglDepthRangeCallback));
 
-     Gl->Set(String::NewSymbol("Disable"), FunctionTemplate::New(GLglDisableCallback));
+     Gl->Set(String::NewSymbol("disable"), FunctionTemplate::New(GLglDisableCallback));
 
-     Gl->Set(String::NewSymbol("DisableClientState"), FunctionTemplate::New(GLglDisableClientStateCallback));
+     Gl->Set(String::NewSymbol("disableClientState"), FunctionTemplate::New(GLglDisableClientStateCallback));
 
-     Gl->Set(String::NewSymbol("DrawArrays"), FunctionTemplate::New(GLglDrawArraysCallback));
+     Gl->Set(String::NewSymbol("drawArrays"), FunctionTemplate::New(GLglDrawArraysCallback));
 
-     Gl->Set(String::NewSymbol("DrawBuffer"), FunctionTemplate::New(GLglDrawBufferCallback));
+     Gl->Set(String::NewSymbol("drawBuffer"), FunctionTemplate::New(GLglDrawBufferCallback));
 
-     Gl->Set(String::NewSymbol("EdgeFlag"), FunctionTemplate::New(GLglEdgeFlagCallback));
+     Gl->Set(String::NewSymbol("edgeFlag"), FunctionTemplate::New(GLglEdgeFlagCallback));
 
-     Gl->Set(String::NewSymbol("EdgeFlagv"), FunctionTemplate::New(GLglEdgeFlagvCallback));
+     Gl->Set(String::NewSymbol("edgeFlagv"), FunctionTemplate::New(GLglEdgeFlagvCallback));
 
-     Gl->Set(String::NewSymbol("Enable"), FunctionTemplate::New(GLglEnableCallback));
+     Gl->Set(String::NewSymbol("enable"), FunctionTemplate::New(GLglEnableCallback));
 
-     Gl->Set(String::NewSymbol("EnableClientState"), FunctionTemplate::New(GLglEnableClientStateCallback));
+     Gl->Set(String::NewSymbol("enableClientState"), FunctionTemplate::New(GLglEnableClientStateCallback));
 
-     Gl->Set(String::NewSymbol("End"), FunctionTemplate::New(GLglEndCallback));
+     Gl->Set(String::NewSymbol("end"), FunctionTemplate::New(GLglEndCallback));
 
-     Gl->Set(String::NewSymbol("EndList"), FunctionTemplate::New(GLglEndListCallback));
+     Gl->Set(String::NewSymbol("endList"), FunctionTemplate::New(GLglEndListCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1d"), FunctionTemplate::New(GLglEvalCoord1dCallback));
+     Gl->Set(String::NewSymbol("evalCoord1d"), FunctionTemplate::New(GLglEvalCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1dv"), FunctionTemplate::New(GLglEvalCoord1dvCallback));
+     Gl->Set(String::NewSymbol("evalCoord1dv"), FunctionTemplate::New(GLglEvalCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1f"), FunctionTemplate::New(GLglEvalCoord1fCallback));
+     Gl->Set(String::NewSymbol("evalCoord1f"), FunctionTemplate::New(GLglEvalCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord1fv"), FunctionTemplate::New(GLglEvalCoord1fvCallback));
+     Gl->Set(String::NewSymbol("evalCoord1fv"), FunctionTemplate::New(GLglEvalCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2d"), FunctionTemplate::New(GLglEvalCoord2dCallback));
+     Gl->Set(String::NewSymbol("evalCoord2d"), FunctionTemplate::New(GLglEvalCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2dv"), FunctionTemplate::New(GLglEvalCoord2dvCallback));
+     Gl->Set(String::NewSymbol("evalCoord2dv"), FunctionTemplate::New(GLglEvalCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2f"), FunctionTemplate::New(GLglEvalCoord2fCallback));
+     Gl->Set(String::NewSymbol("evalCoord2f"), FunctionTemplate::New(GLglEvalCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("EvalCoord2fv"), FunctionTemplate::New(GLglEvalCoord2fvCallback));
+     Gl->Set(String::NewSymbol("evalCoord2fv"), FunctionTemplate::New(GLglEvalCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("EvalMesh1"), FunctionTemplate::New(GLglEvalMesh1Callback));
+     Gl->Set(String::NewSymbol("evalMesh1"), FunctionTemplate::New(GLglEvalMesh1Callback));
 
-     Gl->Set(String::NewSymbol("EvalMesh2"), FunctionTemplate::New(GLglEvalMesh2Callback));
+     Gl->Set(String::NewSymbol("evalMesh2"), FunctionTemplate::New(GLglEvalMesh2Callback));
 
-     Gl->Set(String::NewSymbol("EvalPoint1"), FunctionTemplate::New(GLglEvalPoint1Callback));
+     Gl->Set(String::NewSymbol("evalPoint1"), FunctionTemplate::New(GLglEvalPoint1Callback));
 
-     Gl->Set(String::NewSymbol("EvalPoint2"), FunctionTemplate::New(GLglEvalPoint2Callback));
+     Gl->Set(String::NewSymbol("evalPoint2"), FunctionTemplate::New(GLglEvalPoint2Callback));
 
-     Gl->Set(String::NewSymbol("FeedbackBuffer"), FunctionTemplate::New(GLglFeedbackBufferCallback));
+     Gl->Set(String::NewSymbol("feedbackBuffer"), FunctionTemplate::New(GLglFeedbackBufferCallback));
 
-     Gl->Set(String::NewSymbol("Finish"), FunctionTemplate::New(GLglFinishCallback));
+     Gl->Set(String::NewSymbol("finish"), FunctionTemplate::New(GLglFinishCallback));
 
-     Gl->Set(String::NewSymbol("Flush"), FunctionTemplate::New(GLglFlushCallback));
+     Gl->Set(String::NewSymbol("flush"), FunctionTemplate::New(GLglFlushCallback));
 
-     Gl->Set(String::NewSymbol("Fogf"), FunctionTemplate::New(GLglFogfCallback));
+     Gl->Set(String::NewSymbol("fogf"), FunctionTemplate::New(GLglFogfCallback));
 
-     Gl->Set(String::NewSymbol("Fogfv"), FunctionTemplate::New(GLglFogfvCallback));
+     Gl->Set(String::NewSymbol("fogfv"), FunctionTemplate::New(GLglFogfvCallback));
 
-     Gl->Set(String::NewSymbol("Fogi"), FunctionTemplate::New(GLglFogiCallback));
+     Gl->Set(String::NewSymbol("fogi"), FunctionTemplate::New(GLglFogiCallback));
 
-     Gl->Set(String::NewSymbol("Fogiv"), FunctionTemplate::New(GLglFogivCallback));
+     Gl->Set(String::NewSymbol("fogiv"), FunctionTemplate::New(GLglFogivCallback));
 
-     Gl->Set(String::NewSymbol("FrontFace"), FunctionTemplate::New(GLglFrontFaceCallback));
+     Gl->Set(String::NewSymbol("frontFace"), FunctionTemplate::New(GLglFrontFaceCallback));
 
-     Gl->Set(String::NewSymbol("Frustum"), FunctionTemplate::New(GLglFrustumCallback));
+     Gl->Set(String::NewSymbol("frustum"), FunctionTemplate::New(GLglFrustumCallback));
 
-     Gl->Set(String::NewSymbol("GenLists"), FunctionTemplate::New(GLglGenListsCallback));
+     Gl->Set(String::NewSymbol("genLists"), FunctionTemplate::New(GLglGenListsCallback));
 
-     Gl->Set(String::NewSymbol("GenTextures"), FunctionTemplate::New(GLglGenTexturesCallback));
+     Gl->Set(String::NewSymbol("genTextures"), FunctionTemplate::New(GLglGenTexturesCallback));
 
-     Gl->Set(String::NewSymbol("GetBooleanv"), FunctionTemplate::New(GLglGetBooleanvCallback));
+     Gl->Set(String::NewSymbol("getBooleanv"), FunctionTemplate::New(GLglGetBooleanvCallback));
 
-     Gl->Set(String::NewSymbol("GetClipPlane"), FunctionTemplate::New(GLglGetClipPlaneCallback));
+     Gl->Set(String::NewSymbol("getClipPlane"), FunctionTemplate::New(GLglGetClipPlaneCallback));
 
-     Gl->Set(String::NewSymbol("GetColorTableParameterfv"), FunctionTemplate::New(GLglGetColorTableParameterfvCallback));
+     Gl->Set(String::NewSymbol("getColorTableParameterfv"), FunctionTemplate::New(GLglGetColorTableParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetColorTableParameteriv"), FunctionTemplate::New(GLglGetColorTableParameterivCallback));
+     Gl->Set(String::NewSymbol("getColorTableParameteriv"), FunctionTemplate::New(GLglGetColorTableParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetConvolutionParameterfv"), FunctionTemplate::New(GLglGetConvolutionParameterfvCallback));
+     Gl->Set(String::NewSymbol("getConvolutionParameterfv"), FunctionTemplate::New(GLglGetConvolutionParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetConvolutionParameteriv"), FunctionTemplate::New(GLglGetConvolutionParameterivCallback));
+     Gl->Set(String::NewSymbol("getConvolutionParameteriv"), FunctionTemplate::New(GLglGetConvolutionParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetDoublev"), FunctionTemplate::New(GLglGetDoublevCallback));
+     Gl->Set(String::NewSymbol("getDoublev"), FunctionTemplate::New(GLglGetDoublevCallback));
 
-     Gl->Set(String::NewSymbol("GetError"), FunctionTemplate::New(GLglGetErrorCallback));
+     Gl->Set(String::NewSymbol("getError"), FunctionTemplate::New(GLglGetErrorCallback));
 
-     Gl->Set(String::NewSymbol("GetFloatv"), FunctionTemplate::New(GLglGetFloatvCallback));
+     Gl->Set(String::NewSymbol("getFloatv"), FunctionTemplate::New(GLglGetFloatvCallback));
 
-     Gl->Set(String::NewSymbol("GetHistogramParameterfv"), FunctionTemplate::New(GLglGetHistogramParameterfvCallback));
+     Gl->Set(String::NewSymbol("getHistogramParameterfv"), FunctionTemplate::New(GLglGetHistogramParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetHistogramParameteriv"), FunctionTemplate::New(GLglGetHistogramParameterivCallback));
+     Gl->Set(String::NewSymbol("getHistogramParameteriv"), FunctionTemplate::New(GLglGetHistogramParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetIntegerv"), FunctionTemplate::New(GLglGetIntegervCallback));
+     Gl->Set(String::NewSymbol("getIntegerv"), FunctionTemplate::New(GLglGetIntegervCallback));
 
-     Gl->Set(String::NewSymbol("GetLightfv"), FunctionTemplate::New(GLglGetLightfvCallback));
+     Gl->Set(String::NewSymbol("getLightfv"), FunctionTemplate::New(GLglGetLightfvCallback));
 
-     Gl->Set(String::NewSymbol("GetLightiv"), FunctionTemplate::New(GLglGetLightivCallback));
+     Gl->Set(String::NewSymbol("getLightiv"), FunctionTemplate::New(GLglGetLightivCallback));
 
-     Gl->Set(String::NewSymbol("GetMapdv"), FunctionTemplate::New(GLglGetMapdvCallback));
+     Gl->Set(String::NewSymbol("getMapdv"), FunctionTemplate::New(GLglGetMapdvCallback));
 
-     Gl->Set(String::NewSymbol("GetMapfv"), FunctionTemplate::New(GLglGetMapfvCallback));
+     Gl->Set(String::NewSymbol("getMapfv"), FunctionTemplate::New(GLglGetMapfvCallback));
 
-     Gl->Set(String::NewSymbol("GetMapiv"), FunctionTemplate::New(GLglGetMapivCallback));
+     Gl->Set(String::NewSymbol("getMapiv"), FunctionTemplate::New(GLglGetMapivCallback));
 
-     Gl->Set(String::NewSymbol("GetMaterialfv"), FunctionTemplate::New(GLglGetMaterialfvCallback));
+     Gl->Set(String::NewSymbol("getMaterialfv"), FunctionTemplate::New(GLglGetMaterialfvCallback));
 
-     Gl->Set(String::NewSymbol("GetMaterialiv"), FunctionTemplate::New(GLglGetMaterialivCallback));
+     Gl->Set(String::NewSymbol("getMaterialiv"), FunctionTemplate::New(GLglGetMaterialivCallback));
 
-     Gl->Set(String::NewSymbol("GetMinmaxParameterfv"), FunctionTemplate::New(GLglGetMinmaxParameterfvCallback));
+     Gl->Set(String::NewSymbol("getMinmaxParameterfv"), FunctionTemplate::New(GLglGetMinmaxParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetMinmaxParameteriv"), FunctionTemplate::New(GLglGetMinmaxParameterivCallback));
+     Gl->Set(String::NewSymbol("getMinmaxParameteriv"), FunctionTemplate::New(GLglGetMinmaxParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapfv"), FunctionTemplate::New(GLglGetPixelMapfvCallback));
+     Gl->Set(String::NewSymbol("getPixelMapfv"), FunctionTemplate::New(GLglGetPixelMapfvCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapuiv"), FunctionTemplate::New(GLglGetPixelMapuivCallback));
+     Gl->Set(String::NewSymbol("getPixelMapuiv"), FunctionTemplate::New(GLglGetPixelMapuivCallback));
 
-     Gl->Set(String::NewSymbol("GetPixelMapusv"), FunctionTemplate::New(GLglGetPixelMapusvCallback));
+     Gl->Set(String::NewSymbol("getPixelMapusv"), FunctionTemplate::New(GLglGetPixelMapusvCallback));
 
-     Gl->Set(String::NewSymbol("GetPolygonStipple"), FunctionTemplate::New(GLglGetPolygonStippleCallback));
+     Gl->Set(String::NewSymbol("getPolygonStipple"), FunctionTemplate::New(GLglGetPolygonStippleCallback));
 
-     Gl->Set(String::NewSymbol("GetTexEnvfv"), FunctionTemplate::New(GLglGetTexEnvfvCallback));
+     Gl->Set(String::NewSymbol("getTexEnvfv"), FunctionTemplate::New(GLglGetTexEnvfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexEnviv"), FunctionTemplate::New(GLglGetTexEnvivCallback));
+     Gl->Set(String::NewSymbol("getTexEnviv"), FunctionTemplate::New(GLglGetTexEnvivCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGendv"), FunctionTemplate::New(GLglGetTexGendvCallback));
+     Gl->Set(String::NewSymbol("getTexGendv"), FunctionTemplate::New(GLglGetTexGendvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGenfv"), FunctionTemplate::New(GLglGetTexGenfvCallback));
+     Gl->Set(String::NewSymbol("getTexGenfv"), FunctionTemplate::New(GLglGetTexGenfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexGeniv"), FunctionTemplate::New(GLglGetTexGenivCallback));
+     Gl->Set(String::NewSymbol("getTexGeniv"), FunctionTemplate::New(GLglGetTexGenivCallback));
 
-     Gl->Set(String::NewSymbol("GetTexLevelParameterfv"), FunctionTemplate::New(GLglGetTexLevelParameterfvCallback));
+     Gl->Set(String::NewSymbol("getTexLevelParameterfv"), FunctionTemplate::New(GLglGetTexLevelParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexLevelParameteriv"), FunctionTemplate::New(GLglGetTexLevelParameterivCallback));
+     Gl->Set(String::NewSymbol("getTexLevelParameteriv"), FunctionTemplate::New(GLglGetTexLevelParameterivCallback));
 
-     Gl->Set(String::NewSymbol("GetTexParameterfv"), FunctionTemplate::New(GLglGetTexParameterfvCallback));
+     Gl->Set(String::NewSymbol("getTexParameterfv"), FunctionTemplate::New(GLglGetTexParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("GetTexParameteriv"), FunctionTemplate::New(GLglGetTexParameterivCallback));
+     Gl->Set(String::NewSymbol("getTexParameteriv"), FunctionTemplate::New(GLglGetTexParameterivCallback));
 
-     Gl->Set(String::NewSymbol("Hint"), FunctionTemplate::New(GLglHintCallback));
+     Gl->Set(String::NewSymbol("hint"), FunctionTemplate::New(GLglHintCallback));
 
-     Gl->Set(String::NewSymbol("Histogram"), FunctionTemplate::New(GLglHistogramCallback));
+     Gl->Set(String::NewSymbol("histogram"), FunctionTemplate::New(GLglHistogramCallback));
 
-     Gl->Set(String::NewSymbol("IndexMask"), FunctionTemplate::New(GLglIndexMaskCallback));
+     Gl->Set(String::NewSymbol("indexMask"), FunctionTemplate::New(GLglIndexMaskCallback));
 
-     Gl->Set(String::NewSymbol("Indexd"), FunctionTemplate::New(GLglIndexdCallback));
+     Gl->Set(String::NewSymbol("indexd"), FunctionTemplate::New(GLglIndexdCallback));
 
-     Gl->Set(String::NewSymbol("Indexdv"), FunctionTemplate::New(GLglIndexdvCallback));
+     Gl->Set(String::NewSymbol("indexdv"), FunctionTemplate::New(GLglIndexdvCallback));
 
-     Gl->Set(String::NewSymbol("Indexf"), FunctionTemplate::New(GLglIndexfCallback));
+     Gl->Set(String::NewSymbol("indexf"), FunctionTemplate::New(GLglIndexfCallback));
 
-     Gl->Set(String::NewSymbol("Indexfv"), FunctionTemplate::New(GLglIndexfvCallback));
+     Gl->Set(String::NewSymbol("indexfv"), FunctionTemplate::New(GLglIndexfvCallback));
 
-     Gl->Set(String::NewSymbol("Indexi"), FunctionTemplate::New(GLglIndexiCallback));
+     Gl->Set(String::NewSymbol("indexi"), FunctionTemplate::New(GLglIndexiCallback));
 
-     Gl->Set(String::NewSymbol("Indexiv"), FunctionTemplate::New(GLglIndexivCallback));
+     Gl->Set(String::NewSymbol("indexiv"), FunctionTemplate::New(GLglIndexivCallback));
 
-     Gl->Set(String::NewSymbol("Indexs"), FunctionTemplate::New(GLglIndexsCallback));
+     Gl->Set(String::NewSymbol("indexs"), FunctionTemplate::New(GLglIndexsCallback));
 
-     Gl->Set(String::NewSymbol("Indexsv"), FunctionTemplate::New(GLglIndexsvCallback));
+     Gl->Set(String::NewSymbol("indexsv"), FunctionTemplate::New(GLglIndexsvCallback));
 
-     Gl->Set(String::NewSymbol("Indexub"), FunctionTemplate::New(GLglIndexubCallback));
+     Gl->Set(String::NewSymbol("indexub"), FunctionTemplate::New(GLglIndexubCallback));
 
-     Gl->Set(String::NewSymbol("Indexubv"), FunctionTemplate::New(GLglIndexubvCallback));
+     Gl->Set(String::NewSymbol("indexubv"), FunctionTemplate::New(GLglIndexubvCallback));
 
-     Gl->Set(String::NewSymbol("InitNames"), FunctionTemplate::New(GLglInitNamesCallback));
+     Gl->Set(String::NewSymbol("initNames"), FunctionTemplate::New(GLglInitNamesCallback));
 
-     Gl->Set(String::NewSymbol("IsEnabled"), FunctionTemplate::New(GLglIsEnabledCallback));
+     Gl->Set(String::NewSymbol("isEnabled"), FunctionTemplate::New(GLglIsEnabledCallback));
 
-     Gl->Set(String::NewSymbol("IsList"), FunctionTemplate::New(GLglIsListCallback));
+     Gl->Set(String::NewSymbol("isList"), FunctionTemplate::New(GLglIsListCallback));
 
-     Gl->Set(String::NewSymbol("IsTexture"), FunctionTemplate::New(GLglIsTextureCallback));
+     Gl->Set(String::NewSymbol("isTexture"), FunctionTemplate::New(GLglIsTextureCallback));
 
-     Gl->Set(String::NewSymbol("LightModelf"), FunctionTemplate::New(GLglLightModelfCallback));
+     Gl->Set(String::NewSymbol("lightModelf"), FunctionTemplate::New(GLglLightModelfCallback));
 
-     Gl->Set(String::NewSymbol("LightModelfv"), FunctionTemplate::New(GLglLightModelfvCallback));
+     Gl->Set(String::NewSymbol("lightModelfv"), FunctionTemplate::New(GLglLightModelfvCallback));
 
-     Gl->Set(String::NewSymbol("LightModeli"), FunctionTemplate::New(GLglLightModeliCallback));
+     Gl->Set(String::NewSymbol("lightModeli"), FunctionTemplate::New(GLglLightModeliCallback));
 
-     Gl->Set(String::NewSymbol("LightModeliv"), FunctionTemplate::New(GLglLightModelivCallback));
+     Gl->Set(String::NewSymbol("lightModeliv"), FunctionTemplate::New(GLglLightModelivCallback));
 
-     Gl->Set(String::NewSymbol("Lightf"), FunctionTemplate::New(GLglLightfCallback));
+     Gl->Set(String::NewSymbol("lightf"), FunctionTemplate::New(GLglLightfCallback));
 
-     Gl->Set(String::NewSymbol("Lightfv"), FunctionTemplate::New(GLglLightfvCallback));
+     Gl->Set(String::NewSymbol("lightfv"), FunctionTemplate::New(GLglLightfvCallback));
 
-     Gl->Set(String::NewSymbol("Lighti"), FunctionTemplate::New(GLglLightiCallback));
+     Gl->Set(String::NewSymbol("lighti"), FunctionTemplate::New(GLglLightiCallback));
 
-     Gl->Set(String::NewSymbol("Lightiv"), FunctionTemplate::New(GLglLightivCallback));
+     Gl->Set(String::NewSymbol("lightiv"), FunctionTemplate::New(GLglLightivCallback));
 
-     Gl->Set(String::NewSymbol("LineStipple"), FunctionTemplate::New(GLglLineStippleCallback));
+     Gl->Set(String::NewSymbol("lineStipple"), FunctionTemplate::New(GLglLineStippleCallback));
 
-     Gl->Set(String::NewSymbol("LineWidth"), FunctionTemplate::New(GLglLineWidthCallback));
+     Gl->Set(String::NewSymbol("lineWidth"), FunctionTemplate::New(GLglLineWidthCallback));
 
-     Gl->Set(String::NewSymbol("ListBase"), FunctionTemplate::New(GLglListBaseCallback));
+     Gl->Set(String::NewSymbol("listBase"), FunctionTemplate::New(GLglListBaseCallback));
 
-     Gl->Set(String::NewSymbol("LoadIdentity"), FunctionTemplate::New(GLglLoadIdentityCallback));
+     Gl->Set(String::NewSymbol("loadIdentity"), FunctionTemplate::New(GLglLoadIdentityCallback));
 
-     Gl->Set(String::NewSymbol("LoadMatrixd"), FunctionTemplate::New(GLglLoadMatrixdCallback));
+     Gl->Set(String::NewSymbol("loadMatrixd"), FunctionTemplate::New(GLglLoadMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("LoadMatrixf"), FunctionTemplate::New(GLglLoadMatrixfCallback));
+     Gl->Set(String::NewSymbol("loadMatrixf"), FunctionTemplate::New(GLglLoadMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("LoadName"), FunctionTemplate::New(GLglLoadNameCallback));
+     Gl->Set(String::NewSymbol("loadName"), FunctionTemplate::New(GLglLoadNameCallback));
 
-     Gl->Set(String::NewSymbol("LogicOp"), FunctionTemplate::New(GLglLogicOpCallback));
+     Gl->Set(String::NewSymbol("logicOp"), FunctionTemplate::New(GLglLogicOpCallback));
 
-     Gl->Set(String::NewSymbol("Map1d"), FunctionTemplate::New(GLglMap1dCallback));
+     Gl->Set(String::NewSymbol("map1d"), FunctionTemplate::New(GLglMap1dCallback));
 
-     Gl->Set(String::NewSymbol("Map1f"), FunctionTemplate::New(GLglMap1fCallback));
+     Gl->Set(String::NewSymbol("map1f"), FunctionTemplate::New(GLglMap1fCallback));
 
-     Gl->Set(String::NewSymbol("Map2d"), FunctionTemplate::New(GLglMap2dCallback));
+     Gl->Set(String::NewSymbol("map2d"), FunctionTemplate::New(GLglMap2dCallback));
 
-     Gl->Set(String::NewSymbol("Map2f"), FunctionTemplate::New(GLglMap2fCallback));
+     Gl->Set(String::NewSymbol("map2f"), FunctionTemplate::New(GLglMap2fCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid1d"), FunctionTemplate::New(GLglMapGrid1dCallback));
+     Gl->Set(String::NewSymbol("mapGrid1d"), FunctionTemplate::New(GLglMapGrid1dCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid1f"), FunctionTemplate::New(GLglMapGrid1fCallback));
+     Gl->Set(String::NewSymbol("mapGrid1f"), FunctionTemplate::New(GLglMapGrid1fCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid2d"), FunctionTemplate::New(GLglMapGrid2dCallback));
+     Gl->Set(String::NewSymbol("mapGrid2d"), FunctionTemplate::New(GLglMapGrid2dCallback));
 
-     Gl->Set(String::NewSymbol("MapGrid2f"), FunctionTemplate::New(GLglMapGrid2fCallback));
+     Gl->Set(String::NewSymbol("mapGrid2f"), FunctionTemplate::New(GLglMapGrid2fCallback));
 
-     Gl->Set(String::NewSymbol("Materialf"), FunctionTemplate::New(GLglMaterialfCallback));
+     Gl->Set(String::NewSymbol("materialf"), FunctionTemplate::New(GLglMaterialfCallback));
 
-     Gl->Set(String::NewSymbol("Materialfv"), FunctionTemplate::New(GLglMaterialfvCallback));
+     Gl->Set(String::NewSymbol("materialfv"), FunctionTemplate::New(GLglMaterialfvCallback));
 
-     Gl->Set(String::NewSymbol("Materiali"), FunctionTemplate::New(GLglMaterialiCallback));
+     Gl->Set(String::NewSymbol("materiali"), FunctionTemplate::New(GLglMaterialiCallback));
 
-     Gl->Set(String::NewSymbol("Materialiv"), FunctionTemplate::New(GLglMaterialivCallback));
+     Gl->Set(String::NewSymbol("materialiv"), FunctionTemplate::New(GLglMaterialivCallback));
 
-     Gl->Set(String::NewSymbol("MatrixMode"), FunctionTemplate::New(GLglMatrixModeCallback));
+     Gl->Set(String::NewSymbol("matrixMode"), FunctionTemplate::New(GLglMatrixModeCallback));
 
-     Gl->Set(String::NewSymbol("Minmax"), FunctionTemplate::New(GLglMinmaxCallback));
+     Gl->Set(String::NewSymbol("minmax"), FunctionTemplate::New(GLglMinmaxCallback));
 
-     Gl->Set(String::NewSymbol("MultMatrixd"), FunctionTemplate::New(GLglMultMatrixdCallback));
+     Gl->Set(String::NewSymbol("multMatrixd"), FunctionTemplate::New(GLglMultMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("MultMatrixf"), FunctionTemplate::New(GLglMultMatrixfCallback));
+     Gl->Set(String::NewSymbol("multMatrixf"), FunctionTemplate::New(GLglMultMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("NewList"), FunctionTemplate::New(GLglNewListCallback));
+     Gl->Set(String::NewSymbol("newList"), FunctionTemplate::New(GLglNewListCallback));
 
-     Gl->Set(String::NewSymbol("Normal3b"), FunctionTemplate::New(GLglNormal3bCallback));
+     Gl->Set(String::NewSymbol("normal3b"), FunctionTemplate::New(GLglNormal3bCallback));
 
-     Gl->Set(String::NewSymbol("Normal3bv"), FunctionTemplate::New(GLglNormal3bvCallback));
+     Gl->Set(String::NewSymbol("normal3bv"), FunctionTemplate::New(GLglNormal3bvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3d"), FunctionTemplate::New(GLglNormal3dCallback));
+     Gl->Set(String::NewSymbol("normal3d"), FunctionTemplate::New(GLglNormal3dCallback));
 
-     Gl->Set(String::NewSymbol("Normal3dv"), FunctionTemplate::New(GLglNormal3dvCallback));
+     Gl->Set(String::NewSymbol("normal3dv"), FunctionTemplate::New(GLglNormal3dvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3f"), FunctionTemplate::New(GLglNormal3fCallback));
+     Gl->Set(String::NewSymbol("normal3f"), FunctionTemplate::New(GLglNormal3fCallback));
 
-     Gl->Set(String::NewSymbol("Normal3fv"), FunctionTemplate::New(GLglNormal3fvCallback));
+     Gl->Set(String::NewSymbol("normal3fv"), FunctionTemplate::New(GLglNormal3fvCallback));
 
-     Gl->Set(String::NewSymbol("Normal3i"), FunctionTemplate::New(GLglNormal3iCallback));
+     Gl->Set(String::NewSymbol("normal3i"), FunctionTemplate::New(GLglNormal3iCallback));
 
-     Gl->Set(String::NewSymbol("Normal3iv"), FunctionTemplate::New(GLglNormal3ivCallback));
+     Gl->Set(String::NewSymbol("normal3iv"), FunctionTemplate::New(GLglNormal3ivCallback));
 
-     Gl->Set(String::NewSymbol("Normal3s"), FunctionTemplate::New(GLglNormal3sCallback));
+     Gl->Set(String::NewSymbol("normal3s"), FunctionTemplate::New(GLglNormal3sCallback));
 
-     Gl->Set(String::NewSymbol("Normal3sv"), FunctionTemplate::New(GLglNormal3svCallback));
+     Gl->Set(String::NewSymbol("normal3sv"), FunctionTemplate::New(GLglNormal3svCallback));
 
-     Gl->Set(String::NewSymbol("Ortho"), FunctionTemplate::New(GLglOrthoCallback));
+     Gl->Set(String::NewSymbol("ortho"), FunctionTemplate::New(GLglOrthoCallback));
 
-     Gl->Set(String::NewSymbol("PassThrough"), FunctionTemplate::New(GLglPassThroughCallback));
+     Gl->Set(String::NewSymbol("passThrough"), FunctionTemplate::New(GLglPassThroughCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapfv"), FunctionTemplate::New(GLglPixelMapfvCallback));
+     Gl->Set(String::NewSymbol("pixelMapfv"), FunctionTemplate::New(GLglPixelMapfvCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapuiv"), FunctionTemplate::New(GLglPixelMapuivCallback));
+     Gl->Set(String::NewSymbol("pixelMapuiv"), FunctionTemplate::New(GLglPixelMapuivCallback));
 
-     Gl->Set(String::NewSymbol("PixelMapusv"), FunctionTemplate::New(GLglPixelMapusvCallback));
+     Gl->Set(String::NewSymbol("pixelMapusv"), FunctionTemplate::New(GLglPixelMapusvCallback));
 
-     Gl->Set(String::NewSymbol("PixelStoref"), FunctionTemplate::New(GLglPixelStorefCallback));
+     Gl->Set(String::NewSymbol("pixelStoref"), FunctionTemplate::New(GLglPixelStorefCallback));
 
-     Gl->Set(String::NewSymbol("PixelStorei"), FunctionTemplate::New(GLglPixelStoreiCallback));
+     Gl->Set(String::NewSymbol("pixelStorei"), FunctionTemplate::New(GLglPixelStoreiCallback));
 
-     Gl->Set(String::NewSymbol("PixelTransferf"), FunctionTemplate::New(GLglPixelTransferfCallback));
+     Gl->Set(String::NewSymbol("pixelTransferf"), FunctionTemplate::New(GLglPixelTransferfCallback));
 
-     Gl->Set(String::NewSymbol("PixelTransferi"), FunctionTemplate::New(GLglPixelTransferiCallback));
+     Gl->Set(String::NewSymbol("pixelTransferi"), FunctionTemplate::New(GLglPixelTransferiCallback));
 
-     Gl->Set(String::NewSymbol("PixelZoom"), FunctionTemplate::New(GLglPixelZoomCallback));
+     Gl->Set(String::NewSymbol("pixelZoom"), FunctionTemplate::New(GLglPixelZoomCallback));
 
-     Gl->Set(String::NewSymbol("PointSize"), FunctionTemplate::New(GLglPointSizeCallback));
+     Gl->Set(String::NewSymbol("pointSize"), FunctionTemplate::New(GLglPointSizeCallback));
 
-     Gl->Set(String::NewSymbol("PolygonMode"), FunctionTemplate::New(GLglPolygonModeCallback));
+     Gl->Set(String::NewSymbol("polygonMode"), FunctionTemplate::New(GLglPolygonModeCallback));
 
-     Gl->Set(String::NewSymbol("PolygonOffset"), FunctionTemplate::New(GLglPolygonOffsetCallback));
+     Gl->Set(String::NewSymbol("polygonOffset"), FunctionTemplate::New(GLglPolygonOffsetCallback));
 
-     Gl->Set(String::NewSymbol("PolygonStipple"), FunctionTemplate::New(GLglPolygonStippleCallback));
+     Gl->Set(String::NewSymbol("polygonStipple"), FunctionTemplate::New(GLglPolygonStippleCallback));
 
-     Gl->Set(String::NewSymbol("PopAttrib"), FunctionTemplate::New(GLglPopAttribCallback));
+     Gl->Set(String::NewSymbol("popAttrib"), FunctionTemplate::New(GLglPopAttribCallback));
 
-     Gl->Set(String::NewSymbol("PopClientAttrib"), FunctionTemplate::New(GLglPopClientAttribCallback));
+     Gl->Set(String::NewSymbol("popClientAttrib"), FunctionTemplate::New(GLglPopClientAttribCallback));
 
-     Gl->Set(String::NewSymbol("PopMatrix"), FunctionTemplate::New(GLglPopMatrixCallback));
+     Gl->Set(String::NewSymbol("popMatrix"), FunctionTemplate::New(GLglPopMatrixCallback));
 
-     Gl->Set(String::NewSymbol("PopName"), FunctionTemplate::New(GLglPopNameCallback));
+     Gl->Set(String::NewSymbol("popName"), FunctionTemplate::New(GLglPopNameCallback));
 
-     Gl->Set(String::NewSymbol("PrioritizeTextures"), FunctionTemplate::New(GLglPrioritizeTexturesCallback));
+     Gl->Set(String::NewSymbol("prioritizeTextures"), FunctionTemplate::New(GLglPrioritizeTexturesCallback));
 
-     Gl->Set(String::NewSymbol("PushAttrib"), FunctionTemplate::New(GLglPushAttribCallback));
+     Gl->Set(String::NewSymbol("pushAttrib"), FunctionTemplate::New(GLglPushAttribCallback));
 
-     Gl->Set(String::NewSymbol("PushClientAttrib"), FunctionTemplate::New(GLglPushClientAttribCallback));
+     Gl->Set(String::NewSymbol("pushClientAttrib"), FunctionTemplate::New(GLglPushClientAttribCallback));
 
-     Gl->Set(String::NewSymbol("PushMatrix"), FunctionTemplate::New(GLglPushMatrixCallback));
+     Gl->Set(String::NewSymbol("pushMatrix"), FunctionTemplate::New(GLglPushMatrixCallback));
 
-     Gl->Set(String::NewSymbol("PushName"), FunctionTemplate::New(GLglPushNameCallback));
+     Gl->Set(String::NewSymbol("pushName"), FunctionTemplate::New(GLglPushNameCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2d"), FunctionTemplate::New(GLglRasterPos2dCallback));
+     Gl->Set(String::NewSymbol("rasterPos2d"), FunctionTemplate::New(GLglRasterPos2dCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2dv"), FunctionTemplate::New(GLglRasterPos2dvCallback));
+     Gl->Set(String::NewSymbol("rasterPos2dv"), FunctionTemplate::New(GLglRasterPos2dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2f"), FunctionTemplate::New(GLglRasterPos2fCallback));
+     Gl->Set(String::NewSymbol("rasterPos2f"), FunctionTemplate::New(GLglRasterPos2fCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2fv"), FunctionTemplate::New(GLglRasterPos2fvCallback));
+     Gl->Set(String::NewSymbol("rasterPos2fv"), FunctionTemplate::New(GLglRasterPos2fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2i"), FunctionTemplate::New(GLglRasterPos2iCallback));
+     Gl->Set(String::NewSymbol("rasterPos2i"), FunctionTemplate::New(GLglRasterPos2iCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2iv"), FunctionTemplate::New(GLglRasterPos2ivCallback));
+     Gl->Set(String::NewSymbol("rasterPos2iv"), FunctionTemplate::New(GLglRasterPos2ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2s"), FunctionTemplate::New(GLglRasterPos2sCallback));
+     Gl->Set(String::NewSymbol("rasterPos2s"), FunctionTemplate::New(GLglRasterPos2sCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos2sv"), FunctionTemplate::New(GLglRasterPos2svCallback));
+     Gl->Set(String::NewSymbol("rasterPos2sv"), FunctionTemplate::New(GLglRasterPos2svCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3d"), FunctionTemplate::New(GLglRasterPos3dCallback));
+     Gl->Set(String::NewSymbol("rasterPos3d"), FunctionTemplate::New(GLglRasterPos3dCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3dv"), FunctionTemplate::New(GLglRasterPos3dvCallback));
+     Gl->Set(String::NewSymbol("rasterPos3dv"), FunctionTemplate::New(GLglRasterPos3dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3f"), FunctionTemplate::New(GLglRasterPos3fCallback));
+     Gl->Set(String::NewSymbol("rasterPos3f"), FunctionTemplate::New(GLglRasterPos3fCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3fv"), FunctionTemplate::New(GLglRasterPos3fvCallback));
+     Gl->Set(String::NewSymbol("rasterPos3fv"), FunctionTemplate::New(GLglRasterPos3fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3i"), FunctionTemplate::New(GLglRasterPos3iCallback));
+     Gl->Set(String::NewSymbol("rasterPos3i"), FunctionTemplate::New(GLglRasterPos3iCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3iv"), FunctionTemplate::New(GLglRasterPos3ivCallback));
+     Gl->Set(String::NewSymbol("rasterPos3iv"), FunctionTemplate::New(GLglRasterPos3ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3s"), FunctionTemplate::New(GLglRasterPos3sCallback));
+     Gl->Set(String::NewSymbol("rasterPos3s"), FunctionTemplate::New(GLglRasterPos3sCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos3sv"), FunctionTemplate::New(GLglRasterPos3svCallback));
+     Gl->Set(String::NewSymbol("rasterPos3sv"), FunctionTemplate::New(GLglRasterPos3svCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4d"), FunctionTemplate::New(GLglRasterPos4dCallback));
+     Gl->Set(String::NewSymbol("rasterPos4d"), FunctionTemplate::New(GLglRasterPos4dCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4dv"), FunctionTemplate::New(GLglRasterPos4dvCallback));
+     Gl->Set(String::NewSymbol("rasterPos4dv"), FunctionTemplate::New(GLglRasterPos4dvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4f"), FunctionTemplate::New(GLglRasterPos4fCallback));
+     Gl->Set(String::NewSymbol("rasterPos4f"), FunctionTemplate::New(GLglRasterPos4fCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4fv"), FunctionTemplate::New(GLglRasterPos4fvCallback));
+     Gl->Set(String::NewSymbol("rasterPos4fv"), FunctionTemplate::New(GLglRasterPos4fvCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4i"), FunctionTemplate::New(GLglRasterPos4iCallback));
+     Gl->Set(String::NewSymbol("rasterPos4i"), FunctionTemplate::New(GLglRasterPos4iCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4iv"), FunctionTemplate::New(GLglRasterPos4ivCallback));
+     Gl->Set(String::NewSymbol("rasterPos4iv"), FunctionTemplate::New(GLglRasterPos4ivCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4s"), FunctionTemplate::New(GLglRasterPos4sCallback));
+     Gl->Set(String::NewSymbol("rasterPos4s"), FunctionTemplate::New(GLglRasterPos4sCallback));
 
-     Gl->Set(String::NewSymbol("RasterPos4sv"), FunctionTemplate::New(GLglRasterPos4svCallback));
+     Gl->Set(String::NewSymbol("rasterPos4sv"), FunctionTemplate::New(GLglRasterPos4svCallback));
 
-     Gl->Set(String::NewSymbol("ReadBuffer"), FunctionTemplate::New(GLglReadBufferCallback));
+     Gl->Set(String::NewSymbol("readBuffer"), FunctionTemplate::New(GLglReadBufferCallback));
 
-     Gl->Set(String::NewSymbol("Rectd"), FunctionTemplate::New(GLglRectdCallback));
+     Gl->Set(String::NewSymbol("rectd"), FunctionTemplate::New(GLglRectdCallback));
 
-     Gl->Set(String::NewSymbol("Rectdv"), FunctionTemplate::New(GLglRectdvCallback));
+     Gl->Set(String::NewSymbol("rectdv"), FunctionTemplate::New(GLglRectdvCallback));
 
-     Gl->Set(String::NewSymbol("Rectf"), FunctionTemplate::New(GLglRectfCallback));
+     Gl->Set(String::NewSymbol("rectf"), FunctionTemplate::New(GLglRectfCallback));
 
-     Gl->Set(String::NewSymbol("Rectfv"), FunctionTemplate::New(GLglRectfvCallback));
+     Gl->Set(String::NewSymbol("rectfv"), FunctionTemplate::New(GLglRectfvCallback));
 
-     Gl->Set(String::NewSymbol("Recti"), FunctionTemplate::New(GLglRectiCallback));
+     Gl->Set(String::NewSymbol("recti"), FunctionTemplate::New(GLglRectiCallback));
 
-     Gl->Set(String::NewSymbol("Rectiv"), FunctionTemplate::New(GLglRectivCallback));
+     Gl->Set(String::NewSymbol("rectiv"), FunctionTemplate::New(GLglRectivCallback));
 
-     Gl->Set(String::NewSymbol("Rects"), FunctionTemplate::New(GLglRectsCallback));
+     Gl->Set(String::NewSymbol("rects"), FunctionTemplate::New(GLglRectsCallback));
 
-     Gl->Set(String::NewSymbol("Rectsv"), FunctionTemplate::New(GLglRectsvCallback));
+     Gl->Set(String::NewSymbol("rectsv"), FunctionTemplate::New(GLglRectsvCallback));
 
-     Gl->Set(String::NewSymbol("RenderMode"), FunctionTemplate::New(GLglRenderModeCallback));
+     Gl->Set(String::NewSymbol("renderMode"), FunctionTemplate::New(GLglRenderModeCallback));
 
-     Gl->Set(String::NewSymbol("ResetHistogram"), FunctionTemplate::New(GLglResetHistogramCallback));
+     Gl->Set(String::NewSymbol("resetHistogram"), FunctionTemplate::New(GLglResetHistogramCallback));
 
-     Gl->Set(String::NewSymbol("ResetMinmax"), FunctionTemplate::New(GLglResetMinmaxCallback));
+     Gl->Set(String::NewSymbol("resetMinmax"), FunctionTemplate::New(GLglResetMinmaxCallback));
 
-     Gl->Set(String::NewSymbol("Rotated"), FunctionTemplate::New(GLglRotatedCallback));
+     Gl->Set(String::NewSymbol("rotated"), FunctionTemplate::New(GLglRotatedCallback));
 
-     Gl->Set(String::NewSymbol("Rotatef"), FunctionTemplate::New(GLglRotatefCallback));
+     Gl->Set(String::NewSymbol("rotatef"), FunctionTemplate::New(GLglRotatefCallback));
 
-     Gl->Set(String::NewSymbol("Scaled"), FunctionTemplate::New(GLglScaledCallback));
+     Gl->Set(String::NewSymbol("scaled"), FunctionTemplate::New(GLglScaledCallback));
 
-     Gl->Set(String::NewSymbol("Scalef"), FunctionTemplate::New(GLglScalefCallback));
+     Gl->Set(String::NewSymbol("scalef"), FunctionTemplate::New(GLglScalefCallback));
 
-     Gl->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLglScissorCallback));
+     Gl->Set(String::NewSymbol("scissor"), FunctionTemplate::New(GLglScissorCallback));
 
-     Gl->Set(String::NewSymbol("SelectBuffer"), FunctionTemplate::New(GLglSelectBufferCallback));
+     Gl->Set(String::NewSymbol("selectBuffer"), FunctionTemplate::New(GLglSelectBufferCallback));
 
-     Gl->Set(String::NewSymbol("ShadeModel"), FunctionTemplate::New(GLglShadeModelCallback));
+     Gl->Set(String::NewSymbol("shadeModel"), FunctionTemplate::New(GLglShadeModelCallback));
 
-     Gl->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLglStencilFuncCallback));
+     Gl->Set(String::NewSymbol("stencilFunc"), FunctionTemplate::New(GLglStencilFuncCallback));
 
-     Gl->Set(String::NewSymbol("StencilMask"), FunctionTemplate::New(GLglStencilMaskCallback));
+     Gl->Set(String::NewSymbol("stencilMask"), FunctionTemplate::New(GLglStencilMaskCallback));
 
-     Gl->Set(String::NewSymbol("StencilOp"), FunctionTemplate::New(GLglStencilOpCallback));
+     Gl->Set(String::NewSymbol("stencilOp"), FunctionTemplate::New(GLglStencilOpCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1d"), FunctionTemplate::New(GLglTexCoord1dCallback));
+     Gl->Set(String::NewSymbol("texCoord1d"), FunctionTemplate::New(GLglTexCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1dv"), FunctionTemplate::New(GLglTexCoord1dvCallback));
+     Gl->Set(String::NewSymbol("texCoord1dv"), FunctionTemplate::New(GLglTexCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1f"), FunctionTemplate::New(GLglTexCoord1fCallback));
+     Gl->Set(String::NewSymbol("texCoord1f"), FunctionTemplate::New(GLglTexCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1fv"), FunctionTemplate::New(GLglTexCoord1fvCallback));
+     Gl->Set(String::NewSymbol("texCoord1fv"), FunctionTemplate::New(GLglTexCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1i"), FunctionTemplate::New(GLglTexCoord1iCallback));
+     Gl->Set(String::NewSymbol("texCoord1i"), FunctionTemplate::New(GLglTexCoord1iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1iv"), FunctionTemplate::New(GLglTexCoord1ivCallback));
+     Gl->Set(String::NewSymbol("texCoord1iv"), FunctionTemplate::New(GLglTexCoord1ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1s"), FunctionTemplate::New(GLglTexCoord1sCallback));
+     Gl->Set(String::NewSymbol("texCoord1s"), FunctionTemplate::New(GLglTexCoord1sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord1sv"), FunctionTemplate::New(GLglTexCoord1svCallback));
+     Gl->Set(String::NewSymbol("texCoord1sv"), FunctionTemplate::New(GLglTexCoord1svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2d"), FunctionTemplate::New(GLglTexCoord2dCallback));
+     Gl->Set(String::NewSymbol("texCoord2d"), FunctionTemplate::New(GLglTexCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2dv"), FunctionTemplate::New(GLglTexCoord2dvCallback));
+     Gl->Set(String::NewSymbol("texCoord2dv"), FunctionTemplate::New(GLglTexCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2f"), FunctionTemplate::New(GLglTexCoord2fCallback));
+     Gl->Set(String::NewSymbol("texCoord2f"), FunctionTemplate::New(GLglTexCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2fv"), FunctionTemplate::New(GLglTexCoord2fvCallback));
+     Gl->Set(String::NewSymbol("texCoord2fv"), FunctionTemplate::New(GLglTexCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2i"), FunctionTemplate::New(GLglTexCoord2iCallback));
+     Gl->Set(String::NewSymbol("texCoord2i"), FunctionTemplate::New(GLglTexCoord2iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2iv"), FunctionTemplate::New(GLglTexCoord2ivCallback));
+     Gl->Set(String::NewSymbol("texCoord2iv"), FunctionTemplate::New(GLglTexCoord2ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2s"), FunctionTemplate::New(GLglTexCoord2sCallback));
+     Gl->Set(String::NewSymbol("texCoord2s"), FunctionTemplate::New(GLglTexCoord2sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord2sv"), FunctionTemplate::New(GLglTexCoord2svCallback));
+     Gl->Set(String::NewSymbol("texCoord2sv"), FunctionTemplate::New(GLglTexCoord2svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3d"), FunctionTemplate::New(GLglTexCoord3dCallback));
+     Gl->Set(String::NewSymbol("texCoord3d"), FunctionTemplate::New(GLglTexCoord3dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3dv"), FunctionTemplate::New(GLglTexCoord3dvCallback));
+     Gl->Set(String::NewSymbol("texCoord3dv"), FunctionTemplate::New(GLglTexCoord3dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3f"), FunctionTemplate::New(GLglTexCoord3fCallback));
+     Gl->Set(String::NewSymbol("texCoord3f"), FunctionTemplate::New(GLglTexCoord3fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3fv"), FunctionTemplate::New(GLglTexCoord3fvCallback));
+     Gl->Set(String::NewSymbol("texCoord3fv"), FunctionTemplate::New(GLglTexCoord3fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3i"), FunctionTemplate::New(GLglTexCoord3iCallback));
+     Gl->Set(String::NewSymbol("texCoord3i"), FunctionTemplate::New(GLglTexCoord3iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3iv"), FunctionTemplate::New(GLglTexCoord3ivCallback));
+     Gl->Set(String::NewSymbol("texCoord3iv"), FunctionTemplate::New(GLglTexCoord3ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3s"), FunctionTemplate::New(GLglTexCoord3sCallback));
+     Gl->Set(String::NewSymbol("texCoord3s"), FunctionTemplate::New(GLglTexCoord3sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord3sv"), FunctionTemplate::New(GLglTexCoord3svCallback));
+     Gl->Set(String::NewSymbol("texCoord3sv"), FunctionTemplate::New(GLglTexCoord3svCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4d"), FunctionTemplate::New(GLglTexCoord4dCallback));
+     Gl->Set(String::NewSymbol("texCoord4d"), FunctionTemplate::New(GLglTexCoord4dCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4dv"), FunctionTemplate::New(GLglTexCoord4dvCallback));
+     Gl->Set(String::NewSymbol("texCoord4dv"), FunctionTemplate::New(GLglTexCoord4dvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4f"), FunctionTemplate::New(GLglTexCoord4fCallback));
+     Gl->Set(String::NewSymbol("texCoord4f"), FunctionTemplate::New(GLglTexCoord4fCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4fv"), FunctionTemplate::New(GLglTexCoord4fvCallback));
+     Gl->Set(String::NewSymbol("texCoord4fv"), FunctionTemplate::New(GLglTexCoord4fvCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4i"), FunctionTemplate::New(GLglTexCoord4iCallback));
+     Gl->Set(String::NewSymbol("texCoord4i"), FunctionTemplate::New(GLglTexCoord4iCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4iv"), FunctionTemplate::New(GLglTexCoord4ivCallback));
+     Gl->Set(String::NewSymbol("texCoord4iv"), FunctionTemplate::New(GLglTexCoord4ivCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4s"), FunctionTemplate::New(GLglTexCoord4sCallback));
+     Gl->Set(String::NewSymbol("texCoord4s"), FunctionTemplate::New(GLglTexCoord4sCallback));
 
-     Gl->Set(String::NewSymbol("TexCoord4sv"), FunctionTemplate::New(GLglTexCoord4svCallback));
+     Gl->Set(String::NewSymbol("texCoord4sv"), FunctionTemplate::New(GLglTexCoord4svCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvf"), FunctionTemplate::New(GLglTexEnvfCallback));
+     Gl->Set(String::NewSymbol("texEnvf"), FunctionTemplate::New(GLglTexEnvfCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvfv"), FunctionTemplate::New(GLglTexEnvfvCallback));
+     Gl->Set(String::NewSymbol("texEnvfv"), FunctionTemplate::New(GLglTexEnvfvCallback));
 
-     Gl->Set(String::NewSymbol("TexEnvi"), FunctionTemplate::New(GLglTexEnviCallback));
+     Gl->Set(String::NewSymbol("texEnvi"), FunctionTemplate::New(GLglTexEnviCallback));
 
-     Gl->Set(String::NewSymbol("TexEnviv"), FunctionTemplate::New(GLglTexEnvivCallback));
+     Gl->Set(String::NewSymbol("texEnviv"), FunctionTemplate::New(GLglTexEnvivCallback));
 
-     Gl->Set(String::NewSymbol("TexGend"), FunctionTemplate::New(GLglTexGendCallback));
+     Gl->Set(String::NewSymbol("texGend"), FunctionTemplate::New(GLglTexGendCallback));
 
-     Gl->Set(String::NewSymbol("TexGendv"), FunctionTemplate::New(GLglTexGendvCallback));
+     Gl->Set(String::NewSymbol("texGendv"), FunctionTemplate::New(GLglTexGendvCallback));
 
-     Gl->Set(String::NewSymbol("TexGenf"), FunctionTemplate::New(GLglTexGenfCallback));
+     Gl->Set(String::NewSymbol("texGenf"), FunctionTemplate::New(GLglTexGenfCallback));
 
-     Gl->Set(String::NewSymbol("TexGenfv"), FunctionTemplate::New(GLglTexGenfvCallback));
+     Gl->Set(String::NewSymbol("texGenfv"), FunctionTemplate::New(GLglTexGenfvCallback));
 
-     Gl->Set(String::NewSymbol("TexGeni"), FunctionTemplate::New(GLglTexGeniCallback));
+     Gl->Set(String::NewSymbol("texGeni"), FunctionTemplate::New(GLglTexGeniCallback));
 
-     Gl->Set(String::NewSymbol("TexGeniv"), FunctionTemplate::New(GLglTexGenivCallback));
+     Gl->Set(String::NewSymbol("texGeniv"), FunctionTemplate::New(GLglTexGenivCallback));
 
-     Gl->Set(String::NewSymbol("TexParameterf"), FunctionTemplate::New(GLglTexParameterfCallback));
+     Gl->Set(String::NewSymbol("texParameterf"), FunctionTemplate::New(GLglTexParameterfCallback));
 
-     Gl->Set(String::NewSymbol("TexParameterfv"), FunctionTemplate::New(GLglTexParameterfvCallback));
+     Gl->Set(String::NewSymbol("texParameterfv"), FunctionTemplate::New(GLglTexParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("TexParameteri"), FunctionTemplate::New(GLglTexParameteriCallback));
+     Gl->Set(String::NewSymbol("texParameteri"), FunctionTemplate::New(GLglTexParameteriCallback));
 
-     Gl->Set(String::NewSymbol("TexParameteriv"), FunctionTemplate::New(GLglTexParameterivCallback));
+     Gl->Set(String::NewSymbol("texParameteriv"), FunctionTemplate::New(GLglTexParameterivCallback));
 
-     Gl->Set(String::NewSymbol("Translated"), FunctionTemplate::New(GLglTranslatedCallback));
+     Gl->Set(String::NewSymbol("translated"), FunctionTemplate::New(GLglTranslatedCallback));
 
-     Gl->Set(String::NewSymbol("Translatef"), FunctionTemplate::New(GLglTranslatefCallback));
+     Gl->Set(String::NewSymbol("translatef"), FunctionTemplate::New(GLglTranslatefCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2d"), FunctionTemplate::New(GLglVertex2dCallback));
+     Gl->Set(String::NewSymbol("vertex2d"), FunctionTemplate::New(GLglVertex2dCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2dv"), FunctionTemplate::New(GLglVertex2dvCallback));
+     Gl->Set(String::NewSymbol("vertex2dv"), FunctionTemplate::New(GLglVertex2dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2f"), FunctionTemplate::New(GLglVertex2fCallback));
+     Gl->Set(String::NewSymbol("vertex2f"), FunctionTemplate::New(GLglVertex2fCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2fv"), FunctionTemplate::New(GLglVertex2fvCallback));
+     Gl->Set(String::NewSymbol("vertex2fv"), FunctionTemplate::New(GLglVertex2fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2i"), FunctionTemplate::New(GLglVertex2iCallback));
+     Gl->Set(String::NewSymbol("vertex2i"), FunctionTemplate::New(GLglVertex2iCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2iv"), FunctionTemplate::New(GLglVertex2ivCallback));
+     Gl->Set(String::NewSymbol("vertex2iv"), FunctionTemplate::New(GLglVertex2ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2s"), FunctionTemplate::New(GLglVertex2sCallback));
+     Gl->Set(String::NewSymbol("vertex2s"), FunctionTemplate::New(GLglVertex2sCallback));
 
-     Gl->Set(String::NewSymbol("Vertex2sv"), FunctionTemplate::New(GLglVertex2svCallback));
+     Gl->Set(String::NewSymbol("vertex2sv"), FunctionTemplate::New(GLglVertex2svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3d"), FunctionTemplate::New(GLglVertex3dCallback));
+     Gl->Set(String::NewSymbol("vertex3d"), FunctionTemplate::New(GLglVertex3dCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3dv"), FunctionTemplate::New(GLglVertex3dvCallback));
+     Gl->Set(String::NewSymbol("vertex3dv"), FunctionTemplate::New(GLglVertex3dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3f"), FunctionTemplate::New(GLglVertex3fCallback));
+     Gl->Set(String::NewSymbol("vertex3f"), FunctionTemplate::New(GLglVertex3fCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3fv"), FunctionTemplate::New(GLglVertex3fvCallback));
+     Gl->Set(String::NewSymbol("vertex3fv"), FunctionTemplate::New(GLglVertex3fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3i"), FunctionTemplate::New(GLglVertex3iCallback));
+     Gl->Set(String::NewSymbol("vertex3i"), FunctionTemplate::New(GLglVertex3iCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3iv"), FunctionTemplate::New(GLglVertex3ivCallback));
+     Gl->Set(String::NewSymbol("vertex3iv"), FunctionTemplate::New(GLglVertex3ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3s"), FunctionTemplate::New(GLglVertex3sCallback));
+     Gl->Set(String::NewSymbol("vertex3s"), FunctionTemplate::New(GLglVertex3sCallback));
 
-     Gl->Set(String::NewSymbol("Vertex3sv"), FunctionTemplate::New(GLglVertex3svCallback));
+     Gl->Set(String::NewSymbol("vertex3sv"), FunctionTemplate::New(GLglVertex3svCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4d"), FunctionTemplate::New(GLglVertex4dCallback));
+     Gl->Set(String::NewSymbol("vertex4d"), FunctionTemplate::New(GLglVertex4dCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4dv"), FunctionTemplate::New(GLglVertex4dvCallback));
+     Gl->Set(String::NewSymbol("vertex4dv"), FunctionTemplate::New(GLglVertex4dvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4f"), FunctionTemplate::New(GLglVertex4fCallback));
+     Gl->Set(String::NewSymbol("vertex4f"), FunctionTemplate::New(GLglVertex4fCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4fv"), FunctionTemplate::New(GLglVertex4fvCallback));
+     Gl->Set(String::NewSymbol("vertex4fv"), FunctionTemplate::New(GLglVertex4fvCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4i"), FunctionTemplate::New(GLglVertex4iCallback));
+     Gl->Set(String::NewSymbol("vertex4i"), FunctionTemplate::New(GLglVertex4iCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4iv"), FunctionTemplate::New(GLglVertex4ivCallback));
+     Gl->Set(String::NewSymbol("vertex4iv"), FunctionTemplate::New(GLglVertex4ivCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4s"), FunctionTemplate::New(GLglVertex4sCallback));
+     Gl->Set(String::NewSymbol("vertex4s"), FunctionTemplate::New(GLglVertex4sCallback));
 
-     Gl->Set(String::NewSymbol("Vertex4sv"), FunctionTemplate::New(GLglVertex4svCallback));
+     Gl->Set(String::NewSymbol("vertex4sv"), FunctionTemplate::New(GLglVertex4svCallback));
 
-     Gl->Set(String::NewSymbol("Viewport"), FunctionTemplate::New(GLglViewportCallback));
+     Gl->Set(String::NewSymbol("viewport"), FunctionTemplate::New(GLglViewportCallback));
 
-     Gl->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLglSampleCoverageCallback));
+     Gl->Set(String::NewSymbol("sampleCoverage"), FunctionTemplate::New(GLglSampleCoverageCallback));
 
-     Gl->Set(String::NewSymbol("LoadTransposeMatrixf"), FunctionTemplate::New(GLglLoadTransposeMatrixfCallback));
+     Gl->Set(String::NewSymbol("loadTransposeMatrixf"), FunctionTemplate::New(GLglLoadTransposeMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("LoadTransposeMatrixd"), FunctionTemplate::New(GLglLoadTransposeMatrixdCallback));
+     Gl->Set(String::NewSymbol("loadTransposeMatrixd"), FunctionTemplate::New(GLglLoadTransposeMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("MultTransposeMatrixf"), FunctionTemplate::New(GLglMultTransposeMatrixfCallback));
+     Gl->Set(String::NewSymbol("multTransposeMatrixf"), FunctionTemplate::New(GLglMultTransposeMatrixfCallback));
 
-     Gl->Set(String::NewSymbol("MultTransposeMatrixd"), FunctionTemplate::New(GLglMultTransposeMatrixdCallback));
+     Gl->Set(String::NewSymbol("multTransposeMatrixd"), FunctionTemplate::New(GLglMultTransposeMatrixdCallback));
 
-     Gl->Set(String::NewSymbol("ActiveTexture"), FunctionTemplate::New(GLglActiveTextureCallback));
+     Gl->Set(String::NewSymbol("activeTexture"), FunctionTemplate::New(GLglActiveTextureCallback));
 
-     Gl->Set(String::NewSymbol("ClientActiveTexture"), FunctionTemplate::New(GLglClientActiveTextureCallback));
+     Gl->Set(String::NewSymbol("clientActiveTexture"), FunctionTemplate::New(GLglClientActiveTextureCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1d"), FunctionTemplate::New(GLglMultiTexCoord1dCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1d"), FunctionTemplate::New(GLglMultiTexCoord1dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1dv"), FunctionTemplate::New(GLglMultiTexCoord1dvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1dv"), FunctionTemplate::New(GLglMultiTexCoord1dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1f"), FunctionTemplate::New(GLglMultiTexCoord1fCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1f"), FunctionTemplate::New(GLglMultiTexCoord1fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1fv"), FunctionTemplate::New(GLglMultiTexCoord1fvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1fv"), FunctionTemplate::New(GLglMultiTexCoord1fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1i"), FunctionTemplate::New(GLglMultiTexCoord1iCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1i"), FunctionTemplate::New(GLglMultiTexCoord1iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1iv"), FunctionTemplate::New(GLglMultiTexCoord1ivCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1iv"), FunctionTemplate::New(GLglMultiTexCoord1ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1s"), FunctionTemplate::New(GLglMultiTexCoord1sCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1s"), FunctionTemplate::New(GLglMultiTexCoord1sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord1sv"), FunctionTemplate::New(GLglMultiTexCoord1svCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord1sv"), FunctionTemplate::New(GLglMultiTexCoord1svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2d"), FunctionTemplate::New(GLglMultiTexCoord2dCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2d"), FunctionTemplate::New(GLglMultiTexCoord2dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2dv"), FunctionTemplate::New(GLglMultiTexCoord2dvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2dv"), FunctionTemplate::New(GLglMultiTexCoord2dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2f"), FunctionTemplate::New(GLglMultiTexCoord2fCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2f"), FunctionTemplate::New(GLglMultiTexCoord2fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2fv"), FunctionTemplate::New(GLglMultiTexCoord2fvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2fv"), FunctionTemplate::New(GLglMultiTexCoord2fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2i"), FunctionTemplate::New(GLglMultiTexCoord2iCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2i"), FunctionTemplate::New(GLglMultiTexCoord2iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2iv"), FunctionTemplate::New(GLglMultiTexCoord2ivCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2iv"), FunctionTemplate::New(GLglMultiTexCoord2ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2s"), FunctionTemplate::New(GLglMultiTexCoord2sCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2s"), FunctionTemplate::New(GLglMultiTexCoord2sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord2sv"), FunctionTemplate::New(GLglMultiTexCoord2svCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord2sv"), FunctionTemplate::New(GLglMultiTexCoord2svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3d"), FunctionTemplate::New(GLglMultiTexCoord3dCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3d"), FunctionTemplate::New(GLglMultiTexCoord3dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3dv"), FunctionTemplate::New(GLglMultiTexCoord3dvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3dv"), FunctionTemplate::New(GLglMultiTexCoord3dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3f"), FunctionTemplate::New(GLglMultiTexCoord3fCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3f"), FunctionTemplate::New(GLglMultiTexCoord3fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3fv"), FunctionTemplate::New(GLglMultiTexCoord3fvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3fv"), FunctionTemplate::New(GLglMultiTexCoord3fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3i"), FunctionTemplate::New(GLglMultiTexCoord3iCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3i"), FunctionTemplate::New(GLglMultiTexCoord3iCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3iv"), FunctionTemplate::New(GLglMultiTexCoord3ivCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3iv"), FunctionTemplate::New(GLglMultiTexCoord3ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3s"), FunctionTemplate::New(GLglMultiTexCoord3sCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3s"), FunctionTemplate::New(GLglMultiTexCoord3sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord3sv"), FunctionTemplate::New(GLglMultiTexCoord3svCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord3sv"), FunctionTemplate::New(GLglMultiTexCoord3svCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4d"), FunctionTemplate::New(GLglMultiTexCoord4dCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4d"), FunctionTemplate::New(GLglMultiTexCoord4dCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4dv"), FunctionTemplate::New(GLglMultiTexCoord4dvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4dv"), FunctionTemplate::New(GLglMultiTexCoord4dvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4f"), FunctionTemplate::New(GLglMultiTexCoord4fCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4f"), FunctionTemplate::New(GLglMultiTexCoord4fCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4fv"), FunctionTemplate::New(GLglMultiTexCoord4fvCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4fv"), FunctionTemplate::New(GLglMultiTexCoord4fvCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4iv"), FunctionTemplate::New(GLglMultiTexCoord4ivCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4iv"), FunctionTemplate::New(GLglMultiTexCoord4ivCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4s"), FunctionTemplate::New(GLglMultiTexCoord4sCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4s"), FunctionTemplate::New(GLglMultiTexCoord4sCallback));
 
-     Gl->Set(String::NewSymbol("MultiTexCoord4sv"), FunctionTemplate::New(GLglMultiTexCoord4svCallback));
+     Gl->Set(String::NewSymbol("multiTexCoord4sv"), FunctionTemplate::New(GLglMultiTexCoord4svCallback));
 
-     Gl->Set(String::NewSymbol("FogCoordf"), FunctionTemplate::New(GLglFogCoordfCallback));
+     Gl->Set(String::NewSymbol("fogCoordf"), FunctionTemplate::New(GLglFogCoordfCallback));
 
-     Gl->Set(String::NewSymbol("FogCoordfv"), FunctionTemplate::New(GLglFogCoordfvCallback));
+     Gl->Set(String::NewSymbol("fogCoordfv"), FunctionTemplate::New(GLglFogCoordfvCallback));
 
-     Gl->Set(String::NewSymbol("FogCoordd"), FunctionTemplate::New(GLglFogCoorddCallback));
+     Gl->Set(String::NewSymbol("fogCoordd"), FunctionTemplate::New(GLglFogCoorddCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3b"), FunctionTemplate::New(GLglSecondaryColor3bCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3b"), FunctionTemplate::New(GLglSecondaryColor3bCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3bv"), FunctionTemplate::New(GLglSecondaryColor3bvCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3bv"), FunctionTemplate::New(GLglSecondaryColor3bvCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3d"), FunctionTemplate::New(GLglSecondaryColor3dCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3d"), FunctionTemplate::New(GLglSecondaryColor3dCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3dv"), FunctionTemplate::New(GLglSecondaryColor3dvCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3dv"), FunctionTemplate::New(GLglSecondaryColor3dvCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3f"), FunctionTemplate::New(GLglSecondaryColor3fCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3f"), FunctionTemplate::New(GLglSecondaryColor3fCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3fv"), FunctionTemplate::New(GLglSecondaryColor3fvCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3fv"), FunctionTemplate::New(GLglSecondaryColor3fvCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3i"), FunctionTemplate::New(GLglSecondaryColor3iCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3i"), FunctionTemplate::New(GLglSecondaryColor3iCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3iv"), FunctionTemplate::New(GLglSecondaryColor3ivCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3iv"), FunctionTemplate::New(GLglSecondaryColor3ivCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3s"), FunctionTemplate::New(GLglSecondaryColor3sCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3s"), FunctionTemplate::New(GLglSecondaryColor3sCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3sv"), FunctionTemplate::New(GLglSecondaryColor3svCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3sv"), FunctionTemplate::New(GLglSecondaryColor3svCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3ub"), FunctionTemplate::New(GLglSecondaryColor3ubCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3ub"), FunctionTemplate::New(GLglSecondaryColor3ubCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3ubv"), FunctionTemplate::New(GLglSecondaryColor3ubvCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3ubv"), FunctionTemplate::New(GLglSecondaryColor3ubvCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3ui"), FunctionTemplate::New(GLglSecondaryColor3uiCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3ui"), FunctionTemplate::New(GLglSecondaryColor3uiCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3uiv"), FunctionTemplate::New(GLglSecondaryColor3uivCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3uiv"), FunctionTemplate::New(GLglSecondaryColor3uivCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3us"), FunctionTemplate::New(GLglSecondaryColor3usCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3us"), FunctionTemplate::New(GLglSecondaryColor3usCallback));
 
-     Gl->Set(String::NewSymbol("SecondaryColor3usv"), FunctionTemplate::New(GLglSecondaryColor3usvCallback));
+     Gl->Set(String::NewSymbol("secondaryColor3usv"), FunctionTemplate::New(GLglSecondaryColor3usvCallback));
 
-     Gl->Set(String::NewSymbol("PointParameterf"), FunctionTemplate::New(GLglPointParameterfCallback));
+     Gl->Set(String::NewSymbol("pointParameterf"), FunctionTemplate::New(GLglPointParameterfCallback));
 
-     Gl->Set(String::NewSymbol("PointParameterfv"), FunctionTemplate::New(GLglPointParameterfvCallback));
+     Gl->Set(String::NewSymbol("pointParameterfv"), FunctionTemplate::New(GLglPointParameterfvCallback));
 
-     Gl->Set(String::NewSymbol("PointParameteri"), FunctionTemplate::New(GLglPointParameteriCallback));
+     Gl->Set(String::NewSymbol("pointParameteri"), FunctionTemplate::New(GLglPointParameteriCallback));
 
-     Gl->Set(String::NewSymbol("PointParameteriv"), FunctionTemplate::New(GLglPointParameterivCallback));
+     Gl->Set(String::NewSymbol("pointParameteriv"), FunctionTemplate::New(GLglPointParameterivCallback));
 
-     Gl->Set(String::NewSymbol("BlendFuncSeparate"), FunctionTemplate::New(GLglBlendFuncSeparateCallback));
+     Gl->Set(String::NewSymbol("blendFuncSeparate"), FunctionTemplate::New(GLglBlendFuncSeparateCallback));
 
-     Gl->Set(String::NewSymbol("MultiDrawArrays"), FunctionTemplate::New(GLglMultiDrawArraysCallback));
+     Gl->Set(String::NewSymbol("multiDrawArrays"), FunctionTemplate::New(GLglMultiDrawArraysCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2d"), FunctionTemplate::New(GLglWindowPos2dCallback));
+     Gl->Set(String::NewSymbol("windowPos2d"), FunctionTemplate::New(GLglWindowPos2dCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2dv"), FunctionTemplate::New(GLglWindowPos2dvCallback));
+     Gl->Set(String::NewSymbol("windowPos2dv"), FunctionTemplate::New(GLglWindowPos2dvCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2f"), FunctionTemplate::New(GLglWindowPos2fCallback));
+     Gl->Set(String::NewSymbol("windowPos2f"), FunctionTemplate::New(GLglWindowPos2fCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2fv"), FunctionTemplate::New(GLglWindowPos2fvCallback));
+     Gl->Set(String::NewSymbol("windowPos2fv"), FunctionTemplate::New(GLglWindowPos2fvCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2i"), FunctionTemplate::New(GLglWindowPos2iCallback));
+     Gl->Set(String::NewSymbol("windowPos2i"), FunctionTemplate::New(GLglWindowPos2iCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2iv"), FunctionTemplate::New(GLglWindowPos2ivCallback));
+     Gl->Set(String::NewSymbol("windowPos2iv"), FunctionTemplate::New(GLglWindowPos2ivCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2s"), FunctionTemplate::New(GLglWindowPos2sCallback));
+     Gl->Set(String::NewSymbol("windowPos2s"), FunctionTemplate::New(GLglWindowPos2sCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos2sv"), FunctionTemplate::New(GLglWindowPos2svCallback));
+     Gl->Set(String::NewSymbol("windowPos2sv"), FunctionTemplate::New(GLglWindowPos2svCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3d"), FunctionTemplate::New(GLglWindowPos3dCallback));
+     Gl->Set(String::NewSymbol("windowPos3d"), FunctionTemplate::New(GLglWindowPos3dCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3dv"), FunctionTemplate::New(GLglWindowPos3dvCallback));
+     Gl->Set(String::NewSymbol("windowPos3dv"), FunctionTemplate::New(GLglWindowPos3dvCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3f"), FunctionTemplate::New(GLglWindowPos3fCallback));
+     Gl->Set(String::NewSymbol("windowPos3f"), FunctionTemplate::New(GLglWindowPos3fCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3fv"), FunctionTemplate::New(GLglWindowPos3fvCallback));
+     Gl->Set(String::NewSymbol("windowPos3fv"), FunctionTemplate::New(GLglWindowPos3fvCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3i"), FunctionTemplate::New(GLglWindowPos3iCallback));
+     Gl->Set(String::NewSymbol("windowPos3i"), FunctionTemplate::New(GLglWindowPos3iCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3iv"), FunctionTemplate::New(GLglWindowPos3ivCallback));
+     Gl->Set(String::NewSymbol("windowPos3iv"), FunctionTemplate::New(GLglWindowPos3ivCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3s"), FunctionTemplate::New(GLglWindowPos3sCallback));
+     Gl->Set(String::NewSymbol("windowPos3s"), FunctionTemplate::New(GLglWindowPos3sCallback));
 
-     Gl->Set(String::NewSymbol("WindowPos3sv"), FunctionTemplate::New(GLglWindowPos3svCallback));
+     Gl->Set(String::NewSymbol("windowPos3sv"), FunctionTemplate::New(GLglWindowPos3svCallback));
 
-     Gl->Set(String::NewSymbol("GenQueries"), FunctionTemplate::New(GLglGenQueriesCallback));
+     Gl->Set(String::NewSymbol("genQueries"), FunctionTemplate::New(GLglGenQueriesCallback));
 
-     Gl->Set(String::NewSymbol("DeleteQueries"), FunctionTemplate::New(GLglDeleteQueriesCallback));
+     Gl->Set(String::NewSymbol("deleteQueries"), FunctionTemplate::New(GLglDeleteQueriesCallback));
 
-     Gl->Set(String::NewSymbol("IsQuery"), FunctionTemplate::New(GLglIsQueryCallback));
+     Gl->Set(String::NewSymbol("isQuery"), FunctionTemplate::New(GLglIsQueryCallback));
 
-     Gl->Set(String::NewSymbol("BeginQuery"), FunctionTemplate::New(GLglBeginQueryCallback));
+     Gl->Set(String::NewSymbol("beginQuery"), FunctionTemplate::New(GLglBeginQueryCallback));
 
-     Gl->Set(String::NewSymbol("EndQuery"), FunctionTemplate::New(GLglEndQueryCallback));
+     Gl->Set(String::NewSymbol("endQuery"), FunctionTemplate::New(GLglEndQueryCallback));
 
-     Gl->Set(String::NewSymbol("GetQueryiv"), FunctionTemplate::New(GLglGetQueryivCallback));
+     Gl->Set(String::NewSymbol("getQueryiv"), FunctionTemplate::New(GLglGetQueryivCallback));
 
-     Gl->Set(String::NewSymbol("GetQueryObjectiv"), FunctionTemplate::New(GLglGetQueryObjectivCallback));
+     Gl->Set(String::NewSymbol("getQueryObjectiv"), FunctionTemplate::New(GLglGetQueryObjectivCallback));
 
-     Gl->Set(String::NewSymbol("GetQueryObjectuiv"), FunctionTemplate::New(GLglGetQueryObjectuivCallback));
+     Gl->Set(String::NewSymbol("getQueryObjectuiv"), FunctionTemplate::New(GLglGetQueryObjectuivCallback));
 
-     Gl->Set(String::NewSymbol("BindBuffer"), FunctionTemplate::New(GLglBindBufferCallback));
+     Gl->Set(String::NewSymbol("bindBuffer"), FunctionTemplate::New(GLglBindBufferCallback));
 
-     Gl->Set(String::NewSymbol("DeleteBuffers"), FunctionTemplate::New(GLglDeleteBuffersCallback));
+     Gl->Set(String::NewSymbol("deleteBuffers"), FunctionTemplate::New(GLglDeleteBuffersCallback));
 
-     Gl->Set(String::NewSymbol("GenBuffers"), FunctionTemplate::New(GLglGenBuffersCallback));
+     Gl->Set(String::NewSymbol("genBuffers"), FunctionTemplate::New(GLglGenBuffersCallback));
 
-     Gl->Set(String::NewSymbol("IsBuffer"), FunctionTemplate::New(GLglIsBufferCallback));
+     Gl->Set(String::NewSymbol("isBuffer"), FunctionTemplate::New(GLglIsBufferCallback));
 
-     Gl->Set(String::NewSymbol("UnmapBuffer"), FunctionTemplate::New(GLglUnmapBufferCallback));
+     Gl->Set(String::NewSymbol("unmapBuffer"), FunctionTemplate::New(GLglUnmapBufferCallback));
 
-     Gl->Set(String::NewSymbol("GetBufferParameteriv"), FunctionTemplate::New(GLglGetBufferParameterivCallback));
+     Gl->Set(String::NewSymbol("getBufferParameteriv"), FunctionTemplate::New(GLglGetBufferParameterivCallback));
 
-     Gl->Set(String::NewSymbol("DrawBuffers"), FunctionTemplate::New(GLglDrawBuffersCallback));
+     Gl->Set(String::NewSymbol("drawBuffers"), FunctionTemplate::New(GLglDrawBuffersCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1d"), FunctionTemplate::New(GLglVertexAttrib1dCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1d"), FunctionTemplate::New(GLglVertexAttrib1dCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1dv"), FunctionTemplate::New(GLglVertexAttrib1dvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1dv"), FunctionTemplate::New(GLglVertexAttrib1dvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1f"), FunctionTemplate::New(GLglVertexAttrib1fCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1f"), FunctionTemplate::New(GLglVertexAttrib1fCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1fv"), FunctionTemplate::New(GLglVertexAttrib1fvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1fv"), FunctionTemplate::New(GLglVertexAttrib1fvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1s"), FunctionTemplate::New(GLglVertexAttrib1sCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1s"), FunctionTemplate::New(GLglVertexAttrib1sCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib1sv"), FunctionTemplate::New(GLglVertexAttrib1svCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib1sv"), FunctionTemplate::New(GLglVertexAttrib1svCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2d"), FunctionTemplate::New(GLglVertexAttrib2dCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2d"), FunctionTemplate::New(GLglVertexAttrib2dCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2dv"), FunctionTemplate::New(GLglVertexAttrib2dvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2dv"), FunctionTemplate::New(GLglVertexAttrib2dvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2f"), FunctionTemplate::New(GLglVertexAttrib2fCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2f"), FunctionTemplate::New(GLglVertexAttrib2fCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2fv"), FunctionTemplate::New(GLglVertexAttrib2fvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2fv"), FunctionTemplate::New(GLglVertexAttrib2fvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2s"), FunctionTemplate::New(GLglVertexAttrib2sCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2s"), FunctionTemplate::New(GLglVertexAttrib2sCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib2sv"), FunctionTemplate::New(GLglVertexAttrib2svCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib2sv"), FunctionTemplate::New(GLglVertexAttrib2svCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3d"), FunctionTemplate::New(GLglVertexAttrib3dCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3d"), FunctionTemplate::New(GLglVertexAttrib3dCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3dv"), FunctionTemplate::New(GLglVertexAttrib3dvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3dv"), FunctionTemplate::New(GLglVertexAttrib3dvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3f"), FunctionTemplate::New(GLglVertexAttrib3fCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3f"), FunctionTemplate::New(GLglVertexAttrib3fCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3fv"), FunctionTemplate::New(GLglVertexAttrib3fvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3fv"), FunctionTemplate::New(GLglVertexAttrib3fvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3s"), FunctionTemplate::New(GLglVertexAttrib3sCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3s"), FunctionTemplate::New(GLglVertexAttrib3sCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib3sv"), FunctionTemplate::New(GLglVertexAttrib3svCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib3sv"), FunctionTemplate::New(GLglVertexAttrib3svCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nbv"), FunctionTemplate::New(GLglVertexAttrib4NbvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nbv"), FunctionTemplate::New(GLglVertexAttrib4NbvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Niv"), FunctionTemplate::New(GLglVertexAttrib4NivCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Niv"), FunctionTemplate::New(GLglVertexAttrib4NivCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nsv"), FunctionTemplate::New(GLglVertexAttrib4NsvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nsv"), FunctionTemplate::New(GLglVertexAttrib4NsvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nub"), FunctionTemplate::New(GLglVertexAttrib4NubCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nub"), FunctionTemplate::New(GLglVertexAttrib4NubCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nubv"), FunctionTemplate::New(GLglVertexAttrib4NubvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nubv"), FunctionTemplate::New(GLglVertexAttrib4NubvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nuiv"), FunctionTemplate::New(GLglVertexAttrib4NuivCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nuiv"), FunctionTemplate::New(GLglVertexAttrib4NuivCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4Nusv"), FunctionTemplate::New(GLglVertexAttrib4NusvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4Nusv"), FunctionTemplate::New(GLglVertexAttrib4NusvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4bv"), FunctionTemplate::New(GLglVertexAttrib4bvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4bv"), FunctionTemplate::New(GLglVertexAttrib4bvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4d"), FunctionTemplate::New(GLglVertexAttrib4dCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4d"), FunctionTemplate::New(GLglVertexAttrib4dCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4dv"), FunctionTemplate::New(GLglVertexAttrib4dvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4dv"), FunctionTemplate::New(GLglVertexAttrib4dvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4f"), FunctionTemplate::New(GLglVertexAttrib4fCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4f"), FunctionTemplate::New(GLglVertexAttrib4fCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4fv"), FunctionTemplate::New(GLglVertexAttrib4fvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4fv"), FunctionTemplate::New(GLglVertexAttrib4fvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4iv"), FunctionTemplate::New(GLglVertexAttrib4ivCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4iv"), FunctionTemplate::New(GLglVertexAttrib4ivCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4s"), FunctionTemplate::New(GLglVertexAttrib4sCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4s"), FunctionTemplate::New(GLglVertexAttrib4sCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4sv"), FunctionTemplate::New(GLglVertexAttrib4svCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4sv"), FunctionTemplate::New(GLglVertexAttrib4svCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4ubv"), FunctionTemplate::New(GLglVertexAttrib4ubvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4ubv"), FunctionTemplate::New(GLglVertexAttrib4ubvCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4uiv"), FunctionTemplate::New(GLglVertexAttrib4uivCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4uiv"), FunctionTemplate::New(GLglVertexAttrib4uivCallback));
 
-     Gl->Set(String::NewSymbol("VertexAttrib4usv"), FunctionTemplate::New(GLglVertexAttrib4usvCallback));
+     Gl->Set(String::NewSymbol("vertexAttrib4usv"), FunctionTemplate::New(GLglVertexAttrib4usvCallback));
 
-     Gl->Set(String::NewSymbol("EnableVertexAttribArray"), FunctionTemplate::New(GLglEnableVertexAttribArrayCallback));
+     Gl->Set(String::NewSymbol("enableVertexAttribArray"), FunctionTemplate::New(GLglEnableVertexAttribArrayCallback));
 
-     Gl->Set(String::NewSymbol("DisableVertexAttribArray"), FunctionTemplate::New(GLglDisableVertexAttribArrayCallback));
+     Gl->Set(String::NewSymbol("disableVertexAttribArray"), FunctionTemplate::New(GLglDisableVertexAttribArrayCallback));
 
-     Gl->Set(String::NewSymbol("GetVertexAttribdv"), FunctionTemplate::New(GLglGetVertexAttribdvCallback));
+     Gl->Set(String::NewSymbol("getVertexAttribdv"), FunctionTemplate::New(GLglGetVertexAttribdvCallback));
 
-     Gl->Set(String::NewSymbol("GetVertexAttribfv"), FunctionTemplate::New(GLglGetVertexAttribfvCallback));
+     Gl->Set(String::NewSymbol("getVertexAttribfv"), FunctionTemplate::New(GLglGetVertexAttribfvCallback));
 
-     Gl->Set(String::NewSymbol("GetVertexAttribiv"), FunctionTemplate::New(GLglGetVertexAttribivCallback));
+     Gl->Set(String::NewSymbol("getVertexAttribiv"), FunctionTemplate::New(GLglGetVertexAttribivCallback));
 
-     Gl->Set(String::NewSymbol("DeleteShader"), FunctionTemplate::New(GLglDeleteShaderCallback));
+     Gl->Set(String::NewSymbol("deleteShader"), FunctionTemplate::New(GLglDeleteShaderCallback));
 
-     Gl->Set(String::NewSymbol("DetachShader"), FunctionTemplate::New(GLglDetachShaderCallback));
+     Gl->Set(String::NewSymbol("detachShader"), FunctionTemplate::New(GLglDetachShaderCallback));
 
-     Gl->Set(String::NewSymbol("CreateShader"), FunctionTemplate::New(GLglCreateShaderCallback));
+     Gl->Set(String::NewSymbol("createShader"), FunctionTemplate::New(GLglCreateShaderCallback));
 
-     Gl->Set(String::NewSymbol("CompileShader"), FunctionTemplate::New(GLglCompileShaderCallback));
+     Gl->Set(String::NewSymbol("compileShader"), FunctionTemplate::New(GLglCompileShaderCallback));
 
-     Gl->Set(String::NewSymbol("CreateProgram"), FunctionTemplate::New(GLglCreateProgramCallback));
+     Gl->Set(String::NewSymbol("createProgram"), FunctionTemplate::New(GLglCreateProgramCallback));
 
-     Gl->Set(String::NewSymbol("AttachShader"), FunctionTemplate::New(GLglAttachShaderCallback));
+     Gl->Set(String::NewSymbol("attachShader"), FunctionTemplate::New(GLglAttachShaderCallback));
 
-     Gl->Set(String::NewSymbol("LinkProgram"), FunctionTemplate::New(GLglLinkProgramCallback));
+     Gl->Set(String::NewSymbol("linkProgram"), FunctionTemplate::New(GLglLinkProgramCallback));
 
-     Gl->Set(String::NewSymbol("UseProgram"), FunctionTemplate::New(GLglUseProgramCallback));
+     Gl->Set(String::NewSymbol("useProgram"), FunctionTemplate::New(GLglUseProgramCallback));
 
-     Gl->Set(String::NewSymbol("DeleteProgram"), FunctionTemplate::New(GLglDeleteProgramCallback));
+     Gl->Set(String::NewSymbol("deleteProgram"), FunctionTemplate::New(GLglDeleteProgramCallback));
 
-     Gl->Set(String::NewSymbol("ValidateProgram"), FunctionTemplate::New(GLglValidateProgramCallback));
+     Gl->Set(String::NewSymbol("validateProgram"), FunctionTemplate::New(GLglValidateProgramCallback));
 
-     Gl->Set(String::NewSymbol("Uniform1f"), FunctionTemplate::New(GLglUniform1fCallback));
+     Gl->Set(String::NewSymbol("uniform1f"), FunctionTemplate::New(GLglUniform1fCallback));
 
-     Gl->Set(String::NewSymbol("Uniform2f"), FunctionTemplate::New(GLglUniform2fCallback));
+     Gl->Set(String::NewSymbol("uniform2f"), FunctionTemplate::New(GLglUniform2fCallback));
 
-     Gl->Set(String::NewSymbol("Uniform3f"), FunctionTemplate::New(GLglUniform3fCallback));
+     Gl->Set(String::NewSymbol("uniform3f"), FunctionTemplate::New(GLglUniform3fCallback));
 
-     Gl->Set(String::NewSymbol("Uniform4f"), FunctionTemplate::New(GLglUniform4fCallback));
+     Gl->Set(String::NewSymbol("uniform4f"), FunctionTemplate::New(GLglUniform4fCallback));
 
-     Gl->Set(String::NewSymbol("Uniform1i"), FunctionTemplate::New(GLglUniform1iCallback));
+     Gl->Set(String::NewSymbol("uniform1i"), FunctionTemplate::New(GLglUniform1iCallback));
 
-     Gl->Set(String::NewSymbol("Uniform2i"), FunctionTemplate::New(GLglUniform2iCallback));
+     Gl->Set(String::NewSymbol("uniform2i"), FunctionTemplate::New(GLglUniform2iCallback));
 
-     Gl->Set(String::NewSymbol("Uniform3i"), FunctionTemplate::New(GLglUniform3iCallback));
+     Gl->Set(String::NewSymbol("uniform3i"), FunctionTemplate::New(GLglUniform3iCallback));
 
-     Gl->Set(String::NewSymbol("Uniform4i"), FunctionTemplate::New(GLglUniform4iCallback));
+     Gl->Set(String::NewSymbol("uniform4i"), FunctionTemplate::New(GLglUniform4iCallback));
 
-     Gl->Set(String::NewSymbol("Uniform1fv"), FunctionTemplate::New(GLglUniform1fvCallback));
+     Gl->Set(String::NewSymbol("uniform1fv"), FunctionTemplate::New(GLglUniform1fvCallback));
 
-     Gl->Set(String::NewSymbol("Uniform2fv"), FunctionTemplate::New(GLglUniform2fvCallback));
+     Gl->Set(String::NewSymbol("uniform2fv"), FunctionTemplate::New(GLglUniform2fvCallback));
 
-     Gl->Set(String::NewSymbol("Uniform3fv"), FunctionTemplate::New(GLglUniform3fvCallback));
+     Gl->Set(String::NewSymbol("uniform3fv"), FunctionTemplate::New(GLglUniform3fvCallback));
 
-     Gl->Set(String::NewSymbol("Uniform4fv"), FunctionTemplate::New(GLglUniform4fvCallback));
+     Gl->Set(String::NewSymbol("uniform4fv"), FunctionTemplate::New(GLglUniform4fvCallback));
 
-     Gl->Set(String::NewSymbol("Uniform1iv"), FunctionTemplate::New(GLglUniform1ivCallback));
+     Gl->Set(String::NewSymbol("uniform1iv"), FunctionTemplate::New(GLglUniform1ivCallback));
 
-     Gl->Set(String::NewSymbol("Uniform2iv"), FunctionTemplate::New(GLglUniform2ivCallback));
+     Gl->Set(String::NewSymbol("uniform2iv"), FunctionTemplate::New(GLglUniform2ivCallback));
 
-     Gl->Set(String::NewSymbol("Uniform3iv"), FunctionTemplate::New(GLglUniform3ivCallback));
+     Gl->Set(String::NewSymbol("uniform3iv"), FunctionTemplate::New(GLglUniform3ivCallback));
 
-     Gl->Set(String::NewSymbol("Uniform4iv"), FunctionTemplate::New(GLglUniform4ivCallback));
+     Gl->Set(String::NewSymbol("uniform4iv"), FunctionTemplate::New(GLglUniform4ivCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix2fv"), FunctionTemplate::New(GLglUniformMatrix2fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix2fv"), FunctionTemplate::New(GLglUniformMatrix2fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix3fv"), FunctionTemplate::New(GLglUniformMatrix3fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix3fv"), FunctionTemplate::New(GLglUniformMatrix3fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix4fv"), FunctionTemplate::New(GLglUniformMatrix4fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix4fv"), FunctionTemplate::New(GLglUniformMatrix4fvCallback));
 
-     Gl->Set(String::NewSymbol("IsShader"), FunctionTemplate::New(GLglIsShaderCallback));
+     Gl->Set(String::NewSymbol("isShader"), FunctionTemplate::New(GLglIsShaderCallback));
 
-     Gl->Set(String::NewSymbol("IsProgram"), FunctionTemplate::New(GLglIsProgramCallback));
+     Gl->Set(String::NewSymbol("isProgram"), FunctionTemplate::New(GLglIsProgramCallback));
 
-     Gl->Set(String::NewSymbol("GetShaderiv"), FunctionTemplate::New(GLglGetShaderivCallback));
+     Gl->Set(String::NewSymbol("getShaderiv"), FunctionTemplate::New(GLglGetShaderivCallback));
 
-     Gl->Set(String::NewSymbol("GetProgramiv"), FunctionTemplate::New(GLglGetProgramivCallback));
+     Gl->Set(String::NewSymbol("getProgramiv"), FunctionTemplate::New(GLglGetProgramivCallback));
 
-     Gl->Set(String::NewSymbol("GetAttachedShaders"), FunctionTemplate::New(GLglGetAttachedShadersCallback));
+     Gl->Set(String::NewSymbol("getAttachedShaders"), FunctionTemplate::New(GLglGetAttachedShadersCallback));
 
-     Gl->Set(String::NewSymbol("GetUniformfv"), FunctionTemplate::New(GLglGetUniformfvCallback));
+     Gl->Set(String::NewSymbol("getUniformfv"), FunctionTemplate::New(GLglGetUniformfvCallback));
 
-     Gl->Set(String::NewSymbol("GetUniformiv"), FunctionTemplate::New(GLglGetUniformivCallback));
+     Gl->Set(String::NewSymbol("getUniformiv"), FunctionTemplate::New(GLglGetUniformivCallback));
 
-     Gl->Set(String::NewSymbol("StencilFuncSeparate"), FunctionTemplate::New(GLglStencilFuncSeparateCallback));
+     Gl->Set(String::NewSymbol("stencilFuncSeparate"), FunctionTemplate::New(GLglStencilFuncSeparateCallback));
 
-     Gl->Set(String::NewSymbol("StencilOpSeparate"), FunctionTemplate::New(GLglStencilOpSeparateCallback));
+     Gl->Set(String::NewSymbol("stencilOpSeparate"), FunctionTemplate::New(GLglStencilOpSeparateCallback));
 
-     Gl->Set(String::NewSymbol("StencilMaskSeparate"), FunctionTemplate::New(GLglStencilMaskSeparateCallback));
+     Gl->Set(String::NewSymbol("stencilMaskSeparate"), FunctionTemplate::New(GLglStencilMaskSeparateCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix2x3fv"), FunctionTemplate::New(GLglUniformMatrix2x3fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix2x3fv"), FunctionTemplate::New(GLglUniformMatrix2x3fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix3x2fv"), FunctionTemplate::New(GLglUniformMatrix3x2fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix3x2fv"), FunctionTemplate::New(GLglUniformMatrix3x2fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix2x4fv"), FunctionTemplate::New(GLglUniformMatrix2x4fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix2x4fv"), FunctionTemplate::New(GLglUniformMatrix2x4fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix4x2fv"), FunctionTemplate::New(GLglUniformMatrix4x2fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix4x2fv"), FunctionTemplate::New(GLglUniformMatrix4x2fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix3x4fv"), FunctionTemplate::New(GLglUniformMatrix3x4fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix3x4fv"), FunctionTemplate::New(GLglUniformMatrix3x4fvCallback));
 
-     Gl->Set(String::NewSymbol("UniformMatrix4x3fv"), FunctionTemplate::New(GLglUniformMatrix4x3fvCallback));
+     Gl->Set(String::NewSymbol("uniformMatrix4x3fv"), FunctionTemplate::New(GLglUniformMatrix4x3fvCallback));
 
 
       // Again, return the result through the current handle scope.

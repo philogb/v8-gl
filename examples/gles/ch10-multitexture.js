@@ -9,19 +9,19 @@ var userData = { };
 //
 function textureFromImage(img)
 {
-    var textureId = Gles.GenTextures(1)[0];
+    var textureId = Gles.genTextures(1)[0];
 
-    Gles.BindTexture(Gles.TEXTURE_2D, textureId);
+    Gles.bindTexture(Gles.TEXTURE_2D, textureId);
 
     // Load it.  The dimensions, format, etc. are all read from the image.
-    Gles.TexImage2DFile(img);
+    Gles.texImage2DFile(img);
 
     // Set up filtering and wrap modes
-    Gles.TexParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_MIN_FILTER, Gles.NEAREST);
-    Gles.TexParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_MAG_FILTER, Gles.NEAREST);
+    Gles.texParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_MIN_FILTER, Gles.NEAREST);
+    Gles.texParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_MAG_FILTER, Gles.NEAREST);
 
-    Gles.TexParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_WRAP_S, Gles.CLAMP_TO_EDGE);
-    Gles.TexParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_WRAP_T, Gles.CLAMP_TO_EDGE);
+    Gles.texParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_WRAP_S, Gles.CLAMP_TO_EDGE);
+    Gles.texParameteri(Gles.TEXTURE_2D, Gles.TEXTURE_WRAP_T, Gles.CLAMP_TO_EDGE);
 
     return textureId;
 }
@@ -31,27 +31,27 @@ function init()
 {
 
 	// Create the linked program object
-    userData.programObject = getProgram("shaders/ch10-vshader.sl", Gles.VERTEX_SHADER, 
-    		"shaders/ch10-fshader.sl", Gles.FRAGMENT_SHADER);
+    userData.programObject = getProgram("shaders/ch10-vshader.sl", 
+    		                                "shaders/ch10-fshader.sl");
     if (userData.programObject == 0)
-	return false;
+      return false;
 
     // Get the attribute locations
-    userData.positionLoc = Gles.GetAttribLocation(userData.programObject, "a_position");
-    userData.texCoordLoc = Gles.GetAttribLocation(userData.programObject, "a_texCoord");
+    userData.positionLoc = Gles.getAttribLocation(userData.programObject, "a_position");
+    userData.texCoordLoc = Gles.getAttribLocation(userData.programObject, "a_texCoord");
 
     // Get the sampler locations
-    userData.baseMapLoc = Gles.GetUniformLocation(userData.programObject, "s_baseMap");
-    userData.lightMapLoc = Gles.GetUniformLocation(userData.programObject, "s_lightMap");
+    userData.baseMapLoc = Gles.getUniformLocation(userData.programObject, "s_baseMap");
+    userData.lightMapLoc = Gles.getUniformLocation(userData.programObject, "s_lightMap");
 
     // Load the textures; the textures were loaded earlier in main()
     userData.baseMapTexId = textureFromImage("assets/basemap.png");
     userData.lightMapTexId = textureFromImage("assets/lightmap.png");
 
     // set up the clear color to clear to transparent black
-    Gles.ClearColor (0, 0, 0, 0);
+    Gles.clearColor (0, 0, 0, 0);
     
-    Glut.DisplayFunc(draw);
+    Glut.displayFunc(draw);
     
     return true;
 }
@@ -79,57 +79,57 @@ function draw()
     var indices = [ 0, 1, 2, 0, 2, 3 ];
 
     // set up the viewport
-    Gles.Viewport (0, 0, 800, 600);
+    Gles.viewport (0, 0, 800, 600);
 
     // clear
-    Gles.Clear (Gles.COLOR_BUFFER_BIT);
+    Gles.clear (Gles.COLOR_BUFFER_BIT);
 
     // use the program
-    Gles.UseProgram (userData.programObject);
+    Gles.useProgram (userData.programObject);
 
     // load the vertex positions
-    Gles.VertexAttribPointer (userData.positionLoc, 3, Gles.FLOAT, false, 0, vVertices);
+    Gles.vertexAttribPointer (userData.positionLoc, 3, Gles.FLOAT, false, 0, vVertices);
 
     // load the texture coordinates
-    Gles.VertexAttribPointer (userData.texCoordLoc, 2, Gles.FLOAT, false, 0, vTexCoords);
+    Gles.vertexAttribPointer (userData.texCoordLoc, 2, Gles.FLOAT, false, 0, vTexCoords);
 
-    Gles.EnableVertexAttribArray (userData.positionLoc);
-    Gles.EnableVertexAttribArray (userData.texCoordLoc);
+    Gles.enableVertexAttribArray (userData.positionLoc);
+    Gles.enableVertexAttribArray (userData.texCoordLoc);
 
     // bind the base map
-    Gles.ActiveTexture(Gles.TEXTURE0);
-    Gles.BindTexture(Gles.TEXTURE_2D, userData.baseMapTexId);
+    Gles.activeTexture(Gles.TEXTURE0);
+    Gles.bindTexture(Gles.TEXTURE_2D, userData.baseMapTexId);
 
     // and set the base map sampler to texture unit 0
-    Gles.Uniform1i(userData.baseMapLoc, 0);
+    Gles.uniform1i(userData.baseMapLoc, 0);
 
     // bind the light map
-    Gles.ActiveTexture(Gles.TEXTURE1);
-    Gles.BindTexture(Gles.TEXTURE_2D, userData.lightMapTexId);
+    Gles.activeTexture(Gles.TEXTURE1);
+    Gles.bindTexture(Gles.TEXTURE_2D, userData.lightMapTexId);
 
     // and set the light map sampler to texture unit 1
-    Gles.Uniform1i(userData.lightMapLoc, 1);
+    Gles.uniform1i(userData.lightMapLoc, 1);
 
     // and finally do the draw
-    Gles.DrawElements(Gles.TRIANGLES, indices.length, Gles.UNSIGNED_SHORT, indices);
+    Gles.drawElements(Gles.TRIANGLES, indices.length, Gles.UNSIGNED_SHORT, indices);
 
     // swap buffers to display
-    Glut.SwapBuffers();
+    Glut.swapBuffers();
 }
 
 function main()
 {
 	//Initialize Glut
-	Glut.Init();
-	Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
-	Glut.InitWindowSize(800, 600);
+	Glut.init();
+	Glut.initDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
+	Glut.initWindowSize(800, 600);
 	//Create the window
-	Glut.CreateWindow("v8-gl Textures");
+	Glut.createWindow("v8-gl Textures");
 
 	if (!init())
 	    return;
     
-    Glut.MainLoop();
+    Glut.mainLoop();
 }
 
 main();

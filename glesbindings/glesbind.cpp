@@ -4362,275 +4362,275 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gles->Set(String::NewSymbol("MAX_RENDERBUFFER_SIZE"), Uint32::New(GL_MAX_RENDERBUFFER_SIZE), ReadOnly);
 
-     Gles->Set(String::NewSymbol("ActiveTexture"), FunctionTemplate::New(GLESglActiveTextureCallback));
+     Gles->Set(String::NewSymbol("activeTexture"), FunctionTemplate::New(GLESglActiveTextureCallback));
 
-     Gles->Set(String::NewSymbol("AttachShader"), FunctionTemplate::New(GLESglAttachShaderCallback));
+     Gles->Set(String::NewSymbol("attachShader"), FunctionTemplate::New(GLESglAttachShaderCallback));
 
-     Gles->Set(String::NewSymbol("BindAttribLocation"), FunctionTemplate::New(GLESglBindAttribLocationCallback));
+     Gles->Set(String::NewSymbol("bindAttribLocation"), FunctionTemplate::New(GLESglBindAttribLocationCallback));
 
-     Gles->Set(String::NewSymbol("BindBuffer"), FunctionTemplate::New(GLESglBindBufferCallback));
+     Gles->Set(String::NewSymbol("bindBuffer"), FunctionTemplate::New(GLESglBindBufferCallback));
 
-     Gles->Set(String::NewSymbol("BindFramebuffer"), FunctionTemplate::New(GLESglBindFramebufferCallback));
+     Gles->Set(String::NewSymbol("bindFramebuffer"), FunctionTemplate::New(GLESglBindFramebufferCallback));
 
-     Gles->Set(String::NewSymbol("BindRenderbuffer"), FunctionTemplate::New(GLESglBindRenderbufferCallback));
+     Gles->Set(String::NewSymbol("bindRenderbuffer"), FunctionTemplate::New(GLESglBindRenderbufferCallback));
 
-     Gles->Set(String::NewSymbol("BindTexture"), FunctionTemplate::New(GLESglBindTextureCallback));
+     Gles->Set(String::NewSymbol("bindTexture"), FunctionTemplate::New(GLESglBindTextureCallback));
 
-     Gles->Set(String::NewSymbol("BlendColor"), FunctionTemplate::New(GLESglBlendColorCallback));
+     Gles->Set(String::NewSymbol("blendColor"), FunctionTemplate::New(GLESglBlendColorCallback));
 
-     Gles->Set(String::NewSymbol("BlendEquation"), FunctionTemplate::New(GLESglBlendEquationCallback));
+     Gles->Set(String::NewSymbol("blendEquation"), FunctionTemplate::New(GLESglBlendEquationCallback));
 
-     Gles->Set(String::NewSymbol("BlendEquationSeparate"), FunctionTemplate::New(GLESglBlendEquationSeparateCallback));
+     Gles->Set(String::NewSymbol("blendEquationSeparate"), FunctionTemplate::New(GLESglBlendEquationSeparateCallback));
 
-     Gles->Set(String::NewSymbol("BlendFunc"), FunctionTemplate::New(GLESglBlendFuncCallback));
+     Gles->Set(String::NewSymbol("blendFunc"), FunctionTemplate::New(GLESglBlendFuncCallback));
 
-     Gles->Set(String::NewSymbol("BlendFuncSeparate"), FunctionTemplate::New(GLESglBlendFuncSeparateCallback));
+     Gles->Set(String::NewSymbol("blendFuncSeparate"), FunctionTemplate::New(GLESglBlendFuncSeparateCallback));
 
-     Gles->Set(String::NewSymbol("BufferData"), FunctionTemplate::New(GLESglBufferDataCallback));
+     Gles->Set(String::NewSymbol("bufferData"), FunctionTemplate::New(GLESglBufferDataCallback));
 
-     Gles->Set(String::NewSymbol("BufferSubData"), FunctionTemplate::New(GLESglBufferSubDataCallback));
+     Gles->Set(String::NewSymbol("bufferSubData"), FunctionTemplate::New(GLESglBufferSubDataCallback));
 
-     Gles->Set(String::NewSymbol("CheckFramebufferStatus"), FunctionTemplate::New(GLESglCheckFramebufferStatusCallback));
+     Gles->Set(String::NewSymbol("checkFramebufferStatus"), FunctionTemplate::New(GLESglCheckFramebufferStatusCallback));
 
-     Gles->Set(String::NewSymbol("Clear"), FunctionTemplate::New(GLESglClearCallback));
+     Gles->Set(String::NewSymbol("clear"), FunctionTemplate::New(GLESglClearCallback));
 
-     Gles->Set(String::NewSymbol("ClearColor"), FunctionTemplate::New(GLESglClearColorCallback));
+     Gles->Set(String::NewSymbol("clearColor"), FunctionTemplate::New(GLESglClearColorCallback));
 
-     Gles->Set(String::NewSymbol("ClearDepthf"), FunctionTemplate::New(GLESglClearDepthfCallback));
+     Gles->Set(String::NewSymbol("clearDepthf"), FunctionTemplate::New(GLESglClearDepthfCallback));
 
-     Gles->Set(String::NewSymbol("ClearStencil"), FunctionTemplate::New(GLESglClearStencilCallback));
+     Gles->Set(String::NewSymbol("clearStencil"), FunctionTemplate::New(GLESglClearStencilCallback));
 
-     Gles->Set(String::NewSymbol("ColorMask"), FunctionTemplate::New(GLESglColorMaskCallback));
+     Gles->Set(String::NewSymbol("colorMask"), FunctionTemplate::New(GLESglColorMaskCallback));
 
-     Gles->Set(String::NewSymbol("CompileShader"), FunctionTemplate::New(GLESglCompileShaderCallback));
+     Gles->Set(String::NewSymbol("compileShader"), FunctionTemplate::New(GLESglCompileShaderCallback));
 
-     Gles->Set(String::NewSymbol("CopyTexImage2D"), FunctionTemplate::New(GLESglCopyTexImage2DCallback));
+     Gles->Set(String::NewSymbol("copyTexImage2D"), FunctionTemplate::New(GLESglCopyTexImage2DCallback));
 
-     Gles->Set(String::NewSymbol("CopyTexSubImage2D"), FunctionTemplate::New(GLESglCopyTexSubImage2DCallback));
+     Gles->Set(String::NewSymbol("copyTexSubImage2D"), FunctionTemplate::New(GLESglCopyTexSubImage2DCallback));
 
-     Gles->Set(String::NewSymbol("CreateProgram"), FunctionTemplate::New(GLESglCreateProgramCallback));
+     Gles->Set(String::NewSymbol("createProgram"), FunctionTemplate::New(GLESglCreateProgramCallback));
 
-     Gles->Set(String::NewSymbol("CreateShader"), FunctionTemplate::New(GLESglCreateShaderCallback));
+     Gles->Set(String::NewSymbol("createShader"), FunctionTemplate::New(GLESglCreateShaderCallback));
 
-     Gles->Set(String::NewSymbol("CullFace"), FunctionTemplate::New(GLESglCullFaceCallback));
+     Gles->Set(String::NewSymbol("cullFace"), FunctionTemplate::New(GLESglCullFaceCallback));
 
-     Gles->Set(String::NewSymbol("DeleteBuffers"), FunctionTemplate::New(GLESglDeleteBuffersCallback));
+     Gles->Set(String::NewSymbol("deleteBuffers"), FunctionTemplate::New(GLESglDeleteBuffersCallback));
 
-     Gles->Set(String::NewSymbol("DeleteFramebuffers"), FunctionTemplate::New(GLESglDeleteFramebuffersCallback));
+     Gles->Set(String::NewSymbol("deleteFramebuffers"), FunctionTemplate::New(GLESglDeleteFramebuffersCallback));
 
-     Gles->Set(String::NewSymbol("DeleteProgram"), FunctionTemplate::New(GLESglDeleteProgramCallback));
+     Gles->Set(String::NewSymbol("deleteProgram"), FunctionTemplate::New(GLESglDeleteProgramCallback));
 
-     Gles->Set(String::NewSymbol("DeleteRenderbuffers"), FunctionTemplate::New(GLESglDeleteRenderbuffersCallback));
+     Gles->Set(String::NewSymbol("deleteRenderbuffers"), FunctionTemplate::New(GLESglDeleteRenderbuffersCallback));
 
-     Gles->Set(String::NewSymbol("DeleteShader"), FunctionTemplate::New(GLESglDeleteShaderCallback));
+     Gles->Set(String::NewSymbol("deleteShader"), FunctionTemplate::New(GLESglDeleteShaderCallback));
 
-     Gles->Set(String::NewSymbol("DeleteTextures"), FunctionTemplate::New(GLESglDeleteTexturesCallback));
+     Gles->Set(String::NewSymbol("deleteTextures"), FunctionTemplate::New(GLESglDeleteTexturesCallback));
 
-     Gles->Set(String::NewSymbol("DepthFunc"), FunctionTemplate::New(GLESglDepthFuncCallback));
+     Gles->Set(String::NewSymbol("depthFunc"), FunctionTemplate::New(GLESglDepthFuncCallback));
 
-     Gles->Set(String::NewSymbol("DepthMask"), FunctionTemplate::New(GLESglDepthMaskCallback));
+     Gles->Set(String::NewSymbol("depthMask"), FunctionTemplate::New(GLESglDepthMaskCallback));
 
-     Gles->Set(String::NewSymbol("DepthRangef"), FunctionTemplate::New(GLESglDepthRangefCallback));
+     Gles->Set(String::NewSymbol("depthRangef"), FunctionTemplate::New(GLESglDepthRangefCallback));
 
-     Gles->Set(String::NewSymbol("DetachShader"), FunctionTemplate::New(GLESglDetachShaderCallback));
+     Gles->Set(String::NewSymbol("detachShader"), FunctionTemplate::New(GLESglDetachShaderCallback));
 
-     Gles->Set(String::NewSymbol("Disable"), FunctionTemplate::New(GLESglDisableCallback));
+     Gles->Set(String::NewSymbol("disable"), FunctionTemplate::New(GLESglDisableCallback));
 
-     Gles->Set(String::NewSymbol("DisableVertexAttribArray"), FunctionTemplate::New(GLESglDisableVertexAttribArrayCallback));
+     Gles->Set(String::NewSymbol("disableVertexAttribArray"), FunctionTemplate::New(GLESglDisableVertexAttribArrayCallback));
 
-     Gles->Set(String::NewSymbol("DrawArrays"), FunctionTemplate::New(GLESglDrawArraysCallback));
+     Gles->Set(String::NewSymbol("drawArrays"), FunctionTemplate::New(GLESglDrawArraysCallback));
 
-     Gles->Set(String::NewSymbol("DrawElements"), FunctionTemplate::New(GLESglDrawElementsCallback));
+     Gles->Set(String::NewSymbol("drawElements"), FunctionTemplate::New(GLESglDrawElementsCallback));
 
-     Gles->Set(String::NewSymbol("Enable"), FunctionTemplate::New(GLESglEnableCallback));
+     Gles->Set(String::NewSymbol("enable"), FunctionTemplate::New(GLESglEnableCallback));
 
-     Gles->Set(String::NewSymbol("EnableVertexAttribArray"), FunctionTemplate::New(GLESglEnableVertexAttribArrayCallback));
+     Gles->Set(String::NewSymbol("enableVertexAttribArray"), FunctionTemplate::New(GLESglEnableVertexAttribArrayCallback));
 
-     Gles->Set(String::NewSymbol("Finish"), FunctionTemplate::New(GLESglFinishCallback));
+     Gles->Set(String::NewSymbol("finish"), FunctionTemplate::New(GLESglFinishCallback));
 
-     Gles->Set(String::NewSymbol("Flush"), FunctionTemplate::New(GLESglFlushCallback));
+     Gles->Set(String::NewSymbol("flush"), FunctionTemplate::New(GLESglFlushCallback));
 
-     Gles->Set(String::NewSymbol("FramebufferRenderbuffer"), FunctionTemplate::New(GLESglFramebufferRenderbufferCallback));
+     Gles->Set(String::NewSymbol("framebufferRenderbuffer"), FunctionTemplate::New(GLESglFramebufferRenderbufferCallback));
 
-     Gles->Set(String::NewSymbol("FramebufferTexture2D"), FunctionTemplate::New(GLESglFramebufferTexture2DCallback));
+     Gles->Set(String::NewSymbol("framebufferTexture2D"), FunctionTemplate::New(GLESglFramebufferTexture2DCallback));
 
-     Gles->Set(String::NewSymbol("FrontFace"), FunctionTemplate::New(GLESglFrontFaceCallback));
+     Gles->Set(String::NewSymbol("frontFace"), FunctionTemplate::New(GLESglFrontFaceCallback));
 
-     Gles->Set(String::NewSymbol("GenBuffers"), FunctionTemplate::New(GLESglGenBuffersCallback));
+     Gles->Set(String::NewSymbol("genBuffers"), FunctionTemplate::New(GLESglGenBuffersCallback));
 
-     Gles->Set(String::NewSymbol("GenerateMipmap"), FunctionTemplate::New(GLESglGenerateMipmapCallback));
+     Gles->Set(String::NewSymbol("generateMipmap"), FunctionTemplate::New(GLESglGenerateMipmapCallback));
 
-     Gles->Set(String::NewSymbol("GenFramebuffers"), FunctionTemplate::New(GLESglGenFramebuffersCallback));
+     Gles->Set(String::NewSymbol("genFramebuffers"), FunctionTemplate::New(GLESglGenFramebuffersCallback));
 
-     Gles->Set(String::NewSymbol("GenRenderbuffers"), FunctionTemplate::New(GLESglGenRenderbuffersCallback));
+     Gles->Set(String::NewSymbol("genRenderbuffers"), FunctionTemplate::New(GLESglGenRenderbuffersCallback));
 
-     Gles->Set(String::NewSymbol("GenTextures"), FunctionTemplate::New(GLESglGenTexturesCallback));
+     Gles->Set(String::NewSymbol("genTextures"), FunctionTemplate::New(GLESglGenTexturesCallback));
 
-     Gles->Set(String::NewSymbol("GetActiveAttrib"), FunctionTemplate::New(GLESglGetActiveAttribCallback));
+     Gles->Set(String::NewSymbol("getActiveAttrib"), FunctionTemplate::New(GLESglGetActiveAttribCallback));
 
-     Gles->Set(String::NewSymbol("GetActiveUniform"), FunctionTemplate::New(GLESglGetActiveUniformCallback));
+     Gles->Set(String::NewSymbol("getActiveUniform"), FunctionTemplate::New(GLESglGetActiveUniformCallback));
 
-     Gles->Set(String::NewSymbol("GetAttachedShaders"), FunctionTemplate::New(GLESglGetAttachedShadersCallback));
+     Gles->Set(String::NewSymbol("getAttachedShaders"), FunctionTemplate::New(GLESglGetAttachedShadersCallback));
 
-     Gles->Set(String::NewSymbol("GetAttribLocation"), FunctionTemplate::New(GLESglGetAttribLocationCallback));
+     Gles->Set(String::NewSymbol("getAttribLocation"), FunctionTemplate::New(GLESglGetAttribLocationCallback));
 
-     Gles->Set(String::NewSymbol("GetBooleanv"), FunctionTemplate::New(GLESglGetBooleanvCallback));
+     Gles->Set(String::NewSymbol("getBooleanv"), FunctionTemplate::New(GLESglGetBooleanvCallback));
 
-     Gles->Set(String::NewSymbol("GetBufferParameteriv"), FunctionTemplate::New(GLESglGetBufferParameterivCallback));
+     Gles->Set(String::NewSymbol("getBufferParameteriv"), FunctionTemplate::New(GLESglGetBufferParameterivCallback));
 
-     Gles->Set(String::NewSymbol("GetError"), FunctionTemplate::New(GLESglGetErrorCallback));
+     Gles->Set(String::NewSymbol("getError"), FunctionTemplate::New(GLESglGetErrorCallback));
 
-     Gles->Set(String::NewSymbol("GetFloatv"), FunctionTemplate::New(GLESglGetFloatvCallback));
+     Gles->Set(String::NewSymbol("getFloatv"), FunctionTemplate::New(GLESglGetFloatvCallback));
 
-     Gles->Set(String::NewSymbol("GetFramebufferAttachmentParameteriv"), FunctionTemplate::New(GLESglGetFramebufferAttachmentParameterivCallback));
+     Gles->Set(String::NewSymbol("getFramebufferAttachmentParameteriv"), FunctionTemplate::New(GLESglGetFramebufferAttachmentParameterivCallback));
 
-     Gles->Set(String::NewSymbol("GetIntegerv"), FunctionTemplate::New(GLESglGetIntegervCallback));
+     Gles->Set(String::NewSymbol("getIntegerv"), FunctionTemplate::New(GLESglGetIntegervCallback));
 
-     Gles->Set(String::NewSymbol("GetProgramiv"), FunctionTemplate::New(GLESglGetProgramivCallback));
+     Gles->Set(String::NewSymbol("getProgramiv"), FunctionTemplate::New(GLESglGetProgramivCallback));
 
-     Gles->Set(String::NewSymbol("GetProgramInfoLog"), FunctionTemplate::New(GLESglGetProgramInfoLogCallback));
+     Gles->Set(String::NewSymbol("getProgramInfoLog"), FunctionTemplate::New(GLESglGetProgramInfoLogCallback));
 
-     Gles->Set(String::NewSymbol("GetShaderiv"), FunctionTemplate::New(GLESglGetShaderivCallback));
+     Gles->Set(String::NewSymbol("getShaderiv"), FunctionTemplate::New(GLESglGetShaderivCallback));
 
-     Gles->Set(String::NewSymbol("GetShaderInfoLog"), FunctionTemplate::New(GLESglGetShaderInfoLogCallback));
+     Gles->Set(String::NewSymbol("getShaderInfoLog"), FunctionTemplate::New(GLESglGetShaderInfoLogCallback));
 
-     Gles->Set(String::NewSymbol("GetShaderSource"), FunctionTemplate::New(GLESglGetShaderSourceCallback));
+     Gles->Set(String::NewSymbol("getShaderSource"), FunctionTemplate::New(GLESglGetShaderSourceCallback));
 
-     Gles->Set(String::NewSymbol("GetUniformiv"), FunctionTemplate::New(GLESglGetUniformivCallback));
+     Gles->Set(String::NewSymbol("getUniformiv"), FunctionTemplate::New(GLESglGetUniformivCallback));
 
-     Gles->Set(String::NewSymbol("GetUniformLocation"), FunctionTemplate::New(GLESglGetUniformLocationCallback));
+     Gles->Set(String::NewSymbol("getUniformLocation"), FunctionTemplate::New(GLESglGetUniformLocationCallback));
 
-     Gles->Set(String::NewSymbol("Hint"), FunctionTemplate::New(GLESglHintCallback));
+     Gles->Set(String::NewSymbol("hint"), FunctionTemplate::New(GLESglHintCallback));
 
-     Gles->Set(String::NewSymbol("IsBuffer"), FunctionTemplate::New(GLESglIsBufferCallback));
+     Gles->Set(String::NewSymbol("isBuffer"), FunctionTemplate::New(GLESglIsBufferCallback));
 
-     Gles->Set(String::NewSymbol("IsEnabled"), FunctionTemplate::New(GLESglIsEnabledCallback));
+     Gles->Set(String::NewSymbol("isEnabled"), FunctionTemplate::New(GLESglIsEnabledCallback));
 
-     Gles->Set(String::NewSymbol("IsFramebuffer"), FunctionTemplate::New(GLESglIsFramebufferCallback));
+     Gles->Set(String::NewSymbol("isFramebuffer"), FunctionTemplate::New(GLESglIsFramebufferCallback));
 
-     Gles->Set(String::NewSymbol("IsProgram"), FunctionTemplate::New(GLESglIsProgramCallback));
+     Gles->Set(String::NewSymbol("isProgram"), FunctionTemplate::New(GLESglIsProgramCallback));
 
-     Gles->Set(String::NewSymbol("IsRenderbuffer"), FunctionTemplate::New(GLESglIsRenderbufferCallback));
+     Gles->Set(String::NewSymbol("isRenderbuffer"), FunctionTemplate::New(GLESglIsRenderbufferCallback));
 
-     Gles->Set(String::NewSymbol("IsShader"), FunctionTemplate::New(GLESglIsShaderCallback));
+     Gles->Set(String::NewSymbol("isShader"), FunctionTemplate::New(GLESglIsShaderCallback));
 
-     Gles->Set(String::NewSymbol("IsTexture"), FunctionTemplate::New(GLESglIsTextureCallback));
+     Gles->Set(String::NewSymbol("isTexture"), FunctionTemplate::New(GLESglIsTextureCallback));
 
-     Gles->Set(String::NewSymbol("LineWidth"), FunctionTemplate::New(GLESglLineWidthCallback));
+     Gles->Set(String::NewSymbol("lineWidth"), FunctionTemplate::New(GLESglLineWidthCallback));
 
-     Gles->Set(String::NewSymbol("LinkProgram"), FunctionTemplate::New(GLESglLinkProgramCallback));
+     Gles->Set(String::NewSymbol("linkProgram"), FunctionTemplate::New(GLESglLinkProgramCallback));
 
-     Gles->Set(String::NewSymbol("PixelStorei"), FunctionTemplate::New(GLESglPixelStoreiCallback));
+     Gles->Set(String::NewSymbol("pixelStorei"), FunctionTemplate::New(GLESglPixelStoreiCallback));
 
-     Gles->Set(String::NewSymbol("PolygonOffset"), FunctionTemplate::New(GLESglPolygonOffsetCallback));
+     Gles->Set(String::NewSymbol("polygonOffset"), FunctionTemplate::New(GLESglPolygonOffsetCallback));
 
-     Gles->Set(String::NewSymbol("ReadPixels"), FunctionTemplate::New(GLESglReadPixelsCallback));
+     Gles->Set(String::NewSymbol("readPixels"), FunctionTemplate::New(GLESglReadPixelsCallback));
 
-     Gles->Set(String::NewSymbol("RenderbufferStorage"), FunctionTemplate::New(GLESglRenderbufferStorageCallback));
+     Gles->Set(String::NewSymbol("renderbufferStorage"), FunctionTemplate::New(GLESglRenderbufferStorageCallback));
 
-     Gles->Set(String::NewSymbol("SampleCoverage"), FunctionTemplate::New(GLESglSampleCoverageCallback));
+     Gles->Set(String::NewSymbol("sampleCoverage"), FunctionTemplate::New(GLESglSampleCoverageCallback));
 
-     Gles->Set(String::NewSymbol("Scissor"), FunctionTemplate::New(GLESglScissorCallback));
+     Gles->Set(String::NewSymbol("scissor"), FunctionTemplate::New(GLESglScissorCallback));
 
-     Gles->Set(String::NewSymbol("ShaderSource"), FunctionTemplate::New(GLESglShaderSourceCallback));
+     Gles->Set(String::NewSymbol("shaderSource"), FunctionTemplate::New(GLESglShaderSourceCallback));
 
-     Gles->Set(String::NewSymbol("StencilFunc"), FunctionTemplate::New(GLESglStencilFuncCallback));
+     Gles->Set(String::NewSymbol("stencilFunc"), FunctionTemplate::New(GLESglStencilFuncCallback));
 
-     Gles->Set(String::NewSymbol("StencilFuncSeparate"), FunctionTemplate::New(GLESglStencilFuncSeparateCallback));
+     Gles->Set(String::NewSymbol("stencilFuncSeparate"), FunctionTemplate::New(GLESglStencilFuncSeparateCallback));
 
-     Gles->Set(String::NewSymbol("StencilMask"), FunctionTemplate::New(GLESglStencilMaskCallback));
+     Gles->Set(String::NewSymbol("stencilMask"), FunctionTemplate::New(GLESglStencilMaskCallback));
 
-     Gles->Set(String::NewSymbol("StencilMaskSeparate"), FunctionTemplate::New(GLESglStencilMaskSeparateCallback));
+     Gles->Set(String::NewSymbol("stencilMaskSeparate"), FunctionTemplate::New(GLESglStencilMaskSeparateCallback));
 
-     Gles->Set(String::NewSymbol("StencilOp"), FunctionTemplate::New(GLESglStencilOpCallback));
+     Gles->Set(String::NewSymbol("stencilOp"), FunctionTemplate::New(GLESglStencilOpCallback));
 
-     Gles->Set(String::NewSymbol("StencilOpSeparate"), FunctionTemplate::New(GLESglStencilOpSeparateCallback));
+     Gles->Set(String::NewSymbol("stencilOpSeparate"), FunctionTemplate::New(GLESglStencilOpSeparateCallback));
 
-     Gles->Set(String::NewSymbol("TexImage2D"), FunctionTemplate::New(GLESglTexImage2DCallback));
+     Gles->Set(String::NewSymbol("texImage2D"), FunctionTemplate::New(GLESglTexImage2DCallback));
 
-     Gles->Set(String::NewSymbol("TexParameterf"), FunctionTemplate::New(GLESglTexParameterfCallback));
+     Gles->Set(String::NewSymbol("texParameterf"), FunctionTemplate::New(GLESglTexParameterfCallback));
 
-     Gles->Set(String::NewSymbol("TexParameterfv"), FunctionTemplate::New(GLESglTexParameterfvCallback));
+     Gles->Set(String::NewSymbol("texParameterfv"), FunctionTemplate::New(GLESglTexParameterfvCallback));
 
-     Gles->Set(String::NewSymbol("TexParameteri"), FunctionTemplate::New(GLESglTexParameteriCallback));
+     Gles->Set(String::NewSymbol("texParameteri"), FunctionTemplate::New(GLESglTexParameteriCallback));
 
-     Gles->Set(String::NewSymbol("TexParameteriv"), FunctionTemplate::New(GLESglTexParameterivCallback));
+     Gles->Set(String::NewSymbol("texParameteriv"), FunctionTemplate::New(GLESglTexParameterivCallback));
 
-     Gles->Set(String::NewSymbol("TexSubImage2D"), FunctionTemplate::New(GLESglTexSubImage2DCallback));
+     Gles->Set(String::NewSymbol("texSubImage2D"), FunctionTemplate::New(GLESglTexSubImage2DCallback));
 
-     Gles->Set(String::NewSymbol("Uniform1f"), FunctionTemplate::New(GLESglUniform1fCallback));
+     Gles->Set(String::NewSymbol("uniform1f"), FunctionTemplate::New(GLESglUniform1fCallback));
 
-     Gles->Set(String::NewSymbol("Uniform1fv"), FunctionTemplate::New(GLESglUniform1fvCallback));
+     Gles->Set(String::NewSymbol("uniform1fv"), FunctionTemplate::New(GLESglUniform1fvCallback));
 
-     Gles->Set(String::NewSymbol("Uniform1i"), FunctionTemplate::New(GLESglUniform1iCallback));
+     Gles->Set(String::NewSymbol("uniform1i"), FunctionTemplate::New(GLESglUniform1iCallback));
 
-     Gles->Set(String::NewSymbol("Uniform1iv"), FunctionTemplate::New(GLESglUniform1ivCallback));
+     Gles->Set(String::NewSymbol("uniform1iv"), FunctionTemplate::New(GLESglUniform1ivCallback));
 
-     Gles->Set(String::NewSymbol("Uniform2f"), FunctionTemplate::New(GLESglUniform2fCallback));
+     Gles->Set(String::NewSymbol("uniform2f"), FunctionTemplate::New(GLESglUniform2fCallback));
 
-     Gles->Set(String::NewSymbol("Uniform2fv"), FunctionTemplate::New(GLESglUniform2fvCallback));
+     Gles->Set(String::NewSymbol("uniform2fv"), FunctionTemplate::New(GLESglUniform2fvCallback));
 
-     Gles->Set(String::NewSymbol("Uniform2i"), FunctionTemplate::New(GLESglUniform2iCallback));
+     Gles->Set(String::NewSymbol("uniform2i"), FunctionTemplate::New(GLESglUniform2iCallback));
 
-     Gles->Set(String::NewSymbol("Uniform2iv"), FunctionTemplate::New(GLESglUniform2ivCallback));
+     Gles->Set(String::NewSymbol("uniform2iv"), FunctionTemplate::New(GLESglUniform2ivCallback));
 
-     Gles->Set(String::NewSymbol("Uniform3f"), FunctionTemplate::New(GLESglUniform3fCallback));
+     Gles->Set(String::NewSymbol("uniform3f"), FunctionTemplate::New(GLESglUniform3fCallback));
 
-     Gles->Set(String::NewSymbol("Uniform3fv"), FunctionTemplate::New(GLESglUniform3fvCallback));
+     Gles->Set(String::NewSymbol("uniform3fv"), FunctionTemplate::New(GLESglUniform3fvCallback));
 
-     Gles->Set(String::NewSymbol("Uniform3i"), FunctionTemplate::New(GLESglUniform3iCallback));
+     Gles->Set(String::NewSymbol("uniform3i"), FunctionTemplate::New(GLESglUniform3iCallback));
 
-     Gles->Set(String::NewSymbol("Uniform3iv"), FunctionTemplate::New(GLESglUniform3ivCallback));
+     Gles->Set(String::NewSymbol("uniform3iv"), FunctionTemplate::New(GLESglUniform3ivCallback));
 
-     Gles->Set(String::NewSymbol("Uniform4f"), FunctionTemplate::New(GLESglUniform4fCallback));
+     Gles->Set(String::NewSymbol("uniform4f"), FunctionTemplate::New(GLESglUniform4fCallback));
 
-     Gles->Set(String::NewSymbol("Uniform4fv"), FunctionTemplate::New(GLESglUniform4fvCallback));
+     Gles->Set(String::NewSymbol("uniform4fv"), FunctionTemplate::New(GLESglUniform4fvCallback));
 
-     Gles->Set(String::NewSymbol("Uniform4i"), FunctionTemplate::New(GLESglUniform4iCallback));
+     Gles->Set(String::NewSymbol("uniform4i"), FunctionTemplate::New(GLESglUniform4iCallback));
 
-     Gles->Set(String::NewSymbol("Uniform4iv"), FunctionTemplate::New(GLESglUniform4ivCallback));
+     Gles->Set(String::NewSymbol("uniform4iv"), FunctionTemplate::New(GLESglUniform4ivCallback));
 
-     Gles->Set(String::NewSymbol("UniformMatrix2fv"), FunctionTemplate::New(GLESglUniformMatrix2fvCallback));
+     Gles->Set(String::NewSymbol("uniformMatrix2fv"), FunctionTemplate::New(GLESglUniformMatrix2fvCallback));
 
-     Gles->Set(String::NewSymbol("UniformMatrix3fv"), FunctionTemplate::New(GLESglUniformMatrix3fvCallback));
+     Gles->Set(String::NewSymbol("uniformMatrix3fv"), FunctionTemplate::New(GLESglUniformMatrix3fvCallback));
 
-     Gles->Set(String::NewSymbol("UniformMatrix4fv"), FunctionTemplate::New(GLESglUniformMatrix4fvCallback));
+     Gles->Set(String::NewSymbol("uniformMatrix4fv"), FunctionTemplate::New(GLESglUniformMatrix4fvCallback));
 
-     Gles->Set(String::NewSymbol("UseProgram"), FunctionTemplate::New(GLESglUseProgramCallback));
+     Gles->Set(String::NewSymbol("useProgram"), FunctionTemplate::New(GLESglUseProgramCallback));
 
-     Gles->Set(String::NewSymbol("ValidateProgram"), FunctionTemplate::New(GLESglValidateProgramCallback));
+     Gles->Set(String::NewSymbol("validateProgram"), FunctionTemplate::New(GLESglValidateProgramCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib1f"), FunctionTemplate::New(GLESglVertexAttrib1fCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib1f"), FunctionTemplate::New(GLESglVertexAttrib1fCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib1fv"), FunctionTemplate::New(GLESglVertexAttrib1fvCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib1fv"), FunctionTemplate::New(GLESglVertexAttrib1fvCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib2f"), FunctionTemplate::New(GLESglVertexAttrib2fCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib2f"), FunctionTemplate::New(GLESglVertexAttrib2fCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib2fv"), FunctionTemplate::New(GLESglVertexAttrib2fvCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib2fv"), FunctionTemplate::New(GLESglVertexAttrib2fvCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib3f"), FunctionTemplate::New(GLESglVertexAttrib3fCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib3f"), FunctionTemplate::New(GLESglVertexAttrib3fCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib3fv"), FunctionTemplate::New(GLESglVertexAttrib3fvCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib3fv"), FunctionTemplate::New(GLESglVertexAttrib3fvCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib4f"), FunctionTemplate::New(GLESglVertexAttrib4fCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib4f"), FunctionTemplate::New(GLESglVertexAttrib4fCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttrib4fv"), FunctionTemplate::New(GLESglVertexAttrib4fvCallback));
+     Gles->Set(String::NewSymbol("vertexAttrib4fv"), FunctionTemplate::New(GLESglVertexAttrib4fvCallback));
 
-     Gles->Set(String::NewSymbol("VertexAttribPointer"), FunctionTemplate::New(GLESglVertexAttribPointerCallback));
+     Gles->Set(String::NewSymbol("vertexAttribPointer"), FunctionTemplate::New(GLESglVertexAttribPointerCallback));
 
-     Gles->Set(String::NewSymbol("Viewport"), FunctionTemplate::New(GLESglViewportCallback));
+     Gles->Set(String::NewSymbol("viewport"), FunctionTemplate::New(GLESglViewportCallback));
 
-     Gles->Set(String::NewSymbol("GetParameter"), FunctionTemplate::New(GLESglGetParameterCallback));
+     Gles->Set(String::NewSymbol("getParameter"), FunctionTemplate::New(GLESglGetParameterCallback));
 
-     Gles->Set(String::NewSymbol("GetTexParameter"), FunctionTemplate::New(GLESglGetTexParameterCallback));
+     Gles->Set(String::NewSymbol("getTexParameter"), FunctionTemplate::New(GLESglGetTexParameterCallback));
 
-     Gles->Set(String::NewSymbol("GetVertexAttrib"), FunctionTemplate::New(GLESglGetVertexAttribCallback));
+     Gles->Set(String::NewSymbol("getVertexAttrib"), FunctionTemplate::New(GLESglGetVertexAttribCallback));
 
-     Gles->Set(String::NewSymbol("GetRenderbufferParameter"), FunctionTemplate::New(GLESglGetRenderbufferParameterCallback));
+     Gles->Set(String::NewSymbol("getRenderbufferParameter"), FunctionTemplate::New(GLESglGetRenderbufferParameterCallback));
 
-     Gles->Set(String::NewSymbol("ShaderSourceFile"), FunctionTemplate::New(GLESglShaderSourceFileCallback));
+     Gles->Set(String::NewSymbol("shaderSourceFile"), FunctionTemplate::New(GLESglShaderSourceFileCallback));
 
-     Gles->Set(String::NewSymbol("TexImage2DFile"), FunctionTemplate::New(GLESglTexImage2DFileCallback));
+     Gles->Set(String::NewSymbol("texImage2DFile"), FunctionTemplate::New(GLESglTexImage2DFileCallback));
 
 
       // Again, return the result through the current handle scope.

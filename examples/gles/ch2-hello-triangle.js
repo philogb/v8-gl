@@ -3,22 +3,22 @@ var userData = { };
 
 function loadShader(shaderType, shaderSource) {
     // Create the shader object
-    var shader = Gles.CreateShader(shaderType);
+    var shader = Gles.createShader(shaderType);
     if (shader == 0) return 0;
 
     // Load the shader source
-    Gles.ShaderSource(shader, shaderSource);
+    Gles.shaderSource(shader, shaderSource);
 
     // Compile the shader
-    Gles.CompileShader(shader);
+    Gles.compileShader(shader);
 
     // Check the compile status
-    var compiled = Gles.GetShaderiv(shader, Gles.COMPILE_STATUS);
+    var compiled = Gles.getShaderiv(shader, Gles.COMPILE_STATUS);
     if (!compiled) {
-		// Something went wrong during compilation; get the error
-		var error = Gles.GetShaderInfoLog(shader);
-		Gles.DeleteShader(shader);
-		return 0;
+  		// Something went wrong during compilation; get the error
+  		var error = Gles.getShaderInfoLog(shader);
+  		Gles.deleteShader(shader);
+  		return 0;
     }
 
     return shader;
@@ -47,29 +47,29 @@ function init() {
 	return false;
 
     // Create the program object
-    var programObject = Gles.CreateProgram();
+    var programObject = Gles.createProgram();
     if (programObject == 0)
-	return false;
+      return false;
 
     // Attach our two shaders to the program
-    Gles.AttachShader (programObject, vertexShader);
-    Gles.AttachShader (programObject, fragmentShader);
+    Gles.attachShader (programObject, vertexShader);
+    Gles.attachShader (programObject, fragmentShader);
 
     // Bind "vPosition" to attribute 0
-    Gles.BindAttribLocation (programObject, 0, "vPosition");
+    Gles.bindAttribLocation (programObject, 0, "vPosition");
     
     // Link the program
-    Gles.LinkProgram (programObject);
+    Gles.linkProgram (programObject);
 
     // Check the link status
-    var linked = Gles.GetProgramiv (programObject, Gles.LINK_STATUS);
+    var linked = Gles.getProgramiv (programObject, Gles.LINK_STATUS);
     if (!linked) {
 		// something went wrong with the link
-		var error = Gles.GetProgramInfoLog (programObject);
+		var error = Gles.getProgramInfoLog (programObject);
 	
-		Gles.DeleteProgram(programObject);
-		Gles.DeleteProgram(fragmentShader);
-		Gles.DeleteProgram(vertexShader);
+		Gles.deleteProgram(programObject);
+		Gles.deleteProgram(fragmentShader);
+		Gles.deleteProgram(vertexShader);
 	
 		return false;
     }
@@ -77,10 +77,10 @@ function init() {
     userData.programObject = programObject;
 
     // set up the clear color to clear to transparent black
-    Gles.ClearColor (0, 0, 0, 0);
+    Gles.clearColor (0, 0, 0, 0);
 
 	//Set drawing callback
-	Glut.DisplayFunc(draw);
+	Glut.displayFunc(draw);
     
     return true;
 }
@@ -92,37 +92,37 @@ function draw() {
 				      0.5, -0.5,  0.0  ];
 
     // Set up the viewport
-    Gles.Viewport(0, 0, 800, 600);
+    Gles.viewport(0, 0, 800, 600);
 
     // Clear the color buffer
-    Gles.Clear(Gles.COLOR_BUFFER_BIT);
+    Gles.clear(Gles.COLOR_BUFFER_BIT);
 
     // Use the program object we created in init()
-    Gles.UseProgram(userData.programObject);
+    Gles.useProgram(userData.programObject);
 
     // Load the vertex data
-    Gles.VertexAttribPointer(0, 3, Gles.FLOAT, false, 0, vertices);
-    Gles.EnableVertexAttribArray(0);
+    Gles.vertexAttribPointer(0, 3, Gles.FLOAT, false, 0, vertices);
+    Gles.enableVertexAttribArray(0);
 
     // Do the draw, as triangles
-    Gles.DrawArrays(Gles.TRIANGLES, 0, 3);
+    Gles.drawArrays(Gles.TRIANGLES, 0, 3);
     
     // Finally do the swap to display what we just drew
-    Glut.SwapBuffers();
+    Glut.swapBuffers();
 }
 
 function main() {
 	//Initialize Glut
-	Glut.Init();
-	Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
-	Glut.InitWindowSize(800, 600);
+	Glut.init();
+	Glut.initDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
+	Glut.initWindowSize(800, 600);
 	//Create the window
-	Glut.CreateWindow("OpenGL ES on V8!  \\(^_^)/");
+	Glut.createWindow("OpenGL ES on V8!  \\(^_^)/");
 	
     if (!init())
 	return;
     
-    Glut.MainLoop();
+    Glut.mainLoop();
 }
 
 main();

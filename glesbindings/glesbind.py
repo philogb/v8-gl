@@ -175,7 +175,7 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 """
     bind_accessor = lambda n: "     Gles->Set(String::NewSymbol(\"" + '_'.join(n.split('_')[1:]) \
         + "\"), Uint32::New(" + n + "), ReadOnly);\n"
-    bind_function = lambda n: "     Gles->Set(String::NewSymbol(\"" + n[2:] + \
+    bind_function = lambda n: "     Gles->Set(String::NewSymbol(\"" + n[2].lower() + n[3:] + \
         "\"), FunctionTemplate::New(GLES" + n + "Callback));\n"
     
     cts = [bind_accessor(name) for name in constants]

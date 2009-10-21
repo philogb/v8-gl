@@ -1,74 +1,74 @@
 //Initializes 3D rendering
 function initRendering() {
-	Gl.Enable(Gl.DEPTH_TEST)
-	  .Enable(Gl.COLOR_MATERIAL);
+	Gl.enable(Gl.DEPTH_TEST)
+	  .enable(Gl.COLOR_MATERIAL);
 }
 
 //Called when the window is resized
 function handleResize(w, h) {
-	Gl.Viewport(0, 0, w, h)
-	  .MatrixMode(Gl.PROJECTION)
-	  .LoadIdentity();
+	Gl.viewport(0, 0, w, h)
+	  .matrixMode(Gl.PROJECTION)
+	  .loadIdentity();
 
-	Glu.Perspective(45.0, w / h, 1.0, 200.0);
+	Glu.perspective(45.0, w / h, 1.0, 200.0);
 }
 
 //Draws the 3D scene
 function drawScene() {
-	Gl.Clear(Gl.COLOR_BUFFER_BIT | Gl.DEPTH_BUFFER_BIT)
-	  .MatrixMode(Gl.MODELVIEW)
-	  .LoadIdentity()
+	Gl.clear(Gl.COLOR_BUFFER_BIT | Gl.DEPTH_BUFFER_BIT)
+	  .matrixMode(Gl.MODELVIEW)
+	  .loadIdentity()
 
-	  .Begin(Gl.QUADS)
+	  .begin(Gl.QUADS)
 	
 	   //Trapezoid
-	  .Vertex3f(-0.7, -1.5, -5.0)
-	  .Vertex3f(0.7, -1.5, -5.0)
-	  .Vertex3f(0.4, -0.5, -5.0)
-	  .Vertex3f(-0.4, -0.5, -5.0)
+	  .vertex3f(-0.7, -1.5, -5.0)
+	  .vertex3f(0.7, -1.5, -5.0)
+	  .vertex3f(0.4, -0.5, -5.0)
+	  .vertex3f(-0.4, -0.5, -5.0)
 	
-	  .End() 
+	  .end() 
 	
-	  .Begin(Gl.TRIANGLES)
+	  .begin(Gl.TRIANGLES)
 	
 	//Pentagon
-	  .Vertex3f(0.5, 0.5, -5.0)
-	  .Vertex3f(1.5, 0.5, -5.0)
-	  .Vertex3f(0.5, 1.0, -5.0)
+	  .vertex3f(0.5, 0.5, -5.0)
+	  .vertex3f(1.5, 0.5, -5.0)
+	  .vertex3f(0.5, 1.0, -5.0)
 	
-	  .Vertex3f(0.5, 1.0, -5.0)
-	  .Vertex3f(1.5, 0.5, -5.0)
-	  .Vertex3f(1.5, 1.0, -5.0)
+	  .vertex3f(0.5, 1.0, -5.0)
+	  .vertex3f(1.5, 0.5, -5.0)
+	  .vertex3f(1.5, 1.0, -5.0)
 	
-	  .Vertex3f(0.5, 1.0, -5.0)
-	  .Vertex3f(1.5, 1.0, -5.0)
-	  .Vertex3f(1.0, 1.5, -5.0)
+	  .vertex3f(0.5, 1.0, -5.0)
+	  .vertex3f(1.5, 1.0, -5.0)
+	  .vertex3f(1.0, 1.5, -5.0)
 	
 	//Triangle
-	  .Vertex3f(-0.5, 0.5, -5.0)
-	  .Vertex3f(-1.0, 1.5, -5.0)
-	  .Vertex3f(-1.5, 0.5, -5.0)
+	  .vertex3f(-0.5, 0.5, -5.0)
+	  .vertex3f(-1.0, 1.5, -5.0)
+	  .vertex3f(-1.5, 0.5, -5.0)
 	
-	  .End();
+	  .end();
 
-	Glut.SwapBuffers();
+	Glut.swapBuffers();
 }
 
 function main() {
 	//Initialize Glut
-	Glut.Init();
-	Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
-	Glut.InitWindowSize(400, 400);
+	Glut.init();
+	Glut.initDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
+	Glut.initWindowSize(400, 400);
 	
 	//Create the window
-	Glut.CreateWindow("OpenGL on V8 baby!");
+	Glut.createWindow("OpenGL on V8 baby!");
 	initRendering(); //Initialize rendering
 	
 	//Set handler functions for drawing, keypresses, and window resizes
-	Glut.DisplayFunc(drawScene);
-	Glut.ReshapeFunc(handleResize);
+	Glut.displayFunc(drawScene);
+	Glut.reshapeFunc(handleResize);
 	
-	Glut.MainLoop(); //Start the main loop.
+	Glut.mainLoop(); //Start the main loop.
 }
 
 main();

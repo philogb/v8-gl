@@ -20,21 +20,21 @@ var userData = {};
 
 function loadShader(shaderType, shaderSource) {
     // Create the shader object
-    var shader = Gles.CreateShader(shaderType);
+    var shader = Gles.createShader(shaderType);
     if (shader == 0) return 0;
 
     // Load the shader source
-    Gles.ShaderSource(shader, shaderSource);
+    Gles.shaderSource(shader, shaderSource);
 
     // Compile the shader
-    Gles.CompileShader(shader);
+    Gles.compileShader(shader);
 
     // Check the compile status
-    var compiled = Gles.GetShaderiv(shader, Gles.COMPILE_STATUS);
+    var compiled = Gles.getShaderiv(shader, Gles.COMPILE_STATUS);
     if (!compiled) {
 		// Something went wrong during compilation; get the error
-		var error = Gles.GetShaderInfoLog(shader);
-		Gles.DeleteShader(shader);
+		var error = Gles.getShaderInfoLog(shader);
+		Gles.deleteShader(shader);
 		return 0;
     }
 
@@ -55,21 +55,21 @@ function getProgram() {
     }
 
     // then do the program object creation
-    var program = Gles.CreateProgram();
+    var program = Gles.createProgram();
     if (program == 0)
 	return 0;
 
     // attach all the shaders
     for (var i = 0; i < shaders.length; i++) {
-	Gles.AttachShader(program, shaders[i]);
+      Gles.attachShader(program, shaders[i]);
     }
 
     // link, and check for errors
-    Gles.LinkProgram(program);
+    Gles.linkProgram(program);
 
-    var linked = Gles.GetProgramiv(program, Gles.LINK_STATUS);
+    var linked = Gles.getProgramiv(program, Gles.LINK_STATUS);
     if (!linked) {
-    	var error = Gles.GetProgramInfoLog(program);
+    	var error = Gles.getProgramInfoLog(program);
     	return 0;
     }
 
@@ -80,10 +80,10 @@ function init() {
 	userData.programObject = getProgram(Gles.VERTEX_SHADER, vertex_shader, Gles.FRAGMENT_SHADER, fragment_shader);
 	if(userData.programObject == 0) return false;
 	
-	userData.positionLoc = Gles.GetAttribLocation(userData.programObject, "a_position");
-	userData.mvpLoc = Gles.GetUniformLocation(userData.programObject, "u_mvpMatrix");
+	userData.positionLoc = Gles.getAttribLocation(userData.programObject, "a_position");
+	userData.mvpLoc = Gles.getUniformLocation(userData.programObject, "u_mvpMatrix");
 	userData.obj = esGenCube(1.0);
-	Gles.ClearColor(0, 0, 0, 0);
+	Gles.clearColor(0, 0, 0, 0);
 	return true;
 }
 
@@ -113,60 +113,60 @@ function update() {
 	angle += 2.0;
 	if (angle > 360) angle -= 360;
 	updateObjects();
-    Glut.PostRedisplay();
-	Glut.TimerFunc(25, update, 0);
+    Glut.postRedisplay();
+	Glut.timerFunc(25, update, 0);
 }
 
 // Actually draw the triangle, using the program created in init()
 function draw() {
     // Set up the viewport
-    Gles.Viewport(0, 0, 800, 600);
+    Gles.viewport(0, 0, 800, 600);
 
     // Clear the color buffer
-    Gles.Clear(Gles.COLOR_BUFFER_BIT);
+    Gles.clear(Gles.COLOR_BUFFER_BIT);
 
     // Use the program object we created in init()
-    Gles.UseProgram(userData.programObject);
+    Gles.useProgram(userData.programObject);
 
     // Load the vertex data
-    Gles.VertexAttribPointer(userData.positionLoc, 3, Gles.FLOAT, false, 0, userData.obj.vertices);
-    Gles.EnableVertexAttribArray(userData.positionLoc);
+    Gles.vertexAttribPointer(userData.positionLoc, 3, Gles.FLOAT, false, 0, userData.obj.vertices);
+    Gles.enableVertexAttribArray(userData.positionLoc);
 
     // Load the MVP matrix
-    Gles.UniformMatrix4fv(userData.mvpLoc, userData.mvpMatrix.elements.length, Gles.FALSE, userData.mvpMatrix.elements);
+    Gles.uniformMatrix4fv(userData.mvpLoc, userData.mvpMatrix.elements.length, Gles.FALSE, userData.mvpMatrix.elements);
 
     // Draw the cube
-    Gles.DrawElements(Gles.TRIANGLES, userData.obj.indices.length, Gles.UNSIGNED_SHORT, userData.obj.indices);
+    Gles.drawElements(Gles.TRIANGLES, userData.obj.indices.length, Gles.UNSIGNED_SHORT, userData.obj.indices);
 
     // Finally do the swap to display what we just drew
-    Glut.SwapBuffers();
+    Glut.swapBuffers();
 }
 
 function main() {
 	//Initialize Glut
-	Glut.Init();
-	Glut.InitDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
-	Glut.InitWindowSize(800, 600);
+	Glut.init();
+	Glut.initDisplayMode(Glut.DOUBLE | Glut.RGB | Glut.DEPTH);
+	Glut.initWindowSize(800, 600);
 	//Create the window
-	Glut.CreateWindow("OpenGL ES on V8!  (^_^)/");
+	Glut.createWindow("OpenGL ES on V8!  (^_^)/");
 	
     if (!init())
 	return;
     
     updateObjects();
 	//Set drawing callback
-	Glut.DisplayFunc(draw);
+	Glut.displayFunc(draw);
 	//Set resize window callback
-	Glut.ReshapeFunc(function(w, h) {
-		Gles.Viewport(0, 0, w, h);
-		Gl.MatrixMode(Gl.PROJECTION);
-		Gl.LoadIdentity();
-		Glu.Perspective(45.0, w / h, 1.0, 200.0);
+	Glut.reshapeFunc(function(w, h) {
+		Gles.viewport(0, 0, w, h);
+		Gl.matrixMode(Gl.PROJECTION);
+		Gl.loadIdentity();
+		Glu.perspective(45.0, w / h, 1.0, 200.0);
 	});
 
-	Glut.TimerFunc(25, update, 0);
+	Glut.timerFunc(25, update, 0);
 	//Start the main loop.
-	Glut.MainLoop();
+	Glut.mainLoop();
 }
 
 main();

@@ -41,6 +41,14 @@ Handle<Value> GetGLUT_XLIB_IMPLEMENTATION(Local<String> property,
 
 
 
+Handle<Value> GetGLUT_MACOSX_IMPLEMENTATION(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_MACOSX_IMPLEMENTATION);
+}
+
+
+
+
 Handle<Value> GetGLUT_RGB(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_RGB);
@@ -132,6 +140,14 @@ Handle<Value> GetGLUT_STEREO(Local<String> property,
 Handle<Value> GetGLUT_LUMINANCE(Local<String> property,
                       const AccessorInfo &info) {
     return Uint32::New(GLUT_LUMINANCE);
+}
+
+
+
+
+Handle<Value> GetGLUT_NO_RECOVERY(Local<String> property,
+                      const AccessorInfo &info) {
+    return Uint32::New(GLUT_NO_RECOVERY);
 }
 
 
@@ -1732,6 +1748,38 @@ void funcWMCloseFunc ( ) {
   }
 }
 
+Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+  //get arguments
+  //delete previous assigned function
+  persistentWMCloseFunc.Dispose();
+  Handle<Function> value0 = Handle<Function>::Cast(args[0]);
+  persistentWMCloseFunc = Persistent<Function>::New(value0);
+
+  //make call
+  glutWMCloseFunc((void (*)(void)) funcWMCloseFunc);
+  return v8::Undefined();
+}
+
+
+
+
+Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
+  //if less that nbr of formal parameters then do nothing
+  if (args.Length() < 0) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+
+  //make call
+  glutCheckLoop();
+  return v8::Undefined();
+}
+
+
+
+
 Handle<Value> GLUTEstablishOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
@@ -2918,13 +2966,13 @@ Handle<Value> GLUTSetColorCallback(const Arguments& args) {
   //define handle scope
   HandleScope scope;
   //get arguments
-  int arg0 = args[0]->IntegerValue();
+  int arg0    = args[0]->Int32Value();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
   double arg3 = args[3]->NumberValue();
 
   //make call
-  glutSetColor((int)arg0, (GLfloat)arg1, (GLfloat)arg2, (GLfloat)arg3);
+  glutSetColor(arg0, (GLfloat)arg1, (GLfloat)arg2, (GLfloat)arg3);
   return v8::Undefined();
 }
 
@@ -3810,6 +3858,8 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
 
      Glut->SetAccessor(String::NewSymbol("XLIB_IMPLEMENTATION"), GetGLUT_XLIB_IMPLEMENTATION);
 
+     Glut->SetAccessor(String::NewSymbol("MACOSX_IMPLEMENTATION"), GetGLUT_MACOSX_IMPLEMENTATION);
+
      Glut->SetAccessor(String::NewSymbol("RGB"), GetGLUT_RGB);
 
      Glut->SetAccessor(String::NewSymbol("RGBA"), GetGLUT_RGBA);
@@ -3833,6 +3883,8 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->SetAccessor(String::NewSymbol("STEREO"), GetGLUT_STEREO);
 
      Glut->SetAccessor(String::NewSymbol("LUMINANCE"), GetGLUT_LUMINANCE);
+
+     Glut->SetAccessor(String::NewSymbol("NO_RECOVERY"), GetGLUT_NO_RECOVERY);
 
      Glut->SetAccessor(String::NewSymbol("LEFT_BUTTON"), GetGLUT_LEFT_BUTTON);
 
@@ -4151,233 +4203,237 @@ Handle<ObjectTemplate> GlutFactory::createGlut(int* pargc, char** argv) {
      Glut->SetAccessor(String::NewSymbol("GAME_MODE_REFRESH_RATE"), GetGLUT_GAME_MODE_REFRESH_RATE);
 
      Glut->SetAccessor(String::NewSymbol("GAME_MODE_DISPLAY_CHANGED"), GetGLUT_GAME_MODE_DISPLAY_CHANGED);
-     Glut->Set(String::NewSymbol("Init"), FunctionTemplate::New(GLUTInitCallback));
+     Glut->Set(String::NewSymbol("init"), FunctionTemplate::New(GLUTInitCallback));
 
-     Glut->Set(String::NewSymbol("InitDisplayMode"), FunctionTemplate::New(GLUTInitDisplayModeCallback));
+     Glut->Set(String::NewSymbol("initDisplayMode"), FunctionTemplate::New(GLUTInitDisplayModeCallback));
 
-     Glut->Set(String::NewSymbol("InitDisplayString"), FunctionTemplate::New(GLUTInitDisplayStringCallback));
+     Glut->Set(String::NewSymbol("initDisplayString"), FunctionTemplate::New(GLUTInitDisplayStringCallback));
 
-     Glut->Set(String::NewSymbol("InitWindowPosition"), FunctionTemplate::New(GLUTInitWindowPositionCallback));
+     Glut->Set(String::NewSymbol("initWindowPosition"), FunctionTemplate::New(GLUTInitWindowPositionCallback));
 
-     Glut->Set(String::NewSymbol("InitWindowSize"), FunctionTemplate::New(GLUTInitWindowSizeCallback));
+     Glut->Set(String::NewSymbol("initWindowSize"), FunctionTemplate::New(GLUTInitWindowSizeCallback));
 
-     Glut->Set(String::NewSymbol("MainLoop"), FunctionTemplate::New(GLUTMainLoopCallback));
+     Glut->Set(String::NewSymbol("mainLoop"), FunctionTemplate::New(GLUTMainLoopCallback));
 
-     Glut->Set(String::NewSymbol("CreateWindow"), FunctionTemplate::New(GLUTCreateWindowCallback));
+     Glut->Set(String::NewSymbol("createWindow"), FunctionTemplate::New(GLUTCreateWindowCallback));
 
-     Glut->Set(String::NewSymbol("CreateSubWindow"), FunctionTemplate::New(GLUTCreateSubWindowCallback));
+     Glut->Set(String::NewSymbol("createSubWindow"), FunctionTemplate::New(GLUTCreateSubWindowCallback));
 
-     Glut->Set(String::NewSymbol("DestroyWindow"), FunctionTemplate::New(GLUTDestroyWindowCallback));
+     Glut->Set(String::NewSymbol("destroyWindow"), FunctionTemplate::New(GLUTDestroyWindowCallback));
 
-     Glut->Set(String::NewSymbol("PostRedisplay"), FunctionTemplate::New(GLUTPostRedisplayCallback));
+     Glut->Set(String::NewSymbol("postRedisplay"), FunctionTemplate::New(GLUTPostRedisplayCallback));
 
-     Glut->Set(String::NewSymbol("PostWindowRedisplay"), FunctionTemplate::New(GLUTPostWindowRedisplayCallback));
+     Glut->Set(String::NewSymbol("postWindowRedisplay"), FunctionTemplate::New(GLUTPostWindowRedisplayCallback));
 
-     Glut->Set(String::NewSymbol("SwapBuffers"), FunctionTemplate::New(GLUTSwapBuffersCallback));
+     Glut->Set(String::NewSymbol("swapBuffers"), FunctionTemplate::New(GLUTSwapBuffersCallback));
 
-     Glut->Set(String::NewSymbol("GetWindow"), FunctionTemplate::New(GLUTGetWindowCallback));
+     Glut->Set(String::NewSymbol("getWindow"), FunctionTemplate::New(GLUTGetWindowCallback));
 
-     Glut->Set(String::NewSymbol("SetWindow"), FunctionTemplate::New(GLUTSetWindowCallback));
+     Glut->Set(String::NewSymbol("setWindow"), FunctionTemplate::New(GLUTSetWindowCallback));
 
-     Glut->Set(String::NewSymbol("SetWindowTitle"), FunctionTemplate::New(GLUTSetWindowTitleCallback));
+     Glut->Set(String::NewSymbol("setWindowTitle"), FunctionTemplate::New(GLUTSetWindowTitleCallback));
 
-     Glut->Set(String::NewSymbol("SetIconTitle"), FunctionTemplate::New(GLUTSetIconTitleCallback));
+     Glut->Set(String::NewSymbol("setIconTitle"), FunctionTemplate::New(GLUTSetIconTitleCallback));
 
-     Glut->Set(String::NewSymbol("PositionWindow"), FunctionTemplate::New(GLUTPositionWindowCallback));
+     Glut->Set(String::NewSymbol("positionWindow"), FunctionTemplate::New(GLUTPositionWindowCallback));
 
-     Glut->Set(String::NewSymbol("ReshapeWindow"), FunctionTemplate::New(GLUTReshapeWindowCallback));
+     Glut->Set(String::NewSymbol("reshapeWindow"), FunctionTemplate::New(GLUTReshapeWindowCallback));
 
-     Glut->Set(String::NewSymbol("PopWindow"), FunctionTemplate::New(GLUTPopWindowCallback));
+     Glut->Set(String::NewSymbol("popWindow"), FunctionTemplate::New(GLUTPopWindowCallback));
 
-     Glut->Set(String::NewSymbol("PushWindow"), FunctionTemplate::New(GLUTPushWindowCallback));
+     Glut->Set(String::NewSymbol("pushWindow"), FunctionTemplate::New(GLUTPushWindowCallback));
 
-     Glut->Set(String::NewSymbol("IconifyWindow"), FunctionTemplate::New(GLUTIconifyWindowCallback));
+     Glut->Set(String::NewSymbol("iconifyWindow"), FunctionTemplate::New(GLUTIconifyWindowCallback));
 
-     Glut->Set(String::NewSymbol("ShowWindow"), FunctionTemplate::New(GLUTShowWindowCallback));
+     Glut->Set(String::NewSymbol("showWindow"), FunctionTemplate::New(GLUTShowWindowCallback));
 
-     Glut->Set(String::NewSymbol("HideWindow"), FunctionTemplate::New(GLUTHideWindowCallback));
+     Glut->Set(String::NewSymbol("hideWindow"), FunctionTemplate::New(GLUTHideWindowCallback));
 
-     Glut->Set(String::NewSymbol("FullScreen"), FunctionTemplate::New(GLUTFullScreenCallback));
+     Glut->Set(String::NewSymbol("fullScreen"), FunctionTemplate::New(GLUTFullScreenCallback));
 
-     Glut->Set(String::NewSymbol("SetCursor"), FunctionTemplate::New(GLUTSetCursorCallback));
+     Glut->Set(String::NewSymbol("setCursor"), FunctionTemplate::New(GLUTSetCursorCallback));
 
-     Glut->Set(String::NewSymbol("WarpPointer"), FunctionTemplate::New(GLUTWarpPointerCallback));
+     Glut->Set(String::NewSymbol("warpPointer"), FunctionTemplate::New(GLUTWarpPointerCallback));
 
-     Glut->Set(String::NewSymbol("EstablishOverlay"), FunctionTemplate::New(GLUTEstablishOverlayCallback));
+     Glut->Set(String::NewSymbol("wMCloseFunc"), FunctionTemplate::New(GLUTWMCloseFuncCallback));
 
-     Glut->Set(String::NewSymbol("RemoveOverlay"), FunctionTemplate::New(GLUTRemoveOverlayCallback));
+     Glut->Set(String::NewSymbol("checkLoop"), FunctionTemplate::New(GLUTCheckLoopCallback));
 
-     Glut->Set(String::NewSymbol("UseLayer"), FunctionTemplate::New(GLUTUseLayerCallback));
+     Glut->Set(String::NewSymbol("establishOverlay"), FunctionTemplate::New(GLUTEstablishOverlayCallback));
 
-     Glut->Set(String::NewSymbol("PostOverlayRedisplay"), FunctionTemplate::New(GLUTPostOverlayRedisplayCallback));
+     Glut->Set(String::NewSymbol("removeOverlay"), FunctionTemplate::New(GLUTRemoveOverlayCallback));
 
-     Glut->Set(String::NewSymbol("PostWindowOverlayRedisplay"), FunctionTemplate::New(GLUTPostWindowOverlayRedisplayCallback));
+     Glut->Set(String::NewSymbol("useLayer"), FunctionTemplate::New(GLUTUseLayerCallback));
 
-     Glut->Set(String::NewSymbol("ShowOverlay"), FunctionTemplate::New(GLUTShowOverlayCallback));
+     Glut->Set(String::NewSymbol("postOverlayRedisplay"), FunctionTemplate::New(GLUTPostOverlayRedisplayCallback));
 
-     Glut->Set(String::NewSymbol("HideOverlay"), FunctionTemplate::New(GLUTHideOverlayCallback));
+     Glut->Set(String::NewSymbol("postWindowOverlayRedisplay"), FunctionTemplate::New(GLUTPostWindowOverlayRedisplayCallback));
 
-     Glut->Set(String::NewSymbol("CreateMenu"), FunctionTemplate::New(GLUTCreateMenuCallback));
+     Glut->Set(String::NewSymbol("showOverlay"), FunctionTemplate::New(GLUTShowOverlayCallback));
 
-     Glut->Set(String::NewSymbol("DestroyMenu"), FunctionTemplate::New(GLUTDestroyMenuCallback));
+     Glut->Set(String::NewSymbol("hideOverlay"), FunctionTemplate::New(GLUTHideOverlayCallback));
 
-     Glut->Set(String::NewSymbol("GetMenu"), FunctionTemplate::New(GLUTGetMenuCallback));
+     Glut->Set(String::NewSymbol("createMenu"), FunctionTemplate::New(GLUTCreateMenuCallback));
 
-     Glut->Set(String::NewSymbol("SetMenu"), FunctionTemplate::New(GLUTSetMenuCallback));
+     Glut->Set(String::NewSymbol("destroyMenu"), FunctionTemplate::New(GLUTDestroyMenuCallback));
 
-     Glut->Set(String::NewSymbol("AddMenuEntry"), FunctionTemplate::New(GLUTAddMenuEntryCallback));
+     Glut->Set(String::NewSymbol("getMenu"), FunctionTemplate::New(GLUTGetMenuCallback));
 
-     Glut->Set(String::NewSymbol("AddSubMenu"), FunctionTemplate::New(GLUTAddSubMenuCallback));
+     Glut->Set(String::NewSymbol("setMenu"), FunctionTemplate::New(GLUTSetMenuCallback));
 
-     Glut->Set(String::NewSymbol("ChangeToMenuEntry"), FunctionTemplate::New(GLUTChangeToMenuEntryCallback));
+     Glut->Set(String::NewSymbol("addMenuEntry"), FunctionTemplate::New(GLUTAddMenuEntryCallback));
 
-     Glut->Set(String::NewSymbol("ChangeToSubMenu"), FunctionTemplate::New(GLUTChangeToSubMenuCallback));
+     Glut->Set(String::NewSymbol("addSubMenu"), FunctionTemplate::New(GLUTAddSubMenuCallback));
 
-     Glut->Set(String::NewSymbol("RemoveMenuItem"), FunctionTemplate::New(GLUTRemoveMenuItemCallback));
+     Glut->Set(String::NewSymbol("changeToMenuEntry"), FunctionTemplate::New(GLUTChangeToMenuEntryCallback));
 
-     Glut->Set(String::NewSymbol("AttachMenu"), FunctionTemplate::New(GLUTAttachMenuCallback));
+     Glut->Set(String::NewSymbol("changeToSubMenu"), FunctionTemplate::New(GLUTChangeToSubMenuCallback));
 
-     Glut->Set(String::NewSymbol("DetachMenu"), FunctionTemplate::New(GLUTDetachMenuCallback));
+     Glut->Set(String::NewSymbol("removeMenuItem"), FunctionTemplate::New(GLUTRemoveMenuItemCallback));
 
-     Glut->Set(String::NewSymbol("DisplayFunc"), FunctionTemplate::New(GLUTDisplayFuncCallback));
+     Glut->Set(String::NewSymbol("attachMenu"), FunctionTemplate::New(GLUTAttachMenuCallback));
 
-     Glut->Set(String::NewSymbol("ReshapeFunc"), FunctionTemplate::New(GLUTReshapeFuncCallback));
+     Glut->Set(String::NewSymbol("detachMenu"), FunctionTemplate::New(GLUTDetachMenuCallback));
 
-     Glut->Set(String::NewSymbol("KeyboardFunc"), FunctionTemplate::New(GLUTKeyboardFuncCallback));
+     Glut->Set(String::NewSymbol("displayFunc"), FunctionTemplate::New(GLUTDisplayFuncCallback));
 
-     Glut->Set(String::NewSymbol("MouseFunc"), FunctionTemplate::New(GLUTMouseFuncCallback));
+     Glut->Set(String::NewSymbol("reshapeFunc"), FunctionTemplate::New(GLUTReshapeFuncCallback));
 
-     Glut->Set(String::NewSymbol("MotionFunc"), FunctionTemplate::New(GLUTMotionFuncCallback));
+     Glut->Set(String::NewSymbol("keyboardFunc"), FunctionTemplate::New(GLUTKeyboardFuncCallback));
 
-     Glut->Set(String::NewSymbol("PassiveMotionFunc"), FunctionTemplate::New(GLUTPassiveMotionFuncCallback));
+     Glut->Set(String::NewSymbol("mouseFunc"), FunctionTemplate::New(GLUTMouseFuncCallback));
 
-     Glut->Set(String::NewSymbol("EntryFunc"), FunctionTemplate::New(GLUTEntryFuncCallback));
+     Glut->Set(String::NewSymbol("motionFunc"), FunctionTemplate::New(GLUTMotionFuncCallback));
 
-     Glut->Set(String::NewSymbol("VisibilityFunc"), FunctionTemplate::New(GLUTVisibilityFuncCallback));
+     Glut->Set(String::NewSymbol("passiveMotionFunc"), FunctionTemplate::New(GLUTPassiveMotionFuncCallback));
 
-     Glut->Set(String::NewSymbol("IdleFunc"), FunctionTemplate::New(GLUTIdleFuncCallback));
+     Glut->Set(String::NewSymbol("entryFunc"), FunctionTemplate::New(GLUTEntryFuncCallback));
 
-     Glut->Set(String::NewSymbol("TimerFunc"), FunctionTemplate::New(GLUTTimerFuncCallback));
+     Glut->Set(String::NewSymbol("visibilityFunc"), FunctionTemplate::New(GLUTVisibilityFuncCallback));
 
-     Glut->Set(String::NewSymbol("MenuStateFunc"), FunctionTemplate::New(GLUTMenuStateFuncCallback));
+     Glut->Set(String::NewSymbol("idleFunc"), FunctionTemplate::New(GLUTIdleFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpecialFunc"), FunctionTemplate::New(GLUTSpecialFuncCallback));
+     Glut->Set(String::NewSymbol("timerFunc"), FunctionTemplate::New(GLUTTimerFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpaceballMotionFunc"), FunctionTemplate::New(GLUTSpaceballMotionFuncCallback));
+     Glut->Set(String::NewSymbol("menuStateFunc"), FunctionTemplate::New(GLUTMenuStateFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpaceballRotateFunc"), FunctionTemplate::New(GLUTSpaceballRotateFuncCallback));
+     Glut->Set(String::NewSymbol("specialFunc"), FunctionTemplate::New(GLUTSpecialFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpaceballButtonFunc"), FunctionTemplate::New(GLUTSpaceballButtonFuncCallback));
+     Glut->Set(String::NewSymbol("spaceballMotionFunc"), FunctionTemplate::New(GLUTSpaceballMotionFuncCallback));
 
-     Glut->Set(String::NewSymbol("ButtonBoxFunc"), FunctionTemplate::New(GLUTButtonBoxFuncCallback));
+     Glut->Set(String::NewSymbol("spaceballRotateFunc"), FunctionTemplate::New(GLUTSpaceballRotateFuncCallback));
 
-     Glut->Set(String::NewSymbol("DialsFunc"), FunctionTemplate::New(GLUTDialsFuncCallback));
+     Glut->Set(String::NewSymbol("spaceballButtonFunc"), FunctionTemplate::New(GLUTSpaceballButtonFuncCallback));
 
-     Glut->Set(String::NewSymbol("TabletMotionFunc"), FunctionTemplate::New(GLUTTabletMotionFuncCallback));
+     Glut->Set(String::NewSymbol("buttonBoxFunc"), FunctionTemplate::New(GLUTButtonBoxFuncCallback));
 
-     Glut->Set(String::NewSymbol("TabletButtonFunc"), FunctionTemplate::New(GLUTTabletButtonFuncCallback));
+     Glut->Set(String::NewSymbol("dialsFunc"), FunctionTemplate::New(GLUTDialsFuncCallback));
 
-     Glut->Set(String::NewSymbol("MenuStatusFunc"), FunctionTemplate::New(GLUTMenuStatusFuncCallback));
+     Glut->Set(String::NewSymbol("tabletMotionFunc"), FunctionTemplate::New(GLUTTabletMotionFuncCallback));
 
-     Glut->Set(String::NewSymbol("OverlayDisplayFunc"), FunctionTemplate::New(GLUTOverlayDisplayFuncCallback));
+     Glut->Set(String::NewSymbol("tabletButtonFunc"), FunctionTemplate::New(GLUTTabletButtonFuncCallback));
 
-     Glut->Set(String::NewSymbol("WindowStatusFunc"), FunctionTemplate::New(GLUTWindowStatusFuncCallback));
+     Glut->Set(String::NewSymbol("menuStatusFunc"), FunctionTemplate::New(GLUTMenuStatusFuncCallback));
 
-     Glut->Set(String::NewSymbol("KeyboardUpFunc"), FunctionTemplate::New(GLUTKeyboardUpFuncCallback));
+     Glut->Set(String::NewSymbol("overlayDisplayFunc"), FunctionTemplate::New(GLUTOverlayDisplayFuncCallback));
 
-     Glut->Set(String::NewSymbol("SpecialUpFunc"), FunctionTemplate::New(GLUTSpecialUpFuncCallback));
+     Glut->Set(String::NewSymbol("windowStatusFunc"), FunctionTemplate::New(GLUTWindowStatusFuncCallback));
 
-     Glut->Set(String::NewSymbol("JoystickFunc"), FunctionTemplate::New(GLUTJoystickFuncCallback));
+     Glut->Set(String::NewSymbol("keyboardUpFunc"), FunctionTemplate::New(GLUTKeyboardUpFuncCallback));
 
-     Glut->Set(String::NewSymbol("SetColor"), FunctionTemplate::New(GLUTSetColorCallback));
+     Glut->Set(String::NewSymbol("specialUpFunc"), FunctionTemplate::New(GLUTSpecialUpFuncCallback));
 
-     Glut->Set(String::NewSymbol("GetColor"), FunctionTemplate::New(GLUTGetColorCallback));
+     Glut->Set(String::NewSymbol("joystickFunc"), FunctionTemplate::New(GLUTJoystickFuncCallback));
 
-     Glut->Set(String::NewSymbol("CopyColormap"), FunctionTemplate::New(GLUTCopyColormapCallback));
+     Glut->Set(String::NewSymbol("setColor"), FunctionTemplate::New(GLUTSetColorCallback));
 
-     Glut->Set(String::NewSymbol("Get"), FunctionTemplate::New(GLUTGetCallback));
+     Glut->Set(String::NewSymbol("getColor"), FunctionTemplate::New(GLUTGetColorCallback));
 
-     Glut->Set(String::NewSymbol("DeviceGet"), FunctionTemplate::New(GLUTDeviceGetCallback));
+     Glut->Set(String::NewSymbol("copyColormap"), FunctionTemplate::New(GLUTCopyColormapCallback));
 
-     Glut->Set(String::NewSymbol("ExtensionSupported"), FunctionTemplate::New(GLUTExtensionSupportedCallback));
+     Glut->Set(String::NewSymbol("get"), FunctionTemplate::New(GLUTGetCallback));
 
-     Glut->Set(String::NewSymbol("GetModifiers"), FunctionTemplate::New(GLUTGetModifiersCallback));
+     Glut->Set(String::NewSymbol("deviceGet"), FunctionTemplate::New(GLUTDeviceGetCallback));
 
-     Glut->Set(String::NewSymbol("LayerGet"), FunctionTemplate::New(GLUTLayerGetCallback));
+     Glut->Set(String::NewSymbol("extensionSupported"), FunctionTemplate::New(GLUTExtensionSupportedCallback));
 
-     Glut->Set(String::NewSymbol("BitmapCharacter"), FunctionTemplate::New(GLUTBitmapCharacterCallback));
+     Glut->Set(String::NewSymbol("getModifiers"), FunctionTemplate::New(GLUTGetModifiersCallback));
 
-     Glut->Set(String::NewSymbol("BitmapWidth"), FunctionTemplate::New(GLUTBitmapWidthCallback));
+     Glut->Set(String::NewSymbol("layerGet"), FunctionTemplate::New(GLUTLayerGetCallback));
 
-     Glut->Set(String::NewSymbol("StrokeCharacter"), FunctionTemplate::New(GLUTStrokeCharacterCallback));
+     Glut->Set(String::NewSymbol("bitmapCharacter"), FunctionTemplate::New(GLUTBitmapCharacterCallback));
 
-     Glut->Set(String::NewSymbol("StrokeWidth"), FunctionTemplate::New(GLUTStrokeWidthCallback));
+     Glut->Set(String::NewSymbol("bitmapWidth"), FunctionTemplate::New(GLUTBitmapWidthCallback));
 
-     Glut->Set(String::NewSymbol("BitmapLength"), FunctionTemplate::New(GLUTBitmapLengthCallback));
+     Glut->Set(String::NewSymbol("strokeCharacter"), FunctionTemplate::New(GLUTStrokeCharacterCallback));
 
-     Glut->Set(String::NewSymbol("StrokeLength"), FunctionTemplate::New(GLUTStrokeLengthCallback));
+     Glut->Set(String::NewSymbol("strokeWidth"), FunctionTemplate::New(GLUTStrokeWidthCallback));
 
-     Glut->Set(String::NewSymbol("WireSphere"), FunctionTemplate::New(GLUTWireSphereCallback));
+     Glut->Set(String::NewSymbol("bitmapLength"), FunctionTemplate::New(GLUTBitmapLengthCallback));
 
-     Glut->Set(String::NewSymbol("SolidSphere"), FunctionTemplate::New(GLUTSolidSphereCallback));
+     Glut->Set(String::NewSymbol("strokeLength"), FunctionTemplate::New(GLUTStrokeLengthCallback));
 
-     Glut->Set(String::NewSymbol("WireCone"), FunctionTemplate::New(GLUTWireConeCallback));
+     Glut->Set(String::NewSymbol("wireSphere"), FunctionTemplate::New(GLUTWireSphereCallback));
 
-     Glut->Set(String::NewSymbol("SolidCone"), FunctionTemplate::New(GLUTSolidConeCallback));
+     Glut->Set(String::NewSymbol("solidSphere"), FunctionTemplate::New(GLUTSolidSphereCallback));
 
-     Glut->Set(String::NewSymbol("WireCube"), FunctionTemplate::New(GLUTWireCubeCallback));
+     Glut->Set(String::NewSymbol("wireCone"), FunctionTemplate::New(GLUTWireConeCallback));
 
-     Glut->Set(String::NewSymbol("SolidCube"), FunctionTemplate::New(GLUTSolidCubeCallback));
+     Glut->Set(String::NewSymbol("solidCone"), FunctionTemplate::New(GLUTSolidConeCallback));
 
-     Glut->Set(String::NewSymbol("WireTorus"), FunctionTemplate::New(GLUTWireTorusCallback));
+     Glut->Set(String::NewSymbol("wireCube"), FunctionTemplate::New(GLUTWireCubeCallback));
 
-     Glut->Set(String::NewSymbol("SolidTorus"), FunctionTemplate::New(GLUTSolidTorusCallback));
+     Glut->Set(String::NewSymbol("solidCube"), FunctionTemplate::New(GLUTSolidCubeCallback));
 
-     Glut->Set(String::NewSymbol("WireDodecahedron"), FunctionTemplate::New(GLUTWireDodecahedronCallback));
+     Glut->Set(String::NewSymbol("wireTorus"), FunctionTemplate::New(GLUTWireTorusCallback));
 
-     Glut->Set(String::NewSymbol("SolidDodecahedron"), FunctionTemplate::New(GLUTSolidDodecahedronCallback));
+     Glut->Set(String::NewSymbol("solidTorus"), FunctionTemplate::New(GLUTSolidTorusCallback));
 
-     Glut->Set(String::NewSymbol("WireTeapot"), FunctionTemplate::New(GLUTWireTeapotCallback));
+     Glut->Set(String::NewSymbol("wireDodecahedron"), FunctionTemplate::New(GLUTWireDodecahedronCallback));
 
-     Glut->Set(String::NewSymbol("SolidTeapot"), FunctionTemplate::New(GLUTSolidTeapotCallback));
+     Glut->Set(String::NewSymbol("solidDodecahedron"), FunctionTemplate::New(GLUTSolidDodecahedronCallback));
 
-     Glut->Set(String::NewSymbol("WireOctahedron"), FunctionTemplate::New(GLUTWireOctahedronCallback));
+     Glut->Set(String::NewSymbol("wireTeapot"), FunctionTemplate::New(GLUTWireTeapotCallback));
 
-     Glut->Set(String::NewSymbol("SolidOctahedron"), FunctionTemplate::New(GLUTSolidOctahedronCallback));
+     Glut->Set(String::NewSymbol("solidTeapot"), FunctionTemplate::New(GLUTSolidTeapotCallback));
 
-     Glut->Set(String::NewSymbol("WireTetrahedron"), FunctionTemplate::New(GLUTWireTetrahedronCallback));
+     Glut->Set(String::NewSymbol("wireOctahedron"), FunctionTemplate::New(GLUTWireOctahedronCallback));
 
-     Glut->Set(String::NewSymbol("SolidTetrahedron"), FunctionTemplate::New(GLUTSolidTetrahedronCallback));
+     Glut->Set(String::NewSymbol("solidOctahedron"), FunctionTemplate::New(GLUTSolidOctahedronCallback));
 
-     Glut->Set(String::NewSymbol("WireIcosahedron"), FunctionTemplate::New(GLUTWireIcosahedronCallback));
+     Glut->Set(String::NewSymbol("wireTetrahedron"), FunctionTemplate::New(GLUTWireTetrahedronCallback));
 
-     Glut->Set(String::NewSymbol("SolidIcosahedron"), FunctionTemplate::New(GLUTSolidIcosahedronCallback));
+     Glut->Set(String::NewSymbol("solidTetrahedron"), FunctionTemplate::New(GLUTSolidTetrahedronCallback));
 
-     Glut->Set(String::NewSymbol("VideoResizeGet"), FunctionTemplate::New(GLUTVideoResizeGetCallback));
+     Glut->Set(String::NewSymbol("wireIcosahedron"), FunctionTemplate::New(GLUTWireIcosahedronCallback));
 
-     Glut->Set(String::NewSymbol("SetupVideoResizing"), FunctionTemplate::New(GLUTSetupVideoResizingCallback));
+     Glut->Set(String::NewSymbol("solidIcosahedron"), FunctionTemplate::New(GLUTSolidIcosahedronCallback));
 
-     Glut->Set(String::NewSymbol("StopVideoResizing"), FunctionTemplate::New(GLUTStopVideoResizingCallback));
+     Glut->Set(String::NewSymbol("videoResizeGet"), FunctionTemplate::New(GLUTVideoResizeGetCallback));
 
-     Glut->Set(String::NewSymbol("VideoResize"), FunctionTemplate::New(GLUTVideoResizeCallback));
+     Glut->Set(String::NewSymbol("setupVideoResizing"), FunctionTemplate::New(GLUTSetupVideoResizingCallback));
 
-     Glut->Set(String::NewSymbol("VideoPan"), FunctionTemplate::New(GLUTVideoPanCallback));
+     Glut->Set(String::NewSymbol("stopVideoResizing"), FunctionTemplate::New(GLUTStopVideoResizingCallback));
 
-     Glut->Set(String::NewSymbol("ReportErrors"), FunctionTemplate::New(GLUTReportErrorsCallback));
+     Glut->Set(String::NewSymbol("videoResize"), FunctionTemplate::New(GLUTVideoResizeCallback));
 
-     Glut->Set(String::NewSymbol("IgnoreKeyRepeat"), FunctionTemplate::New(GLUTIgnoreKeyRepeatCallback));
+     Glut->Set(String::NewSymbol("videoPan"), FunctionTemplate::New(GLUTVideoPanCallback));
 
-     Glut->Set(String::NewSymbol("SetKeyRepeat"), FunctionTemplate::New(GLUTSetKeyRepeatCallback));
+     Glut->Set(String::NewSymbol("reportErrors"), FunctionTemplate::New(GLUTReportErrorsCallback));
 
-     Glut->Set(String::NewSymbol("ForceJoystickFunc"), FunctionTemplate::New(GLUTForceJoystickFuncCallback));
+     Glut->Set(String::NewSymbol("ignoreKeyRepeat"), FunctionTemplate::New(GLUTIgnoreKeyRepeatCallback));
 
-     Glut->Set(String::NewSymbol("GameModeString"), FunctionTemplate::New(GLUTGameModeStringCallback));
+     Glut->Set(String::NewSymbol("setKeyRepeat"), FunctionTemplate::New(GLUTSetKeyRepeatCallback));
 
-     Glut->Set(String::NewSymbol("EnterGameMode"), FunctionTemplate::New(GLUTEnterGameModeCallback));
+     Glut->Set(String::NewSymbol("forceJoystickFunc"), FunctionTemplate::New(GLUTForceJoystickFuncCallback));
 
-     Glut->Set(String::NewSymbol("LeaveGameMode"), FunctionTemplate::New(GLUTLeaveGameModeCallback));
+     Glut->Set(String::NewSymbol("gameModeString"), FunctionTemplate::New(GLUTGameModeStringCallback));
 
-     Glut->Set(String::NewSymbol("GameModeGet"), FunctionTemplate::New(GLUTGameModeGetCallback));
+     Glut->Set(String::NewSymbol("enterGameMode"), FunctionTemplate::New(GLUTEnterGameModeCallback));
+
+     Glut->Set(String::NewSymbol("leaveGameMode"), FunctionTemplate::New(GLUTLeaveGameModeCallback));
+
+     Glut->Set(String::NewSymbol("gameModeGet"), FunctionTemplate::New(GLUTGameModeGetCallback));
 
 
       // Again, return the result through the current handle scope.
