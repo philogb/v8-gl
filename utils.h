@@ -1,7 +1,7 @@
-#ifndef UTILS_H_
-#define UTILS_H_
+#ifndef V8GLUTILS_H_
+#define V8GLUTILS_H_
 
-namespace Utils {
+namespace V8GLUtils {
 		void setRootPath(char* program_path, char* jsfile_path);
 
 		char* getRootPath(void);

@@ -1205,7 +1205,7 @@ Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
   String::Utf8Value value(args[0]);
   char* filepath_str = *value;
 
-  char* filename = Utils::getRealPath(filepath_str);
+  char* filename = V8GLUtils::getRealPath(filepath_str);
 
   //take care of relative/absolute paths.
   Image* img = loadPNG(filename);
@@ -1534,7 +1534,7 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
     return v8::Undefined();
 
   char* filepath_str = *filepath_ascii;
-  char* filename = Utils::getRealPath(filepath_str);
+  char* filename = V8GLUtils::getRealPath(filepath_str);
 
   std::ifstream in_file(filename);
 

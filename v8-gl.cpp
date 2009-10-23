@@ -102,7 +102,7 @@ Handle<Value> load(const Arguments& args) {
 	  //get argument
 	  String::Utf8Value value0(args[i]);
 	  char* arg0 = *value0;
-	  string str(Utils::getRealPath(arg0));
+	  string str(V8GLUtils::getRealPath(arg0));
 	  if(!exec(str)) {
 		  fprintf(stderr, "Error reading '%s'.\n", arg0);
 		  return v8::Undefined();
@@ -153,7 +153,7 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 	  GlesFactory::self_ = Persistent<Object>::New(Gles->NewInstance());
 
 	  //Set (only once) the absolute path for the .js file being executed.
-	  Utils::setRootPath(argv[0], argv[1]);
+	  V8GLUtils::setRootPath(argv[0], argv[1]);
 
 	  // Compile and run the script
 	  if (!executeScript(scriptname))

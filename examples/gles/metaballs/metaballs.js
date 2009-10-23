@@ -28,10 +28,24 @@
   MIT License
  */
 
+var Config = {
+    gridDim: 64,
+    shift1: 6,
+    shift2: 12,
+    ballCount: 128,
+    
+    GP_TYPE_META: 0x1,
+    GP_TYPE_BORDER: 0x2,
+    GP_TYPE_TEXT: 0x4
+};
+
 var MetaBalls = new Class({
   balls: null,
+  grid: null,
   
-  initialize: function(count) {
+  initialize: function(grid) {
+    this.grid = grid;
+    var count = Config.ballCount;
     var b = this.balls = new Array(count);
     for(var i=0; i < count; i++) {
       //add metaobject
@@ -41,13 +55,73 @@ var MetaBalls = new Class({
         'b': 0
       });
     }
+  },
+  
+  update: function(from, to) {
+    var balls = this.balls;
+    var dim = Config.gridDim;
+    var points = this.grid.points;
+    var shift1 = Config.shift1, shift2 = Config.shift2;
+    var meta = Config.GP_TYPE_META;
+    
+    while (from < num) {
+      var ballsFrom = balls[from];
+      var influenceRange = 1 + (ballsFrom.b >> 0);
+      var pos = ballsFrom.pos;
+      var posx = (pos.x >> 0);
+      var posy = (pos.y >> 0);
+      var posz = (pos.z >> 0);   
+      for (var z = posz-influenceRange; z < posz+influenceRange; ++z) {
+        if (z < 0 || z >= dim)
+          continue;
+
+        for (var y = posy-influenceRange; y < posy+influenceRange; ++y) {
+          if (y < 0 || y >= dim)
+            continue;
+
+          for (var x = posx-influenceRange; x < posx+influenceRange; ++x) {
+            if (x < 0 || x >= dim)
+              continue;
+
+            var dist = {
+                'x': pos.x - x,
+                'y': pos.y - y,
+                'z': pos.z - z
+            };
+            var dist2 = dist.x * dist.x + dist.y * dist.y + dist.z * dist.z;
+            var range2 = ballsFrom.b * ballsFrom.b;
+
+            if (range2 > dist2) {
+              var gp = points[(z<<shift2) + (y<<shift1) + x];
+              gp.value += ballsFrom.a * 
+                (1.0f - 
+                0.4444444f * dist2 * dist2 * dist2 / (range2 * range2 * range2) + 
+                1.8888888f * dist2 * dist2 / (range2 * range2) - 
+                2.4444444f * dist2 / range2);
+              
+              gp.flags |= meta;
+            }
+          }
+        }
+      }
+      ++from;
+    }
   }
 });
 
 var MetaGrid = new Class({
-  points: null,
+  points: null, 
   
-  initialize: function(count) {
+  dim: null,
+  dimSq: null,
+  dimCb: null,
+  
+  initialize: function() {
+    var count = Config.gridDim;
+    this.dim = count;
+    this.dimSq = count * count;
+    this.dimCb = count * count * count;
+    
     var p = this.points = new Array(count);
     for(var i=0; i < count; i++) {
       //add gridpoint
@@ -56,5 +130,24 @@ var MetaGrid = new Class({
         'flags': 0
       });
     }
-  } 
+  },
+  
+  move: function(fac) {
+    var movecount = this.dimCb;
+    var dimSq = this.dimSq;
+    var points = this.points;
+    
+    while (movecount--) {
+      if (((movecount >> 12) & 0x3f) > 0) {
+        var p = points[movecount];
+        var pdiff = points[movecount - dimSq];
+        
+        p.value = fac * pdiff.value;
+        p.flags = pdiff.flags;
+      } else {
+        points[movecount].value = 0;
+      }
+    } 
+  }
+
 });
