@@ -27,7 +27,6 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
   if (args.Length() != 1)
 	return v8::Undefined();
 
-  HandleScope handle_scope;
   GLsizei num_buffers = args[0]->Int32Value();
 
   GLuint* buffers = new GLuint[num_buffers];
@@ -41,7 +40,7 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
 
   delete[] buffers;
 
-  return handle_scope.Close(res);
+  return res;
 }
 
 
@@ -49,7 +48,6 @@ Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
 	  if (args.Length() != 1)
 		return v8::Undefined();
 
-	  HandleScope handle_scope;
 	  GLsizei num_buffers = args[0]->Int32Value();
 
 	  GLuint* buffers = new GLuint[num_buffers];
@@ -63,7 +61,7 @@ Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
 
 	  delete[] buffers;
 
-	  return handle_scope.Close(res);
+	  return res;
 }
 
 
@@ -71,7 +69,6 @@ Handle<Value> GLESglGenFramebuffersCallback(const Arguments& args) {
 	  if (args.Length() != 1)
 		return v8::Undefined();
 
-	  HandleScope handle_scope;
 	  GLsizei num_buffers = args[0]->Int32Value();
 
 	  GLuint* buffers = new GLuint[num_buffers];
@@ -85,14 +82,13 @@ Handle<Value> GLESglGenFramebuffersCallback(const Arguments& args) {
 
 	  delete[] buffers;
 
-	  return handle_scope.Close(res);
+	  return res;
 }
 
 Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
   if (args.Length() != 1)
 	return v8::Undefined();
 
-  HandleScope handle_scope;
   GLsizei num_textures = args[0]->Int32Value();
 
   GLuint* textures = new GLuint[num_textures];
@@ -105,7 +101,7 @@ Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
 
   delete[] textures;
 
-  return handle_scope.Close(res);
+  return res;
 }
 
 
@@ -113,14 +109,13 @@ Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
 Handle<Value> GLESglGetShaderivCallback(const Arguments& args) {
   if (args.Length() < 2)
     return v8::Undefined();
-  HandleScope handle_scope;
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
   int out;
   glGetShaderiv((GLuint) arg0, (GLenum) arg1, (GLint*)&out);
   v8::Local<v8::Value> val = v8::Integer::New(out);
-  return handle_scope.Close(val);
+  return val;
 }
 
 
@@ -129,7 +124,6 @@ Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
   if (args.Length() != 2)
     return v8::Undefined();
 
-  HandleScope handle_scope;
   GLuint shader_id = args[0]->Uint32Value();
   // GLSL source is defined as an ASCII subset.
   v8::String::AsciiValue code_ascii(args[1]);
@@ -149,7 +143,6 @@ Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
   if (args.Length() != 6)
     return v8::Undefined();
 
-  HandleScope handle_scope;
 
   unsigned int index = args[0]->Uint32Value();
   unsigned int size = args[1]->Uint32Value();
@@ -246,7 +239,6 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
   if (args.Length() != 4)
     return v8::Undefined();
 
-  HandleScope handle_scope;
   unsigned int mode  = args[0]->Uint32Value();
   int count = args[1]->IntegerValue();
   unsigned int type  = args[2]->Uint32Value();
@@ -330,7 +322,6 @@ Handle<Value> GLESglBufferSubDataCallback(const Arguments& args) {
   if (args.Length() != 4)
     return v8::Undefined();
 
-  HandleScope handle_scope;
   unsigned int target  = args[0]->Uint32Value();
   unsigned int offset = args[1]->Uint32Value();
   unsigned int type  = args[3]->Uint32Value();
@@ -382,7 +373,6 @@ Handle<Value> GLESglReadPixelsCallback(const Arguments& args) {
   if (args.Length() != 6)
 	return v8::Undefined();
 
-  HandleScope handle_scope;
   int x = args[0]->IntegerValue();
   int y = args[1]->IntegerValue();
   unsigned width = args[2]->Uint32Value();
@@ -407,7 +397,7 @@ Handle<Value> GLESglReadPixelsCallback(const Arguments& args) {
 	  }
 
 	  delete[] ans;
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   return v8::Undefined();
@@ -417,7 +407,6 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
   if (args.Length() != 2)
 	return v8::Undefined();
 
-  HandleScope handle_scope;
 
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
@@ -445,8 +434,6 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
 Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
   if (args.Length() != 2)
 	return v8::Undefined();
-
-  HandleScope handle_scope;
 
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
@@ -477,7 +464,6 @@ Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
   if (args.Length() != 1)
 	return v8::Undefined();
 
-  HandleScope handle_scope;
   unsigned program = args[0]->Uint32Value();
 
   int maxcount = 500;
@@ -496,14 +482,12 @@ Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
 
   delete[] shaders;
 
-  return handle_scope.Close(res);
+  return res;
 }
 
 Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->IntegerValue();
   unsigned pname = args[1]->IntegerValue();
@@ -513,15 +497,13 @@ Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
 		  (GLenum)pname,
 		  (GLint*)&ans);
 
-  return handle_scope.Close(Integer::New(ans));
+  return Integer::New(ans);
 }
 
 //GetBooleanv, GetIntegerv, GetString, GetFloatv, GetDoublev should map here.
 Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned pname = args[0]->Uint32Value();
 
@@ -631,7 +613,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   {
 	  int ans = 0;
 	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
-	  return handle_scope.Close(Integer::New(ans));
+	  return Integer::New(ans);
   }
   //2 values int
   case GL_LINE_WIDTH_RANGE:
@@ -649,7 +631,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
   //4 values int
   case GL_SCISSOR_BOX:
@@ -665,7 +647,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   //1 value boolean
@@ -742,7 +724,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   {
 	  GLboolean ans = 0;
 	  glGetBooleanv((GLenum)pname, &ans);
-	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+	  return Boolean::New(ans != GL_FALSE);
   }
 
   //1 value float
@@ -777,7 +759,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   {
 	  float ans = 0.0f;
 	  glGetFloatv((GLenum)pname, &ans);
-	  return handle_scope.Close(Number::New(ans));
+	  return Number::New(ans);
   }
 
   //4 values float
@@ -805,7 +787,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
    //3 values float
@@ -821,7 +803,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   //2 values float
@@ -839,7 +821,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   //16 values float
@@ -857,7 +839,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   //4 values boolean
@@ -873,7 +855,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 
   }
@@ -884,8 +866,6 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() != 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned program = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -895,14 +875,12 @@ Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
   //an array.
   glGetProgramiv((GLuint)program, (GLenum)pname, (GLint*) &ans);
 
-  return handle_scope.Close(Integer::New(ans));
+  return Integer::New(ans);
 }
 
 Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
 
   if (args.Length() != 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned program = args[0]->Uint32Value();
 
@@ -913,14 +891,12 @@ Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
   char* log = new char[len];
   glGetProgramInfoLog((GLuint)program, (GLsizei)len, NULL, log);
 
-  return handle_scope.Close(String::New(log));
+  return String::New(log);
 }
 
 Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 
   if (args.Length() != 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -934,7 +910,7 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
   {
 	  int ans = 0;
 	  glTexParameteriv((GLenum)target, (GLenum)pname, (GLint*) &ans);
-	  return handle_scope.Close(Integer::New(ans));
+	  return Integer::New(ans);
   }
 	  //4 floats
   case GL_TEXTURE_BORDER_COLOR:
@@ -949,21 +925,21 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
 	  //1 float
   case GL_TEXTURE_PRIORITY:
   {
 	  float ans = 0;
 	  glTexParameterfv((GLenum)target, (GLenum)pname, (GLfloat*) &ans);
-	  return handle_scope.Close(Number::New(ans));
+	  return Number::New(ans);
   }
 	  //1 boolean
   case GL_TEXTURE_RESIDENT:
   {
 	  int ans = 0;
 	  glTexParameteriv((GLenum)target, (GLenum)pname, (GLint*) &ans);
-	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+	  return Boolean::New(ans != GL_FALSE);
   }
 
   }
@@ -973,8 +949,6 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
 
   if (args.Length() != 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned index = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -988,7 +962,7 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
   {
 	  GLint ans = 0;
 	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
-	  return handle_scope.Close(Integer::New(ans));
+	  return Integer::New(ans);
   }
 
   //1 boolean value
@@ -997,7 +971,7 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
   {
 	  GLint ans = 0;
 	  glGetVertexAttribiv((GLuint)index, (GLenum)pname, &ans);
-	  return handle_scope.Close(Boolean::New(ans != GL_FALSE));
+	  return Boolean::New(ans != GL_FALSE);
   }
 
   //4 float values
@@ -1013,7 +987,7 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
 
 	  delete[] ans;
 
-	  return handle_scope.Close(res);
+	  return res;
   }
   }
 
@@ -1025,8 +999,6 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
 Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 
   if (args.Length() != 9) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->Uint32Value();
   int level = args[1]->IntegerValue();
@@ -1199,8 +1171,6 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
 
   if (args.Length() != 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   String::Utf8Value value(args[0]);
   char* filepath_str = *value;
@@ -1228,8 +1198,6 @@ Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
 Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 
   if (args.Length() != 9) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->Uint32Value();
   int level = args[1]->IntegerValue();
@@ -1429,8 +1397,6 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() != 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -1449,7 +1415,7 @@ Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
   {
 	  int ans = 0;
 	  glGetRenderbufferParameteriv((GLenum)target, (GLenum)pname, (GLint*)&ans);
-	  return handle_scope.Close(Integer::New(ans));
+	  return Integer::New(ans);
   }
   }
 
@@ -1459,8 +1425,6 @@ Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
 Handle<Value> GLESglGetFramebufferAttachmentParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() != 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned attachment = args[1]->Uint32Value();
@@ -1478,7 +1442,7 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterCallback(const Arguments& a
 			  (GLenum)pname,
 			  (GLint*)&ans);
 
-	  return handle_scope.Close(Integer::New(ans));
+	  return Integer::New(ans);
 //  }
 //  }
 
@@ -1488,8 +1452,6 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterCallback(const Arguments& a
 Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
 
   if (args.Length() != 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned shader = args[0]->Uint32Value();
 
@@ -1500,14 +1462,12 @@ Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
   char* log = new char[len];
   glGetShaderInfoLog((GLuint)shader, (GLsizei)len, NULL, log);
 
-  return handle_scope.Close(String::New(log));
+  return String::New(log);
 }
 
 Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
 
   if (args.Length() != 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned shader = args[0]->Uint32Value();
 
@@ -1518,7 +1478,7 @@ Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
   char* log = new char[len];
   glGetShaderSource((GLuint)shader, (GLsizei)len, NULL, log);
 
-  return handle_scope.Close(String::New(log));
+  return String::New(log);
 }
 
 // We expect to be called with a shader id and a single string.
@@ -1526,7 +1486,6 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
   if (args.Length() != 2)
     return v8::Undefined();
 
-  HandleScope handle_scope;
   GLuint shader_id = args[0]->Uint32Value();
   // GLSL source is defined as an ASCII subset.
   v8::String::AsciiValue filepath_ascii(args[1]);
@@ -1564,8 +1523,6 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
 Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1581,8 +1538,6 @@ Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
 Handle<Value> GLESglAttachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1599,8 +1554,6 @@ Handle<Value> GLESglAttachShaderCallback(const Arguments& args) {
 Handle<Value> GLESglBindAttribLocationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1619,8 +1572,6 @@ Handle<Value> GLESglBindAttribLocationCallback(const Arguments& args) {
 Handle<Value> GLESglBindBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1637,8 +1588,6 @@ Handle<Value> GLESglBindBufferCallback(const Arguments& args) {
 Handle<Value> GLESglBindFramebufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1655,8 +1604,6 @@ Handle<Value> GLESglBindFramebufferCallback(const Arguments& args) {
 Handle<Value> GLESglBindRenderbufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1673,8 +1620,6 @@ Handle<Value> GLESglBindRenderbufferCallback(const Arguments& args) {
 Handle<Value> GLESglBindTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1691,8 +1636,6 @@ Handle<Value> GLESglBindTextureCallback(const Arguments& args) {
 Handle<Value> GLESglBlendColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1711,8 +1654,6 @@ Handle<Value> GLESglBlendColorCallback(const Arguments& args) {
 Handle<Value> GLESglBlendEquationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1728,8 +1669,6 @@ Handle<Value> GLESglBlendEquationCallback(const Arguments& args) {
 Handle<Value> GLESglBlendEquationSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1746,8 +1685,6 @@ Handle<Value> GLESglBlendEquationSeparateCallback(const Arguments& args) {
 Handle<Value> GLESglBlendFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1764,8 +1701,6 @@ Handle<Value> GLESglBlendFuncCallback(const Arguments& args) {
 Handle<Value> GLESglBlendFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1784,8 +1719,6 @@ Handle<Value> GLESglBlendFuncSeparateCallback(const Arguments& args) {
 Handle<Value> GLESglCheckFramebufferStatusCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1799,8 +1732,6 @@ Handle<Value> GLESglCheckFramebufferStatusCallback(const Arguments& args) {
 Handle<Value> GLESglClearCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1816,8 +1747,6 @@ Handle<Value> GLESglClearCallback(const Arguments& args) {
 Handle<Value> GLESglClearColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1836,8 +1765,6 @@ Handle<Value> GLESglClearColorCallback(const Arguments& args) {
 Handle<Value> GLESglClearDepthfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -1853,8 +1780,6 @@ Handle<Value> GLESglClearDepthfCallback(const Arguments& args) {
 Handle<Value> GLESglClearStencilCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1870,8 +1795,6 @@ Handle<Value> GLESglClearStencilCallback(const Arguments& args) {
 Handle<Value> GLESglColorMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1890,8 +1813,6 @@ Handle<Value> GLESglColorMaskCallback(const Arguments& args) {
 Handle<Value> GLESglCompileShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1907,8 +1828,6 @@ Handle<Value> GLESglCompileShaderCallback(const Arguments& args) {
 Handle<Value> GLESglCopyTexImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -1931,8 +1850,6 @@ Handle<Value> GLESglCopyTexImage2DCallback(const Arguments& args) {
 Handle<Value> GLESglCopyTexSubImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -1955,8 +1872,6 @@ Handle<Value> GLESglCopyTexSubImage2DCallback(const Arguments& args) {
 Handle<Value> GLESglCreateProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -1969,8 +1884,6 @@ Handle<Value> GLESglCreateProgramCallback(const Arguments& args) {
 Handle<Value> GLESglCreateShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1984,8 +1897,6 @@ Handle<Value> GLESglCreateShaderCallback(const Arguments& args) {
 Handle<Value> GLESglCullFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2001,8 +1912,6 @@ Handle<Value> GLESglCullFaceCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2028,8 +1937,6 @@ Handle<Value> GLESglDeleteBuffersCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteFramebuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2055,8 +1962,6 @@ Handle<Value> GLESglDeleteFramebuffersCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2072,8 +1977,6 @@ Handle<Value> GLESglDeleteProgramCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteRenderbuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2099,8 +2002,6 @@ Handle<Value> GLESglDeleteRenderbuffersCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2116,8 +2017,6 @@ Handle<Value> GLESglDeleteShaderCallback(const Arguments& args) {
 Handle<Value> GLESglDeleteTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2143,8 +2042,6 @@ Handle<Value> GLESglDeleteTexturesCallback(const Arguments& args) {
 Handle<Value> GLESglDepthFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2160,8 +2057,6 @@ Handle<Value> GLESglDepthFuncCallback(const Arguments& args) {
 Handle<Value> GLESglDepthMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2177,8 +2072,6 @@ Handle<Value> GLESglDepthMaskCallback(const Arguments& args) {
 Handle<Value> GLESglDepthRangefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -2195,8 +2088,6 @@ Handle<Value> GLESglDepthRangefCallback(const Arguments& args) {
 Handle<Value> GLESglDetachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2213,8 +2104,6 @@ Handle<Value> GLESglDetachShaderCallback(const Arguments& args) {
 Handle<Value> GLESglDisableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2230,8 +2119,6 @@ Handle<Value> GLESglDisableCallback(const Arguments& args) {
 Handle<Value> GLESglDisableVertexAttribArrayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2247,8 +2134,6 @@ Handle<Value> GLESglDisableVertexAttribArrayCallback(const Arguments& args) {
 Handle<Value> GLESglDrawArraysCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2266,8 +2151,6 @@ Handle<Value> GLESglDrawArraysCallback(const Arguments& args) {
 Handle<Value> GLESglEnableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2283,8 +2166,6 @@ Handle<Value> GLESglEnableCallback(const Arguments& args) {
 Handle<Value> GLESglEnableVertexAttribArrayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2300,8 +2181,6 @@ Handle<Value> GLESglEnableVertexAttribArrayCallback(const Arguments& args) {
 Handle<Value> GLESglFinishCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2316,8 +2195,6 @@ Handle<Value> GLESglFinishCallback(const Arguments& args) {
 Handle<Value> GLESglFlushCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2332,8 +2209,6 @@ Handle<Value> GLESglFlushCallback(const Arguments& args) {
 Handle<Value> GLESglFramebufferRenderbufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2352,8 +2227,6 @@ Handle<Value> GLESglFramebufferRenderbufferCallback(const Arguments& args) {
 Handle<Value> GLESglFramebufferTexture2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2373,8 +2246,6 @@ Handle<Value> GLESglFramebufferTexture2DCallback(const Arguments& args) {
 Handle<Value> GLESglFrontFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2390,8 +2261,6 @@ Handle<Value> GLESglFrontFaceCallback(const Arguments& args) {
 Handle<Value> GLESglGenerateMipmapCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2407,8 +2276,6 @@ Handle<Value> GLESglGenerateMipmapCallback(const Arguments& args) {
 Handle<Value> GLESglGetAttribLocationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   String::Utf8Value value1(args[1]);
@@ -2424,8 +2291,6 @@ Handle<Value> GLESglGetAttribLocationCallback(const Arguments& args) {
 Handle<Value> GLESglGetBooleanvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2451,8 +2316,6 @@ Handle<Value> GLESglGetBooleanvCallback(const Arguments& args) {
 Handle<Value> GLESglGetErrorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2465,8 +2328,6 @@ Handle<Value> GLESglGetErrorCallback(const Arguments& args) {
 Handle<Value> GLESglGetFloatvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2492,8 +2353,6 @@ Handle<Value> GLESglGetFloatvCallback(const Arguments& args) {
 Handle<Value> GLESglGetFramebufferAttachmentParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2521,8 +2380,6 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterivCallback(const Arguments&
 Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2548,8 +2405,6 @@ Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
 Handle<Value> GLESglGetUniformivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2576,8 +2431,6 @@ Handle<Value> GLESglGetUniformivCallback(const Arguments& args) {
 Handle<Value> GLESglGetUniformLocationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   String::Utf8Value value1(args[1]);
@@ -2593,8 +2446,6 @@ Handle<Value> GLESglGetUniformLocationCallback(const Arguments& args) {
 Handle<Value> GLESglHintCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2611,8 +2462,6 @@ Handle<Value> GLESglHintCallback(const Arguments& args) {
 Handle<Value> GLESglIsBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2626,8 +2475,6 @@ Handle<Value> GLESglIsBufferCallback(const Arguments& args) {
 Handle<Value> GLESglIsEnabledCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2641,8 +2488,6 @@ Handle<Value> GLESglIsEnabledCallback(const Arguments& args) {
 Handle<Value> GLESglIsFramebufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2656,8 +2501,6 @@ Handle<Value> GLESglIsFramebufferCallback(const Arguments& args) {
 Handle<Value> GLESglIsProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2671,8 +2514,6 @@ Handle<Value> GLESglIsProgramCallback(const Arguments& args) {
 Handle<Value> GLESglIsRenderbufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2686,8 +2527,6 @@ Handle<Value> GLESglIsRenderbufferCallback(const Arguments& args) {
 Handle<Value> GLESglIsShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2701,8 +2540,6 @@ Handle<Value> GLESglIsShaderCallback(const Arguments& args) {
 Handle<Value> GLESglIsTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2716,8 +2553,6 @@ Handle<Value> GLESglIsTextureCallback(const Arguments& args) {
 Handle<Value> GLESglLineWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -2733,8 +2568,6 @@ Handle<Value> GLESglLineWidthCallback(const Arguments& args) {
 Handle<Value> GLESglLinkProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2750,8 +2583,6 @@ Handle<Value> GLESglLinkProgramCallback(const Arguments& args) {
 Handle<Value> GLESglPixelStoreiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2768,8 +2599,6 @@ Handle<Value> GLESglPixelStoreiCallback(const Arguments& args) {
 Handle<Value> GLESglPolygonOffsetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -2786,8 +2615,6 @@ Handle<Value> GLESglPolygonOffsetCallback(const Arguments& args) {
 Handle<Value> GLESglRenderbufferStorageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2806,8 +2633,6 @@ Handle<Value> GLESglRenderbufferStorageCallback(const Arguments& args) {
 Handle<Value> GLESglSampleCoverageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2824,8 +2649,6 @@ Handle<Value> GLESglSampleCoverageCallback(const Arguments& args) {
 Handle<Value> GLESglScissorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2844,8 +2667,6 @@ Handle<Value> GLESglScissorCallback(const Arguments& args) {
 Handle<Value> GLESglStencilFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2863,8 +2684,6 @@ Handle<Value> GLESglStencilFuncCallback(const Arguments& args) {
 Handle<Value> GLESglStencilFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2883,8 +2702,6 @@ Handle<Value> GLESglStencilFuncSeparateCallback(const Arguments& args) {
 Handle<Value> GLESglStencilMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2900,8 +2717,6 @@ Handle<Value> GLESglStencilMaskCallback(const Arguments& args) {
 Handle<Value> GLESglStencilMaskSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2918,8 +2733,6 @@ Handle<Value> GLESglStencilMaskSeparateCallback(const Arguments& args) {
 Handle<Value> GLESglStencilOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2937,8 +2750,6 @@ Handle<Value> GLESglStencilOpCallback(const Arguments& args) {
 Handle<Value> GLESglStencilOpSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2957,8 +2768,6 @@ Handle<Value> GLESglStencilOpSeparateCallback(const Arguments& args) {
 Handle<Value> GLESglTexParameterfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2976,8 +2785,6 @@ Handle<Value> GLESglTexParameterfCallback(const Arguments& args) {
 Handle<Value> GLESglTexParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -3004,8 +2811,6 @@ Handle<Value> GLESglTexParameterfvCallback(const Arguments& args) {
 Handle<Value> GLESglTexParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -3023,8 +2828,6 @@ Handle<Value> GLESglTexParameteriCallback(const Arguments& args) {
 Handle<Value> GLESglTexParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -3051,8 +2854,6 @@ Handle<Value> GLESglTexParameterivCallback(const Arguments& args) {
 Handle<Value> GLESglUniform1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3069,8 +2870,6 @@ Handle<Value> GLESglUniform1fCallback(const Arguments& args) {
 Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3097,8 +2896,6 @@ Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniform1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3115,8 +2912,6 @@ Handle<Value> GLESglUniform1iCallback(const Arguments& args) {
 Handle<Value> GLESglUniform1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3143,8 +2938,6 @@ Handle<Value> GLESglUniform1ivCallback(const Arguments& args) {
 Handle<Value> GLESglUniform2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3162,8 +2955,6 @@ Handle<Value> GLESglUniform2fCallback(const Arguments& args) {
 Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3190,8 +2981,6 @@ Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniform2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3209,8 +2998,6 @@ Handle<Value> GLESglUniform2iCallback(const Arguments& args) {
 Handle<Value> GLESglUniform2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3237,8 +3024,6 @@ Handle<Value> GLESglUniform2ivCallback(const Arguments& args) {
 Handle<Value> GLESglUniform3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3257,8 +3042,6 @@ Handle<Value> GLESglUniform3fCallback(const Arguments& args) {
 Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3285,8 +3068,6 @@ Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniform3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3305,8 +3086,6 @@ Handle<Value> GLESglUniform3iCallback(const Arguments& args) {
 Handle<Value> GLESglUniform3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3333,8 +3112,6 @@ Handle<Value> GLESglUniform3ivCallback(const Arguments& args) {
 Handle<Value> GLESglUniform4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3354,8 +3131,6 @@ Handle<Value> GLESglUniform4fCallback(const Arguments& args) {
 Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3382,8 +3157,6 @@ Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniform4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3403,8 +3176,6 @@ Handle<Value> GLESglUniform4iCallback(const Arguments& args) {
 Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3431,8 +3202,6 @@ Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
 Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3460,8 +3229,6 @@ Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3489,8 +3256,6 @@ Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
 Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3518,8 +3283,6 @@ Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
 Handle<Value> GLESglUseProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3535,8 +3298,6 @@ Handle<Value> GLESglUseProgramCallback(const Arguments& args) {
 Handle<Value> GLESglValidateProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3552,8 +3313,6 @@ Handle<Value> GLESglValidateProgramCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3570,8 +3329,6 @@ Handle<Value> GLESglVertexAttrib1fCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3597,8 +3354,6 @@ Handle<Value> GLESglVertexAttrib1fvCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3616,8 +3371,6 @@ Handle<Value> GLESglVertexAttrib2fCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3643,8 +3396,6 @@ Handle<Value> GLESglVertexAttrib2fvCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3663,8 +3414,6 @@ Handle<Value> GLESglVertexAttrib3fCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3690,8 +3439,6 @@ Handle<Value> GLESglVertexAttrib3fvCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3711,8 +3458,6 @@ Handle<Value> GLESglVertexAttrib4fCallback(const Arguments& args) {
 Handle<Value> GLESglVertexAttrib4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3738,8 +3483,6 @@ Handle<Value> GLESglVertexAttrib4fvCallback(const Arguments& args) {
 Handle<Value> GLESglViewportCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();

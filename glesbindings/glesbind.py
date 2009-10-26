@@ -191,8 +191,6 @@ def generate_function(obj):
 Handle<<ret>> GLES<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < <len_params>) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 <args>
   //make call
