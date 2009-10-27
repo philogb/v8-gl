@@ -1331,8 +1331,6 @@ Handle<Value> GLUTInitCallback(const Arguments& args) {
 Handle<Value> GLUTInitDisplayModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1347,8 +1345,6 @@ Handle<Value> GLUTInitDisplayModeCallback(const Arguments& args) {
 Handle<Value> GLUTInitDisplayStringCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1364,8 +1360,6 @@ Handle<Value> GLUTInitDisplayStringCallback(const Arguments& args) {
 Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1381,8 +1375,6 @@ Handle<Value> GLUTInitWindowPositionCallback(const Arguments& args) {
 Handle<Value> GLUTInitWindowSizeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1398,8 +1390,6 @@ Handle<Value> GLUTInitWindowSizeCallback(const Arguments& args) {
 Handle<Value> GLUTMainLoopCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1413,8 +1403,6 @@ Handle<Value> GLUTMainLoopCallback(const Arguments& args) {
 Handle<Value> GLUTCreateWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1430,8 +1418,6 @@ Handle<Value> GLUTCreateWindowCallback(const Arguments& args) {
 Handle<Value> GLUTCreateSubWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1450,8 +1436,6 @@ Handle<Value> GLUTCreateSubWindowCallback(const Arguments& args) {
 Handle<Value> GLUTDestroyWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1466,8 +1450,6 @@ Handle<Value> GLUTDestroyWindowCallback(const Arguments& args) {
 Handle<Value> GLUTPostRedisplayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1481,8 +1463,6 @@ Handle<Value> GLUTPostRedisplayCallback(const Arguments& args) {
 Handle<Value> GLUTPostWindowRedisplayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1497,8 +1477,6 @@ Handle<Value> GLUTPostWindowRedisplayCallback(const Arguments& args) {
 Handle<Value> GLUTSwapBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1512,8 +1490,6 @@ Handle<Value> GLUTSwapBuffersCallback(const Arguments& args) {
 Handle<Value> GLUTGetWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1527,8 +1503,6 @@ Handle<Value> GLUTGetWindowCallback(const Arguments& args) {
 Handle<Value> GLUTSetWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1543,8 +1517,6 @@ Handle<Value> GLUTSetWindowCallback(const Arguments& args) {
 Handle<Value> GLUTSetWindowTitleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1560,8 +1532,6 @@ Handle<Value> GLUTSetWindowTitleCallback(const Arguments& args) {
 Handle<Value> GLUTSetIconTitleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1577,8 +1547,6 @@ Handle<Value> GLUTSetIconTitleCallback(const Arguments& args) {
 Handle<Value> GLUTPositionWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1594,8 +1562,6 @@ Handle<Value> GLUTPositionWindowCallback(const Arguments& args) {
 Handle<Value> GLUTReshapeWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1611,8 +1577,6 @@ Handle<Value> GLUTReshapeWindowCallback(const Arguments& args) {
 Handle<Value> GLUTPopWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1626,8 +1590,6 @@ Handle<Value> GLUTPopWindowCallback(const Arguments& args) {
 Handle<Value> GLUTPushWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1641,8 +1603,6 @@ Handle<Value> GLUTPushWindowCallback(const Arguments& args) {
 Handle<Value> GLUTIconifyWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1656,8 +1616,6 @@ Handle<Value> GLUTIconifyWindowCallback(const Arguments& args) {
 Handle<Value> GLUTShowWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1671,8 +1629,6 @@ Handle<Value> GLUTShowWindowCallback(const Arguments& args) {
 Handle<Value> GLUTHideWindowCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1686,8 +1642,6 @@ Handle<Value> GLUTHideWindowCallback(const Arguments& args) {
 Handle<Value> GLUTFullScreenCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1701,8 +1655,6 @@ Handle<Value> GLUTFullScreenCallback(const Arguments& args) {
 Handle<Value> GLUTSetCursorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1717,8 +1669,6 @@ Handle<Value> GLUTSetCursorCallback(const Arguments& args) {
 Handle<Value> GLUTWarpPointerCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1768,8 +1718,6 @@ Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
 Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1783,8 +1731,6 @@ Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
 Handle<Value> GLUTEstablishOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1798,8 +1744,6 @@ Handle<Value> GLUTEstablishOverlayCallback(const Arguments& args) {
 Handle<Value> GLUTRemoveOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1813,8 +1757,6 @@ Handle<Value> GLUTRemoveOverlayCallback(const Arguments& args) {
 Handle<Value> GLUTUseLayerCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1829,8 +1771,6 @@ Handle<Value> GLUTUseLayerCallback(const Arguments& args) {
 Handle<Value> GLUTPostOverlayRedisplayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1844,8 +1784,6 @@ Handle<Value> GLUTPostOverlayRedisplayCallback(const Arguments& args) {
 Handle<Value> GLUTPostWindowOverlayRedisplayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1860,8 +1798,6 @@ Handle<Value> GLUTPostWindowOverlayRedisplayCallback(const Arguments& args) {
 Handle<Value> GLUTShowOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1875,8 +1811,6 @@ Handle<Value> GLUTShowOverlayCallback(const Arguments& args) {
 Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1890,8 +1824,6 @@ Handle<Value> GLUTHideOverlayCallback(const Arguments& args) {
 Handle<Value> GLUTCreateMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   void* arg0 = *value0;
@@ -1907,8 +1839,6 @@ Handle<Value> GLUTCreateMenuCallback(const Arguments& args) {
 Handle<Value> GLUTDestroyMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1923,8 +1853,6 @@ Handle<Value> GLUTDestroyMenuCallback(const Arguments& args) {
 Handle<Value> GLUTGetMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1938,8 +1866,6 @@ Handle<Value> GLUTGetMenuCallback(const Arguments& args) {
 Handle<Value> GLUTSetMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1954,8 +1880,6 @@ Handle<Value> GLUTSetMenuCallback(const Arguments& args) {
 Handle<Value> GLUTAddMenuEntryCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1972,8 +1896,6 @@ Handle<Value> GLUTAddMenuEntryCallback(const Arguments& args) {
 Handle<Value> GLUTAddSubMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -1990,8 +1912,6 @@ Handle<Value> GLUTAddSubMenuCallback(const Arguments& args) {
 Handle<Value> GLUTChangeToMenuEntryCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   String::Utf8Value value1(args[1]);
@@ -2009,8 +1929,6 @@ Handle<Value> GLUTChangeToMenuEntryCallback(const Arguments& args) {
 Handle<Value> GLUTChangeToSubMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   String::Utf8Value value1(args[1]);
@@ -2028,8 +1946,6 @@ Handle<Value> GLUTChangeToSubMenuCallback(const Arguments& args) {
 Handle<Value> GLUTRemoveMenuItemCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2044,8 +1960,6 @@ Handle<Value> GLUTRemoveMenuItemCallback(const Arguments& args) {
 Handle<Value> GLUTAttachMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2060,8 +1974,6 @@ Handle<Value> GLUTAttachMenuCallback(const Arguments& args) {
 Handle<Value> GLUTDetachMenuCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2412,8 +2324,6 @@ void callbackTimerFunc(int value) {
 Handle<Value> GLUTTimerFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   unsigned int millisec = args[0]->Uint32Value();
   int timerId = args[2]->IntegerValue();
@@ -2945,8 +2855,6 @@ Handle<Value> GLUTSpecialUpFuncCallback(const Arguments& args) {
 Handle<Value> GLUTJoystickFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   Handle<Function> value0 = Handle<Function>::Cast(args[0]);
   void* arg0 = *value0;
@@ -2963,10 +2871,8 @@ Handle<Value> GLUTJoystickFuncCallback(const Arguments& args) {
 Handle<Value> GLUTSetColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
-  int arg0    = args[0]->Int32Value();
+  int arg0 = args[0]->Int32Value();
   double arg1 = args[1]->NumberValue();
   double arg2 = args[2]->NumberValue();
   double arg3 = args[3]->NumberValue();
@@ -2982,8 +2888,6 @@ Handle<Value> GLUTSetColorCallback(const Arguments& args) {
 Handle<Value> GLUTGetColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2999,8 +2903,6 @@ Handle<Value> GLUTGetColorCallback(const Arguments& args) {
 Handle<Value> GLUTCopyColormapCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3015,8 +2917,6 @@ Handle<Value> GLUTCopyColormapCallback(const Arguments& args) {
 Handle<Value> GLUTGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3031,8 +2931,6 @@ Handle<Value> GLUTGetCallback(const Arguments& args) {
 Handle<Value> GLUTDeviceGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3047,8 +2945,6 @@ Handle<Value> GLUTDeviceGetCallback(const Arguments& args) {
 Handle<Value> GLUTExtensionSupportedCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -3064,8 +2960,6 @@ Handle<Value> GLUTExtensionSupportedCallback(const Arguments& args) {
 Handle<Value> GLUTGetModifiersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3079,8 +2973,6 @@ Handle<Value> GLUTGetModifiersCallback(const Arguments& args) {
 Handle<Value> GLUTLayerGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3095,8 +2987,6 @@ Handle<Value> GLUTLayerGetCallback(const Arguments& args) {
 Handle<Value> GLUTBitmapCharacterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3114,8 +3004,6 @@ Handle<Value> GLUTBitmapCharacterCallback(const Arguments& args) {
 Handle<Value> GLUTBitmapWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3133,8 +3021,6 @@ Handle<Value> GLUTBitmapWidthCallback(const Arguments& args) {
 Handle<Value> GLUTStrokeCharacterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3152,8 +3038,6 @@ Handle<Value> GLUTStrokeCharacterCallback(const Arguments& args) {
 Handle<Value> GLUTStrokeWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3171,8 +3055,6 @@ Handle<Value> GLUTStrokeWidthCallback(const Arguments& args) {
 Handle<Value> GLUTBitmapLengthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3191,8 +3073,6 @@ Handle<Value> GLUTBitmapLengthCallback(const Arguments& args) {
 Handle<Value> GLUTStrokeLengthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* key0 = *value0;
@@ -3211,8 +3091,6 @@ Handle<Value> GLUTStrokeLengthCallback(const Arguments& args) {
 Handle<Value> GLUTWireSphereCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   int arg1 = args[1]->IntegerValue();
@@ -3229,8 +3107,6 @@ Handle<Value> GLUTWireSphereCallback(const Arguments& args) {
 Handle<Value> GLUTSolidSphereCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   int arg1 = args[1]->IntegerValue();
@@ -3247,8 +3123,6 @@ Handle<Value> GLUTSolidSphereCallback(const Arguments& args) {
 Handle<Value> GLUTWireConeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -3266,8 +3140,6 @@ Handle<Value> GLUTWireConeCallback(const Arguments& args) {
 Handle<Value> GLUTSolidConeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -3285,8 +3157,6 @@ Handle<Value> GLUTSolidConeCallback(const Arguments& args) {
 Handle<Value> GLUTWireCubeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3301,8 +3171,6 @@ Handle<Value> GLUTWireCubeCallback(const Arguments& args) {
 Handle<Value> GLUTSolidCubeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3317,8 +3185,6 @@ Handle<Value> GLUTSolidCubeCallback(const Arguments& args) {
 Handle<Value> GLUTWireTorusCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -3336,8 +3202,6 @@ Handle<Value> GLUTWireTorusCallback(const Arguments& args) {
 Handle<Value> GLUTSolidTorusCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -3355,8 +3219,6 @@ Handle<Value> GLUTSolidTorusCallback(const Arguments& args) {
 Handle<Value> GLUTWireDodecahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3370,8 +3232,6 @@ Handle<Value> GLUTWireDodecahedronCallback(const Arguments& args) {
 Handle<Value> GLUTSolidDodecahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3385,8 +3245,6 @@ Handle<Value> GLUTSolidDodecahedronCallback(const Arguments& args) {
 Handle<Value> GLUTWireTeapotCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3401,8 +3259,6 @@ Handle<Value> GLUTWireTeapotCallback(const Arguments& args) {
 Handle<Value> GLUTSolidTeapotCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3417,8 +3273,6 @@ Handle<Value> GLUTSolidTeapotCallback(const Arguments& args) {
 Handle<Value> GLUTWireOctahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3432,8 +3286,6 @@ Handle<Value> GLUTWireOctahedronCallback(const Arguments& args) {
 Handle<Value> GLUTSolidOctahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3447,8 +3299,6 @@ Handle<Value> GLUTSolidOctahedronCallback(const Arguments& args) {
 Handle<Value> GLUTWireTetrahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3462,8 +3312,6 @@ Handle<Value> GLUTWireTetrahedronCallback(const Arguments& args) {
 Handle<Value> GLUTSolidTetrahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3477,8 +3325,6 @@ Handle<Value> GLUTSolidTetrahedronCallback(const Arguments& args) {
 Handle<Value> GLUTWireIcosahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3492,8 +3338,6 @@ Handle<Value> GLUTWireIcosahedronCallback(const Arguments& args) {
 Handle<Value> GLUTSolidIcosahedronCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3507,8 +3351,6 @@ Handle<Value> GLUTSolidIcosahedronCallback(const Arguments& args) {
 Handle<Value> GLUTVideoResizeGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3523,8 +3365,6 @@ Handle<Value> GLUTVideoResizeGetCallback(const Arguments& args) {
 Handle<Value> GLUTSetupVideoResizingCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3538,8 +3378,6 @@ Handle<Value> GLUTSetupVideoResizingCallback(const Arguments& args) {
 Handle<Value> GLUTStopVideoResizingCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3553,8 +3391,6 @@ Handle<Value> GLUTStopVideoResizingCallback(const Arguments& args) {
 Handle<Value> GLUTVideoResizeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3572,8 +3408,6 @@ Handle<Value> GLUTVideoResizeCallback(const Arguments& args) {
 Handle<Value> GLUTVideoPanCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3591,8 +3425,6 @@ Handle<Value> GLUTVideoPanCallback(const Arguments& args) {
 Handle<Value> GLUTReportErrorsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3662,8 +3494,6 @@ Handle<Value> GetGLUT_JOYSTICK_BUTTON_D(Local<String> property,
 Handle<Value> GLUTIgnoreKeyRepeatCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3678,8 +3508,6 @@ Handle<Value> GLUTIgnoreKeyRepeatCallback(const Arguments& args) {
 Handle<Value> GLUTSetKeyRepeatCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3694,8 +3522,6 @@ Handle<Value> GLUTSetKeyRepeatCallback(const Arguments& args) {
 Handle<Value> GLUTForceJoystickFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3765,8 +3591,6 @@ Handle<Value> GetGLUT_GAME_MODE_DISPLAY_CHANGED(Local<String> property,
 Handle<Value> GLUTGameModeStringCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   String::Utf8Value value0(args[0]);
   char* arg0 = *value0;
@@ -3782,8 +3606,6 @@ Handle<Value> GLUTGameModeStringCallback(const Arguments& args) {
 Handle<Value> GLUTEnterGameModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3797,8 +3619,6 @@ Handle<Value> GLUTEnterGameModeCallback(const Arguments& args) {
 Handle<Value> GLUTLeaveGameModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -3812,8 +3632,6 @@ Handle<Value> GLUTLeaveGameModeCallback(const Arguments& args) {
 Handle<Value> GLUTGameModeGetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 

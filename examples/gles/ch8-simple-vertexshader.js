@@ -1,83 +1,16 @@
 //load common code.
-load("common.js");
+load("common.js", "shaderutil.js");
 
 //start custom code.
 var angle = 0;
-var vertex_shader = "uniform mat4 u_mvpMatrix;\n"
-					+ "attribute vec4 a_position;\n"
-					+ "void main()\n"
-					+ "{\n"
-					+ "gl_Position = u_mvpMatrix * a_position;\n"
-					+ "}\n";
-
-var fragment_shader = "void main()\n"
-					+ "{\n"
-					+ "gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
-					+ "}\n";
 
 // an object we'll use to store shaders, textures, etc. on as we create them
 var userData = {};
 
-function loadShader(shaderType, shaderSource) {
-    // Create the shader object
-    var shader = Gles.createShader(shaderType);
-    if (shader == 0) return 0;
-
-    // Load the shader source
-    Gles.shaderSource(shader, shaderSource);
-
-    // Compile the shader
-    Gles.compileShader(shader);
-
-    // Check the compile status
-    var compiled = Gles.getShaderiv(shader, Gles.COMPILE_STATUS);
-    if (!compiled) {
-		// Something went wrong during compilation; get the error
-		var error = Gles.getShaderInfoLog(shader);
-		Gles.deleteShader(shader);
-		return 0;
-    }
-
-    return shader;
-}
-
-// Convenience function to create a program from all the passed-in
-function getProgram() {
-    var shaders = [];
-
-    // first load and compile all the passed-in shaders.
-    for (var i = 0; i < arguments.length; i+=2) {
-	    var type = arguments[i], source = arguments[i+1];
-		var shader = loadShader(type, source);
-		if (shader == 0)
-		    return 0;
-		shaders.push(shader);
-    }
-
-    // then do the program object creation
-    var program = Gles.createProgram();
-    if (program == 0)
-	return 0;
-
-    // attach all the shaders
-    for (var i = 0; i < shaders.length; i++) {
-      Gles.attachShader(program, shaders[i]);
-    }
-
-    // link, and check for errors
-    Gles.linkProgram(program);
-
-    var linked = Gles.getProgramiv(program, Gles.LINK_STATUS);
-    if (!linked) {
-    	var error = Gles.getProgramInfoLog(program);
-    	return 0;
-    }
-
-    return program;
-}
-
 function init() {
-	userData.programObject = getProgram(Gles.VERTEX_SHADER, vertex_shader, Gles.FRAGMENT_SHADER, fragment_shader);
+	userData.programObject = getProgram("shaders/ch8-simple-vertexshader.vs", 
+	                                    "shaders/ch8-simple-vertexshader.fs");
+	
 	if(userData.programObject == 0) return false;
 	
 	userData.positionLoc = Gles.getAttribLocation(userData.programObject, "a_position");
@@ -102,7 +35,7 @@ function updateObjects() {
     modelview.translate(0, 0, -2);
 
     // then rotating the cube
-    modelview.rotate(angle, 1, 0, 1);
+    modelview.rotate(angle, 1, 1, 1);
 
     userData.mvpMatrix = modelview.multiply(persp);
 }
@@ -113,7 +46,7 @@ function update() {
 	angle += 2.0;
 	if (angle > 360) angle -= 360;
 	updateObjects();
-    Glut.postRedisplay();
+  Glut.postRedisplay();
 	Glut.timerFunc(25, update, 0);
 }
 
@@ -136,6 +69,7 @@ function draw() {
     Gles.uniformMatrix4fv(userData.mvpLoc, userData.mvpMatrix.elements.length, Gles.FALSE, userData.mvpMatrix.elements);
 
     // Draw the cube
+    //Gles.drawArrays(Gles.TRIANGLE_FAN, 0, userData.obj.vertices.length);
     Gles.drawElements(Gles.TRIANGLES, userData.obj.indices.length, Gles.UNSIGNED_SHORT, userData.obj.indices);
 
     // Finally do the swap to display what we just drew
@@ -151,7 +85,7 @@ function main() {
 	Glut.createWindow("OpenGL ES on V8!  (^_^)/");
 	
     if (!init())
-	return;
+      return;
     
     updateObjects();
 	//Set drawing callback

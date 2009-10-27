@@ -9,7 +9,7 @@
   
   Dependencies:
   
-  core.js, v3d.js
+  core.js
   
   Author: 
   
@@ -50,7 +50,7 @@ var MetaBalls = new Class({
     for(var i=0; i < count; i++) {
       //add metaobject
       b.push({
-        'pos': new V3D,
+        'pos': { 'x':0, 'y':0, 'z':0 },
         'a': 0,
         'b': 0
       });
@@ -151,3 +151,40 @@ var MetaGrid = new Class({
   }
 
 });
+
+function rgba(redval, greenval, blueval, alphaval) {
+  return ((alphaval << 24) | (redval << 16) | (greenval << 8) | blueval); 
+}
+
+function gridColor(gp) {
+  var maxval = 2.0 * gp.value - 1.0;
+  
+  if (maxval > 1.0)
+    maxval = 1.0;
+  
+  var metacolor = rgba(196, 64 + ((192.0 * (1.0 - maxval)) >> 0), 0, 0);
+  
+  if (gp.flags & Config.GP_TYPE_META) {
+    if (gp.flags & Config.GP_TYPE_BORDER)
+      return {
+        'color': ((metacolor & 0xfefefefe) >> 1) + rgba(0, 64, 92, 0),
+        'maxval': maxval
+      };
+    else
+      return {
+        'color': metacolor,
+        'maxval': maxval
+      };
+  } else {
+    if (gp.flags & Config.GP_TYPE_BORDER)
+      return {
+        'color': rgba(0, 128, 196, 0),
+        'maxval': maxval
+      };
+    else
+      return {
+        'color': rgba(128, 228, 128, 0),
+        'maxval': maxval
+      };
+  }
+}

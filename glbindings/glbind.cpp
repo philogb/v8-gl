@@ -18,8 +18,6 @@ Persistent<Object> GlFactory::self_;
 Handle<Value> GLglAccumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -36,8 +34,6 @@ Handle<Value> GLglAccumCallback(const Arguments& args) {
 Handle<Value> GLglAlphaFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -54,8 +50,6 @@ Handle<Value> GLglAlphaFuncCallback(const Arguments& args) {
 Handle<Value> GLglAreTexturesResidentCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -89,8 +83,6 @@ Handle<Value> GLglAreTexturesResidentCallback(const Arguments& args) {
 Handle<Value> GLglArrayElementCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -106,8 +98,6 @@ Handle<Value> GLglArrayElementCallback(const Arguments& args) {
 Handle<Value> GLglBeginCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -123,8 +113,6 @@ Handle<Value> GLglBeginCallback(const Arguments& args) {
 Handle<Value> GLglBindTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -141,8 +129,6 @@ Handle<Value> GLglBindTextureCallback(const Arguments& args) {
 Handle<Value> GLglBitmapCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 7) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -173,8 +159,6 @@ Handle<Value> GLglBitmapCallback(const Arguments& args) {
 Handle<Value> GLglBlendColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -193,8 +177,6 @@ Handle<Value> GLglBlendColorCallback(const Arguments& args) {
 Handle<Value> GLglBlendEquationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -210,8 +192,6 @@ Handle<Value> GLglBlendEquationCallback(const Arguments& args) {
 Handle<Value> GLglBlendEquationSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -228,8 +208,6 @@ Handle<Value> GLglBlendEquationSeparateCallback(const Arguments& args) {
 Handle<Value> GLglBlendFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -246,8 +224,6 @@ Handle<Value> GLglBlendFuncCallback(const Arguments& args) {
 Handle<Value> GLglCallListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -263,8 +239,6 @@ Handle<Value> GLglCallListCallback(const Arguments& args) {
 Handle<Value> GLglClearCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -280,8 +254,6 @@ Handle<Value> GLglClearCallback(const Arguments& args) {
 Handle<Value> GLglClearAccumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -300,8 +272,6 @@ Handle<Value> GLglClearAccumCallback(const Arguments& args) {
 Handle<Value> GLglClearColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -320,8 +290,6 @@ Handle<Value> GLglClearColorCallback(const Arguments& args) {
 Handle<Value> GLglClearDepthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -337,8 +305,6 @@ Handle<Value> GLglClearDepthCallback(const Arguments& args) {
 Handle<Value> GLglClearIndexCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -354,8 +320,6 @@ Handle<Value> GLglClearIndexCallback(const Arguments& args) {
 Handle<Value> GLglClearStencilCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -371,8 +335,6 @@ Handle<Value> GLglClearStencilCallback(const Arguments& args) {
 Handle<Value> GLglClipPlaneCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -398,8 +360,6 @@ Handle<Value> GLglClipPlaneCallback(const Arguments& args) {
 Handle<Value> GLglColor3bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -417,8 +377,6 @@ Handle<Value> GLglColor3bCallback(const Arguments& args) {
 Handle<Value> GLglColor3bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -443,8 +401,6 @@ Handle<Value> GLglColor3bvCallback(const Arguments& args) {
 Handle<Value> GLglColor3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -462,8 +418,6 @@ Handle<Value> GLglColor3dCallback(const Arguments& args) {
 Handle<Value> GLglColor3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -488,8 +442,6 @@ Handle<Value> GLglColor3dvCallback(const Arguments& args) {
 Handle<Value> GLglColor3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -507,8 +459,6 @@ Handle<Value> GLglColor3fCallback(const Arguments& args) {
 Handle<Value> GLglColor3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -533,8 +483,6 @@ Handle<Value> GLglColor3fvCallback(const Arguments& args) {
 Handle<Value> GLglColor3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -552,8 +500,6 @@ Handle<Value> GLglColor3iCallback(const Arguments& args) {
 Handle<Value> GLglColor3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -578,8 +524,6 @@ Handle<Value> GLglColor3ivCallback(const Arguments& args) {
 Handle<Value> GLglColor3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -597,8 +541,6 @@ Handle<Value> GLglColor3sCallback(const Arguments& args) {
 Handle<Value> GLglColor3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -623,8 +565,6 @@ Handle<Value> GLglColor3svCallback(const Arguments& args) {
 Handle<Value> GLglColor3ubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -642,8 +582,6 @@ Handle<Value> GLglColor3ubCallback(const Arguments& args) {
 Handle<Value> GLglColor3ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -668,8 +606,6 @@ Handle<Value> GLglColor3ubvCallback(const Arguments& args) {
 Handle<Value> GLglColor3uiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -687,8 +623,6 @@ Handle<Value> GLglColor3uiCallback(const Arguments& args) {
 Handle<Value> GLglColor3uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -713,8 +647,6 @@ Handle<Value> GLglColor3uivCallback(const Arguments& args) {
 Handle<Value> GLglColor3usCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -732,8 +664,6 @@ Handle<Value> GLglColor3usCallback(const Arguments& args) {
 Handle<Value> GLglColor3usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -758,8 +688,6 @@ Handle<Value> GLglColor3usvCallback(const Arguments& args) {
 Handle<Value> GLglColor4bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -778,8 +706,6 @@ Handle<Value> GLglColor4bCallback(const Arguments& args) {
 Handle<Value> GLglColor4bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -804,8 +730,6 @@ Handle<Value> GLglColor4bvCallback(const Arguments& args) {
 Handle<Value> GLglColor4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -824,8 +748,6 @@ Handle<Value> GLglColor4dCallback(const Arguments& args) {
 Handle<Value> GLglColor4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -850,8 +772,6 @@ Handle<Value> GLglColor4dvCallback(const Arguments& args) {
 Handle<Value> GLglColor4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -870,8 +790,6 @@ Handle<Value> GLglColor4fCallback(const Arguments& args) {
 Handle<Value> GLglColor4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -896,8 +814,6 @@ Handle<Value> GLglColor4fvCallback(const Arguments& args) {
 Handle<Value> GLglColor4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -916,8 +832,6 @@ Handle<Value> GLglColor4iCallback(const Arguments& args) {
 Handle<Value> GLglColor4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -942,8 +856,6 @@ Handle<Value> GLglColor4ivCallback(const Arguments& args) {
 Handle<Value> GLglColor4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -962,8 +874,6 @@ Handle<Value> GLglColor4sCallback(const Arguments& args) {
 Handle<Value> GLglColor4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -988,8 +898,6 @@ Handle<Value> GLglColor4svCallback(const Arguments& args) {
 Handle<Value> GLglColor4ubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1008,8 +916,6 @@ Handle<Value> GLglColor4ubCallback(const Arguments& args) {
 Handle<Value> GLglColor4ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1034,8 +940,6 @@ Handle<Value> GLglColor4ubvCallback(const Arguments& args) {
 Handle<Value> GLglColor4uiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1054,8 +958,6 @@ Handle<Value> GLglColor4uiCallback(const Arguments& args) {
 Handle<Value> GLglColor4uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1080,8 +982,6 @@ Handle<Value> GLglColor4uivCallback(const Arguments& args) {
 Handle<Value> GLglColor4usCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1100,8 +1000,6 @@ Handle<Value> GLglColor4usCallback(const Arguments& args) {
 Handle<Value> GLglColor4usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1126,8 +1024,6 @@ Handle<Value> GLglColor4usvCallback(const Arguments& args) {
 Handle<Value> GLglColorMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1146,8 +1042,6 @@ Handle<Value> GLglColorMaskCallback(const Arguments& args) {
 Handle<Value> GLglColorMaterialCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1164,8 +1058,6 @@ Handle<Value> GLglColorMaterialCallback(const Arguments& args) {
 Handle<Value> GLglColorTableParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1192,8 +1084,6 @@ Handle<Value> GLglColorTableParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglColorTableParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1220,8 +1110,6 @@ Handle<Value> GLglColorTableParameterivCallback(const Arguments& args) {
 Handle<Value> GLglConvolutionParameterfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1239,8 +1127,6 @@ Handle<Value> GLglConvolutionParameterfCallback(const Arguments& args) {
 Handle<Value> GLglConvolutionParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1267,8 +1153,6 @@ Handle<Value> GLglConvolutionParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglConvolutionParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1286,8 +1170,6 @@ Handle<Value> GLglConvolutionParameteriCallback(const Arguments& args) {
 Handle<Value> GLglConvolutionParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1314,8 +1196,6 @@ Handle<Value> GLglConvolutionParameterivCallback(const Arguments& args) {
 Handle<Value> GLglCopyColorSubTableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1335,8 +1215,6 @@ Handle<Value> GLglCopyColorSubTableCallback(const Arguments& args) {
 Handle<Value> GLglCopyColorTableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1356,8 +1234,6 @@ Handle<Value> GLglCopyColorTableCallback(const Arguments& args) {
 Handle<Value> GLglCopyConvolutionFilter1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1377,8 +1253,6 @@ Handle<Value> GLglCopyConvolutionFilter1DCallback(const Arguments& args) {
 Handle<Value> GLglCopyConvolutionFilter2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1399,8 +1273,6 @@ Handle<Value> GLglCopyConvolutionFilter2DCallback(const Arguments& args) {
 Handle<Value> GLglCopyPixelsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1420,8 +1292,6 @@ Handle<Value> GLglCopyPixelsCallback(const Arguments& args) {
 Handle<Value> GLglCopyTexImage1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 7) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1443,8 +1313,6 @@ Handle<Value> GLglCopyTexImage1DCallback(const Arguments& args) {
 Handle<Value> GLglCopyTexImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1467,8 +1335,6 @@ Handle<Value> GLglCopyTexImage2DCallback(const Arguments& args) {
 Handle<Value> GLglCopyTexSubImage1DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1489,8 +1355,6 @@ Handle<Value> GLglCopyTexSubImage1DCallback(const Arguments& args) {
 Handle<Value> GLglCopyTexSubImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 8) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1513,8 +1377,6 @@ Handle<Value> GLglCopyTexSubImage2DCallback(const Arguments& args) {
 Handle<Value> GLglCopyTexSubImage3DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 9) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1538,8 +1400,6 @@ Handle<Value> GLglCopyTexSubImage3DCallback(const Arguments& args) {
 Handle<Value> GLglCullFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1555,8 +1415,6 @@ Handle<Value> GLglCullFaceCallback(const Arguments& args) {
 Handle<Value> GLglDeleteListsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -1573,8 +1431,6 @@ Handle<Value> GLglDeleteListsCallback(const Arguments& args) {
 Handle<Value> GLglDeleteTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1600,8 +1456,6 @@ Handle<Value> GLglDeleteTexturesCallback(const Arguments& args) {
 Handle<Value> GLglDepthFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1617,8 +1471,6 @@ Handle<Value> GLglDepthFuncCallback(const Arguments& args) {
 Handle<Value> GLglDepthMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1634,8 +1486,6 @@ Handle<Value> GLglDepthMaskCallback(const Arguments& args) {
 Handle<Value> GLglDepthRangeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1652,8 +1502,6 @@ Handle<Value> GLglDepthRangeCallback(const Arguments& args) {
 Handle<Value> GLglDisableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1669,8 +1517,6 @@ Handle<Value> GLglDisableCallback(const Arguments& args) {
 Handle<Value> GLglDisableClientStateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1686,8 +1532,6 @@ Handle<Value> GLglDisableClientStateCallback(const Arguments& args) {
 Handle<Value> GLglDrawArraysCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -1705,8 +1549,6 @@ Handle<Value> GLglDrawArraysCallback(const Arguments& args) {
 Handle<Value> GLglDrawBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1722,8 +1564,6 @@ Handle<Value> GLglDrawBufferCallback(const Arguments& args) {
 Handle<Value> GLglEdgeFlagCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1739,8 +1579,6 @@ Handle<Value> GLglEdgeFlagCallback(const Arguments& args) {
 Handle<Value> GLglEdgeFlagvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1765,8 +1603,6 @@ Handle<Value> GLglEdgeFlagvCallback(const Arguments& args) {
 Handle<Value> GLglEnableCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1782,8 +1618,6 @@ Handle<Value> GLglEnableCallback(const Arguments& args) {
 Handle<Value> GLglEnableClientStateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1799,8 +1633,6 @@ Handle<Value> GLglEnableClientStateCallback(const Arguments& args) {
 Handle<Value> GLglEndCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -1815,8 +1647,6 @@ Handle<Value> GLglEndCallback(const Arguments& args) {
 Handle<Value> GLglEndListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -1831,8 +1661,6 @@ Handle<Value> GLglEndListCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -1848,8 +1676,6 @@ Handle<Value> GLglEvalCoord1dCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1874,8 +1700,6 @@ Handle<Value> GLglEvalCoord1dvCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -1891,8 +1715,6 @@ Handle<Value> GLglEvalCoord1fCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1917,8 +1739,6 @@ Handle<Value> GLglEvalCoord1fvCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1935,8 +1755,6 @@ Handle<Value> GLglEvalCoord2dCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -1961,8 +1779,6 @@ Handle<Value> GLglEvalCoord2dvCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1979,8 +1795,6 @@ Handle<Value> GLglEvalCoord2fCallback(const Arguments& args) {
 Handle<Value> GLglEvalCoord2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -2005,8 +1819,6 @@ Handle<Value> GLglEvalCoord2fvCallback(const Arguments& args) {
 Handle<Value> GLglEvalMesh1Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2024,8 +1836,6 @@ Handle<Value> GLglEvalMesh1Callback(const Arguments& args) {
 Handle<Value> GLglEvalMesh2Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2045,8 +1855,6 @@ Handle<Value> GLglEvalMesh2Callback(const Arguments& args) {
 Handle<Value> GLglEvalPoint1Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2062,8 +1870,6 @@ Handle<Value> GLglEvalPoint1Callback(const Arguments& args) {
 Handle<Value> GLglEvalPoint2Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2080,8 +1886,6 @@ Handle<Value> GLglEvalPoint2Callback(const Arguments& args) {
 Handle<Value> GLglFeedbackBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2108,8 +1912,6 @@ Handle<Value> GLglFeedbackBufferCallback(const Arguments& args) {
 Handle<Value> GLglFinishCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2124,8 +1926,6 @@ Handle<Value> GLglFinishCallback(const Arguments& args) {
 Handle<Value> GLglFlushCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2140,8 +1940,6 @@ Handle<Value> GLglFlushCallback(const Arguments& args) {
 Handle<Value> GLglFogfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -2158,8 +1956,6 @@ Handle<Value> GLglFogfCallback(const Arguments& args) {
 Handle<Value> GLglFogfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2185,8 +1981,6 @@ Handle<Value> GLglFogfvCallback(const Arguments& args) {
 Handle<Value> GLglFogiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2203,8 +1997,6 @@ Handle<Value> GLglFogiCallback(const Arguments& args) {
 Handle<Value> GLglFogivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2230,8 +2022,6 @@ Handle<Value> GLglFogivCallback(const Arguments& args) {
 Handle<Value> GLglFrontFaceCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2247,8 +2037,6 @@ Handle<Value> GLglFrontFaceCallback(const Arguments& args) {
 Handle<Value> GLglFrustumCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -2269,8 +2057,6 @@ Handle<Value> GLglFrustumCallback(const Arguments& args) {
 Handle<Value> GLglGenListsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2284,8 +2070,6 @@ Handle<Value> GLglGenListsCallback(const Arguments& args) {
 Handle<Value> GLglGenTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2311,8 +2095,6 @@ Handle<Value> GLglGenTexturesCallback(const Arguments& args) {
 Handle<Value> GLglGetBooleanvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2338,8 +2120,6 @@ Handle<Value> GLglGetBooleanvCallback(const Arguments& args) {
 Handle<Value> GLglGetClipPlaneCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2365,8 +2145,6 @@ Handle<Value> GLglGetClipPlaneCallback(const Arguments& args) {
 Handle<Value> GLglGetColorTableParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2393,8 +2171,6 @@ Handle<Value> GLglGetColorTableParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetColorTableParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2421,8 +2197,6 @@ Handle<Value> GLglGetColorTableParameterivCallback(const Arguments& args) {
 Handle<Value> GLglGetConvolutionParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2449,8 +2223,6 @@ Handle<Value> GLglGetConvolutionParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetConvolutionParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2477,8 +2249,6 @@ Handle<Value> GLglGetConvolutionParameterivCallback(const Arguments& args) {
 Handle<Value> GLglGetDoublevCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2504,8 +2274,6 @@ Handle<Value> GLglGetDoublevCallback(const Arguments& args) {
 Handle<Value> GLglGetErrorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -2518,8 +2286,6 @@ Handle<Value> GLglGetErrorCallback(const Arguments& args) {
 Handle<Value> GLglGetFloatvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2545,8 +2311,6 @@ Handle<Value> GLglGetFloatvCallback(const Arguments& args) {
 Handle<Value> GLglGetHistogramParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2573,8 +2337,6 @@ Handle<Value> GLglGetHistogramParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetHistogramParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2601,8 +2363,6 @@ Handle<Value> GLglGetHistogramParameterivCallback(const Arguments& args) {
 Handle<Value> GLglGetIntegervCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2628,8 +2388,6 @@ Handle<Value> GLglGetIntegervCallback(const Arguments& args) {
 Handle<Value> GLglGetLightfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2656,8 +2414,6 @@ Handle<Value> GLglGetLightfvCallback(const Arguments& args) {
 Handle<Value> GLglGetLightivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2684,8 +2440,6 @@ Handle<Value> GLglGetLightivCallback(const Arguments& args) {
 Handle<Value> GLglGetMapdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2712,8 +2466,6 @@ Handle<Value> GLglGetMapdvCallback(const Arguments& args) {
 Handle<Value> GLglGetMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2740,8 +2492,6 @@ Handle<Value> GLglGetMapfvCallback(const Arguments& args) {
 Handle<Value> GLglGetMapivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2768,8 +2518,6 @@ Handle<Value> GLglGetMapivCallback(const Arguments& args) {
 Handle<Value> GLglGetMaterialfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2796,8 +2544,6 @@ Handle<Value> GLglGetMaterialfvCallback(const Arguments& args) {
 Handle<Value> GLglGetMaterialivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2824,8 +2570,6 @@ Handle<Value> GLglGetMaterialivCallback(const Arguments& args) {
 Handle<Value> GLglGetMinmaxParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2852,8 +2596,6 @@ Handle<Value> GLglGetMinmaxParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetMinmaxParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2880,8 +2622,6 @@ Handle<Value> GLglGetMinmaxParameterivCallback(const Arguments& args) {
 Handle<Value> GLglGetPixelMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2907,8 +2647,6 @@ Handle<Value> GLglGetPixelMapfvCallback(const Arguments& args) {
 Handle<Value> GLglGetPixelMapuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2934,8 +2672,6 @@ Handle<Value> GLglGetPixelMapuivCallback(const Arguments& args) {
 Handle<Value> GLglGetPixelMapusvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2961,8 +2697,6 @@ Handle<Value> GLglGetPixelMapusvCallback(const Arguments& args) {
 Handle<Value> GLglGetPolygonStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -2987,8 +2721,6 @@ Handle<Value> GLglGetPolygonStippleCallback(const Arguments& args) {
 Handle<Value> GLglGetTexEnvfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3015,8 +2747,6 @@ Handle<Value> GLglGetTexEnvfvCallback(const Arguments& args) {
 Handle<Value> GLglGetTexEnvivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3043,8 +2773,6 @@ Handle<Value> GLglGetTexEnvivCallback(const Arguments& args) {
 Handle<Value> GLglGetTexGendvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3071,8 +2799,6 @@ Handle<Value> GLglGetTexGendvCallback(const Arguments& args) {
 Handle<Value> GLglGetTexGenfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3099,8 +2825,6 @@ Handle<Value> GLglGetTexGenfvCallback(const Arguments& args) {
 Handle<Value> GLglGetTexGenivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3127,8 +2851,6 @@ Handle<Value> GLglGetTexGenivCallback(const Arguments& args) {
 Handle<Value> GLglGetTexLevelParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3156,8 +2878,6 @@ Handle<Value> GLglGetTexLevelParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetTexLevelParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3185,8 +2905,6 @@ Handle<Value> GLglGetTexLevelParameterivCallback(const Arguments& args) {
 Handle<Value> GLglGetTexParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3213,8 +2931,6 @@ Handle<Value> GLglGetTexParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglGetTexParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3241,8 +2957,6 @@ Handle<Value> GLglGetTexParameterivCallback(const Arguments& args) {
 Handle<Value> GLglHintCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3259,8 +2973,6 @@ Handle<Value> GLglHintCallback(const Arguments& args) {
 Handle<Value> GLglHistogramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3279,8 +2991,6 @@ Handle<Value> GLglHistogramCallback(const Arguments& args) {
 Handle<Value> GLglIndexMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3296,8 +3006,6 @@ Handle<Value> GLglIndexMaskCallback(const Arguments& args) {
 Handle<Value> GLglIndexdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3313,8 +3021,6 @@ Handle<Value> GLglIndexdCallback(const Arguments& args) {
 Handle<Value> GLglIndexdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3339,8 +3045,6 @@ Handle<Value> GLglIndexdvCallback(const Arguments& args) {
 Handle<Value> GLglIndexfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3356,8 +3060,6 @@ Handle<Value> GLglIndexfCallback(const Arguments& args) {
 Handle<Value> GLglIndexfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3382,8 +3084,6 @@ Handle<Value> GLglIndexfvCallback(const Arguments& args) {
 Handle<Value> GLglIndexiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3399,8 +3099,6 @@ Handle<Value> GLglIndexiCallback(const Arguments& args) {
 Handle<Value> GLglIndexivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3425,8 +3123,6 @@ Handle<Value> GLglIndexivCallback(const Arguments& args) {
 Handle<Value> GLglIndexsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3442,8 +3138,6 @@ Handle<Value> GLglIndexsCallback(const Arguments& args) {
 Handle<Value> GLglIndexsvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3468,8 +3162,6 @@ Handle<Value> GLglIndexsvCallback(const Arguments& args) {
 Handle<Value> GLglIndexubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3485,8 +3177,6 @@ Handle<Value> GLglIndexubCallback(const Arguments& args) {
 Handle<Value> GLglIndexubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3511,8 +3201,6 @@ Handle<Value> GLglIndexubvCallback(const Arguments& args) {
 Handle<Value> GLglInitNamesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -3527,8 +3215,6 @@ Handle<Value> GLglInitNamesCallback(const Arguments& args) {
 Handle<Value> GLglIsEnabledCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3542,8 +3228,6 @@ Handle<Value> GLglIsEnabledCallback(const Arguments& args) {
 Handle<Value> GLglIsListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3557,8 +3241,6 @@ Handle<Value> GLglIsListCallback(const Arguments& args) {
 Handle<Value> GLglIsTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3572,8 +3254,6 @@ Handle<Value> GLglIsTextureCallback(const Arguments& args) {
 Handle<Value> GLglLightModelfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3590,8 +3270,6 @@ Handle<Value> GLglLightModelfCallback(const Arguments& args) {
 Handle<Value> GLglLightModelfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3617,8 +3295,6 @@ Handle<Value> GLglLightModelfvCallback(const Arguments& args) {
 Handle<Value> GLglLightModeliCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3635,8 +3311,6 @@ Handle<Value> GLglLightModeliCallback(const Arguments& args) {
 Handle<Value> GLglLightModelivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3662,8 +3336,6 @@ Handle<Value> GLglLightModelivCallback(const Arguments& args) {
 Handle<Value> GLglLightfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3681,8 +3353,6 @@ Handle<Value> GLglLightfCallback(const Arguments& args) {
 Handle<Value> GLglLightfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3709,8 +3379,6 @@ Handle<Value> GLglLightfvCallback(const Arguments& args) {
 Handle<Value> GLglLightiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3728,8 +3396,6 @@ Handle<Value> GLglLightiCallback(const Arguments& args) {
 Handle<Value> GLglLightivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3756,8 +3422,6 @@ Handle<Value> GLglLightivCallback(const Arguments& args) {
 Handle<Value> GLglLineStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -3774,8 +3438,6 @@ Handle<Value> GLglLineStippleCallback(const Arguments& args) {
 Handle<Value> GLglLineWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -3791,8 +3453,6 @@ Handle<Value> GLglLineWidthCallback(const Arguments& args) {
 Handle<Value> GLglListBaseCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3808,8 +3468,6 @@ Handle<Value> GLglListBaseCallback(const Arguments& args) {
 Handle<Value> GLglLoadIdentityCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -3824,8 +3482,6 @@ Handle<Value> GLglLoadIdentityCallback(const Arguments& args) {
 Handle<Value> GLglLoadMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3850,8 +3506,6 @@ Handle<Value> GLglLoadMatrixdCallback(const Arguments& args) {
 Handle<Value> GLglLoadMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -3876,8 +3530,6 @@ Handle<Value> GLglLoadMatrixfCallback(const Arguments& args) {
 Handle<Value> GLglLoadNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3893,8 +3545,6 @@ Handle<Value> GLglLoadNameCallback(const Arguments& args) {
 Handle<Value> GLglLogicOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -3910,8 +3560,6 @@ Handle<Value> GLglLogicOpCallback(const Arguments& args) {
 Handle<Value> GLglMap1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3941,8 +3589,6 @@ Handle<Value> GLglMap1dCallback(const Arguments& args) {
 Handle<Value> GLglMap1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3972,8 +3618,6 @@ Handle<Value> GLglMap1fCallback(const Arguments& args) {
 Handle<Value> GLglMap2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 10) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4007,8 +3651,6 @@ Handle<Value> GLglMap2dCallback(const Arguments& args) {
 Handle<Value> GLglMap2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 10) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4042,8 +3684,6 @@ Handle<Value> GLglMap2fCallback(const Arguments& args) {
 Handle<Value> GLglMapGrid1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4061,8 +3701,6 @@ Handle<Value> GLglMapGrid1dCallback(const Arguments& args) {
 Handle<Value> GLglMapGrid1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4080,8 +3718,6 @@ Handle<Value> GLglMapGrid1fCallback(const Arguments& args) {
 Handle<Value> GLglMapGrid2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4102,8 +3738,6 @@ Handle<Value> GLglMapGrid2dCallback(const Arguments& args) {
 Handle<Value> GLglMapGrid2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4124,8 +3758,6 @@ Handle<Value> GLglMapGrid2fCallback(const Arguments& args) {
 Handle<Value> GLglMaterialfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4143,8 +3775,6 @@ Handle<Value> GLglMaterialfCallback(const Arguments& args) {
 Handle<Value> GLglMaterialfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4171,8 +3801,6 @@ Handle<Value> GLglMaterialfvCallback(const Arguments& args) {
 Handle<Value> GLglMaterialiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4190,8 +3818,6 @@ Handle<Value> GLglMaterialiCallback(const Arguments& args) {
 Handle<Value> GLglMaterialivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4218,8 +3844,6 @@ Handle<Value> GLglMaterialivCallback(const Arguments& args) {
 Handle<Value> GLglMatrixModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -4235,8 +3859,6 @@ Handle<Value> GLglMatrixModeCallback(const Arguments& args) {
 Handle<Value> GLglMinmaxCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4254,8 +3876,6 @@ Handle<Value> GLglMinmaxCallback(const Arguments& args) {
 Handle<Value> GLglMultMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4280,8 +3900,6 @@ Handle<Value> GLglMultMatrixdCallback(const Arguments& args) {
 Handle<Value> GLglMultMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4306,8 +3924,6 @@ Handle<Value> GLglMultMatrixfCallback(const Arguments& args) {
 Handle<Value> GLglNewListCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -4324,8 +3940,6 @@ Handle<Value> GLglNewListCallback(const Arguments& args) {
 Handle<Value> GLglNormal3bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4343,8 +3957,6 @@ Handle<Value> GLglNormal3bCallback(const Arguments& args) {
 Handle<Value> GLglNormal3bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4369,8 +3981,6 @@ Handle<Value> GLglNormal3bvCallback(const Arguments& args) {
 Handle<Value> GLglNormal3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4388,8 +3998,6 @@ Handle<Value> GLglNormal3dCallback(const Arguments& args) {
 Handle<Value> GLglNormal3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4414,8 +4022,6 @@ Handle<Value> GLglNormal3dvCallback(const Arguments& args) {
 Handle<Value> GLglNormal3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4433,8 +4039,6 @@ Handle<Value> GLglNormal3fCallback(const Arguments& args) {
 Handle<Value> GLglNormal3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4459,8 +4063,6 @@ Handle<Value> GLglNormal3fvCallback(const Arguments& args) {
 Handle<Value> GLglNormal3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4478,8 +4080,6 @@ Handle<Value> GLglNormal3iCallback(const Arguments& args) {
 Handle<Value> GLglNormal3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4504,8 +4104,6 @@ Handle<Value> GLglNormal3ivCallback(const Arguments& args) {
 Handle<Value> GLglNormal3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4523,8 +4121,6 @@ Handle<Value> GLglNormal3sCallback(const Arguments& args) {
 Handle<Value> GLglNormal3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4549,8 +4145,6 @@ Handle<Value> GLglNormal3svCallback(const Arguments& args) {
 Handle<Value> GLglOrthoCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 6) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4571,8 +4165,6 @@ Handle<Value> GLglOrthoCallback(const Arguments& args) {
 Handle<Value> GLglPassThroughCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -4588,8 +4180,6 @@ Handle<Value> GLglPassThroughCallback(const Arguments& args) {
 Handle<Value> GLglPixelMapfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4616,8 +4206,6 @@ Handle<Value> GLglPixelMapfvCallback(const Arguments& args) {
 Handle<Value> GLglPixelMapuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4644,8 +4232,6 @@ Handle<Value> GLglPixelMapuivCallback(const Arguments& args) {
 Handle<Value> GLglPixelMapusvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4672,8 +4258,6 @@ Handle<Value> GLglPixelMapusvCallback(const Arguments& args) {
 Handle<Value> GLglPixelStorefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4690,8 +4274,6 @@ Handle<Value> GLglPixelStorefCallback(const Arguments& args) {
 Handle<Value> GLglPixelStoreiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4708,8 +4290,6 @@ Handle<Value> GLglPixelStoreiCallback(const Arguments& args) {
 Handle<Value> GLglPixelTransferfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -4726,8 +4306,6 @@ Handle<Value> GLglPixelTransferfCallback(const Arguments& args) {
 Handle<Value> GLglPixelTransferiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4744,8 +4322,6 @@ Handle<Value> GLglPixelTransferiCallback(const Arguments& args) {
 Handle<Value> GLglPixelZoomCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4762,8 +4338,6 @@ Handle<Value> GLglPixelZoomCallback(const Arguments& args) {
 Handle<Value> GLglPointSizeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -4779,8 +4353,6 @@ Handle<Value> GLglPointSizeCallback(const Arguments& args) {
 Handle<Value> GLglPolygonModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -4797,8 +4369,6 @@ Handle<Value> GLglPolygonModeCallback(const Arguments& args) {
 Handle<Value> GLglPolygonOffsetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -4815,8 +4385,6 @@ Handle<Value> GLglPolygonOffsetCallback(const Arguments& args) {
 Handle<Value> GLglPolygonStippleCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -4841,8 +4409,6 @@ Handle<Value> GLglPolygonStippleCallback(const Arguments& args) {
 Handle<Value> GLglPopAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -4857,8 +4423,6 @@ Handle<Value> GLglPopAttribCallback(const Arguments& args) {
 Handle<Value> GLglPopClientAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -4873,8 +4437,6 @@ Handle<Value> GLglPopClientAttribCallback(const Arguments& args) {
 Handle<Value> GLglPopMatrixCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -4889,8 +4451,6 @@ Handle<Value> GLglPopMatrixCallback(const Arguments& args) {
 Handle<Value> GLglPopNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -4905,8 +4465,6 @@ Handle<Value> GLglPopNameCallback(const Arguments& args) {
 Handle<Value> GLglPrioritizeTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -4942,8 +4500,6 @@ Handle<Value> GLglPrioritizeTexturesCallback(const Arguments& args) {
 Handle<Value> GLglPushAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -4959,8 +4515,6 @@ Handle<Value> GLglPushAttribCallback(const Arguments& args) {
 Handle<Value> GLglPushClientAttribCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -4976,8 +4530,6 @@ Handle<Value> GLglPushClientAttribCallback(const Arguments& args) {
 Handle<Value> GLglPushMatrixCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -4992,8 +4544,6 @@ Handle<Value> GLglPushMatrixCallback(const Arguments& args) {
 Handle<Value> GLglPushNameCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -5009,8 +4559,6 @@ Handle<Value> GLglPushNameCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5027,8 +4575,6 @@ Handle<Value> GLglRasterPos2dCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5053,8 +4599,6 @@ Handle<Value> GLglRasterPos2dvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5071,8 +4615,6 @@ Handle<Value> GLglRasterPos2fCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5097,8 +4639,6 @@ Handle<Value> GLglRasterPos2fvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5115,8 +4655,6 @@ Handle<Value> GLglRasterPos2iCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5141,8 +4679,6 @@ Handle<Value> GLglRasterPos2ivCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5159,8 +4695,6 @@ Handle<Value> GLglRasterPos2sCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5185,8 +4719,6 @@ Handle<Value> GLglRasterPos2svCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5204,8 +4736,6 @@ Handle<Value> GLglRasterPos3dCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5230,8 +4760,6 @@ Handle<Value> GLglRasterPos3dvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5249,8 +4777,6 @@ Handle<Value> GLglRasterPos3fCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5275,8 +4801,6 @@ Handle<Value> GLglRasterPos3fvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5294,8 +4818,6 @@ Handle<Value> GLglRasterPos3iCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5320,8 +4842,6 @@ Handle<Value> GLglRasterPos3ivCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5339,8 +4859,6 @@ Handle<Value> GLglRasterPos3sCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5365,8 +4883,6 @@ Handle<Value> GLglRasterPos3svCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5385,8 +4901,6 @@ Handle<Value> GLglRasterPos4dCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5411,8 +4925,6 @@ Handle<Value> GLglRasterPos4dvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5431,8 +4943,6 @@ Handle<Value> GLglRasterPos4fCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5457,8 +4967,6 @@ Handle<Value> GLglRasterPos4fvCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5477,8 +4985,6 @@ Handle<Value> GLglRasterPos4iCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5503,8 +5009,6 @@ Handle<Value> GLglRasterPos4ivCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5523,8 +5027,6 @@ Handle<Value> GLglRasterPos4sCallback(const Arguments& args) {
 Handle<Value> GLglRasterPos4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5549,8 +5051,6 @@ Handle<Value> GLglRasterPos4svCallback(const Arguments& args) {
 Handle<Value> GLglReadBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5566,8 +5066,6 @@ Handle<Value> GLglReadBufferCallback(const Arguments& args) {
 Handle<Value> GLglRectdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5586,8 +5084,6 @@ Handle<Value> GLglRectdCallback(const Arguments& args) {
 Handle<Value> GLglRectdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5622,8 +5118,6 @@ Handle<Value> GLglRectdvCallback(const Arguments& args) {
 Handle<Value> GLglRectfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5642,8 +5136,6 @@ Handle<Value> GLglRectfCallback(const Arguments& args) {
 Handle<Value> GLglRectfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5678,8 +5170,6 @@ Handle<Value> GLglRectfvCallback(const Arguments& args) {
 Handle<Value> GLglRectiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5698,8 +5188,6 @@ Handle<Value> GLglRectiCallback(const Arguments& args) {
 Handle<Value> GLglRectivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5734,8 +5222,6 @@ Handle<Value> GLglRectivCallback(const Arguments& args) {
 Handle<Value> GLglRectsCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5754,8 +5240,6 @@ Handle<Value> GLglRectsCallback(const Arguments& args) {
 Handle<Value> GLglRectsvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -5790,8 +5274,6 @@ Handle<Value> GLglRectsvCallback(const Arguments& args) {
 Handle<Value> GLglRenderModeCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5805,8 +5287,6 @@ Handle<Value> GLglRenderModeCallback(const Arguments& args) {
 Handle<Value> GLglResetHistogramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5822,8 +5302,6 @@ Handle<Value> GLglResetHistogramCallback(const Arguments& args) {
 Handle<Value> GLglResetMinmaxCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5839,8 +5317,6 @@ Handle<Value> GLglResetMinmaxCallback(const Arguments& args) {
 Handle<Value> GLglRotatedCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5859,8 +5335,6 @@ Handle<Value> GLglRotatedCallback(const Arguments& args) {
 Handle<Value> GLglRotatefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5879,8 +5353,6 @@ Handle<Value> GLglRotatefCallback(const Arguments& args) {
 Handle<Value> GLglScaledCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5898,8 +5370,6 @@ Handle<Value> GLglScaledCallback(const Arguments& args) {
 Handle<Value> GLglScalefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -5917,8 +5387,6 @@ Handle<Value> GLglScalefCallback(const Arguments& args) {
 Handle<Value> GLglScissorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -5937,8 +5405,6 @@ Handle<Value> GLglScissorCallback(const Arguments& args) {
 Handle<Value> GLglSelectBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5964,8 +5430,6 @@ Handle<Value> GLglSelectBufferCallback(const Arguments& args) {
 Handle<Value> GLglShadeModelCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -5981,8 +5445,6 @@ Handle<Value> GLglShadeModelCallback(const Arguments& args) {
 Handle<Value> GLglStencilFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6000,8 +5462,6 @@ Handle<Value> GLglStencilFuncCallback(const Arguments& args) {
 Handle<Value> GLglStencilMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -6017,8 +5477,6 @@ Handle<Value> GLglStencilMaskCallback(const Arguments& args) {
 Handle<Value> GLglStencilOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6036,8 +5494,6 @@ Handle<Value> GLglStencilOpCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -6053,8 +5509,6 @@ Handle<Value> GLglTexCoord1dCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6079,8 +5533,6 @@ Handle<Value> GLglTexCoord1dvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -6096,8 +5548,6 @@ Handle<Value> GLglTexCoord1fCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6122,8 +5572,6 @@ Handle<Value> GLglTexCoord1fvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -6139,8 +5587,6 @@ Handle<Value> GLglTexCoord1iCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6165,8 +5611,6 @@ Handle<Value> GLglTexCoord1ivCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -6182,8 +5626,6 @@ Handle<Value> GLglTexCoord1sCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord1svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6208,8 +5650,6 @@ Handle<Value> GLglTexCoord1svCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6226,8 +5666,6 @@ Handle<Value> GLglTexCoord2dCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6252,8 +5690,6 @@ Handle<Value> GLglTexCoord2dvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6270,8 +5706,6 @@ Handle<Value> GLglTexCoord2fCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6296,8 +5730,6 @@ Handle<Value> GLglTexCoord2fvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6314,8 +5746,6 @@ Handle<Value> GLglTexCoord2iCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6340,8 +5770,6 @@ Handle<Value> GLglTexCoord2ivCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6358,8 +5786,6 @@ Handle<Value> GLglTexCoord2sCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6384,8 +5810,6 @@ Handle<Value> GLglTexCoord2svCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6403,8 +5827,6 @@ Handle<Value> GLglTexCoord3dCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6429,8 +5851,6 @@ Handle<Value> GLglTexCoord3dvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6448,8 +5868,6 @@ Handle<Value> GLglTexCoord3fCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6474,8 +5892,6 @@ Handle<Value> GLglTexCoord3fvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6493,8 +5909,6 @@ Handle<Value> GLglTexCoord3iCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6519,8 +5933,6 @@ Handle<Value> GLglTexCoord3ivCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6538,8 +5950,6 @@ Handle<Value> GLglTexCoord3sCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6564,8 +5974,6 @@ Handle<Value> GLglTexCoord3svCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6584,8 +5992,6 @@ Handle<Value> GLglTexCoord4dCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6610,8 +6016,6 @@ Handle<Value> GLglTexCoord4dvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -6630,8 +6034,6 @@ Handle<Value> GLglTexCoord4fCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6656,8 +6058,6 @@ Handle<Value> GLglTexCoord4fvCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6676,8 +6076,6 @@ Handle<Value> GLglTexCoord4iCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6702,8 +6100,6 @@ Handle<Value> GLglTexCoord4ivCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6722,8 +6118,6 @@ Handle<Value> GLglTexCoord4sCallback(const Arguments& args) {
 Handle<Value> GLglTexCoord4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -6748,8 +6142,6 @@ Handle<Value> GLglTexCoord4svCallback(const Arguments& args) {
 Handle<Value> GLglTexEnvfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6767,8 +6159,6 @@ Handle<Value> GLglTexEnvfCallback(const Arguments& args) {
 Handle<Value> GLglTexEnvfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6795,8 +6185,6 @@ Handle<Value> GLglTexEnvfvCallback(const Arguments& args) {
 Handle<Value> GLglTexEnviCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6814,8 +6202,6 @@ Handle<Value> GLglTexEnviCallback(const Arguments& args) {
 Handle<Value> GLglTexEnvivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6842,8 +6228,6 @@ Handle<Value> GLglTexEnvivCallback(const Arguments& args) {
 Handle<Value> GLglTexGendCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6861,8 +6245,6 @@ Handle<Value> GLglTexGendCallback(const Arguments& args) {
 Handle<Value> GLglTexGendvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6889,8 +6271,6 @@ Handle<Value> GLglTexGendvCallback(const Arguments& args) {
 Handle<Value> GLglTexGenfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6908,8 +6288,6 @@ Handle<Value> GLglTexGenfCallback(const Arguments& args) {
 Handle<Value> GLglTexGenfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6936,8 +6314,6 @@ Handle<Value> GLglTexGenfvCallback(const Arguments& args) {
 Handle<Value> GLglTexGeniCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6955,8 +6331,6 @@ Handle<Value> GLglTexGeniCallback(const Arguments& args) {
 Handle<Value> GLglTexGenivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -6983,8 +6357,6 @@ Handle<Value> GLglTexGenivCallback(const Arguments& args) {
 Handle<Value> GLglTexParameterfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7002,8 +6374,6 @@ Handle<Value> GLglTexParameterfCallback(const Arguments& args) {
 Handle<Value> GLglTexParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7030,8 +6400,6 @@ Handle<Value> GLglTexParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglTexParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7049,8 +6417,6 @@ Handle<Value> GLglTexParameteriCallback(const Arguments& args) {
 Handle<Value> GLglTexParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7077,8 +6443,6 @@ Handle<Value> GLglTexParameterivCallback(const Arguments& args) {
 Handle<Value> GLglTranslatedCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7096,8 +6460,6 @@ Handle<Value> GLglTranslatedCallback(const Arguments& args) {
 Handle<Value> GLglTranslatefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7115,8 +6477,6 @@ Handle<Value> GLglTranslatefCallback(const Arguments& args) {
 Handle<Value> GLglVertex2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7133,8 +6493,6 @@ Handle<Value> GLglVertex2dCallback(const Arguments& args) {
 Handle<Value> GLglVertex2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7159,8 +6517,6 @@ Handle<Value> GLglVertex2dvCallback(const Arguments& args) {
 Handle<Value> GLglVertex2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7177,8 +6533,6 @@ Handle<Value> GLglVertex2fCallback(const Arguments& args) {
 Handle<Value> GLglVertex2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7203,8 +6557,6 @@ Handle<Value> GLglVertex2fvCallback(const Arguments& args) {
 Handle<Value> GLglVertex2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7221,8 +6573,6 @@ Handle<Value> GLglVertex2iCallback(const Arguments& args) {
 Handle<Value> GLglVertex2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7247,8 +6597,6 @@ Handle<Value> GLglVertex2ivCallback(const Arguments& args) {
 Handle<Value> GLglVertex2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7265,8 +6613,6 @@ Handle<Value> GLglVertex2sCallback(const Arguments& args) {
 Handle<Value> GLglVertex2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7291,8 +6637,6 @@ Handle<Value> GLglVertex2svCallback(const Arguments& args) {
 Handle<Value> GLglVertex3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7310,8 +6654,6 @@ Handle<Value> GLglVertex3dCallback(const Arguments& args) {
 Handle<Value> GLglVertex3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7336,8 +6678,6 @@ Handle<Value> GLglVertex3dvCallback(const Arguments& args) {
 Handle<Value> GLglVertex3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7355,8 +6695,6 @@ Handle<Value> GLglVertex3fCallback(const Arguments& args) {
 Handle<Value> GLglVertex3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7381,8 +6719,6 @@ Handle<Value> GLglVertex3fvCallback(const Arguments& args) {
 Handle<Value> GLglVertex3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7400,8 +6736,6 @@ Handle<Value> GLglVertex3iCallback(const Arguments& args) {
 Handle<Value> GLglVertex3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7426,8 +6760,6 @@ Handle<Value> GLglVertex3ivCallback(const Arguments& args) {
 Handle<Value> GLglVertex3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7445,8 +6777,6 @@ Handle<Value> GLglVertex3sCallback(const Arguments& args) {
 Handle<Value> GLglVertex3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7471,8 +6801,6 @@ Handle<Value> GLglVertex3svCallback(const Arguments& args) {
 Handle<Value> GLglVertex4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7491,8 +6819,6 @@ Handle<Value> GLglVertex4dCallback(const Arguments& args) {
 Handle<Value> GLglVertex4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7517,8 +6843,6 @@ Handle<Value> GLglVertex4dvCallback(const Arguments& args) {
 Handle<Value> GLglVertex4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -7537,8 +6861,6 @@ Handle<Value> GLglVertex4fCallback(const Arguments& args) {
 Handle<Value> GLglVertex4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7563,8 +6885,6 @@ Handle<Value> GLglVertex4fvCallback(const Arguments& args) {
 Handle<Value> GLglVertex4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7583,8 +6903,6 @@ Handle<Value> GLglVertex4iCallback(const Arguments& args) {
 Handle<Value> GLglVertex4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7609,8 +6927,6 @@ Handle<Value> GLglVertex4ivCallback(const Arguments& args) {
 Handle<Value> GLglVertex4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7629,8 +6945,6 @@ Handle<Value> GLglVertex4sCallback(const Arguments& args) {
 Handle<Value> GLglVertex4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7655,8 +6969,6 @@ Handle<Value> GLglVertex4svCallback(const Arguments& args) {
 Handle<Value> GLglViewportCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7675,8 +6987,6 @@ Handle<Value> GLglViewportCallback(const Arguments& args) {
 Handle<Value> GLglSampleCoverageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -7693,8 +7003,6 @@ Handle<Value> GLglSampleCoverageCallback(const Arguments& args) {
 Handle<Value> GLglLoadTransposeMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7719,8 +7027,6 @@ Handle<Value> GLglLoadTransposeMatrixfCallback(const Arguments& args) {
 Handle<Value> GLglLoadTransposeMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7745,8 +7051,6 @@ Handle<Value> GLglLoadTransposeMatrixdCallback(const Arguments& args) {
 Handle<Value> GLglMultTransposeMatrixfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7771,8 +7075,6 @@ Handle<Value> GLglMultTransposeMatrixfCallback(const Arguments& args) {
 Handle<Value> GLglMultTransposeMatrixdCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -7797,8 +7099,6 @@ Handle<Value> GLglMultTransposeMatrixdCallback(const Arguments& args) {
 Handle<Value> GLglActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -7814,8 +7114,6 @@ Handle<Value> GLglActiveTextureCallback(const Arguments& args) {
 Handle<Value> GLglClientActiveTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -7831,8 +7129,6 @@ Handle<Value> GLglClientActiveTextureCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -7849,8 +7145,6 @@ Handle<Value> GLglMultiTexCoord1dCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -7876,8 +7170,6 @@ Handle<Value> GLglMultiTexCoord1dvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -7894,8 +7186,6 @@ Handle<Value> GLglMultiTexCoord1fCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -7921,8 +7211,6 @@ Handle<Value> GLglMultiTexCoord1fvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7939,8 +7227,6 @@ Handle<Value> GLglMultiTexCoord1iCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -7966,8 +7252,6 @@ Handle<Value> GLglMultiTexCoord1ivCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -7984,8 +7268,6 @@ Handle<Value> GLglMultiTexCoord1sCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord1svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8011,8 +7293,6 @@ Handle<Value> GLglMultiTexCoord1svCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8030,8 +7310,6 @@ Handle<Value> GLglMultiTexCoord2dCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8057,8 +7335,6 @@ Handle<Value> GLglMultiTexCoord2dvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8076,8 +7352,6 @@ Handle<Value> GLglMultiTexCoord2fCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8103,8 +7377,6 @@ Handle<Value> GLglMultiTexCoord2fvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8122,8 +7394,6 @@ Handle<Value> GLglMultiTexCoord2iCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8149,8 +7419,6 @@ Handle<Value> GLglMultiTexCoord2ivCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8168,8 +7436,6 @@ Handle<Value> GLglMultiTexCoord2sCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8195,8 +7461,6 @@ Handle<Value> GLglMultiTexCoord2svCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8215,8 +7479,6 @@ Handle<Value> GLglMultiTexCoord3dCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8242,8 +7504,6 @@ Handle<Value> GLglMultiTexCoord3dvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8262,8 +7522,6 @@ Handle<Value> GLglMultiTexCoord3fCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8289,8 +7547,6 @@ Handle<Value> GLglMultiTexCoord3fvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8309,8 +7565,6 @@ Handle<Value> GLglMultiTexCoord3iCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8336,8 +7590,6 @@ Handle<Value> GLglMultiTexCoord3ivCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8356,8 +7608,6 @@ Handle<Value> GLglMultiTexCoord3sCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8383,8 +7633,6 @@ Handle<Value> GLglMultiTexCoord3svCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8404,8 +7652,6 @@ Handle<Value> GLglMultiTexCoord4dCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8431,8 +7677,6 @@ Handle<Value> GLglMultiTexCoord4dvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8452,8 +7696,6 @@ Handle<Value> GLglMultiTexCoord4fCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8479,8 +7721,6 @@ Handle<Value> GLglMultiTexCoord4fvCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8506,8 +7746,6 @@ Handle<Value> GLglMultiTexCoord4ivCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8527,8 +7765,6 @@ Handle<Value> GLglMultiTexCoord4sCallback(const Arguments& args) {
 Handle<Value> GLglMultiTexCoord4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -8554,8 +7790,6 @@ Handle<Value> GLglMultiTexCoord4svCallback(const Arguments& args) {
 Handle<Value> GLglFogCoordfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -8571,8 +7805,6 @@ Handle<Value> GLglFogCoordfCallback(const Arguments& args) {
 Handle<Value> GLglFogCoordfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8597,8 +7829,6 @@ Handle<Value> GLglFogCoordfvCallback(const Arguments& args) {
 Handle<Value> GLglFogCoorddCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -8614,8 +7844,6 @@ Handle<Value> GLglFogCoorddCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3bCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8633,8 +7861,6 @@ Handle<Value> GLglSecondaryColor3bCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8659,8 +7885,6 @@ Handle<Value> GLglSecondaryColor3bvCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8678,8 +7902,6 @@ Handle<Value> GLglSecondaryColor3dCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8704,8 +7926,6 @@ Handle<Value> GLglSecondaryColor3dvCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -8723,8 +7943,6 @@ Handle<Value> GLglSecondaryColor3fCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8749,8 +7967,6 @@ Handle<Value> GLglSecondaryColor3fvCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8768,8 +7984,6 @@ Handle<Value> GLglSecondaryColor3iCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8794,8 +8008,6 @@ Handle<Value> GLglSecondaryColor3ivCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -8813,8 +8025,6 @@ Handle<Value> GLglSecondaryColor3sCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8839,8 +8049,6 @@ Handle<Value> GLglSecondaryColor3svCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3ubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -8858,8 +8066,6 @@ Handle<Value> GLglSecondaryColor3ubCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8884,8 +8090,6 @@ Handle<Value> GLglSecondaryColor3ubvCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3uiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -8903,8 +8107,6 @@ Handle<Value> GLglSecondaryColor3uiCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8929,8 +8131,6 @@ Handle<Value> GLglSecondaryColor3uivCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3usCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -8948,8 +8148,6 @@ Handle<Value> GLglSecondaryColor3usCallback(const Arguments& args) {
 Handle<Value> GLglSecondaryColor3usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -8974,8 +8172,6 @@ Handle<Value> GLglSecondaryColor3usvCallback(const Arguments& args) {
 Handle<Value> GLglPointParameterfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -8992,8 +8188,6 @@ Handle<Value> GLglPointParameterfCallback(const Arguments& args) {
 Handle<Value> GLglPointParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9019,8 +8213,6 @@ Handle<Value> GLglPointParameterfvCallback(const Arguments& args) {
 Handle<Value> GLglPointParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9037,8 +8229,6 @@ Handle<Value> GLglPointParameteriCallback(const Arguments& args) {
 Handle<Value> GLglPointParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9064,8 +8254,6 @@ Handle<Value> GLglPointParameterivCallback(const Arguments& args) {
 Handle<Value> GLglBlendFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9084,8 +8272,6 @@ Handle<Value> GLglBlendFuncSeparateCallback(const Arguments& args) {
 Handle<Value> GLglMultiDrawArraysCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9122,8 +8308,6 @@ Handle<Value> GLglMultiDrawArraysCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -9140,8 +8324,6 @@ Handle<Value> GLglWindowPos2dCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9166,8 +8348,6 @@ Handle<Value> GLglWindowPos2dvCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -9184,8 +8364,6 @@ Handle<Value> GLglWindowPos2fCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9210,8 +8388,6 @@ Handle<Value> GLglWindowPos2fvCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9228,8 +8404,6 @@ Handle<Value> GLglWindowPos2iCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9254,8 +8428,6 @@ Handle<Value> GLglWindowPos2ivCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9272,8 +8444,6 @@ Handle<Value> GLglWindowPos2sCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9298,8 +8468,6 @@ Handle<Value> GLglWindowPos2svCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -9317,8 +8485,6 @@ Handle<Value> GLglWindowPos3dCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9343,8 +8509,6 @@ Handle<Value> GLglWindowPos3dvCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -9362,8 +8526,6 @@ Handle<Value> GLglWindowPos3fCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9388,8 +8550,6 @@ Handle<Value> GLglWindowPos3fvCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9407,8 +8567,6 @@ Handle<Value> GLglWindowPos3iCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9433,8 +8591,6 @@ Handle<Value> GLglWindowPos3ivCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9452,8 +8608,6 @@ Handle<Value> GLglWindowPos3sCallback(const Arguments& args) {
 Handle<Value> GLglWindowPos3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
     
@@ -9478,8 +8632,6 @@ Handle<Value> GLglWindowPos3svCallback(const Arguments& args) {
 Handle<Value> GLglGenQueriesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9505,8 +8657,6 @@ Handle<Value> GLglGenQueriesCallback(const Arguments& args) {
 Handle<Value> GLglDeleteQueriesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9532,8 +8682,6 @@ Handle<Value> GLglDeleteQueriesCallback(const Arguments& args) {
 Handle<Value> GLglIsQueryCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -9547,8 +8695,6 @@ Handle<Value> GLglIsQueryCallback(const Arguments& args) {
 Handle<Value> GLglBeginQueryCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -9565,8 +8711,6 @@ Handle<Value> GLglBeginQueryCallback(const Arguments& args) {
 Handle<Value> GLglEndQueryCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9582,8 +8726,6 @@ Handle<Value> GLglEndQueryCallback(const Arguments& args) {
 Handle<Value> GLglGetQueryivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9610,8 +8752,6 @@ Handle<Value> GLglGetQueryivCallback(const Arguments& args) {
 Handle<Value> GLglGetQueryObjectivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -9638,8 +8778,6 @@ Handle<Value> GLglGetQueryObjectivCallback(const Arguments& args) {
 Handle<Value> GLglGetQueryObjectuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -9666,8 +8804,6 @@ Handle<Value> GLglGetQueryObjectuivCallback(const Arguments& args) {
 Handle<Value> GLglBindBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -9684,8 +8820,6 @@ Handle<Value> GLglBindBufferCallback(const Arguments& args) {
 Handle<Value> GLglDeleteBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9711,8 +8845,6 @@ Handle<Value> GLglDeleteBuffersCallback(const Arguments& args) {
 Handle<Value> GLglGenBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9738,8 +8870,6 @@ Handle<Value> GLglGenBuffersCallback(const Arguments& args) {
 Handle<Value> GLglIsBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -9753,8 +8883,6 @@ Handle<Value> GLglIsBufferCallback(const Arguments& args) {
 Handle<Value> GLglUnmapBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9768,8 +8896,6 @@ Handle<Value> GLglUnmapBufferCallback(const Arguments& args) {
 Handle<Value> GLglGetBufferParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -9796,8 +8922,6 @@ Handle<Value> GLglGetBufferParameterivCallback(const Arguments& args) {
 Handle<Value> GLglDrawBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -9823,8 +8947,6 @@ Handle<Value> GLglDrawBuffersCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -9841,8 +8963,6 @@ Handle<Value> GLglVertexAttrib1dCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -9868,8 +8988,6 @@ Handle<Value> GLglVertexAttrib1dvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -9886,8 +9004,6 @@ Handle<Value> GLglVertexAttrib1fCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -9913,8 +9029,6 @@ Handle<Value> GLglVertexAttrib1fvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -9931,8 +9045,6 @@ Handle<Value> GLglVertexAttrib1sCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib1svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -9958,8 +9070,6 @@ Handle<Value> GLglVertexAttrib1svCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -9977,8 +9087,6 @@ Handle<Value> GLglVertexAttrib2dCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10004,8 +9112,6 @@ Handle<Value> GLglVertexAttrib2dvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -10023,8 +9129,6 @@ Handle<Value> GLglVertexAttrib2fCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10050,8 +9154,6 @@ Handle<Value> GLglVertexAttrib2fvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10069,8 +9171,6 @@ Handle<Value> GLglVertexAttrib2sCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib2svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10096,8 +9196,6 @@ Handle<Value> GLglVertexAttrib2svCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -10116,8 +9214,6 @@ Handle<Value> GLglVertexAttrib3dCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10143,8 +9239,6 @@ Handle<Value> GLglVertexAttrib3dvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -10163,8 +9257,6 @@ Handle<Value> GLglVertexAttrib3fCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10190,8 +9282,6 @@ Handle<Value> GLglVertexAttrib3fvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10210,8 +9300,6 @@ Handle<Value> GLglVertexAttrib3sCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib3svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10237,8 +9325,6 @@ Handle<Value> GLglVertexAttrib3svCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NbvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10264,8 +9350,6 @@ Handle<Value> GLglVertexAttrib4NbvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10291,8 +9375,6 @@ Handle<Value> GLglVertexAttrib4NivCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NsvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10318,8 +9400,6 @@ Handle<Value> GLglVertexAttrib4NsvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NubCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -10339,8 +9419,6 @@ Handle<Value> GLglVertexAttrib4NubCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10366,8 +9444,6 @@ Handle<Value> GLglVertexAttrib4NubvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NuivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10393,8 +9469,6 @@ Handle<Value> GLglVertexAttrib4NuivCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4NusvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10420,8 +9494,6 @@ Handle<Value> GLglVertexAttrib4NusvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4bvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10447,8 +9519,6 @@ Handle<Value> GLglVertexAttrib4bvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4dCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -10468,8 +9538,6 @@ Handle<Value> GLglVertexAttrib4dCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4dvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10495,8 +9563,6 @@ Handle<Value> GLglVertexAttrib4dvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -10516,8 +9582,6 @@ Handle<Value> GLglVertexAttrib4fCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10543,8 +9607,6 @@ Handle<Value> GLglVertexAttrib4fvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10570,8 +9632,6 @@ Handle<Value> GLglVertexAttrib4ivCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4sCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10591,8 +9651,6 @@ Handle<Value> GLglVertexAttrib4sCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4svCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10618,8 +9676,6 @@ Handle<Value> GLglVertexAttrib4svCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4ubvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10645,8 +9701,6 @@ Handle<Value> GLglVertexAttrib4ubvCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4uivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10672,8 +9726,6 @@ Handle<Value> GLglVertexAttrib4uivCallback(const Arguments& args) {
 Handle<Value> GLglVertexAttrib4usvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10699,8 +9751,6 @@ Handle<Value> GLglVertexAttrib4usvCallback(const Arguments& args) {
 Handle<Value> GLglEnableVertexAttribArrayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10716,8 +9766,6 @@ Handle<Value> GLglEnableVertexAttribArrayCallback(const Arguments& args) {
 Handle<Value> GLglDisableVertexAttribArrayCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10733,8 +9781,6 @@ Handle<Value> GLglDisableVertexAttribArrayCallback(const Arguments& args) {
 Handle<Value> GLglGetVertexAttribdvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10761,8 +9807,6 @@ Handle<Value> GLglGetVertexAttribdvCallback(const Arguments& args) {
 Handle<Value> GLglGetVertexAttribfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10789,8 +9833,6 @@ Handle<Value> GLglGetVertexAttribfvCallback(const Arguments& args) {
 Handle<Value> GLglGetVertexAttribivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -10817,8 +9859,6 @@ Handle<Value> GLglGetVertexAttribivCallback(const Arguments& args) {
 Handle<Value> GLglDeleteShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10834,8 +9874,6 @@ Handle<Value> GLglDeleteShaderCallback(const Arguments& args) {
 Handle<Value> GLglDetachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -10852,8 +9890,6 @@ Handle<Value> GLglDetachShaderCallback(const Arguments& args) {
 Handle<Value> GLglCreateShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -10867,8 +9903,6 @@ Handle<Value> GLglCreateShaderCallback(const Arguments& args) {
 Handle<Value> GLglCompileShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10884,8 +9918,6 @@ Handle<Value> GLglCompileShaderCallback(const Arguments& args) {
 Handle<Value> GLglCreateProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
 
   //make call
@@ -10898,8 +9930,6 @@ Handle<Value> GLglCreateProgramCallback(const Arguments& args) {
 Handle<Value> GLglAttachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -10916,8 +9946,6 @@ Handle<Value> GLglAttachShaderCallback(const Arguments& args) {
 Handle<Value> GLglLinkProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10933,8 +9961,6 @@ Handle<Value> GLglLinkProgramCallback(const Arguments& args) {
 Handle<Value> GLglUseProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10950,8 +9976,6 @@ Handle<Value> GLglUseProgramCallback(const Arguments& args) {
 Handle<Value> GLglDeleteProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10967,8 +9991,6 @@ Handle<Value> GLglDeleteProgramCallback(const Arguments& args) {
 Handle<Value> GLglValidateProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -10984,8 +10006,6 @@ Handle<Value> GLglValidateProgramCallback(const Arguments& args) {
 Handle<Value> GLglUniform1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -11002,8 +10022,6 @@ Handle<Value> GLglUniform1fCallback(const Arguments& args) {
 Handle<Value> GLglUniform2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -11021,8 +10039,6 @@ Handle<Value> GLglUniform2fCallback(const Arguments& args) {
 Handle<Value> GLglUniform3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -11041,8 +10057,6 @@ Handle<Value> GLglUniform3fCallback(const Arguments& args) {
 Handle<Value> GLglUniform4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -11062,8 +10076,6 @@ Handle<Value> GLglUniform4fCallback(const Arguments& args) {
 Handle<Value> GLglUniform1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11080,8 +10092,6 @@ Handle<Value> GLglUniform1iCallback(const Arguments& args) {
 Handle<Value> GLglUniform2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11099,8 +10109,6 @@ Handle<Value> GLglUniform2iCallback(const Arguments& args) {
 Handle<Value> GLglUniform3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11119,8 +10127,6 @@ Handle<Value> GLglUniform3iCallback(const Arguments& args) {
 Handle<Value> GLglUniform4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11140,8 +10146,6 @@ Handle<Value> GLglUniform4iCallback(const Arguments& args) {
 Handle<Value> GLglUniform1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11168,8 +10172,6 @@ Handle<Value> GLglUniform1fvCallback(const Arguments& args) {
 Handle<Value> GLglUniform2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11196,8 +10198,6 @@ Handle<Value> GLglUniform2fvCallback(const Arguments& args) {
 Handle<Value> GLglUniform3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11224,8 +10224,6 @@ Handle<Value> GLglUniform3fvCallback(const Arguments& args) {
 Handle<Value> GLglUniform4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11252,8 +10250,6 @@ Handle<Value> GLglUniform4fvCallback(const Arguments& args) {
 Handle<Value> GLglUniform1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11280,8 +10276,6 @@ Handle<Value> GLglUniform1ivCallback(const Arguments& args) {
 Handle<Value> GLglUniform2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11308,8 +10302,6 @@ Handle<Value> GLglUniform2ivCallback(const Arguments& args) {
 Handle<Value> GLglUniform3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11336,8 +10328,6 @@ Handle<Value> GLglUniform3ivCallback(const Arguments& args) {
 Handle<Value> GLglUniform4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11364,8 +10354,6 @@ Handle<Value> GLglUniform4ivCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11393,8 +10381,6 @@ Handle<Value> GLglUniformMatrix2fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11422,8 +10408,6 @@ Handle<Value> GLglUniformMatrix3fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11451,8 +10435,6 @@ Handle<Value> GLglUniformMatrix4fvCallback(const Arguments& args) {
 Handle<Value> GLglIsShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -11466,8 +10448,6 @@ Handle<Value> GLglIsShaderCallback(const Arguments& args) {
 Handle<Value> GLglIsProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -11481,8 +10461,6 @@ Handle<Value> GLglIsProgramCallback(const Arguments& args) {
 Handle<Value> GLglGetShaderivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -11509,8 +10487,6 @@ Handle<Value> GLglGetShaderivCallback(const Arguments& args) {
 Handle<Value> GLglGetProgramivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -11537,8 +10513,6 @@ Handle<Value> GLglGetProgramivCallback(const Arguments& args) {
 Handle<Value> GLglGetAttachedShadersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -11575,8 +10549,6 @@ Handle<Value> GLglGetAttachedShadersCallback(const Arguments& args) {
 Handle<Value> GLglGetUniformfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -11603,8 +10575,6 @@ Handle<Value> GLglGetUniformfvCallback(const Arguments& args) {
 Handle<Value> GLglGetUniformivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 3) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -11631,8 +10601,6 @@ Handle<Value> GLglGetUniformivCallback(const Arguments& args) {
 Handle<Value> GLglStencilFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11651,8 +10619,6 @@ Handle<Value> GLglStencilFuncSeparateCallback(const Arguments& args) {
 Handle<Value> GLglStencilOpSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11671,8 +10637,6 @@ Handle<Value> GLglStencilOpSeparateCallback(const Arguments& args) {
 Handle<Value> GLglStencilMaskSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -11689,8 +10653,6 @@ Handle<Value> GLglStencilMaskSeparateCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix2x3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11718,8 +10680,6 @@ Handle<Value> GLglUniformMatrix2x3fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix3x2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11747,8 +10707,6 @@ Handle<Value> GLglUniformMatrix3x2fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix2x4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11776,8 +10734,6 @@ Handle<Value> GLglUniformMatrix2x4fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix4x2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11805,8 +10761,6 @@ Handle<Value> GLglUniformMatrix4x2fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix3x4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -11834,8 +10788,6 @@ Handle<Value> GLglUniformMatrix3x4fvCallback(const Arguments& args) {
 Handle<Value> GLglUniformMatrix4x3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope handle_scope;
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();

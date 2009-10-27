@@ -104,8 +104,6 @@ def make_function(prefix, name, params, return_val):
 Handle<Value> GLU<name>Callback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < <len_params>) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 <args>
   //make call

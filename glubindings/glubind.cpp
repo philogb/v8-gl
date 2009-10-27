@@ -1247,8 +1247,6 @@ Handle<Value> GetGLU_TESS_MAX_COORD(Local<String> property,
 Handle<Value> GLUCheckExtensionCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 2) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   Handle<Array> arrHandle0 = Handle<Array>::Cast(args[0]);
@@ -1280,8 +1278,6 @@ Handle<Value> GLUCheckExtensionCallback(const Arguments& args) {
 Handle<Value> GLULookAtCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 9) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1304,8 +1300,6 @@ Handle<Value> GLULookAtCallback(const Arguments& args) {
 Handle<Value> GLUNewNurbsRendererCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1319,8 +1313,6 @@ Handle<Value> GLUNewNurbsRendererCallback(const Arguments& args) {
 Handle<Value> GLUNewQuadricCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1334,8 +1326,6 @@ Handle<Value> GLUNewQuadricCallback(const Arguments& args) {
 Handle<Value> GLUNewTessCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 0) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
 
   //make call
@@ -1349,8 +1339,6 @@ Handle<Value> GLUNewTessCallback(const Arguments& args) {
 Handle<Value> GLUOrtho2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1368,8 +1356,6 @@ Handle<Value> GLUOrtho2DCallback(const Arguments& args) {
 Handle<Value> GLUPerspectiveCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 4) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1387,8 +1373,6 @@ Handle<Value> GLUPerspectiveCallback(const Arguments& args) {
 Handle<Value> GLUPickMatrixCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 5) return v8::Undefined();
-  //define handle scope
-  HandleScope scope;
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
