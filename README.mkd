@@ -3,7 +3,7 @@ V8-GL
 
 A JavaScript Toolkit for creating Desktop Hardware Accelerated Graphics with JS.
 
-![A V8-GL example code](http://blog.thejit.org/wp-content/v8gl2.png)
+![A V8-GL example code](http://blog.thejit.org/assets/v8gl2.png)
 
 Description
 ---------
