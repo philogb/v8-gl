@@ -5,6 +5,12 @@ A JavaScript Toolkit for creating Desktop Hardware Accelerated Graphics with JS.
 
 ![A V8-GL example code](http://blog.thejit.org/assets/v8gl2.png)
 
+Note
+------
+
+If you're interested in this project you might also want to check out [Plask](http://www.plask.org/), a JavaScript multimedia programming environment by [Dean McNamee](https://github.com/deanm).
+
+
 Description
 ---------
 
