@@ -5,6 +5,7 @@
 #ifndef V8GL_H_
 #define V8GL_H_
 
+#include <string>
 #include <v8-debug.h>
 
 #include "utils.h"

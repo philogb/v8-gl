@@ -17,6 +17,7 @@
 
 #include <fstream>
 #include <string>
+#include <string.h>
 using namespace v8;
 
 
