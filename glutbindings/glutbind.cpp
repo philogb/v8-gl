@@ -1701,6 +1701,7 @@ void funcWMCloseFunc ( ) {
 Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1 || !args[0]->IsFunction()) return v8::Undefined();
+#if (GLUT_MACOSX_IMPLEMENTATION >= 2)
   //get arguments
   //delete previous assigned function
   persistentWMCloseFunc.Dispose();
@@ -1709,6 +1710,7 @@ Handle<Value> GLUTWMCloseFuncCallback(const Arguments& args) {
 
   //make call
   glutWMCloseFunc((void (*)(void)) funcWMCloseFunc);
+#endif
   return v8::Undefined();
 }
 
@@ -1720,8 +1722,10 @@ Handle<Value> GLUTCheckLoopCallback(const Arguments& args) {
   if (args.Length() < 0) return v8::Undefined();
   //get arguments
 
+#if (GLUT_MACOSX_IMPLEMENTATION >= 2)
   //make call
   glutCheckLoop();
+#endif
   return v8::Undefined();
 }
 

@@ -25,6 +25,13 @@
 #define GLUT_WINGDIAPI_DEFINED 1
 #endif
 
+#ifndef GLUT_MACOSX_IMPLEMENTATION
+#define GLUT_MACOSX_IMPLEMENTATION 0
+#endif
+#ifndef GLUT_NO_RECOVERY
+#define GLUT_NO_RECOVERY 0
+#endif
+
 #include <stdio.h>
 #include <map>
 using namespace std;
