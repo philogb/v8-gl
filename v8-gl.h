@@ -5,13 +5,22 @@
 #ifndef V8GL_H_
 #define V8GL_H_
 
+#include <string>
 #include <v8-debug.h>
 
 #include "utils.h"
+#ifdef BUILD_GL_BINDINGS
 #include "glbindings/glbind.h"
+#endif
+#ifdef BUILD_GLES_BINDINGS
 #include "glesbindings/glesbind.h"
+#endif
+#ifdef BUILD_GLU_BINDINGS
 #include "glubindings/glubind.h"
+#endif
+#ifdef BUILD_GLUT_BINDINGS
 #include "glutbindings/glutbind.h"
+#endif
 
 using namespace std;
 using namespace v8;

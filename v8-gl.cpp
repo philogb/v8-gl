@@ -126,14 +126,26 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 
 	  // Each processor gets its own context so different processors
 	  // don't affect each other.
+#ifdef BUILD_GL_BINDINGS
 	  Handle<ObjectTemplate> Gl = GlFactory::createGl();
+#endif
+#ifdef BUILD_GLES_BINDINGS
 	  Handle<ObjectTemplate> Gles = GlesFactory::createGles();
+#endif
 
 	  //Set global objects and functions.
+#ifdef BUILD_GL_BINDINGS
 	  global->Set(String::New("Gl"), Gl);
+#endif
+#ifdef BUILD_GLES_BINDINGS
 	  global->Set(String::New("Gles"), Gles);
+#endif
+#ifdef BUILD_GLU_BINDINGS
 	  global->Set(String::New("Glu"), createGlu());
+#endif
+#ifdef BUILD_GLUT_BINDINGS
 	  global->Set(String::New("Glut"), GlutFactory::createGlut(pargc, argv));
+#endif
 	  global->Set(String::New("log"), FunctionTemplate::New(log));
 	  global->Set(String::New("load"), FunctionTemplate::New(load));
 
@@ -141,16 +153,24 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 
 	  //TODO(nico): should find another way to set the right context when calling a func.
 	  V8GL::context = Persistent<Context>::New(context);
+#ifdef BUILD_GLUT_BINDINGS
 	  GlutFactory::glut_persistent_context = V8GL::context;
+#endif
+#ifdef BUILD_GLES_BINDINGS
 	  GlesFactory::gles_persistent_context = V8GL::context;
+#endif
 
 	  // Enter the new context so all the following operations take place
 	  // within it.
 	  Context::Scope context_scope(context);
 
 	  //Append *this* as Gl static variable so we can do dot-this-dot-that stuff
+#ifdef BUILD_GL_BINDINGS
 	  GlFactory::self_ = Persistent<Object>::New(Gl->NewInstance());
+#endif
+#ifdef BUILD_GLES_BINDINGS
 	  GlesFactory::self_ = Persistent<Object>::New(Gles->NewInstance());
+#endif
 
 	  //Set (only once) the absolute path for the .js file being executed.
 	  V8GLUtils::setRootPath(argv[0], argv[1]);

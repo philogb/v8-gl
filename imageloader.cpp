@@ -140,7 +140,7 @@ Image* loadBMP(const char* filename) {
 	assert(!input.fail() || !"Could not find file");
 	char buffer[2];
 	input.read(buffer, 2);
-	assert(buffer[0] == 'B' && buffer[1] == 'M' || !"Not a bitmap file");
+	assert((buffer[0] == 'B' && buffer[1] == 'M') || !"Not a bitmap file");
 	input.ignore(8);
 	int dataOffset = readInt(input);
 
@@ -209,7 +209,7 @@ Image* loadPNG(const char* filename) {
 	//check if png file
 	char buffer[8];
 	input.read(buffer, 8);
-	assert(buffer[1] == 'P' && buffer[2] == 'N' && buffer[3] == 'G'
+	assert((buffer[1] == 'P' && buffer[2] == 'N' && buffer[3] == 'G')
 			|| !"Not a png file");
 
 	char* data;
