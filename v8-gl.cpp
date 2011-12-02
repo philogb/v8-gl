@@ -128,6 +128,23 @@ Handle<Value> log(const Arguments& args) {
   return v8::Undefined();
 }
 
+//loads a text file
+Handle<Value> read(const Arguments& args) {
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  String::Utf8Value value0(args[0]);
+  char* arg0 = *value0;
+  string str(V8GLUtils::getRealPath(arg0));
+  Handle<String> result = ReadFile(str);
+  if (result.IsEmpty()) {
+      fprintf(stderr, "Error reading '%s'.\n", str.c_str());
+      return ThrowException(String::New("Could not open file."));
+  }
+  return scope.Close(result);
+}
+
 //loads a js file
 Handle<Value> load(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
@@ -197,6 +214,7 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 #endif
 	  global->Set(String::New("log"), FunctionTemplate::New(log));
 	  global->Set(String::New("load"), FunctionTemplate::New(load));
+	  global->Set(String::New("read"), FunctionTemplate::New(read));
 
 	  Handle<Context> context = Context::New(NULL, global);
 
