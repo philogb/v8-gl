@@ -510,6 +510,18 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 
   switch(pname) {
+  // return 1 string value
+  case GL_VENDOR:
+  case GL_RENDERER:
+  case GL_VERSION:
+  case GL_SHADING_LANGUAGE_VERSION:
+  case GL_EXTENSIONS:
+  {
+      const GLubyte *result;
+      result = glGetString((GLenum)pname);
+      if (result==0) { return v8::Undefined(); }
+      return String::New((const char*)result);
+  }
   //return 1 int value
 #ifdef DESKTOP_GL
   case GL_ALPHA_TEST_FUNC:
