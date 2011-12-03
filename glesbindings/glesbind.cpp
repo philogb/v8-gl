@@ -1835,7 +1835,7 @@ Handle<Value> GLESglClearColorCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLESglClearDepthfCallback(const Arguments& args) {
+Handle<Value> GLESglClearDepthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //get arguments
@@ -4212,7 +4212,7 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gles->Set(String::NewSymbol("clearColor"), FunctionTemplate::New(GLESglClearColorCallback));
 
-     Gles->Set(String::NewSymbol("clearDepthf"), FunctionTemplate::New(GLESglClearDepthfCallback));
+     Gles->Set(String::NewSymbol("clearDepth"), FunctionTemplate::New(GLESglClearDepthCallback));
 
      Gles->Set(String::NewSymbol("clearStencil"), FunctionTemplate::New(GLESglClearStencilCallback));
 
