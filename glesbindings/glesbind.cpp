@@ -276,18 +276,51 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
   return res;
 }
 
+static int _ExternalArrayTypeToElementSize(ExternalArrayType type) {
+    switch (type) {
+    case kExternalByteArray: return sizeof(int8_t);
+    case kExternalUnsignedByteArray: return sizeof(uint8_t);
+    case kExternalShortArray: return sizeof(int16_t);
+    case kExternalUnsignedShortArray: return sizeof(uint16_t);
+    case kExternalIntArray: return sizeof(int32_t);
+    case kExternalUnsignedIntArray: return sizeof(uint32_t);
+    case kExternalFloatArray: return sizeof(float);
+    case kExternalDoubleArray: return sizeof(double);
+    case kExternalPixelArray: return sizeof(uint8_t);
+    default: return 0;
+    }
+}
+
 //Accepts GL_UNSIGNED_SHORT and GL_FLOAT as types
 //TODO(nico): deal with interleaved data
 Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
-  if (args.Length() != 4 || !args[1]->IsArray())
-    return v8::Undefined();
+    if (args.Length() != 4 || !args[1]->IsObject())
+	return ThrowException(String::New("Bad arguments to bufferData"));
 
   unsigned int target  = args[0]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
   unsigned int usage  = args[3]->Uint32Value();
-  Handle<Array> data = Handle<Array>::Cast(args[1]);
-  unsigned int len = data->Length();
+  Handle<Object> source = Handle<Object>::Cast(args[1]);
 
+  if (source->HasIndexedPropertiesInExternalArrayData()) {
+      const void *data = source->GetIndexedPropertiesExternalArrayData();
+      int len = source->GetIndexedPropertiesExternalArrayDataLength();
+      int element_size= _ExternalArrayTypeToElementSize
+	  (source->GetIndexedPropertiesExternalArrayDataType());
+      if (element_size==0)
+	  return ThrowException(String::New("unknown array type"));
+
+      glBufferData((GLenum)target, (GLsizeiptr) (len * element_size),
+		   data, (GLenum)usage);
+
+      Handle<Object> res(GlesFactory::self_);
+      return res;
+  }
+
+  if (!source->IsArray())
+      return ThrowException(String::New("Second argument not an array"));
+  Handle<Array> data = Handle<Array>::Cast(source);
+  unsigned int len = data->Length();
   if (type == GL_FLOAT) {
     GLfloat* arg1 = new GLfloat[len];
     for (unsigned j = 0; j < len; j++) {
@@ -310,6 +343,8 @@ Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
                  (const void*)arg1,
                  (GLenum)usage);
     delete[] arg1;
+  } else {
+    return ThrowException(String::New("Unsupported type"));
   }
 
   Handle<Object> res(GlesFactory::self_);
