@@ -11,16 +11,16 @@ namespace V8GLUtils {
 	  //relative paths
 	  //take path from executable
 	  char* pch = strrchr(program_path, V8GLUtils::separator);
-	  int last_index = pch - program_path +1;
+	  int last_index = pch ? (pch - program_path +1) : 2;
 	  char* tmp_exec_path = new char[last_index +1];
-	  strncpy(tmp_exec_path, program_path, last_index);
+	  strncpy(tmp_exec_path, pch ? program_path : "./", last_index);
 	  tmp_exec_path[last_index] = '\0';
 
 	  //take relative path from javascript file
 	  char* p1ch = strrchr(jsfile_path, V8GLUtils::separator);
-	  int last_index1 = p1ch - jsfile_path +1;
+	  int last_index1 = p1ch ? (p1ch - jsfile_path +1) : 2;
 	  char* tmp_js_path = new char[last_index1 +1];
-	  strncpy(tmp_js_path, jsfile_path, last_index1);
+	  strncpy(tmp_js_path, p1ch ? jsfile_path : "./", last_index1);
 	  tmp_js_path[last_index1] = '\0';
 
 	  V8GLUtils::root_path = new char[last_index + last_index1 +1];
