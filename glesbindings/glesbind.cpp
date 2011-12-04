@@ -1169,6 +1169,33 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
   unsigned format = args[6]->Uint32Value();
   unsigned type = args[7]->Uint32Value();
 
+  if(args[8]->IsObject() &&
+     Handle<Object>::Cast(args[8])->HasIndexedPropertiesInExternalArrayData()) {
+    Handle<Object> obj = Handle<Object>::Cast(args[8]);
+    const void *pixels = obj->GetIndexedPropertiesExternalArrayData();
+    ExternalArrayType atype = obj->GetIndexedPropertiesExternalArrayDataType();
+    unsigned int length = obj->GetIndexedPropertiesExternalArrayDataLength();
+    if (type == GL_UNSIGNED_BYTE &&
+	atype == kExternalUnsignedByteArray) {
+      // XXX check length here
+      glTexImage2D((GLenum)target, (GLint)level, (GLenum)internal_format,
+		   (GLsizei)width, (GLsizei)height, (GLint)border,
+		   (GLenum)format, (GLenum)type,
+		   pixels);
+      return v8::Undefined();
+    }
+    if ((type == GL_UNSIGNED_SHORT_5_6_5 ||
+	 type == GL_UNSIGNED_SHORT_4_4_4_4 ||
+	 type == GL_UNSIGNED_SHORT_5_5_5_1) &&
+	atype == kExternalUnsignedShortArray) {
+      // XXX check length here
+      glTexImage2D((GLenum)target, (GLint)level, (GLenum)internal_format,
+		   (GLsizei)width, (GLsizei)height, (GLint)border,
+		   (GLenum)format, (GLenum)type,
+		   pixels);
+      return v8::Undefined();
+    }
+  }
   if(args[8]->IsArray()) {
 	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
 
