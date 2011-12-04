@@ -3122,23 +3122,43 @@ Handle<Value> GLESglUniform1fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 1;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform1fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform1fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3207,23 +3227,43 @@ Handle<Value> GLESglUniform2fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 2;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform2fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform2fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3294,23 +3334,43 @@ Handle<Value> GLESglUniform3fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 3;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform3fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform3fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3383,23 +3443,43 @@ Handle<Value> GLESglUniform4fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 4;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform4fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform4fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3454,24 +3534,45 @@ Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 4; // 2x2 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix2fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix2fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3481,24 +3582,45 @@ Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 9; // 3x3 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix3fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix3fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3508,24 +3630,45 @@ Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 16; // 4x4 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix4fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix4fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
