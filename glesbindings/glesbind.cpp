@@ -597,7 +597,6 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_BLEND_SRC:
 #endif
   case GL_BLUE_BITS:
-  case GL_SUBPIXEL_BITS:
 #ifdef DESKTOP_GL
   case GL_CLIENT_ATTRIB_STACK_DEPTH:
   case GL_COLOR_ARRAY_SIZE:
@@ -606,16 +605,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_COLOR_MATERIAL_FACE:
   case GL_COLOR_MATERIAL_PARAMETER:
 #endif
-  case GL_CULL_FACE_MODE:
   case GL_DEPTH_BITS:
-  case GL_DEPTH_FUNC:
 #ifdef DESKTOP_GL
   case GL_DRAW_BUFFER:
   case GL_EDGE_FLAG_ARRAY_STRIDE:
   case GL_FOG_HINT:
   case GL_FOG_MODE:
 #endif
-  case GL_FRONT_FACE:
   case GL_GREEN_BITS:
 #ifdef DESKTOP_GL
   case GL_INDEX_ARRAY_STRIDE:
@@ -642,7 +638,16 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_MAX_PIXEL_MAP_TABLE:
   case GL_MAX_PROJECTION_STACK_DEPTH:
 #endif
+  case GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS:
+  case GL_MAX_CUBE_MAP_TEXTURE_SIZE:
+  case GL_MAX_FRAGMENT_UNIFORM_VECTORS:
+  case GL_MAX_RENDERBUFFER_SIZE:
+  case GL_MAX_TEXTURE_IMAGE_UNITS:
   case GL_MAX_TEXTURE_SIZE:
+  case GL_MAX_VARYING_VECTORS:
+  case GL_MAX_VERTEX_ATTRIBS:
+  case GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS:
+  case GL_MAX_VERTEX_UNIFORM_VECTORS:
 #ifdef DESKTOP_GL
   case GL_MAX_TEXTURE_STACK_DEPTH:
   case GL_MODELVIEW_STACK_DEPTH:
@@ -650,6 +655,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_NORMAL_ARRAY_STRIDE:
   case GL_NORMAL_ARRAY_TYPE:
 #endif
+  case GL_NUM_COMPRESSED_TEXTURE_FORMATS:
   case GL_PACK_ALIGNMENT:
 #ifdef DESKTOP_GL
   case GL_PACK_ROW_LENGTH:
@@ -675,15 +681,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_RENDER_MODE:
   case GL_SHADE_MODEL:
 #endif
+  case GL_SAMPLE_BUFFERS:
+  case GL_SAMPLES:
+  case GL_STENCIL_BACK_REF:
   case GL_STENCIL_BITS:
   case GL_STENCIL_CLEAR_VALUE:
-  case GL_STENCIL_FAIL:
-  case GL_STENCIL_FUNC:
-  case GL_STENCIL_PASS_DEPTH_FAIL:
-  case GL_STENCIL_PASS_DEPTH_PASS:
   case GL_STENCIL_REF:
-  case GL_STENCIL_VALUE_MASK:
-  case GL_STENCIL_WRITEMASK:
+  case GL_SUBPIXEL_BITS:
 //  case GL_TEXTURE_1D_BINDING:
 //  case GL_TEXTURE_2D_BINDING:
 #ifdef DESKTOP_GL
@@ -705,6 +709,35 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 	  int ans = 0;
 	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
 	  return Integer::New(ans);
+  }
+  //1 unsigned int
+  case GL_ACTIVE_TEXTURE:
+  case GL_BLEND_DST_ALPHA:
+  case GL_BLEND_DST_RGB:
+  case GL_BLEND_EQUATION_ALPHA:
+  case GL_BLEND_EQUATION_RGB:
+  case GL_BLEND_SRC_ALPHA:
+  case GL_BLEND_SRC_RGB:
+  case GL_CULL_FACE_MODE:
+  case GL_DEPTH_FUNC:
+  case GL_FRONT_FACE:
+  case GL_GENERATE_MIPMAP_HINT:
+  case GL_STENCIL_BACK_FAIL:
+  case GL_STENCIL_BACK_FUNC:
+  case GL_STENCIL_BACK_PASS_DEPTH_FAIL:
+  case GL_STENCIL_BACK_PASS_DEPTH_PASS:
+  case GL_STENCIL_BACK_VALUE_MASK:
+  case GL_STENCIL_BACK_WRITEMASK:
+  case GL_STENCIL_FAIL:
+  case GL_STENCIL_FUNC:
+  case GL_STENCIL_PASS_DEPTH_FAIL:
+  case GL_STENCIL_PASS_DEPTH_PASS:
+  case GL_STENCIL_VALUE_MASK:
+  case GL_STENCIL_WRITEMASK:
+  {
+          unsigned int ans = 0;
+	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
+	  return Integer::NewFromUnsigned(ans);
   }
   //2 values int
 #ifdef DESKTOP_GL
