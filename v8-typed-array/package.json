@@ -1,0 +1,16 @@
+{
+  "name": "typed-array",
+  "description": "Typed Array implementation for V8 and Node.js",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlrobinson/v8-typed-array.git"
+  },
+  "keywords": ["buffer", "typed array", "webgl"],
+  "author": "Tom Robinson <tlrobinson@gmail.com> (http://tlrobinson.net/)",
+  "main": "build/default/typed-array.node",
+  "scripts": { "install": "node-waf configure build" },
+  "engines": {
+    "node": "*"
+  }
+}
