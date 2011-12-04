@@ -30,6 +30,8 @@ class V8GL {
 public:
 	bool initialize(int* pargc, char** argv, string scriptname);
 	bool executeScript(string scriptname);
+	static const char* ToCString(const v8::String::Utf8Value& value);
+	static void ReportException(TryCatch* try_catch);
 
 	//keep a reference to the global context.
 	static Persistent<Context> context;

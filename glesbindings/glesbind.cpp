@@ -510,35 +510,56 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 
   switch(pname) {
+  // return 1 string value
+  case GL_VENDOR:
+  case GL_RENDERER:
+  case GL_VERSION:
+  case GL_SHADING_LANGUAGE_VERSION:
+  case GL_EXTENSIONS:
+  {
+      const GLubyte *result;
+      result = glGetString((GLenum)pname);
+      if (result==0) { return v8::Undefined(); }
+      return String::New((const char*)result);
+  }
   //return 1 int value
+#ifdef DESKTOP_GL
   case GL_ALPHA_TEST_FUNC:
   case GL_ACCUM_ALPHA_BITS:
   case GL_ACCUM_BLUE_BITS:
   case GL_ACCUM_GREEN_BITS:
   case GL_ACCUM_RED_BITS:
+#endif
   case GL_ALPHA_BITS:
+#ifdef DESKTOP_GL
   case GL_ATTRIB_STACK_DEPTH:
   case GL_AUX_BUFFERS:
   case GL_BLEND_DST:
   case GL_BLEND_EQUATION_EXT:
   case GL_BLEND_SRC:
+#endif
   case GL_BLUE_BITS:
   case GL_SUBPIXEL_BITS:
+#ifdef DESKTOP_GL
   case GL_CLIENT_ATTRIB_STACK_DEPTH:
   case GL_COLOR_ARRAY_SIZE:
   case GL_COLOR_ARRAY_STRIDE:
   case GL_COLOR_ARRAY_TYPE:
   case GL_COLOR_MATERIAL_FACE:
   case GL_COLOR_MATERIAL_PARAMETER:
+#endif
   case GL_CULL_FACE_MODE:
   case GL_DEPTH_BITS:
   case GL_DEPTH_FUNC:
+#ifdef DESKTOP_GL
   case GL_DRAW_BUFFER:
   case GL_EDGE_FLAG_ARRAY_STRIDE:
   case GL_FOG_HINT:
   case GL_FOG_MODE:
+#endif
   case GL_FRONT_FACE:
   case GL_GREEN_BITS:
+#ifdef DESKTOP_GL
   case GL_INDEX_ARRAY_STRIDE:
   case GL_INDEX_ARRAY_TYPE:
   case GL_INDEX_BITS:
@@ -562,13 +583,17 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_MAX_NAME_STACK_DEPTH:
   case GL_MAX_PIXEL_MAP_TABLE:
   case GL_MAX_PROJECTION_STACK_DEPTH:
+#endif
   case GL_MAX_TEXTURE_SIZE:
+#ifdef DESKTOP_GL
   case GL_MAX_TEXTURE_STACK_DEPTH:
   case GL_MODELVIEW_STACK_DEPTH:
   case GL_NAME_STACK_DEPTH:
   case GL_NORMAL_ARRAY_STRIDE:
   case GL_NORMAL_ARRAY_TYPE:
+#endif
   case GL_PACK_ALIGNMENT:
+#ifdef DESKTOP_GL
   case GL_PACK_ROW_LENGTH:
   case GL_PACK_SKIP_PIXELS:
   case GL_PACK_SKIP_ROWS:
@@ -586,9 +611,12 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_POINT_SMOOTH_HINT:
   case GL_POLYGON_SMOOTH_HINT:
   case GL_PROJECTION_STACK_DEPTH:
+#endif
   case GL_RED_BITS:
+#ifdef DESKTOP_GL
   case GL_RENDER_MODE:
   case GL_SHADE_MODEL:
+#endif
   case GL_STENCIL_BITS:
   case GL_STENCIL_CLEAR_VALUE:
   case GL_STENCIL_FAIL:
@@ -600,27 +628,35 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_STENCIL_WRITEMASK:
 //  case GL_TEXTURE_1D_BINDING:
 //  case GL_TEXTURE_2D_BINDING:
+#ifdef DESKTOP_GL
   case GL_TEXTURE_COORD_ARRAY_SIZE:
   case GL_TEXTURE_COORD_ARRAY_STRIDE:
   case GL_TEXTURE_COORD_ARRAY_TYPE:
   case GL_TEXTURE_STACK_DEPTH:
+#endif
   case GL_UNPACK_ALIGNMENT:
+#ifdef DESKTOP_GL
   case GL_UNPACK_ROW_LENGTH:
   case GL_UNPACK_SKIP_PIXELS:
   case GL_UNPACK_SKIP_ROWS:
   case GL_VERTEX_ARRAY_SIZE:
   case GL_VERTEX_ARRAY_STRIDE:
   case GL_VERTEX_ARRAY_TYPE:
+#endif
   {
 	  int ans = 0;
 	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
 	  return Integer::New(ans);
   }
   //2 values int
+#ifdef DESKTOP_GL
   case GL_LINE_WIDTH_RANGE:
   case GL_MAP2_GRID_SEGMENTS:
+#endif
   case GL_MAX_VIEWPORT_DIMS:
+#ifdef DESKTOP_GL
   case GL_POLYGON_MODE:
+#endif
   {
 	  int* ans = new int[2];
 	  glGetIntegerv((GLenum)pname, ans);
@@ -652,18 +688,25 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
   //1 value boolean
+#ifdef DESKTOP_GL
   case GL_ALPHA_TEST:
   case GL_AUTO_NORMAL:
+#endif
   case GL_BLEND:
   case GL_DEPTH_TEST:
 //  case GL_CLIP_PLANEi:
+#ifdef DESKTOP_GL
   case GL_COLOR_ARRAY:
   case GL_COLOR_LOGIC_OP:
   case GL_COLOR_MATERIAL:
+#endif
   case GL_CULL_FACE:
+#ifdef DESKTOP_GL
   case GL_CURRENT_RASTER_POSITION_VALID:
+#endif
   case GL_DEPTH_WRITEMASK:
   case GL_DITHER:
+#ifdef DESKTOP_GL
   case GL_DOUBLEBUFFER:
   case GL_EDGE_FLAG:
   case GL_EDGE_FLAG_ARRAY:
@@ -702,18 +745,24 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_PACK_LSB_FIRST:
   case GL_PACK_SWAP_BYTES:
   case GL_POINT_SMOOTH:
+#endif
   case GL_POLYGON_OFFSET_FILL:
+#ifdef DESKTOP_GL
   case GL_POLYGON_OFFSET_LINE:
   case GL_POLYGON_OFFSET_POINT:
   case GL_POLYGON_SMOOTH:
   case GL_POLYGON_STIPPLE:
   case GL_READ_BUFFER:
   case GL_RGBA_MODE:
+#endif
   case GL_SCISSOR_TEST:
   case GL_STENCIL_TEST:
+#ifdef DESKTOP_GL
   case GL_STEREO:
   case GL_TEXTURE_1D:
+#endif
   case GL_TEXTURE_2D:
+#ifdef DESKTOP_GL
   case GL_TEXTURE_COORD_ARRAY:
   case GL_TEXTURE_GEN_Q:
   case GL_TEXTURE_GEN_R:
@@ -722,6 +771,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_UNPACK_LSB_FIRST:
   case GL_VERTEX_ARRAY:
   case GL_UNPACK_SWAP_BYTES:
+#endif
   {
 	  GLboolean ans = 0;
 	  glGetBooleanv((GLenum)pname, &ans);
@@ -729,6 +779,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
   //1 value float
+#ifdef DESKTOP_GL
   case GL_ALPHA_BIAS:
   case GL_ALPHA_SCALE:
   case GL_BLUE_BIAS:
@@ -745,7 +796,9 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_CURRENT_INDEX:
   case GL_CURRENT_RASTER_DISTANCE:
   case GL_CURRENT_RASTER_INDEX:
+#endif
   case GL_DEPTH_CLEAR_VALUE:
+#ifdef DESKTOP_GL
   case GL_FOG_DENSITY:
   case GL_FOG_END:
   case GL_FOG_INDEX:
@@ -753,10 +806,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_INDEX_CLEAR_VALUE:
   case GL_INDEX_OFFSET:
   case GL_INDEX_SHIFT:
+#endif
   case GL_LINE_WIDTH:
+#ifdef DESKTOP_GL
   case GL_LINE_WIDTH_GRANULARITY:
   case GL_POINT_SIZE:
   case GL_POINT_SIZE_GRANULARITY:
+#endif
   {
 	  float ans = 0.0f;
 	  glGetFloatv((GLenum)pname, &ans);
@@ -764,9 +820,12 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
   //4 values float
+#ifdef DESKTOP_GL
   case GL_BLEND_COLOR_EXT:
   case GL_ACCUM_CLEAR_VALUE:
+#endif
   case GL_COLOR_CLEAR_VALUE:
+#ifdef DESKTOP_GL
   case GL_CURRENT_COLOR:
   case GL_CURRENT_RASTER_COLOR:
   case GL_CURRENT_RASTER_POSITION:
@@ -775,6 +834,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_FOG_COLOR:
   case GL_LIGHT_MODEL_AMBIENT:
   case GL_MAP2_GRID_DOMAIN:
+#endif
   case GL_POLYGON_OFFSET_FACTOR:
   case GL_POLYGON_OFFSET_UNITS:
   {
@@ -792,6 +852,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
    //3 values float
+#ifdef DESKTOP_GL
   case GL_CURRENT_NORMAL:
   {
 	  float* ans = new float[3];
@@ -806,11 +867,14 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  return res;
   }
+#endif
 
   //2 values float
   case GL_DEPTH_RANGE:
+#ifdef DESKTOP_GL
   case GL_MAP1_GRID_DOMAIN:
   case GL_POINT_SIZE_RANGE:
+#endif
   {
 	  float* ans = new float[2];
 	  glGetFloatv((GLenum)pname, ans);
@@ -826,6 +890,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
   //16 values float
+#ifdef DESKTOP_GL
   case GL_MODELVIEW_MATRIX:
   case GL_PROJECTION_MATRIX:
   case GL_TEXTURE_MATRIX:
@@ -842,6 +907,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 
 	  return res;
   }
+#endif
 
   //4 values boolean
   case GL_COLOR_WRITEMASK:
@@ -914,6 +980,7 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 	  return Integer::New(ans);
   }
 	  //4 floats
+#ifdef DESKTOP_GL
   case GL_TEXTURE_BORDER_COLOR:
   {
 	  float* ans = new float[4];
@@ -942,6 +1009,7 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 	  glTexParameteriv((GLenum)target, (GLenum)pname, (GLint*) &ans);
 	  return Boolean::New(ans != GL_FALSE);
   }
+#endif
 
   }
   return v8::Undefined();
@@ -1050,6 +1118,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 
 		  delete[] pixels;
 
+#ifdef DESKTOP_GL
 	  } else if( type == GL_BITMAP ) {
 		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
@@ -1069,6 +1138,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 
 		  delete[] pixels;
 
+#endif
 	  } else if( type == GL_UNSIGNED_SHORT ) {
 		  GLushort* pixels = new  GLushort[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
@@ -1257,6 +1327,7 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 	  }
 	  break;
 
+#ifdef DESKTOP_GL
 	  case GL_BITMAP:
 	  {
 		  GLbitfield* pixels = new  GLbitfield[arr_handle->Length()];
@@ -1278,6 +1349,7 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 		  delete[] pixels;
 	  }
 	  break;
+#endif
 
 	  case GL_UNSIGNED_SHORT:
 	  {
@@ -1763,7 +1835,7 @@ Handle<Value> GLESglClearColorCallback(const Arguments& args) {
 
 
 
-Handle<Value> GLESglClearDepthfCallback(const Arguments& args) {
+Handle<Value> GLESglClearDepthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
   if (args.Length() < 1) return v8::Undefined();
   //get arguments
@@ -4140,7 +4212,7 @@ Handle<ObjectTemplate> GlesFactory::createGles(void) {
 
      Gles->Set(String::NewSymbol("clearColor"), FunctionTemplate::New(GLESglClearColorCallback));
 
-     Gles->Set(String::NewSymbol("clearDepthf"), FunctionTemplate::New(GLESglClearDepthfCallback));
+     Gles->Set(String::NewSymbol("clearDepth"), FunctionTemplate::New(GLESglClearDepthCallback));
 
      Gles->Set(String::NewSymbol("clearStencil"), FunctionTemplate::New(GLESglClearStencilCallback));
 
