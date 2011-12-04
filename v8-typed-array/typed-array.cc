@@ -177,7 +177,7 @@ DEFINE_ARRAY_BUFFER_VIEW(Float32Array, kExternalFloatArray, sizeof(float));
 // DEFINE_ARRAY_BUFFER_VIEW(PixelArray, kExternalPixelArray, sizeof(uint8_t));
 
 extern "C" void
-init (Handle<Object> target) {
+v8_typed_array_init (Handle<Object> target) {
     HandleScope scope;
 
     {

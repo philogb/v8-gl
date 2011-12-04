@@ -9,6 +9,9 @@
 #include <string>
 #include <string.h>
 
+extern "C" void
+v8_typed_array_init (Handle<Object> target);
+
 Persistent<Context> V8GL::context;
 
 //UTILITY FUNCTIONS
@@ -204,6 +207,8 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 	  // Enter the new context so all the following operations take place
 	  // within it.
 	  Context::Scope context_scope(context);
+	  // hook up typed array support
+	  v8_typed_array_init(context->Global());
 
 	  //Append *this* as Gl static variable so we can do dot-this-dot-that stuff
 #ifdef BUILD_GL_BINDINGS
