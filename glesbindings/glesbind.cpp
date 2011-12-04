@@ -146,16 +146,19 @@ Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
-  if (args.Length() != 6 || !args[0]->IsUint32() || !args[1]->IsUint32() ||
-      !args[2]->IsUint32() || !args[3]->IsUint32() ||
-      !args[4]->IsNumber())
+  if (args.Length() < 6 || !args[0]->IsUint32() || !args[1]->IsUint32() ||
+      !args[2]->IsUint32() || !(args[3]->IsUint32() || args[3]->IsBoolean()) ||
+      !args[4]->IsNumber() || (args.Length() > 6 && !args[6]->IsUint32()))
     return ThrowException(String::New("Bad arguments"));
 
   unsigned int index = args[0]->Uint32Value();
   unsigned int size = args[1]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
-  unsigned int normalized = args[3]->Uint32Value();
+  bool normalized = args[3]->BooleanValue();
   int stride = args[4]->IntegerValue();
+  unsigned int offset = 0;
+  if (args.Length() > 6)
+    offset = args[6]->Uint32Value();
   void* ans;
 
   if(args[5]->IsArray()) {
@@ -233,9 +236,9 @@ Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
   glVertexAttribPointer((GLuint)index,
 		  (GLint)size,
 		  (GLenum)type,
-		  (GLboolean)normalized,
+		  (normalized?GL_TRUE:GL_FALSE),
 		  (GLsizei)stride,
-		  (const void*)ans);
+		  ((const void*)ans)+offset);
 
   //should I delete[] ans?
 
