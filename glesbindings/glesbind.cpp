@@ -2256,11 +2256,11 @@ Handle<Value> GLESglDepthFuncCallback(const Arguments& args) {
 
 Handle<Value> GLESglDepthMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then throw exception
-  if (args.Length() != 1 || !args[0]->IsUint32())
+  if (args.Length() != 1 || !(args[0]->IsUint32() || args[0]->IsBoolean()))
     return ThrowException(String::New("Bad arguments"));
 
   //get arguments
-  unsigned int arg0 = args[0]->Uint32Value();
+  bool arg0 = args[0]->BooleanValue();
 
   //make call
   glDepthMask((GLboolean) arg0);
