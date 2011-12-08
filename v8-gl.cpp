@@ -146,10 +146,15 @@ Handle<Value> load(const Arguments& args) {
 	  //get argument
 	  String::Utf8Value value0(args[i]);
 	  char* arg0 = *value0;
-	  string str(V8GLUtils::getRealPath(arg0));
-	  if(!exec(str)) {
+	  char* filepath = V8GLUtils::getRealPath(arg0);
+
+	  char *old_path = V8GLUtils::pushRootPath(filepath);
+	  bool success = exec(string(filepath));
+	  V8GLUtils::popRootPath(old_path);
+
+	  if(!success) {
 		  fprintf(stderr, "Error reading '%s'.\n", arg0);
-		  return v8::Undefined();
+		  return ThrowException(String::New("Failed to load script"));
 	  }
   }
 

@@ -6,6 +6,9 @@ namespace V8GLUtils {
 
 		char* getRootPath(void);
 		char* getRealPath(char* file_path);
+
+		char *pushRootPath(char *new_path);
+		void popRootPath(char *old_path);
 };
 
 #endif
