@@ -32,6 +32,20 @@ namespace V8GLUtils {
 	  delete[] tmp_js_path;
 	}
 
+        char *pushRootPath(char *new_path) {
+	    char *old_path = root_path;
+	    char *pch = strrchr(new_path, V8GLUtils::separator);
+	    int last_index = pch ? (pch - new_path + 1) : 2;
+	    root_path = new char[last_index + 1];
+	    strncpy(root_path, pch ? new_path : "./", last_index);
+	    root_path[last_index] = '\0';
+	    return old_path;
+	}
+        void popRootPath(char *old_path) {
+	    delete[] root_path;
+	    root_path = old_path;
+	}
+
 	char* getRootPath(void) {
 		return V8GLUtils::root_path;
 	}

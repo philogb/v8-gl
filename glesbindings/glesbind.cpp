@@ -25,8 +25,9 @@ Persistent<Object> GlesFactory::self_;
 Persistent<Context> GlesFactory::gles_persistent_context;
 // glGenBuffers uses an output parameter to return an array of ints.
 Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
-  if (args.Length() != 1)
-	return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
 
   GLsizei num_buffers = args[0]->Int32Value();
 
@@ -46,8 +47,9 @@ Handle<Value> GLESglGenBuffersCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
-	  if (args.Length() != 1)
-		return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
 
 	  GLsizei num_buffers = args[0]->Int32Value();
 
@@ -67,8 +69,9 @@ Handle<Value> GLESglGenRenderbuffersCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglGenFramebuffersCallback(const Arguments& args) {
-	  if (args.Length() != 1)
-		return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
 
 	  GLsizei num_buffers = args[0]->Int32Value();
 
@@ -87,8 +90,9 @@ Handle<Value> GLESglGenFramebuffersCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
-  if (args.Length() != 1)
-	return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
 
   GLsizei num_textures = args[0]->Int32Value();
 
@@ -108,8 +112,9 @@ Handle<Value> GLESglGenTexturesCallback(const Arguments& args) {
 
 // glGetShaderiv uses an output parameter to return an int.
 Handle<Value> GLESglGetShaderivCallback(const Arguments& args) {
-  if (args.Length() < 2)
-    return v8::Undefined();
+  if (args.Length() != 2 || !args[0]->IsUint32() || !args[1]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
+
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
 
@@ -122,8 +127,8 @@ Handle<Value> GLESglGetShaderivCallback(const Arguments& args) {
 
 // We expect to be called with a shader id and a single string.
 Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
-  if (args.Length() != 2)
-    return v8::Undefined();
+  if (args.Length() != 2 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   GLuint shader_id = args[0]->Uint32Value();
   // GLSL source is defined as an ASCII subset.
@@ -141,15 +146,19 @@ Handle<Value> GLESglShaderSourceCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
-  if (args.Length() != 6)
-    return v8::Undefined();
-
+  if (args.Length() < 6 || !args[0]->IsUint32() || !args[1]->IsUint32() ||
+      !args[2]->IsUint32() || !(args[3]->IsUint32() || args[3]->IsBoolean()) ||
+      !args[4]->IsNumber() || (args.Length() > 6 && !args[6]->IsUint32()))
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned int index = args[0]->Uint32Value();
   unsigned int size = args[1]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
-  unsigned int normalized = args[3]->Uint32Value();
+  bool normalized = args[3]->BooleanValue();
   int stride = args[4]->IntegerValue();
+  unsigned int offset = 0;
+  if (args.Length() > 6)
+    offset = args[6]->Uint32Value();
   void* ans;
 
   if(args[5]->IsArray()) {
@@ -217,7 +226,8 @@ Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
 //		  }
 //		  break;
 
-		  default: return v8::Undefined();
+		  default:
+		    return ThrowException(String::New("Unsupported array type"));
 	  }
   } else {
 	  ans = (void *)args[5]->IntegerValue();
@@ -226,9 +236,9 @@ Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
   glVertexAttribPointer((GLuint)index,
 		  (GLint)size,
 		  (GLenum)type,
-		  (GLboolean)normalized,
+		  (normalized?GL_TRUE:GL_FALSE),
 		  (GLsizei)stride,
-		  (const void*)ans);
+		  ((const void*)ans)+offset);
 
   //should I delete[] ans?
 
@@ -237,8 +247,9 @@ Handle<Value> GLESglVertexAttribPointerCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
-  if (args.Length() != 4)
-    return v8::Undefined();
+  if (args.Length() != 4 || !args[0]->IsUint32() || !args[1]->IsNumber() ||
+      !args[2]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned int mode  = args[0]->Uint32Value();
   int count = args[1]->IntegerValue();
@@ -259,7 +270,8 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
 		  }
 		  break;
 
-		  default: return v8::Undefined();
+		  default:
+		    return ThrowException(String::New("Unsupported array type"));
 	  }
   } else {
 	  ans = (void *)args[3]->IntegerValue();
@@ -276,18 +288,53 @@ Handle<Value> GLESglDrawElementsCallback(const Arguments& args) {
   return res;
 }
 
+static int _ExternalArrayTypeToElementSize(ExternalArrayType type) {
+    switch (type) {
+    case kExternalByteArray: return sizeof(int8_t);
+    case kExternalUnsignedByteArray: return sizeof(uint8_t);
+    case kExternalShortArray: return sizeof(int16_t);
+    case kExternalUnsignedShortArray: return sizeof(uint16_t);
+    case kExternalIntArray: return sizeof(int32_t);
+    case kExternalUnsignedIntArray: return sizeof(uint32_t);
+    case kExternalFloatArray: return sizeof(float);
+    case kExternalDoubleArray: return sizeof(double);
+    case kExternalPixelArray: return sizeof(uint8_t);
+    default: return 0;
+    }
+}
+
 //Accepts GL_UNSIGNED_SHORT and GL_FLOAT as types
 //TODO(nico): deal with interleaved data
 Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
-  if (args.Length() != 4 || !args[1]->IsArray())
-    return v8::Undefined();
+  if (args.Length() != 4 || !args[0]->IsUint32() ||
+      !args[1]->IsObject() || !args[2]->IsUint32() ||
+      !args[3]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned int target  = args[0]->Uint32Value();
   unsigned int type = args[2]->Uint32Value();
   unsigned int usage  = args[3]->Uint32Value();
-  Handle<Array> data = Handle<Array>::Cast(args[1]);
-  unsigned int len = data->Length();
+  Handle<Object> source = Handle<Object>::Cast(args[1]);
 
+  if (source->HasIndexedPropertiesInExternalArrayData()) {
+      const void *data = source->GetIndexedPropertiesExternalArrayData();
+      int len = source->GetIndexedPropertiesExternalArrayDataLength();
+      int element_size= _ExternalArrayTypeToElementSize
+	  (source->GetIndexedPropertiesExternalArrayDataType());
+      if (element_size==0)
+	  return ThrowException(String::New("unknown array type"));
+
+      glBufferData((GLenum)target, (GLsizeiptr) (len * element_size),
+		   data, (GLenum)usage);
+
+      Handle<Object> res(GlesFactory::self_);
+      return res;
+  }
+
+  if (!source->IsArray())
+      return ThrowException(String::New("Second argument not an array"));
+  Handle<Array> data = Handle<Array>::Cast(source);
+  unsigned int len = data->Length();
   if (type == GL_FLOAT) {
     GLfloat* arg1 = new GLfloat[len];
     for (unsigned j = 0; j < len; j++) {
@@ -310,6 +357,8 @@ Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
                  (const void*)arg1,
                  (GLenum)usage);
     delete[] arg1;
+  } else {
+    return ThrowException(String::New("Unsupported type"));
   }
 
   Handle<Object> res(GlesFactory::self_);
@@ -320,8 +369,10 @@ Handle<Value> GLESglBufferDataCallback(const Arguments& args) {
 //Accepts GL_UNSIGNED_SHORT and GL_FLOAT as types
 //TODO(nico): deal with interleaved data
 Handle<Value> GLESglBufferSubDataCallback(const Arguments& args) {
-  if (args.Length() != 4)
-    return v8::Undefined();
+  if (args.Length() != 4 || !args[0]->IsUint32() ||
+      !args[1]->IsUint32() || !args[2]->IsObject() ||
+      !args[3]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned int target  = args[0]->Uint32Value();
   unsigned int offset = args[1]->Uint32Value();
@@ -371,8 +422,11 @@ Handle<Value> GLESglBufferSubDataCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglReadPixelsCallback(const Arguments& args) {
-  if (args.Length() != 6)
-	return v8::Undefined();
+  if (args.Length() != 6 ||
+      !args[0]->IsNumber() || !args[1]->IsNumber() ||
+      !args[2]->IsUint32() || !args[3]->IsUint32() ||
+      !args[4]->IsUint32() || !args[5]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   int x = args[0]->IntegerValue();
   int y = args[1]->IntegerValue();
@@ -405,9 +459,9 @@ Handle<Value> GLESglReadPixelsCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
-  if (args.Length() != 2)
-	return v8::Undefined();
-
+  if (args.Length() != 2 ||
+      !args[0]->IsUint32() || !args[1]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
@@ -433,8 +487,9 @@ Handle<Value> GLESglGetActiveAttribCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
-  if (args.Length() != 2)
-	return v8::Undefined();
+  if (args.Length() != 2 ||
+      !args[0]->IsUint32() || !args[1]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned program = args[0]->Uint32Value();
   unsigned index = args[1]->Uint32Value();
@@ -462,8 +517,9 @@ Handle<Value> GLESglGetActiveUniformCallback(const Arguments& args) {
 }
 
 Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
-  if (args.Length() != 1)
-	return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
 
   unsigned program = args[0]->Uint32Value();
 
@@ -488,7 +544,7 @@ Handle<Value> GLESglGetAttachedShadersCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->IntegerValue();
   unsigned pname = args[1]->IntegerValue();
@@ -503,8 +559,10 @@ Handle<Value> GLESglGetBufferParameterivCallback(const Arguments& args) {
 
 //GetBooleanv, GetIntegerv, GetString, GetFloatv, GetDoublev should map here.
 Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned pname = args[0]->Uint32Value();
 
@@ -539,7 +597,6 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_BLEND_SRC:
 #endif
   case GL_BLUE_BITS:
-  case GL_SUBPIXEL_BITS:
 #ifdef DESKTOP_GL
   case GL_CLIENT_ATTRIB_STACK_DEPTH:
   case GL_COLOR_ARRAY_SIZE:
@@ -548,16 +605,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_COLOR_MATERIAL_FACE:
   case GL_COLOR_MATERIAL_PARAMETER:
 #endif
-  case GL_CULL_FACE_MODE:
   case GL_DEPTH_BITS:
-  case GL_DEPTH_FUNC:
 #ifdef DESKTOP_GL
   case GL_DRAW_BUFFER:
   case GL_EDGE_FLAG_ARRAY_STRIDE:
   case GL_FOG_HINT:
   case GL_FOG_MODE:
 #endif
-  case GL_FRONT_FACE:
   case GL_GREEN_BITS:
 #ifdef DESKTOP_GL
   case GL_INDEX_ARRAY_STRIDE:
@@ -584,7 +638,16 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_MAX_PIXEL_MAP_TABLE:
   case GL_MAX_PROJECTION_STACK_DEPTH:
 #endif
+  case GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS:
+  case GL_MAX_CUBE_MAP_TEXTURE_SIZE:
+  case GL_MAX_FRAGMENT_UNIFORM_VECTORS:
+  case GL_MAX_RENDERBUFFER_SIZE:
+  case GL_MAX_TEXTURE_IMAGE_UNITS:
   case GL_MAX_TEXTURE_SIZE:
+  case GL_MAX_VARYING_VECTORS:
+  case GL_MAX_VERTEX_ATTRIBS:
+  case GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS:
+  case GL_MAX_VERTEX_UNIFORM_VECTORS:
 #ifdef DESKTOP_GL
   case GL_MAX_TEXTURE_STACK_DEPTH:
   case GL_MODELVIEW_STACK_DEPTH:
@@ -592,6 +655,7 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_NORMAL_ARRAY_STRIDE:
   case GL_NORMAL_ARRAY_TYPE:
 #endif
+  case GL_NUM_COMPRESSED_TEXTURE_FORMATS:
   case GL_PACK_ALIGNMENT:
 #ifdef DESKTOP_GL
   case GL_PACK_ROW_LENGTH:
@@ -617,15 +681,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   case GL_RENDER_MODE:
   case GL_SHADE_MODEL:
 #endif
+  case GL_SAMPLE_BUFFERS:
+  case GL_SAMPLES:
+  case GL_STENCIL_BACK_REF:
   case GL_STENCIL_BITS:
   case GL_STENCIL_CLEAR_VALUE:
-  case GL_STENCIL_FAIL:
-  case GL_STENCIL_FUNC:
-  case GL_STENCIL_PASS_DEPTH_FAIL:
-  case GL_STENCIL_PASS_DEPTH_PASS:
   case GL_STENCIL_REF:
-  case GL_STENCIL_VALUE_MASK:
-  case GL_STENCIL_WRITEMASK:
+  case GL_SUBPIXEL_BITS:
 //  case GL_TEXTURE_1D_BINDING:
 //  case GL_TEXTURE_2D_BINDING:
 #ifdef DESKTOP_GL
@@ -647,6 +709,35 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
 	  int ans = 0;
 	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
 	  return Integer::New(ans);
+  }
+  //1 unsigned int
+  case GL_ACTIVE_TEXTURE:
+  case GL_BLEND_DST_ALPHA:
+  case GL_BLEND_DST_RGB:
+  case GL_BLEND_EQUATION_ALPHA:
+  case GL_BLEND_EQUATION_RGB:
+  case GL_BLEND_SRC_ALPHA:
+  case GL_BLEND_SRC_RGB:
+  case GL_CULL_FACE_MODE:
+  case GL_DEPTH_FUNC:
+  case GL_FRONT_FACE:
+  case GL_GENERATE_MIPMAP_HINT:
+  case GL_STENCIL_BACK_FAIL:
+  case GL_STENCIL_BACK_FUNC:
+  case GL_STENCIL_BACK_PASS_DEPTH_FAIL:
+  case GL_STENCIL_BACK_PASS_DEPTH_PASS:
+  case GL_STENCIL_BACK_VALUE_MASK:
+  case GL_STENCIL_BACK_WRITEMASK:
+  case GL_STENCIL_FAIL:
+  case GL_STENCIL_FUNC:
+  case GL_STENCIL_PASS_DEPTH_FAIL:
+  case GL_STENCIL_PASS_DEPTH_PASS:
+  case GL_STENCIL_VALUE_MASK:
+  case GL_STENCIL_WRITEMASK:
+  {
+          unsigned int ans = 0;
+	  glGetIntegerv((GLenum)pname, (GLint*)&ans);
+	  return Integer::NewFromUnsigned(ans);
   }
   //2 values int
 #ifdef DESKTOP_GL
@@ -926,13 +1017,13 @@ Handle<Value> GLESglGetParameterCallback(const Arguments& args) {
   }
 
   }
-  return v8::Undefined();
+  return ThrowException(String::New("Unknown parameter"));
 }
 
 
 Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() != 2) return v8::Undefined();
+  if (args.Length() != 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned program = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -947,7 +1038,7 @@ Handle<Value> GLESglGetProgramivCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
 
-  if (args.Length() != 1) return v8::Undefined();
+  if (args.Length() != 1) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned program = args[0]->Uint32Value();
 
@@ -963,7 +1054,7 @@ Handle<Value> GLESglGetProgramInfoLogCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 
-  if (args.Length() != 2) return v8::Undefined();
+  if (args.Length() != 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -1012,12 +1103,12 @@ Handle<Value> GLESglGetTexParameterCallback(const Arguments& args) {
 #endif
 
   }
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
 
-  if (args.Length() != 2) return v8::Undefined();
+  if (args.Length() != 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned index = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -1060,14 +1151,14 @@ Handle<Value> GLESglGetVertexAttribCallback(const Arguments& args) {
   }
   }
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 
 
 Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 
-  if (args.Length() != 9) return v8::Undefined();
+  if (args.Length() != 9) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->Uint32Value();
   int level = args[1]->IntegerValue();
@@ -1078,6 +1169,33 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
   unsigned format = args[6]->Uint32Value();
   unsigned type = args[7]->Uint32Value();
 
+  if(args[8]->IsObject() &&
+     Handle<Object>::Cast(args[8])->HasIndexedPropertiesInExternalArrayData()) {
+    Handle<Object> obj = Handle<Object>::Cast(args[8]);
+    const void *pixels = obj->GetIndexedPropertiesExternalArrayData();
+    ExternalArrayType atype = obj->GetIndexedPropertiesExternalArrayDataType();
+    unsigned int length = obj->GetIndexedPropertiesExternalArrayDataLength();
+    if (type == GL_UNSIGNED_BYTE &&
+	atype == kExternalUnsignedByteArray) {
+      // XXX check length here
+      glTexImage2D((GLenum)target, (GLint)level, (GLenum)internal_format,
+		   (GLsizei)width, (GLsizei)height, (GLint)border,
+		   (GLenum)format, (GLenum)type,
+		   pixels);
+      return v8::Undefined();
+    }
+    if ((type == GL_UNSIGNED_SHORT_5_6_5 ||
+	 type == GL_UNSIGNED_SHORT_4_4_4_4 ||
+	 type == GL_UNSIGNED_SHORT_5_5_5_1) &&
+	atype == kExternalUnsignedShortArray) {
+      // XXX check length here
+      glTexImage2D((GLenum)target, (GLint)level, (GLenum)internal_format,
+		   (GLsizei)width, (GLsizei)height, (GLint)border,
+		   (GLenum)format, (GLenum)type,
+		   pixels);
+      return v8::Undefined();
+    }
+  }
   if(args[8]->IsArray()) {
 	  Handle<Array> arr_handle = Handle<Array>::Cast(args[8]);
 
@@ -1099,6 +1217,8 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
+
 	  } else if( type == GL_BYTE ) {
 		  GLbyte* pixels = new  GLbyte[arr_handle->Length()];
 		  for (unsigned j = 0; j < arr_handle->Length(); j++) {
@@ -1117,6 +1237,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 #ifdef DESKTOP_GL
 	  } else if( type == GL_BITMAP ) {
@@ -1137,6 +1258,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 #endif
 	  } else if( type == GL_UNSIGNED_SHORT ) {
@@ -1157,6 +1279,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 	  } else if( type == GL_SHORT ) {
 		  GLshort* pixels = new  GLshort[arr_handle->Length()];
@@ -1176,6 +1299,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 	  } else if( type == GL_UNSIGNED_INT ) {
 		  GLuint* pixels = new  GLuint[arr_handle->Length()];
@@ -1195,6 +1319,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 	  } else if( type == GL_INT ) {
 		  GLint* pixels = new  GLint[arr_handle->Length()];
@@ -1214,6 +1339,7 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 
 	  } else if( type == GL_FLOAT ) {
 		  GLfloat* pixels = new  GLfloat[arr_handle->Length()];
@@ -1233,15 +1359,16 @@ Handle<Value> GLESglTexImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
   }
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
 
-  if (args.Length() != 1) return v8::Undefined();
+  if (args.Length() != 1) return ThrowException(String::New("Bad arguments"));
   //get arguments
   String::Utf8Value value(args[0]);
   char* filepath_str = *value;
@@ -1262,13 +1389,13 @@ Handle<Value> GLESglTexImage2DFileCallback(const Arguments& args) {
 
   delete[] filename;
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 
 Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 
-  if (args.Length() != 9) return v8::Undefined();
+  if (args.Length() != 9) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->Uint32Value();
   int level = args[1]->IntegerValue();
@@ -1302,8 +1429,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 	  case GL_BYTE:
 	  {
@@ -1324,8 +1451,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 #ifdef DESKTOP_GL
 	  case GL_BITMAP:
@@ -1347,8 +1474,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 #endif
 
 	  case GL_UNSIGNED_SHORT:
@@ -1370,8 +1497,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 	  case GL_SHORT:
 	  {
@@ -1392,8 +1519,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 	  case GL_UNSIGNED_INT:
 	  {
@@ -1414,8 +1541,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 	  case GL_INT:
 	  {
@@ -1436,8 +1563,8 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 
 	  case GL_FLOAT:
 	  {
@@ -1458,18 +1585,18 @@ Handle<Value> GLESglTexSubImage2DCallback(const Arguments& args) {
 				  (const void*)pixels);
 
 		  delete[] pixels;
+		  return v8::Undefined();
 	  }
-	  break;
 	  }
   }
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 
 Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() != 2) return v8::Undefined();
+  if (args.Length() != 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned pname = args[1]->Uint32Value();
@@ -1492,12 +1619,12 @@ Handle<Value> GLESglGetRenderbufferParameterCallback(const Arguments& args) {
   }
   }
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 Handle<Value> GLESglGetFramebufferAttachmentParameterCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() != 2) return v8::Undefined();
+  if (args.Length() != 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned target = args[0]->Uint32Value();
   unsigned attachment = args[1]->Uint32Value();
@@ -1519,12 +1646,12 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterCallback(const Arguments& a
 //  }
 //  }
 
-  return v8::Undefined();
+  return ThrowException(String::New("Bad arguments"));
 }
 
 Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
 
-  if (args.Length() != 1) return v8::Undefined();
+  if (args.Length() != 1) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned shader = args[0]->Uint32Value();
 
@@ -1540,7 +1667,7 @@ Handle<Value> GLESglGetShaderInfoLogCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
 
-  if (args.Length() != 1) return v8::Undefined();
+  if (args.Length() != 1) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned shader = args[0]->Uint32Value();
 
@@ -1557,7 +1684,7 @@ Handle<Value> GLESglGetShaderSourceCallback(const Arguments& args) {
 // We expect to be called with a shader id and a single string.
 Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
   if (args.Length() != 2)
-    return v8::Undefined();
+    return ThrowException(String::New("Bad arguments"));
 
   GLuint shader_id = args[0]->Uint32Value();
   // GLSL source is defined as an ASCII subset.
@@ -1594,8 +1721,10 @@ Handle<Value> GLESglShaderSourceFileCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1610,7 +1739,7 @@ Handle<Value> GLESglActiveTextureCallback(const Arguments& args) {
 
 Handle<Value> GLESglAttachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1626,7 +1755,7 @@ Handle<Value> GLESglAttachShaderCallback(const Arguments& args) {
 
 Handle<Value> GLESglBindAttribLocationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1644,7 +1773,7 @@ Handle<Value> GLESglBindAttribLocationCallback(const Arguments& args) {
 
 Handle<Value> GLESglBindBufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1660,7 +1789,7 @@ Handle<Value> GLESglBindBufferCallback(const Arguments& args) {
 
 Handle<Value> GLESglBindFramebufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1676,7 +1805,7 @@ Handle<Value> GLESglBindFramebufferCallback(const Arguments& args) {
 
 Handle<Value> GLESglBindRenderbufferCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1692,7 +1821,7 @@ Handle<Value> GLESglBindRenderbufferCallback(const Arguments& args) {
 
 Handle<Value> GLESglBindTextureCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1708,7 +1837,7 @@ Handle<Value> GLESglBindTextureCallback(const Arguments& args) {
 
 Handle<Value> GLESglBlendColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1725,8 +1854,10 @@ Handle<Value> GLESglBlendColorCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglBlendEquationCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1741,7 +1872,7 @@ Handle<Value> GLESglBlendEquationCallback(const Arguments& args) {
 
 Handle<Value> GLESglBlendEquationSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1757,7 +1888,7 @@ Handle<Value> GLESglBlendEquationSeparateCallback(const Arguments& args) {
 
 Handle<Value> GLESglBlendFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1773,7 +1904,7 @@ Handle<Value> GLESglBlendFuncCallback(const Arguments& args) {
 
 Handle<Value> GLESglBlendFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1790,8 +1921,10 @@ Handle<Value> GLESglBlendFuncSeparateCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglCheckFramebufferStatusCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1803,8 +1936,10 @@ Handle<Value> GLESglCheckFramebufferStatusCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglClearCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1819,7 +1954,9 @@ Handle<Value> GLESglClearCallback(const Arguments& args) {
 
 Handle<Value> GLESglClearColorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4 || !args[0]->IsNumber() || !args[1]->IsNumber() ||
+      !args[2]->IsNumber() || !args[3]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -1837,9 +1974,12 @@ Handle<Value> GLESglClearColorCallback(const Arguments& args) {
 
 Handle<Value> GLESglClearDepthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  if (args.Length() < 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
+  if (arg0 < 0) arg0 = 0;
+  if (arg0 > 1) arg0 = 1;
 
   //make call
   glClearDepthf((GLclampf) arg0);
@@ -1852,7 +1992,8 @@ Handle<Value> GLESglClearDepthCallback(const Arguments& args) {
 
 Handle<Value> GLESglClearStencilCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  if (args.Length() < 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -1867,7 +2008,7 @@ Handle<Value> GLESglClearStencilCallback(const Arguments& args) {
 
 Handle<Value> GLESglColorMaskCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -1884,8 +2025,10 @@ Handle<Value> GLESglColorMaskCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglCompileShaderCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1900,7 +2043,8 @@ Handle<Value> GLESglCompileShaderCallback(const Arguments& args) {
 
 Handle<Value> GLESglCopyTexImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 8) return v8::Undefined();
+  if (args.Length() < 8) return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -1922,7 +2066,7 @@ Handle<Value> GLESglCopyTexImage2DCallback(const Arguments& args) {
 
 Handle<Value> GLESglCopyTexSubImage2DCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 8) return v8::Undefined();
+  if (args.Length() < 8) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -1944,7 +2088,7 @@ Handle<Value> GLESglCopyTexSubImage2DCallback(const Arguments& args) {
 
 Handle<Value> GLESglCreateProgramCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
+  if (args.Length() != 0) return ThrowException(String::New("Bad arguments"));
   //get arguments
 
   //make call
@@ -1955,8 +2099,10 @@ Handle<Value> GLESglCreateProgramCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglCreateShaderCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1968,8 +2114,10 @@ Handle<Value> GLESglCreateShaderCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglCullFaceCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -1984,7 +2132,7 @@ Handle<Value> GLESglCullFaceCallback(const Arguments& args) {
 
 Handle<Value> GLESglDeleteBuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2009,7 +2157,7 @@ Handle<Value> GLESglDeleteBuffersCallback(const Arguments& args) {
 
 Handle<Value> GLESglDeleteFramebuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2033,8 +2181,10 @@ Handle<Value> GLESglDeleteFramebuffersCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDeleteProgramCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2049,7 +2199,7 @@ Handle<Value> GLESglDeleteProgramCallback(const Arguments& args) {
 
 Handle<Value> GLESglDeleteRenderbuffersCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2073,8 +2223,10 @@ Handle<Value> GLESglDeleteRenderbuffersCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDeleteShaderCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2089,7 +2241,7 @@ Handle<Value> GLESglDeleteShaderCallback(const Arguments& args) {
 
 Handle<Value> GLESglDeleteTexturesCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
 
@@ -2113,8 +2265,10 @@ Handle<Value> GLESglDeleteTexturesCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDepthFuncCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2128,10 +2282,12 @@ Handle<Value> GLESglDepthFuncCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDepthMaskCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !(args[0]->IsUint32() || args[0]->IsBoolean()))
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  unsigned int arg0 = args[0]->Uint32Value();
+  bool arg0 = args[0]->BooleanValue();
 
   //make call
   glDepthMask((GLboolean) arg0);
@@ -2144,7 +2300,9 @@ Handle<Value> GLESglDepthMaskCallback(const Arguments& args) {
 
 Handle<Value> GLESglDepthRangefCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsNumber() || !args[1]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -2160,7 +2318,9 @@ Handle<Value> GLESglDepthRangefCallback(const Arguments& args) {
 
 Handle<Value> GLESglDetachShaderCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() != 2 || !args[0]->IsUint32() || !args[1]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2175,8 +2335,10 @@ Handle<Value> GLESglDetachShaderCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDisableCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2190,8 +2352,10 @@ Handle<Value> GLESglDisableCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDisableVertexAttribArrayCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2205,8 +2369,11 @@ Handle<Value> GLESglDisableVertexAttribArrayCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglDrawArraysCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 3 || !args[0]->IsUint32() || !args[1]->IsNumber() ||
+      !args[2]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2222,8 +2389,10 @@ Handle<Value> GLESglDrawArraysCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglEnableCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2237,8 +2406,10 @@ Handle<Value> GLESglEnableCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglEnableVertexAttribArrayCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2252,8 +2423,9 @@ Handle<Value> GLESglEnableVertexAttribArrayCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglFinishCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
+  if (args.Length() != 0)
+    return ThrowException(String::New("Extra arguments to finish"));
+
   //get arguments
 
   //make call
@@ -2266,8 +2438,9 @@ Handle<Value> GLESglFinishCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglFlushCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
+  if (args.Length() != 0)
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
 
   //make call
@@ -2280,8 +2453,11 @@ Handle<Value> GLESglFlushCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglFramebufferRenderbufferCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() < 4 || !args[0]->IsUint32() || !args[1]->IsUint32() ||
+      !args[2]->IsUint32() || !args[3]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2298,8 +2474,11 @@ Handle<Value> GLESglFramebufferRenderbufferCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglFramebufferTexture2DCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 5) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() < 5 || !args[0]->IsUint32() || !args[1]->IsUint32() ||
+      !args[2]->IsUint32() || !args[3]->IsUint32() || !args[4]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2317,8 +2496,10 @@ Handle<Value> GLESglFramebufferTexture2DCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglFrontFaceCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2332,8 +2513,10 @@ Handle<Value> GLESglFrontFaceCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglGenerateMipmapCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2347,8 +2530,10 @@ Handle<Value> GLESglGenerateMipmapCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglGetAttribLocationCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 2 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   String::Utf8Value value1(args[1]);
@@ -2362,8 +2547,10 @@ Handle<Value> GLESglGetAttribLocationCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglGetBooleanvCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 2 || !args[0]->IsUint32() || !args[1]->IsArray())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2388,7 +2575,7 @@ Handle<Value> GLESglGetBooleanvCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetErrorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 0) return v8::Undefined();
+  if (args.Length() != 0) return ThrowException(String::New("Bad arguments"));
   //get arguments
 
   //make call
@@ -2400,7 +2587,7 @@ Handle<Value> GLESglGetErrorCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetFloatvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2425,7 +2612,7 @@ Handle<Value> GLESglGetFloatvCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetFramebufferAttachmentParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2452,7 +2639,7 @@ Handle<Value> GLESglGetFramebufferAttachmentParameterivCallback(const Arguments&
 
 Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2477,7 +2664,7 @@ Handle<Value> GLESglGetIntegervCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetUniformivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2503,7 +2690,8 @@ Handle<Value> GLESglGetUniformivCallback(const Arguments& args) {
 
 Handle<Value> GLESglGetUniformLocationCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   String::Utf8Value value1(args[1]);
@@ -2518,7 +2706,8 @@ Handle<Value> GLESglGetUniformLocationCallback(const Arguments& args) {
 
 Handle<Value> GLESglHintCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2533,8 +2722,10 @@ Handle<Value> GLESglHintCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsBufferCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2546,8 +2737,10 @@ Handle<Value> GLESglIsBufferCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsEnabledCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2559,8 +2752,10 @@ Handle<Value> GLESglIsEnabledCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsFramebufferCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2572,8 +2767,10 @@ Handle<Value> GLESglIsFramebufferCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsProgramCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2585,8 +2782,10 @@ Handle<Value> GLESglIsProgramCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsRenderbufferCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2598,8 +2797,10 @@ Handle<Value> GLESglIsRenderbufferCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsShaderCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2611,8 +2812,10 @@ Handle<Value> GLESglIsShaderCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglIsTextureCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2625,7 +2828,7 @@ Handle<Value> GLESglIsTextureCallback(const Arguments& args) {
 
 Handle<Value> GLESglLineWidthCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  if (args.Length() < 1) return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
 
@@ -2639,8 +2842,10 @@ Handle<Value> GLESglLineWidthCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglLinkProgramCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2655,7 +2860,7 @@ Handle<Value> GLESglLinkProgramCallback(const Arguments& args) {
 
 Handle<Value> GLESglPixelStoreiCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2671,7 +2876,7 @@ Handle<Value> GLESglPixelStoreiCallback(const Arguments& args) {
 
 Handle<Value> GLESglPolygonOffsetCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
   double arg1 = args[1]->NumberValue();
@@ -2687,7 +2892,7 @@ Handle<Value> GLESglPolygonOffsetCallback(const Arguments& args) {
 
 Handle<Value> GLESglRenderbufferStorageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2705,7 +2910,7 @@ Handle<Value> GLESglRenderbufferStorageCallback(const Arguments& args) {
 
 Handle<Value> GLESglSampleCoverageCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   double arg0 = args[0]->NumberValue();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2721,7 +2926,7 @@ Handle<Value> GLESglSampleCoverageCallback(const Arguments& args) {
 
 Handle<Value> GLESglScissorCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2739,7 +2944,7 @@ Handle<Value> GLESglScissorCallback(const Arguments& args) {
 
 Handle<Value> GLESglStencilFuncCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   int arg1 = args[1]->IntegerValue();
@@ -2756,7 +2961,7 @@ Handle<Value> GLESglStencilFuncCallback(const Arguments& args) {
 
 Handle<Value> GLESglStencilFuncSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2773,8 +2978,10 @@ Handle<Value> GLESglStencilFuncSeparateCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglStencilMaskCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsNumber())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -2789,7 +2996,7 @@ Handle<Value> GLESglStencilMaskCallback(const Arguments& args) {
 
 Handle<Value> GLESglStencilMaskSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2805,7 +3012,7 @@ Handle<Value> GLESglStencilMaskSeparateCallback(const Arguments& args) {
 
 Handle<Value> GLESglStencilOpCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2822,7 +3029,7 @@ Handle<Value> GLESglStencilOpCallback(const Arguments& args) {
 
 Handle<Value> GLESglStencilOpSeparateCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2840,7 +3047,7 @@ Handle<Value> GLESglStencilOpSeparateCallback(const Arguments& args) {
 
 Handle<Value> GLESglTexParameterfCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2857,7 +3064,7 @@ Handle<Value> GLESglTexParameterfCallback(const Arguments& args) {
 
 Handle<Value> GLESglTexParameterfvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2883,7 +3090,7 @@ Handle<Value> GLESglTexParameterfvCallback(const Arguments& args) {
 
 Handle<Value> GLESglTexParameteriCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2900,7 +3107,7 @@ Handle<Value> GLESglTexParameteriCallback(const Arguments& args) {
 
 Handle<Value> GLESglTexParameterivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   unsigned int arg1 = args[1]->Uint32Value();
@@ -2926,7 +3133,7 @@ Handle<Value> GLESglTexParameterivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -2942,23 +3149,43 @@ Handle<Value> GLESglUniform1fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 1;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform1fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform1fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -2968,7 +3195,7 @@ Handle<Value> GLESglUniform1fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform1iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -2984,7 +3211,7 @@ Handle<Value> GLESglUniform1iCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform1ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3010,7 +3237,7 @@ Handle<Value> GLESglUniform1ivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3027,23 +3254,43 @@ Handle<Value> GLESglUniform2fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 2;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform2fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform2fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3053,7 +3300,7 @@ Handle<Value> GLESglUniform2fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform2iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3070,7 +3317,7 @@ Handle<Value> GLESglUniform2iCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform2ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3096,7 +3343,7 @@ Handle<Value> GLESglUniform2ivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3114,23 +3361,43 @@ Handle<Value> GLESglUniform3fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 3;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform3fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform3fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3140,7 +3407,7 @@ Handle<Value> GLESglUniform3fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform3iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3158,7 +3425,7 @@ Handle<Value> GLESglUniform3iCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform3ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3184,7 +3451,7 @@ Handle<Value> GLESglUniform3ivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 5) return v8::Undefined();
+  if (args.Length() < 5) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   double arg1 = args[1]->NumberValue();
@@ -3203,23 +3470,43 @@ Handle<Value> GLESglUniform4fCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 2 || !args[0]->IsUint32() || !args[1]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
+  unsigned int location = args[0]->Uint32Value();
+  Handle<Object> value = Handle<Object>::Cast(args[1]);
+  const unsigned VECTOR_SIZE = 4;
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle2 = Handle<Array>::Cast(args[2]);
-   GLfloat* arg2 = new  GLfloat[arrHandle2->Length()];
-  for (unsigned j = 0; j < arrHandle2->Length(); j++) {
-      Handle<Value> arg(arrHandle2->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg2[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * VECTOR_SIZE];
+    for (unsigned j = 0; j < (count * VECTOR_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / VECTOR_SIZE;
+    if ((count * VECTOR_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniform4fv((GLint) arg0, (GLsizei) arg1, (const GLfloat*) arg2);
+  glUniform4fv((GLint) location, (GLsizei) count,
+	       (const GLfloat*) data);
+
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3229,7 +3516,7 @@ Handle<Value> GLESglUniform4fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform4iCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 5) return v8::Undefined();
+  if (args.Length() < 5) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3248,7 +3535,7 @@ Handle<Value> GLESglUniform4iCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();
@@ -3274,24 +3561,45 @@ Handle<Value> GLESglUniform4ivCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 4; // 2x2 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix2fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix2fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3301,24 +3609,45 @@ Handle<Value> GLESglUniformMatrix2fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 9; // 3x3 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix3fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix3fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3328,24 +3657,45 @@ Handle<Value> GLESglUniformMatrix3fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 3 || !args[0]->IsUint32() ||
+      !(args[1]->IsBoolean() || args[1]->IsUint32()) ||
+      !args[2]->IsObject())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
-  int arg0 = args[0]->IntegerValue();
-  int arg1 = args[1]->IntegerValue();
-  unsigned int arg2 = args[2]->Uint32Value();
+  unsigned int location = args[0]->Uint32Value();
+  bool transpose = args[1]->BooleanValue();
+  Handle<Object> value = Handle<Object>::Cast(args[2]);
+  const unsigned MATRIX_SIZE = 16; // 4x4 matrix
+  GLfloat *data;
+  unsigned count;
 
-
-  Handle<Array> arrHandle3 = Handle<Array>::Cast(args[3]);
-   GLfloat* arg3 = new  GLfloat[arrHandle3->Length()];
-  for (unsigned j = 0; j < arrHandle3->Length(); j++) {
-      Handle<Value> arg(arrHandle3->Get(Integer::New(j)));
-       GLfloat aux = ( GLfloat)arg->NumberValue();
-      arg3[j] = aux;
+  if (value->IsArray()) {
+    Handle<Array> arrHandle = Handle<Array>::Cast(value);
+    count = arrHandle->Length() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) != arrHandle->Length())
+      return ThrowException(String::New("Value array is wrong size"));
+    data = new  GLfloat[count * MATRIX_SIZE];
+    for (unsigned j = 0; j < (count * MATRIX_SIZE); j++) {
+      Handle<Value> arg(arrHandle->Get(Integer::New(j)));
+      GLfloat aux = ( GLfloat)arg->NumberValue();
+      data[j] = aux;
+    }
+  } else if (value->HasIndexedPropertiesInExternalArrayData() &&
+	     value->GetIndexedPropertiesExternalArrayDataType() ==
+	     kExternalFloatArray) {
+    data = (GLfloat *) value->GetIndexedPropertiesExternalArrayData();
+    count = value->GetIndexedPropertiesExternalArrayDataLength() / MATRIX_SIZE;
+    if ((count * MATRIX_SIZE) !=
+	value->GetIndexedPropertiesExternalArrayDataLength())
+      return ThrowException(String::New("Value array is wrong size"));
+  } else {
+    return ThrowException(String::New("Bad type for value argument"));
   }
 
-
   //make call
-  glUniformMatrix4fv((GLint) arg0, (GLsizei) arg1, (GLboolean) arg2, (const GLfloat*) arg3);
+  glUniformMatrix4fv((GLint) location, (GLsizei) count,
+		     (GLboolean) transpose, (const GLfloat*) data);
   Handle<Object> res(GlesFactory::self_);
   return res;
 }
@@ -3354,8 +3704,10 @@ Handle<Value> GLESglUniformMatrix4fvCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglUseProgramCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3369,8 +3721,10 @@ Handle<Value> GLESglUseProgramCallback(const Arguments& args) {
 
 
 Handle<Value> GLESglValidateProgramCallback(const Arguments& args) {
-  //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 1) return v8::Undefined();
+  //if less that nbr of formal parameters then throw exception
+  if (args.Length() != 1 || !args[0]->IsUint32())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3385,7 +3739,7 @@ Handle<Value> GLESglValidateProgramCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib1fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3401,7 +3755,7 @@ Handle<Value> GLESglVertexAttrib1fCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib1fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3426,7 +3780,7 @@ Handle<Value> GLESglVertexAttrib1fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib2fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 3) return v8::Undefined();
+  if (args.Length() < 3) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3443,7 +3797,7 @@ Handle<Value> GLESglVertexAttrib2fCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib2fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() < 2) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3468,7 +3822,7 @@ Handle<Value> GLESglVertexAttrib2fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib3fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3486,7 +3840,9 @@ Handle<Value> GLESglVertexAttrib3fCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib3fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() != 2 || !args[0]->IsUint32() || !args[1]->IsArray())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3511,7 +3867,7 @@ Handle<Value> GLESglVertexAttrib3fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib4fCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 5) return v8::Undefined();
+  if (args.Length() < 5) return ThrowException(String::New("Bad arguments"));
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
   double arg1 = args[1]->NumberValue();
@@ -3530,7 +3886,9 @@ Handle<Value> GLESglVertexAttrib4fCallback(const Arguments& args) {
 
 Handle<Value> GLESglVertexAttrib4fvCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 2) return v8::Undefined();
+  if (args.Length() != 2 || !args[0]->IsUint32() || !args[1]->IsArray())
+    return ThrowException(String::New("Bad arguments"));
+
   //get arguments
   unsigned int arg0 = args[0]->Uint32Value();
 
@@ -3555,7 +3913,7 @@ Handle<Value> GLESglVertexAttrib4fvCallback(const Arguments& args) {
 
 Handle<Value> GLESglViewportCallback(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
-  if (args.Length() < 4) return v8::Undefined();
+  if (args.Length() < 4) return ThrowException(String::New("Bad arguments"));
   //get arguments
   int arg0 = args[0]->IntegerValue();
   int arg1 = args[1]->IntegerValue();

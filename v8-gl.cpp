@@ -9,6 +9,9 @@
 #include <string>
 #include <string.h>
 
+extern "C" void
+v8_typed_array_init (Handle<Object> target);
+
 Persistent<Context> V8GL::context;
 
 //UTILITY FUNCTIONS
@@ -125,6 +128,23 @@ Handle<Value> log(const Arguments& args) {
   return v8::Undefined();
 }
 
+//loads a text file
+Handle<Value> read(const Arguments& args) {
+  if (args.Length() < 1) return v8::Undefined();
+  //define handle scope
+  HandleScope scope;
+  //get arguments
+  String::Utf8Value value0(args[0]);
+  char* arg0 = *value0;
+  string str(V8GLUtils::getRealPath(arg0));
+  Handle<String> result = ReadFile(str);
+  if (result.IsEmpty()) {
+      fprintf(stderr, "Error reading '%s'.\n", str.c_str());
+      return ThrowException(String::New("Could not open file."));
+  }
+  return scope.Close(result);
+}
+
 //loads a js file
 Handle<Value> load(const Arguments& args) {
   //if less that nbr of formal parameters then do nothing
@@ -143,10 +163,15 @@ Handle<Value> load(const Arguments& args) {
 	  //get argument
 	  String::Utf8Value value0(args[i]);
 	  char* arg0 = *value0;
-	  string str(V8GLUtils::getRealPath(arg0));
-	  if(!exec(str)) {
+	  char* filepath = V8GLUtils::getRealPath(arg0);
+
+	  char *old_path = V8GLUtils::pushRootPath(filepath);
+	  bool success = exec(string(filepath));
+	  V8GLUtils::popRootPath(old_path);
+
+	  if(!success) {
 		  fprintf(stderr, "Error reading '%s'.\n", arg0);
-		  return v8::Undefined();
+		  return ThrowException(String::New("Failed to load script"));
 	  }
   }
 
@@ -189,6 +214,7 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 #endif
 	  global->Set(String::New("log"), FunctionTemplate::New(log));
 	  global->Set(String::New("load"), FunctionTemplate::New(load));
+	  global->Set(String::New("read"), FunctionTemplate::New(read));
 
 	  Handle<Context> context = Context::New(NULL, global);
 
@@ -204,6 +230,8 @@ bool V8GL::initialize(int* pargc, char** argv, string scriptname) {
 	  // Enter the new context so all the following operations take place
 	  // within it.
 	  Context::Scope context_scope(context);
+	  // hook up typed array support
+	  v8_typed_array_init(context->Global());
 
 	  //Append *this* as Gl static variable so we can do dot-this-dot-that stuff
 #ifdef BUILD_GL_BINDINGS

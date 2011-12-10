@@ -10,7 +10,8 @@ BUILD_GLES_BINDINGS=1
 BUILD_GLU_BINDINGS=1
 BUILD_GLUT_BINDINGS=1
 
-SRCS = main.cpp imageloader.cpp utils.cpp v8-gl.cpp
+SRCS = main.cpp imageloader.cpp utils.cpp v8-gl.cpp \
+	v8-typed-array/typed-array.cc
 
 ifdef BUILD_GL_BINDINGS
 SRCS += glbindings/glbind.cpp
